@@ -1,0 +1,16 @@
+[cl-utilities:split-sequence]: http://common-lisp.net/project/cl-utilities/doc/split-sequence.html
+[cl-utilities:split-sequence-if]: http://common-lisp.net/project/cl-utilities/doc/split-sequence.html
+[cl-utilities:split-sequence-if-not]: http://common-lisp.net/project/cl-utilities/doc/split-sequence.html
+[cl-utilities:extremum]: http://common-lisp.net/project/cl-utilities/doc/extremum.html
+[cl-utilities:extrema]: http://common-lisp.net/project/cl-utilities/doc/extremum.html
+[cl-utilities:n-most-extreme]: http://common-lisp.net/project/cl-utilities/doc/extremum.html
+[cl-utilities:read-delimited]: http://common-lisp.net/project/cl-utilities/doc/read-delimited.html
+[cl-utilities:expt-mod]: http://common-lisp.net/project/cl-utilities/doc/expt-mod.html
+[cl-utilities:with-unique-names]: http://common-lisp.net/project/cl-utilities/doc/with-unique-names.html
+[cl-utilities:with-gensyms]: http://common-lisp.net/project/cl-utilities/doc/with-unique-names.html
+[cl-utilities:collecting]: http://common-lisp.net/project/cl-utilities/doc/collecting.html
+[cl-utilities:with-collectors]: http://common-lisp.net/project/cl-utilities/doc/collecting.html
+[cl-utilities:once-only]: http://common-lisp.net/project/cl-utilities/doc/once-only.html
+[cl-utilities:rotate-byte]: http://common-lisp.net/project/cl-utilities/doc/rotate-byte.html
+[cl-utilities:copy-array]: http://common-lisp.net/project/cl-utilities/doc/copy-array.html
+[cl-utilities:compose]: http://common-lisp.net/project/cl-utilities/doc/compose.html
