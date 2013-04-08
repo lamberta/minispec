@@ -132,8 +132,13 @@ article pre code {
 	font-size: 0.9em !important;
 }
 
+article p {
+	line-height: 1.6em;
+}
+
 article p a {
 	border: 1px solid LINK;
+	white-space: nowrap;
 }
 
 article p a:hover {

@@ -1,5 +1,3 @@
-# Control Flow
-
 ## Conditionals
 
 ### [if] test then \[else\] => result\*
