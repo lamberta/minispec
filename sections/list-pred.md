@@ -1,5 +1,3 @@
-## Predicates
-
 ### [listp] object => boolean
 
 ### [consp] object => boolean
