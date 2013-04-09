@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL TurboSpec: Control</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp TurboSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./lists.html">List</a></li>
+              <li><a href="./lists.html#set">Set</a></li>
+              <li><a href="./lists.html#tree">Tree</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html#arrays">Array</a></li>
+							<li><a href="./arrays.html#vectors">Vector</a></li>
+							<li><a href="./arrays.html#strings">String</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#control-flow" class="nav-header">Control Flow</a></li>
+  <li><a href="#conditionals" class="nav-header">Conditionals</a></li>
+  <li><a href="#if-test-then-else-result">if</a></li>
+  <li><a href="#and-forms-result">and</a></li>
+  <li><a href="#or-forms-results">or</a></li>
+  <li><a href="#when-test-forms-result">when</a></li>
+  <li><a href="#unless-test-forms-result">unless</a></li>
+  <li><a href="#cond-test-then-result">cond</a></li>
+  <li><a href="#case-test-key-key-otherwise-form-result">case</a></li>
+  <li><a href="#sequencing" class="nav-header">Sequencing</a></li>
+  <li><a href="#progn-forms-result">progn</a></li>
+  <li><a href="#multiple-value-prog1-first-form-forms-first-form-results">multiple-value-prog1</a></li>
+  <li><a href="#prog1-first-form-forms-first-form-result">prog1</a></li>
+  <li><a href="#prog2-first-form-second-form-forms-second-form-result">prog2</a></li>
+  <li><a href="#prog-name-name-value-declare-tag-form-result">prog</a></li>
+  <li><a href="#sleep-seconds-nil">sleep</a></li>
+  <li><a href="#blocks-and-exits" class="nav-header">Blocks and Exits</a></li>
+  <li><a href="#block-name-forms-result">block</a></li>
+  <li><a href="#return-from-name-result-result">return-from</a></li>
+  <li><a href="#return-result-result">return</a></li>
+  <li><a href="#tagbody-tag-form-nil">tagbody</a></li>
+  <li><a href="#go-tag">go</a></li>
+  <li><a href="#catch-tag-forms-result">catch</a></li>
+  <li><a href="#throw-tag-form">throw</a></li>
+  <li><a href="#unwind-protect-protected-form-cleanup-forms-protected-form-result">unwind-protect</a></li>
+  <li><a href="#condition-control-flow" class="nav-header">Condition Control Flow</a></li>
+  <li><a href="#handler-case-expr-error-clause-no-error-clause-result">handler-case</a></li>
+  <li><a href="#handler-bind-condition-type-handler-function-forms-result">handler-bind</a></li>
+  <li><a href="#restart-case-form-restarts-result">restart-case</a></li>
+  <li><a href="#with-simple-restart-name-format-control-format-arg-forms-result">with-simple-restart</a></li>
+  <li><a href="#restart-bind">restart-bind</a></li>
+  <li><a href="#invoke-restart">invoke-restart</a></li>
+  <li><a href="#invoke-restart-interactively">invoke-restart-interactively</a></li>
+  <li><a href="#find-restart">find-restart</a></li>
+  <li><a href="#compute-restarts">compute-restarts</a></li>
+  <li><a href="#restart-name">restart-name</a></li>
+  <li><a href="#with-condition-restarts">with-condition-restarts</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="control-flow">Control Flow</h1>
+<h2 id="conditionals">Conditionals</h2>
+<h3 id="if-test-then-else-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_if.htm">if</a> test then [else] &rArr; result*</h3>
+<p>Return values of <em>then</em> if <em>test</em> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>, otherwise return <em>else</em>.</p>
+<pre><code>(if (evenp 2) &#39;a) ;&rArr; A
+(if (evenp 3)
+  &#39;b
+  &#39;c)             ;&rArr; C</code></pre>
+<h3 id="and-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_and.htm">and</a> forms* &rArr; result*</h3>
+<p>Evaluate <em>forms</em> from left to right. Immediately return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> if one form’s value is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, otherwise return the value of the last form.</p>
+<pre><code>(and (numberp 2) (evenp 2)) ;&rArr; T</code></pre>
+<h3 id="or-forms-results"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_or.htm">or</a> forms* &rArr; results*</h3>
+<p>Evaluate <em>forms</em> from left to right. Immediately return value of the first non-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> evaluating form, or all values if last form is reached. Return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> if no form returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>.</p>
+<pre><code>(or (numberp 3) (evenp 3)) ;&rArr; T</code></pre>
+<h3 id="when-test-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_when_.htm">when</a> test forms* &rArr; result*</h3>
+<p>Evaluate <em>forms</em> if <em>test</em> returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>.</p>
+<pre><code>(when (evenp 2)
+  (print &#39;a)
+  &#39;b)           ;&rArr; B [prints A]</code></pre>
+<h3 id="unless-test-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_when_.htm">unless</a> test forms* &rArr; result*</h3>
+<p>Evaluate <em>forms</em> if <em>test</em> returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<pre><code>(unless (evenp 3)
+  (print &#39;a)
+  &#39;b)           ;&rArr; B [prints A]</code></pre>
+<h3 id="cond-test-then-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_cond.htm">cond</a> (test then*)* &rArr; result*</h3>
+<p>Return the values of the first <em>then</em> whose <em>test</em> returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>, otherwise return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> if no tests pass.</p>
+<pre><code>(defun test (x)
+  (cond ((= x 1) &#39;clause1)
+        ((= x 2) &#39;clause2)
+        (t &#39;clause3)))
+
+(test 2)                   ;&rArr; CLAUSE2
+(test 9)                   ;&rArr; CLAUSE3</code></pre>
+<h3 id="case-test-key-key-otherwise-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm">case</a> test (key | (key*) | otherwise form) &rArr; result*</h3>
+<p>Return the <em>form</em> for the first clause whose <em>key</em> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm">eql</a> to <em>test</em>. If there is no <em>otherwise</em> clause, return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<p>If no clause matches using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm">ccase</a>, a <em>correctable</em> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm">error</a> is signaled allowing a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_store_.htm">store-value</a> restart to be invoked.</p>
+<p>If no clause matches using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_case_.htm">ecase</a>, a <em>non-correctable</em> <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_error.htm">error</a> is signaled.</p>
+<pre><code>(defun test (x)
+  (case x
+    (:a &#39;clause1)
+    ((:b :c) &#39;clause2)
+    (otherwise &#39;clause3)))
+
+(test :a)                  ;&rArr; CLAUSE1
+(test :g)                  ;&rArr; CLAUSE3</code></pre>
+<h2 id="sequencing">Sequencing</h2>
+<h3 id="progn-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_progn.htm">progn</a> forms* &rArr; result*</h3>
+<p>Evaluates <em>forms</em>, in the order in which they are given.</p>
+<pre><code>(progn
+  (print &#39;a)
+  &#39;b)        ;&rArr; B [prints A]</code></pre>
+<h3 id="multiple-value-prog1-first-form-forms-first-form-results"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_mult_1.htm">multiple-value-prog1</a> first-form forms* &rArr; first-form-results</h3>
+<p>Save values from <em>first-form</em>, evaluate remaining <em>forms</em>, then return the the saved values from <em>first-form</em>.</p>
+<pre><code>(multiple-value-prog1
+  (values 1 2 3)
+  (+ 2 2))            ;&rArr; 1, 2, 3</code></pre>
+<h3 id="prog1-first-form-forms-first-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_prog1c.htm">prog1</a> first-form forms* &rArr; first-form-result</h3>
+<p>Evaluates <em>first-form</em> and then remaining <em>forms</em>, yielding the value from <em>first-form</em>.</p>
+<pre><code>(prog1 &#39;a &#39;b &#39;c) ;&rArr; A</code></pre>
+<h3 id="prog2-first-form-second-form-forms-second-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_prog1c.htm">prog2</a> first-form second-form forms* &rArr; second-form-result</h3>
+<p>Evaluates <em>first-form</em>, then <em>second-form</em>, and then remaining <em>forms</em>, yielding the value from <em>second-form</em>.</p>
+<pre><code>(prog2 &#39;a &#39;b &#39;c) ;&rArr; B</code></pre>
+<h3 id="prog-name-name-value-declare-tag-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_prog_.htm">prog</a> ({name | (name [value])}*) declare* {tag | form}* &rArr; result*</h3>
+<p>Evaluate <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_tagbod.htm">tagbody</a>-like body with <em>names</em> lexically bound in parallel. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_prog_.htm">prog</a> permits the use of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm">return</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm">go</a> statements. Use <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_prog_.htm">prog*</a> to bind local variables sequentially.</p>
+<pre><code>(prog ((x 1))
+  tag1
+    (go tag3)
+  tag2
+    (return x)
+  tag3
+    (go tag2)) ;&rArr; 1</code></pre>
+<h3 id="sleep-seconds-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sleep.htm">sleep</a> seconds &rArr; nil</h3>
+<p>Causes execution to cease for a number of <em>seconds</em> before resuming.</p>
+<pre><code>(let ((then (get-universal-time)))
+  (sleep 10)
+  (- (get-universal-time) then))   ;&rArr; 5 [secs elapsed]</code></pre>
+<h2 id="blocks-and-exits">Blocks and Exits</h2>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/05_b.htm">HyperSpec: Transfer of Control to an Exit Point</a></li>
+<li><a href="http://www.gigamonkeys.com/book/the-special-operators.html#local-flow-of-control">PCL: Local Flow of Control</a></li>
+</ul>
+<h3 id="block-name-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_block.htm">block</a> name forms* &rArr; result*</h3>
+<p>Establishes a named block and then evaluates forms as an implicit <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_progn.htm">progn</a> unless interrupted by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm">return-from</a>.</p>
+<pre><code>(block test
+  (print &#39;printed)
+  (return-from test)
+  (print &#39;not-printed)) ;&rArr; NIL [prints PRINTED]</code></pre>
+<h3 id="return-from-name-result-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm">return-from</a> name [result] &rArr; result*</h3>
+<p>Returns control to the nearest enclosing <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_block.htm">block</a> <em>name</em>, returning <em>results</em>.</p>
+<pre><code>(defun test ()
+  (return-from test &#39;done)
+  &#39;a)
+
+(test)                     ;&rArr; DONE</code></pre>
+<h3 id="return-result-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm">return</a> [result] &rArr; result*</h3>
+<p>Returns, as if by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm">return-from</a>, from a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_block.htm">block</a> named <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, which many standard control structures generate. Equivalent to <code>(return-from nil ...)</code>.</p>
+<pre><code>(dotimes (i 10)
+  (print i)
+  (if (&gt; i 5) (return &#39;done))) ;&rArr; DONE [prints 0..6]</code></pre>
+<h3 id="tagbody-tag-form-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_tagbod.htm">tagbody</a> {tag | form}* &rArr; nil</h3>
+<p>Evaluates <em>forms</em> in a lexical environment that provides <em>tags</em> for control transfers which are targets for <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm">go</a>. Not often used since it’s easier to write iterative constructs using existing looping macros.</p>
+<pre><code>(tagbody
+  tag1
+    (if (zerop (random 2))
+      (go tag2)
+      (go tag3))
+  tag2
+    (print &#39;counting)
+    (go tag1)
+  tag3
+    (print &#39;exiting))</code></pre>
+<h3 id="go-tag"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_go.htm">go</a> tag</h3>
+<p>Transfers control to an enclosing <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_tagbod.htm">tagbody</a> form labeled by a tag <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm">eql</a> to <em>tag</em>.</p>
+<pre><code>(tagbody
+  (print &#39;printed)
+  (go skip)
+  (print &#39;not-printed)
+  skip (print &#39;leaving)) ;&rArr; NIL [prints PRINTED and LEAVING]</code></pre>
+<h3 id="catch-tag-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_catch.htm">catch</a> tag forms* &rArr; result*</h3>
+<p>Evaluate <em>forms</em> and return their values unless interrupted by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm">throw</a>.</p>
+<pre><code>(defun foo ()
+  (catch &#39;exit
+    (print &#39;enter-foo)
+    (bar)
+    (print &#39;not-printed-foo))
+  (print &#39;leave-foo))
+
+(defun bar ()
+  (print &#39;enter-bar)
+  (throw &#39;exit nil)
+  (print &#39;not-printed-bar))
+
+(foo) ;&rArr; [prints ENTER-FOO, ENTER-BAR, LEAVE-FOO</code></pre>
+<h3 id="throw-tag-form"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_throw.htm">throw</a> tag form</h3>
+<p>Have the nearest dynamically enclosing <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_catch.htm">catch</a> with a tag <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm">eq</a> <em>tag</em> return with the values of <em>form</em>.</p>
+<pre><code>(catch &#39;tag
+  (print &#39;printed)
+  (throw &#39;tag &#39;done)
+  (print &#39;not-printed)) ;&rArr; DONE [prints PRINTED]</code></pre>
+<h3 id="unwind-protect-protected-form-cleanup-forms-protected-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_unwind.htm">unwind-protect</a> protected-form cleanup-forms* &rArr; protected-form-result*</h3>
+<p>Evaluate <em>protected-form</em> and then, no matter how control leaves <em>protected-form</em>, evaluate <em>cleanup-form</em>. Return values of <em>protected-form</em>.</p>
+<pre><code>(catch &#39;exit
+  (unwind-protect
+    (progn
+      (print &#39;printed)
+      (throw &#39;exit &#39;a)
+      (print &#39;not-printed))
+    (print &#39;also-printed)
+    (print &#39;another-printed))) ;&rArr; A [prints PRINTED, ALSO-PRINTED, ANOTHER-PRINTED]</code></pre>
+<h2 id="condition-control-flow">Condition Control Flow</h2>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/09_a.htm">HyperSpec: Condition System Concepts</a></li>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node312.html">CLtL2: Conditions</a></li>
+<li><a href="http://www.gigamonkeys.com/book/beyond-exception-handling-conditions-and-restarts.html">PCL: Beyond Exception Handling: Conditions and Restarts</a></li>
+</ul>
+<h3 id="handler-case-expr-error-clause-no-error-clause-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_hand_1.htm">handler-case</a> expr [[{error-clause}* | no-error-clause]] &rArr; result*</h3>
+<p>Executes <em>expr</em> in a dynamic environment where various condition handlers are active. Each <em>error-clause</em> specifies how to handle a matching condition type. A <em>no-error-clause</em> allows a particular action if control returns normally.</p>
+<pre><code>(defun adder-test (a b)
+  (handler-case (+ a b)
+    (type-error () :wrong-type)
+    (error (condition) (list :any-other-error condition))
+    (:no-error (val) (list :success val))))
+
+(adder-test 6 7)  ;&rArr; (:SUCCESS 13)
+(adder-test 6 &#39;a) ;&rArr; :WRONG-TYPE</code></pre>
+<h3 id="handler-bind-condition-type-handler-function-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_handle.htm">handler-bind</a> ((condition-type handler-function)*) forms* &rArr; result*</h3>
+<p>Executes <em>forms</em> in a dynamic environment where the condition <em>handler-function</em> bindings are active.</p>
+<pre><code>(handler-bind ((simple-error #&#39;(lambda (condition)
+                                 (print (list :got-error condition)))))
+  (error &#39;simple-error)
+  (print &#39;not-printed)) ;&rArr; [prints (:GOT-ERROR #&lt;SIMPLE-ERROR...&gt;) and throws error</code></pre>
+<h3 id="restart-case-form-restarts-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_rst_ca.htm">restart-case</a> form {restarts*} &rArr; result*</h3>
+<p>Return values of <em>form</em> or, if during its evaluation one of the dynamically established <em>restarts</em> is called, the values of its restart-forms.</p>
+<pre><code>(restart-case (error &#39;simple-error)
+  (do-nothing () nil)
+  (do-something () (print &#39;doing-something)))</code></pre>
+<pre><code>(defun run-test ()
+  (print &#39;a)
+  (error &#39;simple-error))
+
+(defun run-handler (condition)
+  (print &#39;b)
+  (invoke-restart (find-restart :do-something))
+  (print &#39;not-printed))
+
+(defun run-restart ()
+  (print &#39;c))
+
+(handler-bind ((simple-error #&#39;run-handler)) ;catch and run, invoke restart
+  (restart-case (run-test)                   ;throws error
+    (:do-nothing () nil)
+    (:do-something () (run-restart)))) ;&rArr; C [prints A, B, C]</code></pre>
+<h3 id="with-simple-restart-name-format-control-format-arg-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_smp_.htm">with-simple-restart</a> (name format-control format-arg<em>) forms* &rArr; result</em></h3>
+<p>Return value of <em>forms</em> unless a restart is invoked, at which control is transferred to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_smp_.htm">with-simple-restart</a>, which returns two values, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>. The restart is a prompt at the debugger which serves as a position to resume from.</p>
+<pre><code>(with-simple-restart (abort &quot;Return to command level.&quot;)
+  (print &#39;a)
+  (error &quot;an error&quot;)
+  (print &#39;not-printed))</code></pre>
+<p>Provide multiple restarts and prompt user for direction:</p>
+<pre><code>(defun collect-all-or-half (n)
+  (let ((nums &#39;())
+        (halfway (floor (/ n 2))))
+    (with-simple-restart (collect-half &quot;Only collect ~a ?&quot; halfway)
+      (dotimes (i n)
+        (with-simple-restart (collect-all &quot;Collect all ~a ?&quot; n)
+         (if (= i halfway)
+           (error &quot;Prompt for number&quot;))
+         (push i nums))))
+    (reverse nums)))
+
+(collect-all-or-half 8) ;&rArr; (0 1 2 3 4 5 6 7) [user selects COLLECT-ALL restart]
+(collect-all-or-half 8) ;&rArr; (0 1 2 3) [user selects COLLECT-HALF restart]</code></pre>
+<h3 id="restart-bind"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_rst_bi.htm">restart-bind</a></h3>
+<h3 id="invoke-restart"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_invo_1.htm">invoke-restart</a></h3>
+<h3 id="invoke-restart-interactively"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_invo_2.htm">invoke-restart-interactively</a></h3>
+<h3 id="find-restart"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_r.htm">find-restart</a></h3>
+<h3 id="compute-restarts"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comp_1.htm">compute-restarts</a></h3>
+<h3 id="restart-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rst_na.htm">restart-name</a></h3>
+<h3 id="with-condition-restarts"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_cnd_.htm">with-condition-restarts</a></h3>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL TurboSpec: Iteration</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp TurboSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./lists.html">List</a></li>
+              <li><a href="./lists.html#set">Set</a></li>
+              <li><a href="./lists.html#tree">Tree</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html#arrays">Array</a></li>
+							<li><a href="./arrays.html#vectors">Vector</a></li>
+							<li><a href="./arrays.html#strings">String</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#iteration" class="nav-header">Iteration</a></li>
+  <li><a href="#do" class="nav-header">do</a></li>
+  <li><a href="#do-var-start-step-stop-result-form-result">do</a></li>
+  <li><a href="#dotimes-var-i-result-form-result">dotimes</a></li>
+  <li><a href="#dolist-var-list-result-form-result">dolist</a></li>
+  <li><a href="#mapcar">mapcar</a></li>
+  <li><a href="#maplist">maplist</a></li>
+  <li><a href="#mapcan">mapcan</a></li>
+  <li><a href="#mapcon">mapcon</a></li>
+  <li><a href="#mapc">mapc</a></li>
+  <li><a href="#mapl">mapl</a></li>
+  <li><a href="#alexandriamappend-fn-rest-lists-list">mappend</a></li>
+  <li><a href="#alexandriamap-product-fn-list-rest-lists-list">map-product</a></li>
+  <li><a href="#map-result-type-fn-rest-seqs-result">map</a></li>
+  <li><a href="#map-into-result-seq-fn-rest-seqs-result-seq">map-into</a></li>
+  <li><a href="#remove-if-not-fn-seq-key-from-end-start-end-count-key-seq">remove-if-not</a></li>
+  <li><a href="#remove-if-fn-seq-key-from-end-start-end-count-key-seq">remove-if</a></li>
+  <li><a href="#reduce-fn-seq-key-key-from-end-start-end-initial-value-result">reduce</a></li>
+  <li><a href="#alexandriamap-combinations-fn-seq-key-start-end-length-copy">map-combinations</a></li>
+  <li><a href="#alexandriamap-derangements-fn-seq-key-start-end-copy">map-derangements</a></li>
+  <li><a href="#alexandriamap-permutations-fn-seq-key-start-end-length-copy">map-permutations</a></li>
+  <li><a href="#alexandriadoplist-key-val-plist-optional-values-forms">doplist</a></li>
+  <li><a href="#maphash-fn-hash-table-nil">maphash</a></li>
+  <li><a href="#alexandriamaphash-keys-fn-hash-table-nil">maphash-keys</a></li>
+  <li><a href="#alexandriamaphash-values-fn-hash-table-nil">maphash-values</a></li>
+  <li><a href="#loop" class="nav-header">Loop</a></li>
+  <li><a href="#loop-form-result">loop</a></li>
+  <li><a href="#recursion" class="nav-header">Recursion</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="iteration">Iteration</h1>
+<h2 id="do">do</h2>
+<h3 id="do-var-start-step-stop-result-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_do.htm">do</a> ((var [start [step]])*) (stop result*) form* &rArr; result*</h3>
+<p>Iterate over a group of statements while a test condition holds. Variables are bound within the iteration and stepped in parallel.</p>
+<p>Using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_do.htm">do*</a> causes the variable bindings and steppings to be performed sequentially rather than in parallel.</p>
+<pre><code>(do ((i 0 (1+ i)))              ;init to 0, step 1
+    ((&gt;= i 4) (print &#39;done))    ;end test, result-form
+  (print i))                    ;&rArr; NIL [prints 0..3, done]
+
+(do ((n 0 (1+ n))               ;init to 0, step 1
+     (current 0 next)           ;init to 0, read old value of next
+     (next 1 (+ current next))) ;init to 1, reads old values
+    ((= 10 n) current))         ;&rArr; 55 end test and result-form
+
+(do ()
+    ((&gt; (get-universal-time) *some-future-date*))
+  (print &quot;waiting...&quot;)
+  (sleep 60))</code></pre>
+<h3 id="dotimes-var-i-result-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_dotime.htm">dotimes</a> (var i [result]) form* &rArr; result*</h3>
+<p>Iterate over a series of integers. Terminate loop immediately with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm">return</a>.</p>
+<pre><code>(dotimes (i 10)
+  (print i))
+
+(dotimes (i 10 (print &#39;done))
+  (print i))</code></pre>
+<h3 id="dolist-var-list-result-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_dolist.htm">dolist</a> (var list [result]) form* &rArr; result*</h3>
+<p>Iterate over the elements of a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a>. Terminate loop immediately with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm">return</a>.</p>
+<pre><code>(dolist (x &#39;(1 2 3 4))
+  (print x))
+
+(dolist (x &#39;(1 2 3 4) (print &#39;done))
+  (print x))</code></pre>
+<h3 id="mapcar"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapcar</a></h3>
+<p>Iterates over successive list elements and returns the accumlated results. <strong>mapc</strong> is similar except the results are <em>not</em> accumulated and the first list is returned.</p>
+<pre><code>(mapcar #&#39;+ &#39;(1 2) &#39;(3 4)) ;&rArr; (4 6)
+(mapcar (alexandria:compose #&#39;print #&#39;1+) &#39;(1 2 3)) ;&rArr; (2 3 4) [prints 2,3,4]</code></pre>
+<h3 id="maplist"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">maplist</a></h3>
+<h3 id="mapcan"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapcan</a></h3>
+<h3 id="mapcon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapcon</a></h3>
+<h3 id="mapc"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapc</a></h3>
+<h3 id="mapl"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapl</a></h3>
+<h3 id="alexandriamappend-fn-rest-lists-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-mappend">alexandria:mappend</a> fn &amp;rest lists… &rArr; list</h3>
+<p>Zips up list components and returns a flattened list. <em>fn</em> must return a list.</p>
+<pre><code>(mappend #&#39;list &#39;(1 3) &#39;(2 4)) ;&rArr; ((1 2) (3 4)) &rArr; (1 2 3 4)
+
+(flet ((zipper (x y) (list (+ x y))))
+  (mappend #&#39;zipper &#39;(1 3) &#39;(2 4))) ;&rArr; ((+ 1 2) (+ 3 4)) &rArr; (3 7)</code></pre>
+<h3 id="alexandriamap-product-fn-list-rest-lists-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dproduct">alexandria:map-product</a> fn list &amp;rest lists… &rArr; list</h3>
+<p>Results of calling <code>fn</code> with one argument per list for every combination.</p>
+<pre><code>(map-product #&#39;list &#39;(1 2) &#39;(3 4) &#39;(5 6))
+  ;&rArr; ((1 3 5) (1 3 6) (1 4 5) (1 4 6) (2 3 5) (2 3 6) (2 4 5) (2 4 6))</code></pre>
+<h3 id="map-result-type-fn-rest-seqs-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm">map</a> result-type fn &amp;rest seqs* &rArr; result</h3>
+<p>Applies the function to elements of each sequence in turn. The result sequence is as long as the shortest of the sequences.</p>
+<pre><code>(map &#39;list #&#39;cons &#39;(a b) &#39;(c d))              ;&rArr; ((A . C) (B . D))
+(map &#39;vector #&#39;(lambda (x) (* 2 x)) &#39;(1 2 3)) ;&rArr; #(2 4 6)</code></pre>
+<h3 id="map-into-result-seq-fn-rest-seqs-result-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map_in.htm">map-into</a> result-seq fn &amp;rest seqs* &rArr; result-seq</h3>
+<p>Destructively modifies <em>result-seq</em> to contain the results of applying the function to each element in the argument <em>seqs</em> in turn.</p>
+<pre><code>(map-into &#39;(a b c) #&#39;oddp &#39;(1 2 3 4 5 6)) ;&rArr; (T NIL T)</code></pre>
+<h3 id="remove-if-not-fn-seq-key-from-end-start-end-count-key-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">remove-if-not</a> fn seq &amp;key from-end start end count key &rArr; seq</h3>
+<p>Filter</p>
+<pre><code>(remove-if-not #&#39;oddp &#39;(0 1 2 3 4)) ;&rArr; (1 3)
+(remove-if-not (alexandria:disjoin #&#39;zerop #&#39;oddp) &#39;(0 1 2 3 4)) ;&rArr; (0 1 3)</code></pre>
+<h3 id="remove-if-fn-seq-key-from-end-start-end-count-key-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">remove-if</a> fn seq &amp;key from-end start end count key &rArr; seq</h3>
+<pre><code>(remove-if #&#39;oddp &#39;(0 1 2 3 4)) ;&rArr; (0 2 4)
+(remove-if (alexandria:disjoin #&#39;zerop #&#39;oddp) &#39;(0 1 2 3 4)) ;&rArr; (2 4)</code></pre>
+<h3 id="reduce-fn-seq-key-key-from-end-start-end-initial-value-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reduce.htm">reduce</a> fn seq &amp;key key from-end start end initial-value &rArr; result</h3>
+<pre><code>(reduce #&#39;* &#39;(1 2 3 4 5)) ;&rArr; 120</code></pre>
+<h3 id="alexandriamap-combinations-fn-seq-key-start-end-length-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dcombinations">alexandria:map-combinations</a> fn seq &amp;key start end length copy</h3>
+<h3 id="alexandriamap-derangements-fn-seq-key-start-end-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dderangements">alexandria:map-derangements</a> fn seq &amp;key start end copy</h3>
+<h3 id="alexandriamap-permutations-fn-seq-key-start-end-length-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dpermutations">alexandria:map-permutations</a> fn seq &amp;key start end length copy</h3>
+<h3 id="alexandriadoplist-key-val-plist-optional-values-forms"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-doplist">alexandria:doplist</a> (key val plist &amp;optional values) forms*</h3>
+<h3 id="maphash-fn-hash-table-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_maphas.htm">maphash</a> fn hash-table &rArr; nil</h3>
+<p>Iterates function over key/value entries in the <em>hash-table</em>.</p>
+<pre><code>(maphash #&#39;(lambda (k v) (list k v)) hash-table)</code></pre>
+<h3 id="alexandriamaphash-keys-fn-hash-table-nil"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-maphash_002dkeys">alexandria:maphash-keys</a> fn hash-table &rArr; nil</h3>
+<h3 id="alexandriamaphash-values-fn-hash-table-nil"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-maphash_002dvalues">alexandria:maphash-values</a> fn hash-table &rArr; nil</h3>
+<h2 id="loop">Loop</h2>
+<p>The <code>loop</code> function has a <em>simple</em> and <em>extended</em> form.</p>
+<h3 id="loop-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_loop.htm">loop</a> form* &rArr; result*</h3>
+<p>The <em>simple</em> loop form.</p>
+<pre><code>(setf i 0)
+(loop
+  (print i)
+  (if (&lt; i 10)
+    (incf i)
+    (return))) ;&rArr; NIL [prints 0...10]</code></pre>
+<h2 id="recursion">Recursion</h2>
+<p>Tesing if a list contains an element using tail-recursion:</p>
+<pre><code>(defun our-member (obj lst)
+  (if (null lst)                    ;finished if empty list, return nil
+    nil
+    (if (eql (car lst) obj)         ;if obj is first list element, return list
+      lst
+      (our-member obj (cdr lst))))) ;else, test against rest of list</code></pre>
+<p>Using an accumulator:</p>
+<pre><code>(defun fac (x)
+  (labels ((fac2 (x acc)          ;function takes current step and accumulated results
+    (if (= x 0)
+      acc                         ;if done, return accumulated results list
+      (fac2 (- x 1) (* acc x))))) ;else, call again with stepped down arg and accumulation
+    (fac2 x 1)))                  ;initial call to start</code></pre>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

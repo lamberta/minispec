@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL TurboSpec: Math</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp TurboSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./lists.html">List</a></li>
+              <li><a href="./lists.html#set">Set</a></li>
+              <li><a href="./lists.html#tree">Tree</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html#arrays">Array</a></li>
+							<li><a href="./arrays.html#vectors">Vector</a></li>
+							<li><a href="./arrays.html#strings">String</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#numbers" class="nav-header">Numbers</a></li>
+  <li><a href="#predicates" class="nav-header">Predicates</a></li>
+  <li><a href="#rest-numbers-boolean">=</a></li>
+  <li><a href="#rest-numbers-boolean-1">/=</a></li>
+  <li><a href="#rest-numbers-boolean-2">></a></li>
+  <li><a href="#rest-numbers-boolean-3">>=</a></li>
+  <li><a href="#rest-numbers-boolean-4"><</a></li>
+  <li><a href="#rest-numbers-boolean-5"><=</a></li>
+  <li><a href="#zerop-number-boolean">zerop</a></li>
+  <li><a href="#plusp-real-boolean">plusp</a></li>
+  <li><a href="#minusp-real-boolean">minusp</a></li>
+  <li><a href="#evenp-integer-boolean">evenp</a></li>
+  <li><a href="#oddp-integer-boolean">oddp</a></li>
+  <li><a href="#numberp-object-boolean">numberp</a></li>
+  <li><a href="#realp-object-boolean">realp</a></li>
+  <li><a href="#rationalp-object-boolean">rationalp</a></li>
+  <li><a href="#floatp-object-boolean">floatp</a></li>
+  <li><a href="#integerp-object-boolean">integerp</a></li>
+  <li><a href="#complexp-object-boolean">complexp</a></li>
+  <li><a href="#random-state-p-object-boolean">random-state-p</a></li>
+  <li><a href="#numeric-functions" class="nav-header">Numeric Functions</a></li>
+  <li><a href="#rest-numbers-sum">+</a></li>
+  <li><a href="#rest-numbers-product">*</a></li>
+  <li><a href="#rest-numbers-difference">-</a></li>
+  <li><a href="#rest-numbers-quotient">/</a></li>
+  <li><a href="#1-number-successor">1+</a></li>
+  <li><a href="#1-number-predecessor">1-</a></li>
+  <li><a href="#incf-place-delta-new-value">incf</a></li>
+  <li><a href="#decf-place-delta-new-value">decf</a></li>
+  <li><a href="#exp-number-result">exp</a></li>
+  <li><a href="#expt-base-number-power-number-result">expt</a></li>
+  <li><a href="#log-number-optional-base-logarithm">log</a></li>
+  <li><a href="#sqrt-number-root">sqrt</a></li>
+  <li><a href="#isqrt-natural-natural-root">isqrt</a></li>
+  <li><a href="#lcm-rest-integers-least-common-multiple">lcm</a></li>
+  <li><a href="#gcd-rest-integers-greatest-common-denominator">gcd</a></li>
+  <li><a href="#pi">pi</a></li>
+  <li><a href="#sin-radians-number">sin</a></li>
+  <li><a href="#cos-radians-number">cos</a></li>
+  <li><a href="#tan-radians-number">tan</a></li>
+  <li><a href="#asin-number-radians">asin</a></li>
+  <li><a href="#acos-number-radians">acos</a></li>
+  <li><a href="#atan-number1-optional-number2-radians">atan</a></li>
+  <li><a href="#sinh-number-result">sinh</a></li>
+  <li><a href="#cosh-number-result">cosh</a></li>
+  <li><a href="#tanh-number-result">tanh</a></li>
+  <li><a href="#asinh-number-result">asinh</a></li>
+  <li><a href="#acosh-number-result">acosh</a></li>
+  <li><a href="#atanh-number-result">atanh</a></li>
+  <li><a href="#cis-radians-number">cis</a></li>
+  <li><a href="#conjugate-number-conjugate">conjugate</a></li>
+  <li><a href="#max-rest-reals-max-real">max</a></li>
+  <li><a href="#alexandriamaxf-place-rest-numbers-env">maxf</a></li>
+  <li><a href="#min-rest-reals-min-real">min</a></li>
+  <li><a href="#alexandriaminf-place-rest-numbers-env">minf</a></li>
+  <li><a href="#round-number-optional-divisor-quotient-remainder">round</a></li>
+  <li><a href="#floor-number-optional-divisor-quotient-remainder">floor</a></li>
+  <li><a href="#ceiling-number-optional-divisor-quotient-remainder">ceiling</a></li>
+  <li><a href="#truncate-number-optional-divisor-quotient-remainder">truncate</a></li>
+  <li><a href="#mod-number-divisor-modulus">mod</a></li>
+  <li><a href="#rem-number-divisor-remainder">rem</a></li>
+  <li><a href="#random-limit-optional-random-state-random-number">random</a></li>
+  <li><a href="#make-random-state-optional-state-new-state">make-random-state</a></li>
+  <li><a href="#random-state">*random-state*</a></li>
+  <li><a href="#signum-number-signed-prototype">signum</a></li>
+  <li><a href="#numerator-rational-numerator">numerator</a></li>
+  <li><a href="#denominator-rational-denominator">denominator</a></li>
+  <li><a href="#realpart-number-real">realpart</a></li>
+  <li><a href="#imagpart-number-real">imagpart</a></li>
+  <li><a href="#complex-realpart-optional-imagpart-complex">complex</a></li>
+  <li><a href="#phase-number-phase">phase</a></li>
+  <li><a href="#abs-number-absolute-value">abs</a></li>
+  <li><a href="#rational-number-rational">rational</a></li>
+  <li><a href="#rationalize-number-rational">rationalize</a></li>
+  <li><a href="#float-number-optional-prototype-float">float</a></li>
+  <li><a href="#logic-functions" class="nav-header">Logic Functions</a></li>
+  <li><a href="#boole-op-integer1-integer2-integer">boole</a></li>
+  <li><a href="#lognot-integer-integer">lognot</a></li>
+  <li><a href="#logeqv-rest-integers-integer">logeqv</a></li>
+  <li><a href="#logand-rest-integers-integer">logand</a></li>
+  <li><a href="#logandc1-integer1-integer2-integer">logandc1</a></li>
+  <li><a href="#logandc2-integer1-integer2-integer">logandc2</a></li>
+  <li><a href="#lognand-integer1-integer2-integer">lognand</a></li>
+  <li><a href="#logxor-rest-integers-integer">logxor</a></li>
+  <li><a href="#logior-rest-integers-integer">logior</a></li>
+  <li><a href="#logorc1-integer1-integer2-integer">logorc1</a></li>
+  <li><a href="#logorc2-integer1-integer2-integer">logorc2</a></li>
+  <li><a href="#lognor-integer1-integer2-integer">lognor</a></li>
+  <li><a href="#logbitp-index-integer-boolean">logbitp</a></li>
+  <li><a href="#logtest-integer1-integer2-boolean">logtest</a></li>
+  <li><a href="#logcount-integer-number-of-on-bits">logcount</a></li>
+  <li><a href="#integer-functions" class="nav-header">Integer Functions</a></li>
+  <li><a href="#integer-length-integer-number-of-bits">integer-length</a></li>
+  <li><a href="#ldb-test-bytespec-integer-boolean">ldb-test</a></li>
+  <li><a href="#ash-integer-count-shifted-integer">ash</a></li>
+  <li><a href="#ldb-bytespec-integer-byte">ldb</a></li>
+  <li><a href="#deposit-field-newbyte-bytespec-integer-integer">deposit-field</a></li>
+  <li><a href="#dpb-newbyte-bytespec-integer-integer">dpb</a></li>
+  <li><a href="#mask-field-bytespec-integer-masked-integer">mask-field</a></li>
+  <li><a href="#byte-size-position-bytespec">byte</a></li>
+  <li><a href="#byte-size-bytespec-size">byte-size</a></li>
+  <li><a href="#byte-position-bytespec-position">byte-position</a></li>
+  <li><a href="#implementation-dependent" class="nav-header">Implementation Dependent</a></li>
+  <li><a href="#short-float-epsilon">short-float-epsilon</a></li>
+  <li><a href="#short-float-negative-epsilon">short-float-negative-epsilon</a></li>
+  <li><a href="#single-float-epsilon">single-float-epsilon</a></li>
+  <li><a href="#single-float-negative-epsilon">single-float-negative-epsilon</a></li>
+  <li><a href="#double-float-epsilon">double-float-epsilon</a></li>
+  <li><a href="#double-float-negative-epsilon">double-float-negative-epsilon</a></li>
+  <li><a href="#long-float-epsilon">long-float-epsilon</a></li>
+  <li><a href="#long-float-negative-epsilon">long-float-negative-epsilon</a></li>
+  <li><a href="#least-negative-short-float-single-float-double-float-long-float">least-negative-{short-float</a></li>
+  <li><a href="#least-negative-normalized-short-float-single-float-double-float-long-float">least-negative-normalized-{short-float</a></li>
+  <li><a href="#least-positive-short-float-single-float-double-float-long-float">least-positive-{short-float</a></li>
+  <li><a href="#least-positive-normalized-short-float-single-float-double-float-long-float">least-positive-normalized-{short-float</a></li>
+  <li><a href="#most-negative-short-float-single-float-double-float-long-float-fixnum">most-negative-{short-float</a></li>
+  <li><a href="#most-positive-short-float-single-float-double-float-long-float-fixnum">most-positive-{short-float</a></li>
+  <li><a href="#decode-float-float-significand-exponent-sign">decode-float</a></li>
+  <li><a href="#integer-decode-float-float-significand-exponent-integer-sign">integer-decode-float</a></li>
+  <li><a href="#scale-float-float-integer-scaled-float">scale-float</a></li>
+  <li><a href="#float-radix-float-float-radix">float-radix</a></li>
+  <li><a href="#float-sign-float-1-optional-float-2-signed-float">float-sign</a></li>
+  <li><a href="#float-digits-float-digits1">float-digits</a></li>
+  <li><a href="#float-precision-float-digits2">float-precision</a></li>
+  <li><a href="#upgraded-complex-part-type">upgraded-complex-part-type</a></li>
+  <li><a href="#extras" class="nav-header">Extras</a></li>
+  <li><a href="#alexandriabinomial-coefficient-n-k-integer">binomial-coefficient</a></li>
+  <li><a href="#alexandriacount-permutations-n-optional-k-integer">count-permutations</a></li>
+  <li><a href="#alexandriaclamp-number-min-max-number">clamp</a></li>
+  <li><a href="#alexandrialerp-v-a-b-number">lerp</a></li>
+  <li><a href="#alexandriafactorial-n-number">factorial</a></li>
+  <li><a href="#alexandriasubfactorial-n-number">subfactorial</a></li>
+  <li><a href="#alexandriagaussian-random-optional-min-max-number-number">gaussian-random</a></li>
+  <li><a href="#alexandriaiota-n-key-start-step-list">iota</a></li>
+  <li><a href="#alexandriamap-iota-function-n-key-start-step-number">map-iota</a></li>
+  <li><a href="#alexandriamean-sample-number">mean</a></li>
+  <li><a href="#alexandriamedian-sample-number">median</a></li>
+  <li><a href="#alexandriavariance-sample-key-biased-number">variance</a></li>
+  <li><a href="#alexandriastandard-deviation-sample-key-biased-number">standard-deviation</a></li>
+  <li><a href="#cl-utilitiesextremum-sequence-fn-key-key-start-end-smallest-element">extremum</a></li>
+  <li><a href="#cl-utilitiesextrema-sequence-fn-key-key-start-end-smallest-elements">extrema</a></li>
+  <li><a href="#cl-utilitiesn-most-extreme-n-sequence-fn-key-key-start-0-end-n-smallest-elements">n-most-extreme</a></li>
+  <li><a href="#cl-utilitiesexpt-mod-n-exponent-divisor-result">expt-mod</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="numbers">Numbers</h1>
+<h2 id="predicates">Predicates</h2>
+<h3 id="rest-numbers-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">=</a> &amp;rest numbers* &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if all numbers are the same in value, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<pre><code>(+ 6 6 6) ;&rArr; T</code></pre>
+<h3 id="rest-numbers-boolean-1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">/=</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-2"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&gt;</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-3"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&gt;=</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-4"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&lt;</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-5"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&lt;=</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="zerop-number-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm">zerop</a> number &rArr; boolean</h3>
+<h3 id="plusp-real-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_minusp.htm">plusp</a> real &rArr; boolean</h3>
+<h3 id="minusp-real-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_minusp.htm">minusp</a> real &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>number</em> is zero (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a>, or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_comple.htm">complex</a>); otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<h3 id="evenp-integer-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_evenpc.htm">evenp</a> integer &rArr; boolean</h3>
+<h3 id="oddp-integer-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_evenpc.htm">oddp</a> integer &rArr; boolean</h3>
+<h3 id="numberp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_nump.htm">numberp</a> object &rArr; boolean</h3>
+<h3 id="realp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realp.htm">realp</a> object &rArr; boolean</h3>
+<h3 id="rationalp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rati_1.htm">rationalp</a> object &rArr; boolean</h3>
+<h3 id="floatp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floatp.htm">floatp</a> object &rArr; boolean</h3>
+<h3 id="integerp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_inte_1.htm">integerp</a> object &rArr; boolean</h3>
+<h3 id="complexp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comp_3.htm">complexp</a> object &rArr; boolean</h3>
+<h3 id="random-state-p-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rnd_st.htm">random-state-p</a> object &rArr; boolean</h3>
+<h2 id="numeric-functions">Numeric Functions</h2>
+<h3 id="rest-numbers-sum"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pl.htm">+</a> &amp;rest numbers* &rArr; sum</h3>
+<h3 id="rest-numbers-product"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_st.htm">*</a> &amp;rest numbers* &rArr; product</h3>
+<h3 id="rest-numbers-difference"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a__.htm">-</a> &amp;rest numbers* &rArr; difference</h3>
+<p>Also used for negation, as in <code>(- 3) &rArr; -3</code>.</p>
+<h3 id="rest-numbers-quotient"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_sl.htm">/</a> &amp;rest numbers* &rArr; quotient</h3>
+<p>Also used for the reciprocal, as in <code>(/ 3) &rArr; 1/3</code>.</p>
+<h3 id="number-successor"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_1pl_1_.htm">1+</a> number &rArr; successor</h3>
+<h3 id="number-predecessor"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_1pl_1_.htm">1-</a> number &rArr; predecessor</h3>
+<h3 id="incf-place-delta-new-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_incf_.htm">incf</a> place [delta] &rArr; new-value</h3>
+<h3 id="decf-place-delta-new-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_incf_.htm">decf</a> place [delta] &rArr; new-value</h3>
+<h3 id="exp-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm">exp</a> number &rArr; result</h3>
+<h3 id="expt-base-number-power-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_exp_e.htm">expt</a> base-number power-number &rArr; result</h3>
+<h3 id="log-number-optional-base-logarithm"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_log.htm">log</a> number &amp;optional base &rArr; logarithm</h3>
+<h3 id="sqrt-number-root"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sqrt_.htm">sqrt</a> number &rArr; root</h3>
+<h3 id="isqrt-natural-natural-root"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sqrt_.htm">isqrt</a> natural &rArr; natural-root</h3>
+<h3 id="lcm-rest-integers-least-common-multiple"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_lcm.htm">lcm</a> &amp;rest integers &rArr; least-common-multiple</h3>
+<h3 id="gcd-rest-integers-greatest-common-denominator"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gcd.htm">gcd</a> &amp;rest integers &rArr; greatest-common-denominator</h3>
+<h3 id="pi"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pi.htm">pi</a></h3>
+<p>Constant variable. The long float approximation to the mathematical constant <em>PI</em>.</p>
+<pre><code>pi ;&rArr; 3.141592653589793D0</code></pre>
+<h3 id="sin-radians-number"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm">sin</a> radians &rArr; number</h3>
+<h3 id="cos-radians-number"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm">cos</a> radians &rArr; number</h3>
+<h3 id="tan-radians-number"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sin_c.htm">tan</a> radians &rArr; number</h3>
+<h3 id="asin-number-radians"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_asin_.htm">asin</a> number &rArr; radians</h3>
+<h3 id="acos-number-radians"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_asin_.htm">acos</a> number &rArr; radians</h3>
+<h3 id="atan-number1-optional-number2-radians"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_asin_.htm">atan</a> number1 &amp;optional number2 &rArr; radians</h3>
+<h3 id="sinh-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm">sinh</a> number &rArr; result</h3>
+<h3 id="cosh-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm">cosh</a> number &rArr; result</h3>
+<h3 id="tanh-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm">tanh</a> number &rArr; result</h3>
+<h3 id="asinh-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm">asinh</a> number &rArr; result</h3>
+<h3 id="acosh-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm">acosh</a> number &rArr; result</h3>
+<h3 id="atanh-number-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sinh_.htm">atanh</a> number &rArr; result</h3>
+<h3 id="cis-radians-number"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cis.htm">cis</a> radians &rArr; number</h3>
+<h3 id="conjugate-number-conjugate"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_conjug.htm">conjugate</a> number &rArr; conjugate</h3>
+<h3 id="max-rest-reals-max-real"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_max_m.htm">max</a> &amp;rest reals* &rArr; max-real</h3>
+<h3 id="alexandriamaxf-place-rest-numbers-env"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-maxf">alexandria:maxf</a> place &amp;rest numbers env</h3>
+<h3 id="min-rest-reals-min-real"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_max_m.htm">min</a> &amp;rest reals* &rArr; min-real</h3>
+<h3 id="alexandriaminf-place-rest-numbers-env"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-minf">alexandria:minf</a> place &amp;rest numbers env</h3>
+<h3 id="round-number-optional-divisor-quotient-remainder"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">round</a> number &amp;optional divisor &rArr; quotient, remainder</h3>
+<p>Returns an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> quotient, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">fround</a> returns a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a>.</p>
+<h3 id="floor-number-optional-divisor-quotient-remainder"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">floor</a> number &amp;optional divisor &rArr; quotient, remainder</h3>
+<p>Returns an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> quotient, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">ffloor</a> returns a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a>.</p>
+<h3 id="ceiling-number-optional-divisor-quotient-remainder"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">ceiling</a> number &amp;optional divisor &rArr; quotient, remainder</h3>
+<p>Returns an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> quotient, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">fceiling</a> returns a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a>.</p>
+<h3 id="truncate-number-optional-divisor-quotient-remainder"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">truncate</a> number &amp;optional divisor &rArr; quotient, remainder</h3>
+<p>Returns an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> quotient, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floorc.htm">ftruncate</a> returns a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a>.</p>
+<h3 id="mod-number-divisor-modulus"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_mod.htm">mod</a> number divisor &rArr; modulus</h3>
+<h3 id="rem-number-divisor-remainder"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mod_r.htm">rem</a> number divisor &rArr; remainder</h3>
+<h3 id="random-limit-optional-random-state-random-number"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_random.htm">random</a> limit &amp;optional random-state &rArr; random-number</h3>
+<h3 id="make-random-state-optional-state-new-state"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_rnd.htm">make-random-state</a> &amp;optional state &rArr; new-state</h3>
+<h3 id="random-state"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rnd_st.htm">*random-state*</a></h3>
+<p>The current <em>random state</em>, which is used, for example, by the function random when a random state is not explicitly supplied.</p>
+<h3 id="signum-number-signed-prototype"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_signum.htm">signum</a> number &rArr; signed-prototype</h3>
+<h3 id="numerator-rational-numerator"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm">numerator</a> rational &rArr; numerator</h3>
+<h3 id="denominator-rational-denominator"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_numera.htm">denominator</a> rational &rArr; denominator</h3>
+<h3 id="realpart-number-real"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realpa.htm">realpart</a> number &rArr; real</h3>
+<h3 id="imagpart-number-real"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realpa.htm">imagpart</a> number &rArr; real</h3>
+<h3 id="complex-realpart-optional-imagpart-complex"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_comple.htm">complex</a> realpart &amp;optional imagpart &rArr; complex</h3>
+<h3 id="phase-number-phase"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_phase.htm">phase</a> number &rArr; phase</h3>
+<h3 id="abs-number-absolute-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_abs.htm">abs</a> number &rArr; absolute-value</h3>
+<h3 id="rational-number-rational"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_ration.htm">rational</a> number &rArr; rational</h3>
+<h3 id="rationalize-number-rational"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ration.htm">rationalize</a> number &rArr; rational</h3>
+<h3 id="float-number-optional-prototype-float"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a> number &amp;optional prototype &rArr; float</h3>
+<h2 id="logic-functions">Logic Functions</h2>
+<h3 id="boole-op-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_boole.htm">boole</a> op integer1 integer2 &rArr; integer</h3>
+<h3 id="lognot-integer-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">lognot</a> integer &rArr; integer</h3>
+<h3 id="logeqv-rest-integers-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logeqv</a> &amp;rest integers &rArr; integer</h3>
+<h3 id="logand-rest-integers-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logand</a> &amp;rest integers &rArr; integer</h3>
+<h3 id="logandc1-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logandc1</a> integer1 integer2 &rArr; integer</h3>
+<h3 id="logandc2-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logandc2</a> integer1 integer2 &rArr; integer</h3>
+<h3 id="lognand-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">lognand</a> integer1 integer2 &rArr; integer</h3>
+<h3 id="logxor-rest-integers-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logxor</a> &amp;rest integers &rArr; integer</h3>
+<h3 id="logior-rest-integers-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logior</a> &amp;rest integers &rArr; integer</h3>
+<h3 id="logorc1-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logorc1</a> integer1 integer2 &rArr; integer</h3>
+<h3 id="logorc2-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">logorc2</a> integer1 integer2 &rArr; integer</h3>
+<h3 id="lognor-integer1-integer2-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logand.htm">lognor</a> integer1 integer2 &rArr; integer</h3>
+<h3 id="logbitp-index-integer-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logbtp.htm">logbitp</a> index integer &rArr; boolean</h3>
+<h3 id="logtest-integer1-integer2-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logtes.htm">logtest</a> integer1 integer2 &rArr; boolean</h3>
+<h3 id="logcount-integer-number-of-on-bits"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logcou.htm">logcount</a> integer &rArr; number-of-on-bits</h3>
+<h2 id="integer-functions">Integer Functions</h2>
+<h3 id="integer-length-integer-number-of-bits"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_intege.htm">integer-length</a> integer &rArr; number-of-bits</h3>
+<h3 id="ldb-test-bytespec-integer-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ldb_te.htm">ldb-test</a> bytespec integer &rArr; boolean</h3>
+<h3 id="ash-integer-count-shifted-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ash.htm">ash</a> integer count &rArr; shifted-integer</h3>
+<h3 id="ldb-bytespec-integer-byte"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ldb.htm">ldb</a> bytespec integer &rArr; byte</h3>
+<h3 id="deposit-field-newbyte-bytespec-integer-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_deposi.htm">deposit-field</a> newbyte bytespec integer &rArr; integer</h3>
+<h3 id="dpb-newbyte-bytespec-integer-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dpb.htm">dpb</a> newbyte bytespec integer &rArr; integer</h3>
+<h3 id="mask-field-bytespec-integer-masked-integer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mask_f.htm">mask-field</a> bytespec integer &rArr; masked-integer</h3>
+<h3 id="byte-size-position-bytespec"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_by_by.htm">byte</a> size position &rArr; bytespec</h3>
+<h3 id="byte-size-bytespec-size"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_by_by.htm">byte-size</a> bytespec &rArr; size</h3>
+<h3 id="byte-position-bytespec-position"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_by_by.htm">byte-position</a> bytespec &rArr; position</h3>
+<h2 id="implementation-dependent">Implementation Dependent</h2>
+<h3 id="short-float-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">short-float-epsilon</a></h3>
+<h3 id="short-float-negative-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">short-float-negative-epsilon</a></h3>
+<h3 id="single-float-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">single-float-epsilon</a></h3>
+<h3 id="single-float-negative-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">single-float-negative-epsilon</a></h3>
+<h3 id="double-float-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">double-float-epsilon</a></h3>
+<h3 id="double-float-negative-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">double-float-negative-epsilon</a></h3>
+<h3 id="long-float-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">long-float-epsilon</a></h3>
+<h3 id="long-float-negative-epsilon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_short_.htm">long-float-negative-epsilon</a></h3>
+<h3 id="least-negative-short-floatsingle-floatdouble-floatlong-float">least-negative-{short-float|single-float|double-float|long-float}</h3>
+<h3 id="least-negative-normalized-short-floatsingle-floatdouble-floatlong-float">least-negative-normalized-{short-float|single-float|double-float|long-float}</h3>
+<h3 id="least-positive-short-floatsingle-floatdouble-floatlong-float">least-positive-{short-float|single-float|double-float|long-float}</h3>
+<h3 id="least-positive-normalized-short-floatsingle-floatdouble-floatlong-float">least-positive-normalized-{short-float|single-float|double-float|long-float}</h3>
+<h3 id="most-negative-short-floatsingle-floatdouble-floatlong-floatfixnum">most-negative-{short-float|single-float|double-float|long-float|fixnum}</h3>
+<h3 id="most-positive-short-floatsingle-floatdouble-floatlong-floatfixnum">most-positive-{short-float|single-float|double-float|long-float|fixnum}</h3>
+<h3 id="decode-float-float-significand-exponent-sign"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">decode-float</a> float &rArr; significand, exponent, sign</h3>
+<h3 id="integer-decode-float-float-significand-exponent-integer-sign"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">integer-decode-float</a> float &rArr; significand, exponent, integer-sign</h3>
+<h3 id="scale-float-float-integer-scaled-float"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">scale-float</a> float integer &rArr; scaled-float</h3>
+<h3 id="float-radix-float-float-radix"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">float-radix</a> float &rArr; float-radix</h3>
+<h3 id="float-sign-float-1-optional-float-2-signed-float"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">float-sign</a> float-1 &amp;optional float-2 &rArr; signed-float</h3>
+<h3 id="float-digits-float-digits1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">float-digits</a> float &rArr; digits1</h3>
+<h3 id="float-precision-float-digits2"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_fl.htm">float-precision</a> float &rArr; digits2</h3>
+<h3 id="upgraded-complex-part-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_upgrad.htm">upgraded-complex-part-type</a></h3>
+<h2 id="extras">Extras</h2>
+<h3 id="alexandriabinomial-coefficient-n-k-integer"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-binomial_002dcoefficient">alexandria:binomial-coefficient</a> n k &rArr; integer</h3>
+<h3 id="alexandriacount-permutations-n-optional-k-integer"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-count_002dpermutations">alexandria:count-permutations</a> n &amp;optional k &rArr; integer</h3>
+<h3 id="alexandriaclamp-number-min-max-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-clamp">alexandria:clamp</a> number min max &rArr; number</h3>
+<h3 id="alexandrialerp-v-a-b-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-lerp">alexandria:lerp</a> v a b &rArr; number</h3>
+<h3 id="alexandriafactorial-n-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-factorial">alexandria:factorial</a> n &rArr; number</h3>
+<h3 id="alexandriasubfactorial-n-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-subfactorial">alexandria:subfactorial</a> n &rArr; number</h3>
+<h3 id="alexandriagaussian-random-optional-min-max-number-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-gaussian_002drandom">alexandria:gaussian-random</a> &amp;optional min max &rArr; number, number</h3>
+<h3 id="alexandriaiota-n-key-start-step-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-iota">alexandria:iota</a> n &amp;key start step &rArr; list</h3>
+<pre><code>(iota 4)                      ;&rArr; (0 1 2 3)
+(iota 3 :start 1 :step 1.0)   ;&rArr; (1.0 2.0 3.0)
+(iota 3 :start -1 :step -1/2) ;&rArr; (-1 -3/2 -2)</code></pre>
+<h3 id="alexandriamap-iota-function-n-key-start-step-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002diota">alexandria:map-iota</a> function n &amp;key start step &rArr; number</h3>
+<pre><code>(map-iota #&#39;print 3 :start 10 :step 2) ;&rArr; 3 [prints 10,12,14]</code></pre>
+<h3 id="alexandriamean-sample-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-mean">alexandria:mean</a> sample &rArr; number</h3>
+<p><em>sample</em> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm">sequence</a> of numbers.</p>
+<h3 id="alexandriamedian-sample-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-median">alexandria:median</a> sample &rArr; number</h3>
+<p><em>sample</em> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm">sequence</a> of real numbers.</p>
+<h3 id="alexandriavariance-sample-key-biased-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-variance">alexandria:variance</a> sample &amp;key biased &rArr; number</h3>
+<p><em>sample</em> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm">sequence</a> of numbers.</p>
+<h3 id="alexandriastandard-deviation-sample-key-biased-number"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-standard_002ddeviation">alexandria:standard-deviation</a> sample &amp;key biased &rArr; number</h3>
+<p><em>sample</em> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm">sequence</a> of numbers.</p>
+<h3 id="cl-utilitiesextremum-sequence-fn-key-key-start-end-smallest-element"><a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">cl-utilities:extremum</a> sequence fn &amp;key key start end &rArr; smallest-element</h3>
+<h3 id="cl-utilitiesextrema-sequence-fn-key-key-start-end-smallest-elements"><a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">cl-utilities:extrema</a> sequence fn &amp;key key start end &rArr; smallest-elements</h3>
+<h3 id="cl-utilitiesn-most-extreme-n-sequence-fn-key-key-start-0-end-n-smallest-elements"><a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">cl-utilities:n-most-extreme</a> n sequence fn &amp;key key (start 0) end &rArr; n-smallest-elements</h3>
+<h3 id="cl-utilitiesexpt-mod-n-exponent-divisor-result"><a href="http://common-lisp.net/project/cl-utilities/doc/expt-mod.html">cl-utilities:expt-mod</a> n exponent divisor &rArr; result</h3>
+<p>Returns <em>n</em> raised to the <em>exponent</em> power, modulo <em>divisor</em>.</p>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

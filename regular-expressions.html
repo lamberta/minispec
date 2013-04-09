@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL TurboSpec: Regular Expressions</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp TurboSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./lists.html">List</a></li>
+              <li><a href="./lists.html#set">Set</a></li>
+              <li><a href="./lists.html#tree">Tree</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html#arrays">Array</a></li>
+							<li><a href="./arrays.html#vectors">Vector</a></li>
+							<li><a href="./arrays.html#strings">String</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#regular-expressions" class="nav-header">Regular Expressions</a></li>
+  <li><a href="#install" class="nav-header">Install</a></li>
+  <li><a href="#scanning" class="nav-header">Scanning</a></li>
+  <li><a href="#cl-ppcrecreate-scanner">create-scanner</a></li>
+  <li><a href="#cl-ppcrescan">scan</a></li>
+  <li><a href="#cl-ppcrescan-to-strings">scan-to-strings</a></li>
+  <li><a href="#cl-ppcreregister-groups-bind">register-groups-bind</a></li>
+  <li><a href="#cl-ppcredo-scans">do-scans</a></li>
+  <li><a href="#cl-ppcredo-matches">do-matches</a></li>
+  <li><a href="#cl-ppcredo-matches-as-strings">do-matches-as-strings</a></li>
+  <li><a href="#cl-ppcreall-matches">all-matches</a></li>
+  <li><a href="#cl-ppcreall-matches-as-strings">all-matches-as-strings</a></li>
+  <li><a href="#splitting-and-replacing" class="nav-header">Splitting and Replacing</a></li>
+  <li><a href="#cl-ppcresplit">split</a></li>
+  <li><a href="#cl-ppcreregex-replace">regex-replace</a></li>
+  <li><a href="#cl-ppcreregex-replace-all">regex-replace-all</a></li>
+  <li><a href="#modifying-scanner-behaviour" class="nav-header">Modifying Scanner Behaviour</a></li>
+  <li><a href="#cl-ppcre-property-resolver">*property-resolver*</a></li>
+  <li><a href="#cl-ppcreparse-tree-synonym">parse-tree-synonym</a></li>
+  <li><a href="#cl-ppcre-regex-char-code-limit">*regex-char-code-limit*</a></li>
+  <li><a href="#cl-ppcre-use-bmh-matchers">*use-bmh-matchers*</a></li>
+  <li><a href="#cl-ppcre-optimize-char-classes">*optimize-char-classes*</a></li>
+  <li><a href="#cl-ppcre-allow-quoting">*allow-quoting*</a></li>
+  <li><a href="#cl-ppcre-allow-names-registers">*allow-names-registers*</a></li>
+  <li><a href="#misc" class="nav-header">Misc</a></li>
+  <li><a href="#cl-ppcreparse-string">parse-string</a></li>
+  <li><a href="#cl-ppcrecreate-optimized-test-function">create-optimized-test-function</a></li>
+  <li><a href="#cl-ppcrequote-meta-chars">quote-meta-chars</a></li>
+  <li><a href="#cl-ppcreregex-apropos">regex-apropos</a></li>
+  <li><a href="#cl-ppcreregex-apropos-list">regex-apropos-list</a></li>
+  <li><a href="#conditions" class="nav-header">Conditions</a></li>
+  <li><a href="#cl-ppcreppcre-error">ppcre-error</a></li>
+  <li><a href="#cl-ppcreppcre-invocation-error">ppcre-invocation-error</a></li>
+  <li><a href="#cl-ppcreppcre-syntax-error">ppcre-syntax-error</a></li>
+  <li><a href="#cl-ppcreppcre-syntax-error-string">ppcre-syntax-error-string</a></li>
+  <li><a href="#cl-ppcreppcre-syntax-error-pos">ppcre-syntax-error-pos</a></li>
+  <li><a href="#unicode" class="nav-header">Unicode</a></li>
+  <li><a href="#cl-ppcreunicode-property-resolver">unicode-property-resolver</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="regular-expressions">Regular Expressions</h1>
+<ul>
+<li><a href="http://weitz.de/cl-ppcre/">CL-PPCRE</a></li>
+</ul>
+<h2 id="install">Install</h2>
+<pre><code>(ql:quickload :cl-ppcre)</code></pre>
+<h2 id="scanning">Scanning</h2>
+<h3 id="cl-ppcrecreate-scanner"><a href="http://weitz.de/cl-ppcre/#create-scanner">cl-ppcre:create-scanner</a></h3>
+<ul>
+<li><strong>create-scanner</strong> (string string) &amp;key case-insensitive-mode multi-line-mode single-line-mode extended-mode destructive &rArr; scanner, register-names</li>
+<li><strong>create-scanner</strong> (function function)&amp;key case-insensitive-mode multi-line-mode single-line-mode extended-mode destructive &rArr; scanner</li>
+<li><strong>create-scanner-</strong> (parse-tree t)&amp;key case-insensitive-mode multi-line-mode single-line-mode extended-mode destructive &rArr; scanner, register-names</li>
+</ul>
+<h3 id="cl-ppcrescan"><a href="http://weitz.de/cl-ppcre/#scan">cl-ppcre:scan</a></h3>
+<h3 id="cl-ppcrescan-to-strings"><a href="http://weitz.de/cl-ppcre/#scan-to-strings">cl-ppcre:scan-to-strings</a></h3>
+<h3 id="cl-ppcreregister-groups-bind"><a href="http://weitz.de/cl-ppcre/#register-groups-bind">cl-ppcre:register-groups-bind</a></h3>
+<h3 id="cl-ppcredo-scans"><a href="http://weitz.de/cl-ppcre/#do-scans">cl-ppcre:do-scans</a></h3>
+<h3 id="cl-ppcredo-matches"><a href="http://weitz.de/cl-ppcre/#do-matches">cl-ppcre:do-matches</a></h3>
+<h3 id="cl-ppcredo-matches-as-strings"><a href="http://weitz.de/cl-ppcre/#do-matches-as-strings">cl-ppcre:do-matches-as-strings</a></h3>
+<h3 id="cl-ppcreall-matches"><a href="http://weitz.de/cl-ppcre/#all-matches">cl-ppcre:all-matches</a></h3>
+<h3 id="cl-ppcreall-matches-as-strings"><a href="http://weitz.de/cl-ppcre/#all-matches-as-strings">cl-ppcre:all-matches-as-strings</a></h3>
+<h2 id="splitting-and-replacing">Splitting and Replacing</h2>
+<h3 id="cl-ppcresplit"><a href="http://weitz.de/cl-ppcre/#split">cl-ppcre:split</a></h3>
+<h3 id="cl-ppcreregex-replace"><a href="http://weitz.de/cl-ppcre/#regex-replace">cl-ppcre:regex-replace</a></h3>
+<h3 id="cl-ppcreregex-replace-all"><a href="http://weitz.de/cl-ppcre/#regex-replace-all">cl-ppcre:regex-replace-all</a></h3>
+<h2 id="modifying-scanner-behaviour">Modifying Scanner Behaviour</h2>
+<h3 id="cl-ppcreproperty-resolver"><a href="http://weitz.de/cl-ppcre/#*property-resolver*">cl-ppcre:*property-resolver*</a></h3>
+<h3 id="cl-ppcreparse-tree-synonym">[cl-ppcre:parse-tree-synonym]</h3>
+<h3 id="cl-ppcreregex-char-code-limit"><a href="http://weitz.de/cl-ppcre/#*regex-char-code-limit*">cl-ppcre:*regex-char-code-limit*</a></h3>
+<h3 id="cl-ppcreuse-bmh-matchers"><a href="http://weitz.de/cl-ppcre/#*use-bmh-matchers*">cl-ppcre:*use-bmh-matchers*</a></h3>
+<h3 id="cl-ppcreoptimize-char-classes"><a href="http://weitz.de/cl-ppcre/#*optimize-char-classes*">cl-ppcre:*optimize-char-classes*</a></h3>
+<h3 id="cl-ppcreallow-quoting"><a href="http://weitz.de/cl-ppcre/#*allow-quoting*">cl-ppcre:*allow-quoting*</a></h3>
+<h3 id="cl-ppcreallow-names-registers">[cl-ppcre:*allow-names-registers*]</h3>
+<h2 id="misc">Misc</h2>
+<h3 id="cl-ppcreparse-string"><a href="http://weitz.de/cl-ppcre/#parse-string">cl-ppcre:parse-string</a></h3>
+<h3 id="cl-ppcrecreate-optimized-test-function"><a href="http://weitz.de/cl-ppcre/#create-optimized-test-function">cl-ppcre:create-optimized-test-function</a></h3>
+<h3 id="cl-ppcrequote-meta-chars"><a href="http://weitz.de/cl-ppcre/#quote-meta-chars">cl-ppcre:quote-meta-chars</a></h3>
+<h3 id="cl-ppcreregex-apropos"><a href="http://weitz.de/cl-ppcre/#regex-apropos">cl-ppcre:regex-apropos</a></h3>
+<h3 id="cl-ppcreregex-apropos-list"><a href="http://weitz.de/cl-ppcre/#regex-apropos-list">cl-ppcre:regex-apropos-list</a></h3>
+<h2 id="conditions">Conditions</h2>
+<h3 id="cl-ppcreppcre-error"><a href="http://weitz.de/cl-ppcre/#ppcre-error">cl-ppcre:ppcre-error</a></h3>
+<h3 id="cl-ppcreppcre-invocation-error"><a href="http://weitz.de/cl-ppcre/#ppcre-invocation-error">cl-ppcre:ppcre-invocation-error</a></h3>
+<h3 id="cl-ppcreppcre-syntax-error"><a href="http://weitz.de/cl-ppcre/#ppcre-syntax-error">cl-ppcre:ppcre-syntax-error</a></h3>
+<h3 id="cl-ppcreppcre-syntax-error-string"><a href="http://weitz.de/cl-ppcre/#ppcre-syntax-error-string">cl-ppcre:ppcre-syntax-error-string</a></h3>
+<h3 id="cl-ppcreppcre-syntax-error-pos"><a href="http://weitz.de/cl-ppcre/#ppcre-syntax-error-pos">cl-ppcre:ppcre-syntax-error-pos</a></h3>
+<h2 id="unicode">Unicode</h2>
+<h3 id="cl-ppcreunicode-property-resolver"><a href="http://weitz.de/cl-ppcre/#unicode-property-resolver">cl-ppcre:unicode-property-resolver</a></h3>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

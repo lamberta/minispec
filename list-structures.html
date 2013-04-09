@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL TurboSpec: List Structures</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp TurboSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./lists.html">List</a></li>
+              <li><a href="./lists.html#set">Set</a></li>
+              <li><a href="./lists.html#tree">Tree</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html#arrays">Array</a></li>
+							<li><a href="./arrays.html#vectors">Vector</a></li>
+							<li><a href="./arrays.html#strings">String</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#list-structures" class="nav-header">List Structures</a></li>
+  <li><a href="#property-lists-plist" class="nav-header">Property Lists (plist)</a></li>
+  <li><a href="#getf-plist-indicator-optional-default-value">getf</a></li>
+  <li><a href="#remf-place-indicator-boolean">remf</a></li>
+  <li><a href="#get-properties-plist-indicator-list-indicator-value-tail">get-properties</a></li>
+  <li><a href="#alexandriaplist-alist-plist">plist-alist</a></li>
+  <li><a href="#alexandriaplist-hash-table-plist-rest-hash-table-initargs">plist-hash-table</a></li>
+  <li><a href="#alexandriaremove-from-plist-plist-rest-keys">remove-from-plist</a></li>
+  <li><a href="#alexandriaremove-from-plistf-plist-rest-keys">remove-from-plistf</a></li>
+  <li><a href="#alexandriadoplist-key-val-plist-optional-values-forms">doplist</a></li>
+  <li><a href="#association-list-alist" class="nav-header">Association List (alist)</a></li>
+  <li><a href="#acons-key-datum-alist-new-alist">acons</a></li>
+  <li><a href="#pairlis-keys-data-optional-alist-new-alist">pairlis</a></li>
+  <li><a href="#assoc-item-alist-key-key-test-test-not-entry">assoc</a></li>
+  <li><a href="#copy-alist-alist-new-alist">copy-alist</a></li>
+  <li><a href="#alexandriaalist-plist-alist">alist-plist</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="list-structures">List Structures</h1>
+<h2 id="property-lists-plist">Property Lists (plist)</h2>
+<p>Lists with alternating keys and values: <code>(:x 10 :y 20)</code>. Uses <code>#'eq</code> for <code>:test</code>, so should only use symbols as keywords.</p>
+<p>Every symbol contains metadata on it stored as a plist:</p>
+<pre><code>(symbol-plist &#39;symbol) ;access plist of symbol
+(get &#39;symbol &#39;key) ;equivalent to (getf (symbol-plist &#39;symbol)
+(setf (get &#39;symbol :my-key) &quot;information&quot;) ;set value
+(remprop &#39;symbol &#39;my-key) ;remove property, same as (remf (symbol-plist &#39;symbol) &#39;my-key)</code></pre>
+<h3 id="getf-plist-indicator-optional-default-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_getf.htm">getf</a> plist indicator &amp;optional default &rArr; value</h3>
+<pre><code>(getf plist :x)           ;&rArr; 10
+(setf (getf plist :x) 30) ;&rArr; 30</code></pre>
+<h3 id="remf-place-indicator-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_remf.htm">remf</a> place indicator &rArr; boolean</h3>
+<pre><code>(remf plist :x) ;&rArr; T</code></pre>
+<h3 id="get-properties-plist-indicator-list-indicator-value-tail"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get_pr.htm">get-properties</a> plist indicator-list &rArr; indicator, value, tail</h3>
+<p>Used since <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_getf.htm">getf</a> can’t distinguish an absent property from <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Returns on the first key found.</p>
+<pre><code>(get-properties plist &#39;(:x :y)) ;&rArr; :X, 10, (:X 10 :Y 20)</code></pre>
+<h3 id="alexandriaplist-alist-plist"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-plist_002dalist">alexandria:plist-alist</a> plist</h3>
+<h3 id="alexandriaplist-hash-table-plist-rest-hash-table-initargs"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-plist_002dhash_002dtable">alexandria:plist-hash-table</a> plist &amp;rest hash-table-initargs</h3>
+<h3 id="alexandriaremove-from-plist-plist-rest-keys"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-remove_002dfrom_002dplist">alexandria:remove-from-plist</a> plist &amp;rest keys</h3>
+<h3 id="alexandriaremove-from-plistf-plist-rest-keys"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-remove_002dfrom_002dplistf">alexandria:remove-from-plistf</a> plist &amp;rest keys</h3>
+<p>destructive</p>
+<h3 id="alexandriadoplist-key-val-plist-optional-values-forms"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-doplist">alexandria:doplist</a> (key val plist &amp;optional values) forms*</h3>
+<h2 id="association-list-alist">Association List (alist)</h2>
+<h3 id="acons-key-datum-alist-new-alist"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_acons.htm">acons</a> key datum alist &rArr; new-alist</h3>
+<p>Append a <em>cons</em> and return a new <em>alist</em>. To modify an <em>alist</em> in place, use <code>push</code>.</p>
+<pre><code>(acons :c 3 &#39;((:B . 2) (:A . 1))) ;&rArr; ((:C . 3) (:B . 2) (:A . 1))
+(push (cons :c 3) alist)          ;&rArr; ((:C . 3) (:B . 2) (:A . 1))</code></pre>
+<h3 id="pairlis-keys-data-optional-alist-new-alist"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pairli.htm">pairlis</a> keys data &amp;optional alist &rArr; new-alist</h3>
+<p>Pair up elements in <em>keys</em> and <em>data</em> lists to make an <em>alist</em>.</p>
+<pre><code>(pairlis &#39;(:a :b) &#39;(1 2)) ;&rArr; ((:B . 2) (:A . 1))</code></pre>
+<h3 id="assoc-item-alist-key-key-test-test-not-entry"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_assocc.htm">assoc</a> item alist &amp;key key test test-not &rArr; entry</h3>
+<p>Return the alist entry whose <em>car</em> satisfies the test, or <em>nil</em>. Functional variants are <code>assoc-if</code> and <code>assoc-if-not</code>. <code>rassoc</code> uses <em>cdr</em> to test.</p>
+<pre><code>(assoc :a &#39;((:A . 1) (:B . 2)))         ;&rArr; (:A . 1)
+(rassoc 1 &#39;((:A . 1) (:B . 2)))         ;&rArr; (:A . 1)
+(assoc-if #&#39;evenp &#39;((1 . :A) (2 . :B))) ;&rArr; (2 . :B)</code></pre>
+<h3 id="copy-alist-alist-new-alist"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_ali.htm">copy-alist</a> alist &rArr; new-alist</h3>
+<p>Copies the <em>cons</em> cells that make up the alist structure.</p>
+<h3 id="alexandriaalist-plist-alist"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-alist_002dplist">alexandria:alist-plist</a> alist</h3>
+<p>Converts an <em>alist</em> to a <em>plist</em> format.</p>
+<pre><code>(alist-plist &#39;((:x . 10) (:y . 20))) ;&rArr; (:x 10 :y 20)</code></pre>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

@@ -1,0 +1,278 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+}
+
+a {
+	color: #820000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #8C1515;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: normal;
+	font-size: 1em;
+}
+
+#container {
+	padding-left: 7px;
+}
+
+
+/* sidebar
+ */
+aside nav {
+	width: 200px;
+	height: 85%;
+	margin-top: 40px;
+	overflow-y: scroll;
+	white-space: nowrap;
+	font-size: 0.8em;
+}
+
+/*force scrollbar on webkit*/
+aside nav::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+}
+
+aside nav::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+aside nav.well {
+	padding: 5px;
+}
+
+aside nav ul li a {
+	padding: 0px !important;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	color: #820000;
+}
+
+aside nav ul li a:hover {
+	color: #530505;
+}
+
+aside nav ul li.active a {
+  background-color: #820000 !important;
+}
+
+aside nav .nav-header {
+	color: #8A887D;
+}
+
+@media (max-width: 974px) {
+  aside nav {
+    max-height: none;
+    overflow-y: visible;
+    position: static;
+  }
+}
+
+/* main
+ */
+article {
+	margin: 40px 0 0 0 !important;
+}
+
+article h1:first-child {
+	margin-top: 0px;
+}
+
+/* section header
+ */
+article h1, article h2 {
+	font-size: 1.4em;
+	color: #820000;
+}
+
+/* function title
+ */
+article h3 {
+	font-size: 1.2em;
+	color: #820000;
+}
+
+article h3 a, article h3 a:visited {
+	font-weight: bold;
+}
+
+/* Links and inline-code in the description look similar.
+ */
+article p code, article p a {
+	font-family: 'Inconsolata', 'Consolas', monospace !important;
+	text-decoration: none;
+	background-color: whiteSmoke !important;
+	color: #000;
+	padding: 2px 4px;
+}
+
+article pre code {
+	font-size: 0.9em !important;
+}
+
+article p {
+	line-height: 1.6em;
+}
+
+article p a {
+	border: 1px solid #820000;
+	white-space: nowrap;
+}
+
+article p a:hover {
+	border: 1px solid #000;
+	text-decoration: none;
+}
+
+
+/* navbar
+ */
+header nav .navbar-inner {
+	min-height: inherit;
+	background: #820000 !important; 
+}
+
+header nav ul {
+	margin-right: 10px !important;
+}
+
+header nav a {
+	padding: 5px 10px !important;
+	font-size: 0.8em;
+	color: #fff !important;
+	text-shadow: none !important;
+}
+
+header nav li a:hover {
+	background: #530505 !important;
+	color: #fff !important;
+	-webkit-transition: background 0.5s ease;
+	-moz-transition: background 0.5s ease;
+	-o-transition: background 0.5s ease;
+	transition: background 0.5s ease;
+}
+
+header nav .brand {
+	font-size: 1em !important;
+}
+
+header nav .search-query {
+	height: 10px;
+	font-size: 0.8em !important;
+	text-shadow: none !important;
+}
+
+header nav .caret {
+	border-top-color: #fff !important;
+	border-bottom-color: #fff !important;
+}
+
+header nav .dropdown-toggle {
+	background: #820000 !important;
+}
+
+header nav .dropdown-menu {
+	background: #820000 !important;
+	border-radius: 0px !important;
+	box-shadow: none !important;
+	border-bottom: none !important;
+	padding: 0px 0px;
+	margin: 0px;
+}
+
+header nav .dropdown-menu a {
+	background: #820000 !important;
+	color: #fff !important;
+	text-shadow: none !important;
+	-webkit-transition: background 0.5s ease;
+	-moz-transition: background 0.5s ease;
+	-o-transition: background 0.5s ease;
+	transition: background 0.5s ease;
+}
+
+header nav .dropdown-menu a:hover, header nav .dropdown-menu a:focus {
+	background: #530505 !important;
+	filter: none !important;
+	-webkit-transition: background 0.5s ease;
+	-moz-transition: background 0.5s ease;
+	-o-transition: background 0.5s ease;
+	transition: background 0.5s ease;
+}
+
+header nav .dropdown-menu::after, header nav .dropdown-menu::before {
+	border: none !important;
+}
+
+header nav .tt-dropdown-menu {
+	color: #fff;
+	background-color: #820000;
+	font-size: 0.6em;
+	padding: 0px;
+	width: 200px;
+}
+
+header nav .tt-suggestion {
+	padding: 0 5px;
+}
+
+header nav .tt-suggestion p {
+	margin: 0px;
+}
+
+header nav .tt-suggestion.tt-is-under-cursor {
+	background-color: #530505;
+	-webkit-transition: background 0.5s ease;
+	-moz-transition: background 0.5s ease;
+	-o-transition: background 0.5s ease;
+	transition: background 0.5s ease;
+}
+
+@media (max-width: 767px){
+  .navbar {
+		margin-left: -20px;
+		margin-right: -20px;
+  }
+  .navbar .nav {
+		border: 0px !important;
+  }
+  .navbar .nav > li > a {
+		border: 0px !important;
+  }
+  .dropdown-menu a {
+		border-bottom: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px){
+  .navbar .nav {
+		border: 0px !important;
+  }
+  .navbar .nav > li > a {
+		border: 0px !important;
+  }
+  .dropdown-menu a {
+		border-bottom: none !important;
+  }
+}
