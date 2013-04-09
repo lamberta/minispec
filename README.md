@@ -42,23 +42,21 @@ $ make all
 
 ## Style Guide
 
-```
-# Page Level Heading
-
-## Section Level Heading
-
-Description of the section.
-
-* [Supporting Link 1](http://example.com/section1)
-* [Supporting Link 2](http://example.com/section2)
-
-### [fn-name] arg \[optional-arg\] many-args\* => return-type
-
-Short description. Links to a valid [fn-name] are resolved
-through external reference links. Here's a `code snippet` in
-the description.
-
-~~~
-(fn-name 'a '(b c) 'd) ;=> (A B C D) [prints B, C]
-~~~
-```
+    # Page Level Heading
+    
+    ## Section Level Heading
+    
+    Description of the section.
+    
+    * [Supporting Link 1](http://example.com/section1)
+    * [Supporting Link 2](http://example.com/section2)
+    
+    ### [fn-name] arg \[optional-arg\] many-args\* => return-type
+    
+    Short description. Links to a valid [fn-name] are resolved
+    through external reference links. Here's a `code snippet` in
+    the description.
+    
+    ~~~
+    (fn-name 'a '(b c) 'd) ;=> (A B C D) [prints B, C]
+    ~~~
