@@ -1,4 +1,4 @@
-## Trees
+## Tree
 
 Lists of lists.
 

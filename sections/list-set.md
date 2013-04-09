@@ -1,4 +1,4 @@
-## Sets
+## Set
 
 * [PCL: Beyond Lists: Other Uses for Cons Cells](http://www.gigamonkeys.com/book/beyond-lists-other-uses-for-cons-cells.html#sets)
 
@@ -31,11 +31,6 @@ Test if every element in *list1* matches an element in
 (set-equal '(a b c) '(c b a)) ;=> T
 (set-equal '(a b) '(a b c))   ;=> NIL
 ~~~
-
-### [find] item seq &key from-end test test-not start end key => element
-
-Search for an element in the sequence, return the found
-element or [nil]. Functional variants are [find-if] and [find-if-not].
 
 ### [member] item list &key key test test-not => tail
 

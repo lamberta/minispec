@@ -1,29 +1,5 @@
 ## do
 
-### [dotimes] (var i \[result\]) form\* => result\*
-
-Iterate over a series of integers. Terminate loop immediately with [return].
-
-~~~
-(dotimes (i 10)
-  (print i))
-
-(dotimes (i 10 (print 'done))
-  (print i))
-~~~
-
-### [dolist] (var list \[result\]) form\* => result\*
-
-Iterate over the elements of a [list]. Terminate loop immediately with [return].
-
-~~~
-(dolist (x '(1 2 3 4))
-  (print x))
-
-(dolist (x '(1 2 3 4) (print 'done))
-  (print x))
-~~~
-
 ### [do] ((var \[start \[step\]\])\*) (stop result\*) form\* => result\*
 
 Iterate over a group of statements while a test condition
@@ -47,4 +23,16 @@ performed sequentially rather than in parallel.
     ((> (get-universal-time) *some-future-date*))
   (print "waiting...")
   (sleep 60))
+~~~
+
+### [dotimes] (var i \[result\]) form\* => result\*
+
+Iterate over a series of integers. Terminate loop immediately with [return].
+
+~~~
+(dotimes (i 10)
+  (print i))
+
+(dotimes (i 10 (print 'done))
+  (print i))
 ~~~

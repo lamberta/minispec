@@ -2,6 +2,10 @@
 
 m4_include(../sections/do.md)
 
+m4_include(../sections/list-iteration.md)
+
+m4_include(../sections/sequence-iteration.md)
+
 m4_include(../sections/plist-iteration.md)
 
 m4_include(../sections/hashtable-iteration.md)

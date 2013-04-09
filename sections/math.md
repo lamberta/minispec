@@ -305,6 +305,10 @@ supplied.
 
 ### [alexandria:map-iota] function n &key start step => number
 
+~~~
+(map-iota #'print 3 :start 10 :step 2) ;=> 3 [prints 10,12,14]
+~~~
+
 ### [alexandria:mean] sample => number
 
 *sample* is a [sequence] of numbers.

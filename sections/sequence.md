@@ -8,6 +8,13 @@ and vectors (one-dimensional arrays).
 * [CLtL2: Ch 14. Sequences](http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node141.html)
 
 
+### [length] seq => n
+
+~~~
+(length '(a b c)) ;=> 3
+(length "hello") ;=> 5
+~~~
+
 ### [elt] seq idx => element
 
 Use `alexandria:random-elt` to return a random element.
@@ -19,6 +26,13 @@ Related: `nth`, `nthcdr`, `car`, `cdr`, `first` ... `tenth`
 (setf (elt seq 1) "hi") ; seq => (A "hi" C)
 ~~~
 
+### [concatenate] result-type &rest seqs... => result-seq
+
+~~~
+(concatenate 'list '(a b) '(c d)) ;=> (A B C D)
+(concatenate 'string "hello" "world") ;=> "helloworld"
+~~~
+
 ### [subseq] seq start &optional end => sub-seq
 
 Returns the subsequence of *seq* specified by *start* and *end*.
@@ -27,52 +41,6 @@ Returns the subsequence of *seq* specified by *start* and *end*.
 (setf str "hello")
 (subseq str 2 4) ;=> "ll"
 (setf (subseq str 2 4) "ad") ; str => "heado"
-~~~
-
-### [copy-seq] seq => copied-seq
-
-### [length] seq => n
-
-~~~
-(length '(a b c)) ;=> 3
-(length "hello") ;=> 5
-~~~
-
-### [make-sequence] result-type size &key initial-element => seq
-
-~~~
-(make-sequence '(vector double-float) 100 :initial-element 1d0)
-~~~
-
-## Concatenating, Mapping, and Reducing Sequences
-
-### [concatenate] result-type &rest seqs... => result-seq
-
-~~~
-(concatenate 'list '(a b) '(c d)) ;=> (A B C D)
-(concatenate 'string "hello" "world") ;=> "helloworld"
-~~~
-
-### [every] fn seq &rest seqs... => boolean
-
-### [some] fn seq &rest seqs... => obj
-
-### [notevery] fn seq &rest seqs... => boolean
-
-### [notany] fn seq &rest seqs... => boolean
-
-### [cl-utilities:extremum] seq fn &key key (start 0) end => smallest-element
-
-Returns first element of *sequence* if it were ordered by
-`sort` using the predicate *fn*. `extrema` is similar but
-returns a list of values since there may be more than one
-extremum determined by the predicate. `n-most-extreme`
-returns a list of *n* values of a sorted sequence. [ref](http://common-lisp.net/project/cl-utilities/doc/extremum.html)
-
-~~~
-(extremum '(1 2 9 7 3 2) #'>)         ;=> 9
-(extrema '(1 2 9 7 3 2) #'>)          ;=> (9)
-(n-most-extreme 3 '(1 2 9 7 3 2) #'>) ;=> (9 7 3)
 ~~~
 
 ### [cl-utilities:split-sequence] delimiter seq &key count remove-empty-subseqs from-end start end test test-not key => list, idx
@@ -87,50 +55,19 @@ and `split-sequence-if-not`. [ref](http://common-lisp.net/project/cl-utilities/d
 (split-sequence-if #'evenp '(1 1 2 1 3 4 1 3 5)) ;=> ((1 1) (1 3) (1 3 5)), 9
 ~~~
 
-## Modify
+### [cl-utilities:extremum] seq fn &key key (start 0) end => smallest-element
 
-### [fill] seq item &key start end => seq
-
-### [replace] seq1 seq2 &key start1 end1 start2 end2 => seq1
-
-~~~
-(replace "abcde" "01234" :start1 1 :end1 3 :start2 3) ;=> "a34de"
-~~~
-
-### [remove] item seq &key from-end test test-not start end count key => result-seq
-
-Functional variants are [remove-if] and [remove-if-not]. The
-destructive variants are [delete], [delete-if], and
-[delete-if-not]. To remove in place, use
-[alexandria:removef] or [alexandria:deletef].
+Returns first element of *sequence* if it were ordered by
+`sort` using the predicate *fn*. `extrema` is similar but
+returns a list of values since there may be more than one
+extremum determined by the predicate. `n-most-extreme`
+returns a list of *n* values of a sorted sequence. [ref](http://common-lisp.net/project/cl-utilities/doc/extremum.html)
 
 ~~~
-(remove 4 '(1 2 4 1 3 4 5))           ;=> (1 2 1 3 5)
-(remove-if #'oddp '(1 2 4 1 3 4 5))   ;=> (2 4 4)
-(remove-if-not #'oddp '(1 2 1 3 4 5)) ;=> (1 1 3 5)
+(extremum '(1 2 9 7 3 2) #'>)         ;=> 9
+(extrema '(1 2 9 7 3 2) #'>)          ;=> (9)
+(n-most-extreme 3 '(1 2 9 7 3 2) #'>) ;=> (9 7 3)
 ~~~
-
-### [remove-duplicates] seq &key from-end test test-not start end key
-
-Destrictive variant is [delete-duplicates].
-
-~~~
-(remove-duplicates '(1 2 1 2 3 1 2 3 4)) ;=> (1 2 3 4)
-~~~
-
-### [substitute] new old seq &key from-end test test-not start end count key
-
-Functional variants are [substitute-if],
-[substitute-if-not]. Destructive variants are [nsubstitute],
-[nsubstitute-if], and [nsubstitute-if-not]. [subst] performs
-substitutions throughout a *tree*.
-
-~~~
-(substitute 10 1 '(1 2 1 3 1 4))      ;=> (10 2 10 3 10 4)
-(substitute-if 0 #'oddp '(1 2 3 4 5)) ;=> (0 2 0 4 0)
-~~~
-
-## Search
 
 ### [find] item seq &key from-end test test-not start end key => element
 
@@ -182,46 +119,56 @@ Return the index position where two sequences diverge.
 ~~~
 
 
-## Sort and Merge
+## Modify
 
-### [reverse] seq => reversed-seq
+### [fill] seq item &key start end => seq
 
-Reverse the order of elements in a sequence. The destructive
-version is [nreverse]. To save the result in place, use [alexandria:reversef].
-
-~~~
-(reverse '(a b c d)) ;=> (D C B A)
-~~~
-
-### [sort] seq fn &key key => sorted-seq
-
-The sequence is destructively sorted according to an order
-determined by the predicate *fn*. [stable-sort] guarantees
-equal elements stay in same order.
+Destructively replaces the elements of *seq* bounded by
+*:start* and *:end* with *item*.
 
 ~~~
-(sort '(3 1 4 2) (lambda (x y) (< x y))) ;=> (1 2 3 4)
+(fill '(a b c d) 'x :start 1 :end 3) ;=> (A X X D)
 ~~~
 
-### [merge] result-type seq1 seq2 fn &key key => result-seq
+### [replace] seq1 seq2 &key start1 end1 start2 end2 => seq1
 
-Destructively concatenates the two sequences and sorts the
-combined elements based on the predicate *fn*.
-
-~~~
-(merge 'list '(1 3 5) '(2 4 6) #'<) ;=> (1 2 3 4 5 6)
-~~~
-
-### [alexandria:rotate] seq &optional n => result-seq
-
-Returns a *sequence* with elements rotated by *n*, defaulting to 1.
+Destructively replaces the elements of *se1* bounded by
+*:start1* and *:end1* with the elements of *seq2* bounded by
+*:start2* and *:end2*.
 
 ~~~
-(rotate '(a b c))    ;=> (C A B)
-(rotate '(a b c) -1) ;=> (B C A)
+(replace "abcde" "98765" :start1 1 :end1 3 :start2 3) ;=> "a65de"
 ~~~
 
-### [alexandria:shuffle] seq &key start end => result-seq
+### [substitute] new old seq &key from-end test test-not start end count key
 
-Returns a random permutation of a sequence bounded by *:start*
-and *:end*. The original sequence may be modified.
+Functional variants are [substitute-if],
+[substitute-if-not]. Destructive variants are [nsubstitute],
+[nsubstitute-if], and [nsubstitute-if-not]. [subst] performs
+substitutions throughout a *tree*.
+
+~~~
+(substitute 10 1 '(1 2 1 3 1 4))      ;=> (10 2 10 3 10 4)
+(substitute-if 0 #'oddp '(1 2 3 4 5)) ;=> (0 2 0 4 0)
+~~~
+
+### [remove] item seq &key from-end test test-not start end count key => result-seq
+
+Functional variants are [remove-if] and [remove-if-not]. The
+destructive variants are [delete], [delete-if], and
+[delete-if-not]. To remove in place, use
+[alexandria:removef] or [alexandria:deletef].
+
+~~~
+(remove 4 '(1 2 4 1 3 4 5))           ;=> (1 2 1 3 5)
+(remove-if #'oddp '(1 2 4 1 3 4 5))   ;=> (2 4 4)
+(remove-if-not #'oddp '(1 2 1 3 4 5)) ;=> (1 1 3 5)
+~~~
+
+### [remove-duplicates] seq &key from-end test test-not start end key
+
+Destructive variant is [delete-duplicates].
+
+~~~
+(remove-duplicates '(1 2 1 2 3 1 2 3 4)) ;=> (1 2 3 4)
+~~~
