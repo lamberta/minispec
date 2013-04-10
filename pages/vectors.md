@@ -11,34 +11,34 @@ considered to be *sequences*.
 
 ### [vector] &rest objects\* => vector
 
-m4_include(../sections/array-create.md)
+m4_include(../sections/array/create.md)
 
 ## Select
 
-m4_include(../sections/vector-select.md)
+m4_include(../sections/vector/select.md)
 
-m4_include(../sections/array-select.md)
+m4_include(../sections/array/select.md)
 
-m4_include(../sections/sequence-select.md)
+m4_include(../sections/sequence/select.md)
 
 ## Modify
 
-m4_include(../sections/vector-modify.md)
+m4_include(../sections/vector/modify.md)
 
-m4_include(../sections/sequence-modify.md)
+m4_include(../sections/sequence/modify.md)
 
 
 ## Sort
 
-m4_include(../sections/sequence-sort.md)
+m4_include(../sections/sequence/sort.md)
 
 
 ## Predicates
 
-m4_include(../sections/sequence-pred.md)
+m4_include(../sections/sequence/pred.md)
 
-m4_include(../sections/array-pred.md)
+m4_include(../sections/array/pred.md)
 
 ## Iteration
 
-m4_include(../sections/sequence-iteration.md)
+m4_include(../sections/sequence/iteration.md)

@@ -35,7 +35,7 @@ Parses an [integer] in the specified *:radix*.
 (parse-integer "24h" :junk-allowed t) ;=> 24, 2
 ~~~
 
-m4_include(../sections/array-create.md)
+m4_include(../sections/array/create.md)
 
 
 ## Select
@@ -49,25 +49,25 @@ Specialized element accessor for type [string]. Is [setf]able.
 (elt "hello" 1)  ;=> #\e
 ~~~
 
-m4_include(../sections/array-select.md)
+m4_include(../sections/array/select.md)
 
-m4_include(../sections/sequence-select.md)
+m4_include(../sections/sequence/select.md)
 
 
 ## Modify
 
-m4_include(../sections/string-modify.md)
+m4_include(../sections/string/modify.md)
 
-m4_include(../sections/vector-modify.md)
+m4_include(../sections/vector/modify.md)
 
-m4_include(../sections/sequence-modify.md)
+m4_include(../sections/sequence/modify.md)
 
 ## Comparison
 
-m4_include(../sections/string-compare.md)
+m4_include(../sections/string/compare.md)
 
 ## Predicates
 
-m4_include(../sections/string-pred.md)
+m4_include(../sections/string/pred.md)
 
-m4_include(../sections/sequence-pred.md)
+m4_include(../sections/sequence/pred.md)

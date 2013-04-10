@@ -9,30 +9,30 @@ The type [sequence] encompasses both lists and vectors
 * [PCL: Ch 11. Collections](http://www.gigamonkeys.com/book/collections.html)
 * [CLtL2: Ch 14. Sequences](http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node141.html)
 
-m4_include(../sections/list-create.md)
+m4_include(../sections/list/create.md)
 
 ## Select
 
-m4_include(../sections/list-select.md)
+m4_include(../sections/list/select.md)
 
-m4_include(../sections/sequence-select.md)
+m4_include(../sections/sequence/select.md)
 
 ## Modify
 
-m4_include(../sections/list-modify.md)
+m4_include(../sections/list/modify.md)
 
-m4_include(../sections/sequence-modify.md)
+m4_include(../sections/sequence/modify.md)
 
-m4_include(../sections/sequence-sort.md)
+m4_include(../sections/sequence/sort.md)
 
 ## Predicates
 
-m4_include(../sections/list-pred.md)
+m4_include(../sections/list/pred.md)
 
-m4_include(../sections/sequence-pred.md)
+m4_include(../sections/sequence/pred.md)
 
 ## Iteration
 
-m4_include(../sections/list-iteration.md)
+m4_include(../sections/list/iteration.md)
 
-m4_include(../sections/sequence-iteration.md)
+m4_include(../sections/sequence/iteration.md)

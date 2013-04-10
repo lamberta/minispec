@@ -17,11 +17,11 @@ elements are restricted to type *bit* are called
 
 ## Create
 
-m4_include(../sections/array-create.md)
+m4_include(../sections/array/create.md)
 
 ## Select
 
-m4_include(../sections/array-select.md)
+m4_include(../sections/array/select.md)
 
 
 ### [row-major-aref] array index => element
@@ -103,4 +103,4 @@ Constant variable. The upper exclusive bound on the array
 total size of an array.
 
 
-m4_include(../sections/sequence-select.md)
+m4_include(../sections/sequence/select.md)
