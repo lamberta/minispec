@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Time</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp MiniSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li><a href="./lists.html">Lists</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#set">Set</a></li>
+              <li><a href="./list-structires.html#tree">Tree</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html">Array</a></li>
+							<li><a href="./vectors.html">Vector</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li><a href="./strings.html">Strings</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li><a href="./time.html">Time</a></li>
+							<li><a href="./output.html">Output</a></li>
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#time" class="nav-header">Time</a></li>
+  <li><a href="#get-universal-time-universal-time">get-universal-time</a></li>
+  <li><a href="#decode-universal-time-universal-time-zone-sec-min-hr-day-m-yr-day-of-week-daylight-p-zone">decode-universal-time</a></li>
+  <li><a href="#get-decoded-time-sec-min-hour-day-month-year-day-of-week-daylight-p-zone">get-decoded-time</a></li>
+  <li><a href="#encode-universal-time-sec-min-hr-day-m-yr-zone-universal-time">encode-universal-time</a></li>
+  <li><a href="#get-internal-run-time-internal-time">get-internal-run-time</a></li>
+  <li><a href="#get-internal-real-time-internal-time">get-internal-real-time</a></li>
+  <li><a href="#sleep-seconds-nil">sleep</a></li>
+  <li><a href="#internal-time-units-per-second">internal-time-units-per-second</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="time">Time</h1>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/25_ad.htm">HyperSpec: Time</a></li>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node232.html">CLtL2: Time Functions</a></li>
+</ul>
+<h3 id="get-universal-time-universal-time"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get_un.htm">get-universal-time</a> &rArr; universal-time</h3>
+<p>Returns the current universal time, which is the number of seconds that have elapsed since 00:00 of January 1, 1900 in the GMT time zone.</p>
+<pre><code>(get-universal-time) ;&rArr; 3574524644</code></pre>
+<h3 id="decode-universal-time-universal-time-zone-sec-min-hr-day-m-yr-day-of-week-daylight-p-zone"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dec_un.htm">decode-universal-time</a> universal-time [zone] &rArr; sec, min, hr, day, m, yr, day-of-week, daylight-p, zone</h3>
+<p>Returns the decoded time represented by the given <em>universal time</em>.</p>
+<pre><code>(defconstant +months+ &#39;(1 &quot;Jan&quot; 2 &quot;Feb&quot; 3 &quot;Mar&quot; 4 &quot;Apr&quot; 5 &quot;May&quot; 6 &quot;Jun&quot;
+                        7 &quot;Jul&quot; 8 &quot;Aug&quot; 9 &quot;Sep&quot; 10 &quot;Oct&quot; 11 &quot;Nov&quot; 12 &quot;Dec&quot;))
+(defconstant +days+ &#39;(0 &quot;Mon&quot; 1 &quot;Tue&quot; 3 &quot;Wed&quot; 4 &quot;Thu&quot; 5 &quot;Fri&quot; 6 &quot;Sat&quot; 7 &quot;Sun&quot;))
+
+(defun universal-time-to-rfc822 (ut)
+  (multiple-value-bind (s m h d month y weekday dst-p tz) (decode-universal-time ut)
+    (declare (ignore dst-p))
+    (let ((day (getf +days+ weekday))
+          (mon (getf +months+ month))
+          (tzsign (if (minusp tz) &quot;-&quot; &quot;+&quot;)))
+          (format nil &quot;~a, ~2,&#39;0d ~a ~d ~2,&#39;0d:~2,&#39;0d:~2,&#39;0d ~a~2,&#39;0d00&quot; day d mon y h m s tzsign tz))))
+
+(universal-time-to-rfc822 (get-universal-time)) ;&rArr; &quot;Tue, 09 Apr 2013 14:04:52 +0800&quot;</code></pre>
+<h3 id="get-decoded-time-sec-min-hour-day-month-year-day-of-week-daylight-p-zone"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get_un.htm">get-decoded-time</a> &rArr; sec, min, hour, day, month, year, day-of-week, daylight-p, zone</h3>
+<p>Equivalent to <code>(decode-universal-time (get-universal-time))</code>.</p>
+<pre><code>(multiple-value-bind (sec min hr day m yr day-of-week dst-p tz) (get-decoded-time)
+  (list sec min hr date m yr day-of-week dst-p tz)) ;&rArr; (51 31 12 9 4 2013 1 T 8)</code></pre>
+<h3 id="encode-universal-time-sec-min-hr-day-m-yr-zone-universal-time"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_encode.htm">encode-universal-time</a> sec min hr day m yr [zone] &rArr; universal-time</h3>
+<p>Converts from decoded time format to a universal time.</p>
+<h3 id="get-internal-run-time-internal-time"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get__1.htm">get-internal-run-time</a> &rArr; internal-time</h3>
+<p>Returns as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> the current run time in internal time units. Its precise meaning is implementation-dependant, but the intent is that the difference between two calls to this function return the amount of time expended on behalf of the executing program.</p>
+<h3 id="get-internal-real-time-internal-time"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get_in.htm">get-internal-real-time</a> &rArr; internal-time</h3>
+<p>Returns as an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> the current time in internal time units, relative to an arbitrary time base. The difference between the values of two calls to this function is the amount of elapsed real time (i.e., clock time) between the two calls.</p>
+<h3 id="sleep-seconds-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sleep.htm">sleep</a> seconds &rArr; nil</h3>
+<p>Causes execution to cease and become dormant for approximately the <em>seconds</em> of real time indicated by seconds, whereupon execution is resumed.</p>
+<h3 id="internal-time-units-per-second"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_intern.htm">internal-time-units-per-second</a></h3>
+<p>Constant, a positive integer. The number of internal time units in one second.</p>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

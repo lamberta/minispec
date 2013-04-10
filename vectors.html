@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CL MiniSpec: Lists</title>
+    <title>CL MiniSpec: Vectors</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -83,22 +83,16 @@
         <aside class="span3">
           <nav class="well" data-spy="affix">
 <ul class="nav nav-list">
-  <li><a href="#lists" class="nav-header">Lists</a></li>
+  <li><a href="#vectors" class="nav-header">Vectors</a></li>
   <li><a href="#create" class="nav-header">Create</a></li>
-  <li><a href="#cons-x-y-cons">cons</a></li>
-  <li><a href="#list-objects-list">list</a></li>
-  <li><a href="#list-objects-list-list">list*</a></li>
-  <li><a href="#make-list-size-key-initial-element-list">make-list</a></li>
-  <li><a href="#copy-list-list-copy">copy-list</a></li>
+  <li><a href="#vector-rest-objects-vector">vector</a></li>
+  <li><a href="#make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array">make-array</a></li>
+  <li><a href="#adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array">adjust-array</a></li>
+  <li><a href="#alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array">copy-array</a></li>
   <li><a href="#select" class="nav-header">Select</a></li>
-  <li><a href="#first">first</a></li>
-  <li><a href="#rest">rest</a></li>
-  <li><a href="#nth">nth</a></li>
-  <li><a href="#nthcdr">nthcdr</a></li>
-  <li><a href="#last">last</a></li>
-  <li><a href="#butlast-list-optional-n-result-list">butlast</a></li>
-  <li><a href="#ldiff-list-sublist-result-list">ldiff</a></li>
-  <li><a href="#list-length-list-length">list-length</a></li>
+  <li><a href="#svref-simple-vector-index-element">svref</a></li>
+  <li><a href="#fill-pointer-vector-fill-pointer">fill-pointer</a></li>
+  <li><a href="#aref-array-rest-subscripts-element">aref</a></li>
   <li><a href="#elt-seq-idx-element">elt</a></li>
   <li><a href="#alexandriarandom-elt">random-elt</a></li>
   <li><a href="#length-seq-n">length</a></li>
@@ -110,12 +104,9 @@
   <li><a href="#search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">search</a></li>
   <li><a href="#mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">mismatch</a></li>
   <li><a href="#modify" class="nav-header">Modify</a></li>
-  <li><a href="#append-lists-list">append</a></li>
-  <li><a href="#revappend-list-tail-result-list">revappend</a></li>
-  <li><a href="#push-item-list-new-place-value">push</a></li>
-  <li><a href="#pop-list-element">pop</a></li>
-  <li><a href="#rplaca-cons-object-cons">rplaca</a></li>
-  <li><a href="#rplacd-cons-object-cons">rplacd</a></li>
+  <li><a href="#vector-push-new-element-vector-index">vector-push</a></li>
+  <li><a href="#vector-push-extend-new-element-vector-extension-index">vector-push-extend</a></li>
+  <li><a href="#vector-pop">vector-pop</a></li>
   <li><a href="#concatenate-result-type-rest-seqs-result-seq">concatenate</a></li>
   <li><a href="#cl-utilitiessplit-sequence-delimiter-seq-key-count-remove-empty-subseqs-from-end-start-end-test-test-not-key-list-idx">split-sequence</a></li>
   <li><a href="#fill-seq-item-key-start-end-seq">fill</a></li>
@@ -124,32 +115,26 @@
   <li><a href="#remove-item-seq-key-from-end-test-test-not-start-end-count-key-result-seq">remove</a></li>
   <li><a href="#remove-duplicates-seq-key-from-end-test-test-not-start-end-key">remove-duplicates</a></li>
   <li><a href="#sort" class="nav-header">Sort</a></li>
+  <li><a href="#sort-1" class="nav-header">Sort</a></li>
   <li><a href="#reverse-seq-reversed-seq">reverse</a></li>
   <li><a href="#sort-seq-fn-key-key-sorted-seq">sort</a></li>
   <li><a href="#merge-result-type-seq1-seq2-fn-key-key-result-seq">merge</a></li>
   <li><a href="#alexandriarotate-seq-optional-n-result-seq">rotate</a></li>
   <li><a href="#alexandriashuffle-seq-key-start-end-result-seq">shuffle</a></li>
   <li><a href="#predicates" class="nav-header">Predicates</a></li>
-  <li><a href="#listp-object-boolean">listp</a></li>
-  <li><a href="#consp-object-boolean">consp</a></li>
-  <li><a href="#atom-object-boolean">atom</a></li>
-  <li><a href="#null-object-boolean">null</a></li>
-  <li><a href="#endp-object-boolean">endp</a></li>
-  <li><a href="#tailp-x-list-boolean">tailp</a></li>
   <li><a href="#some-fn-seq-rest-seqs-result">some</a></li>
   <li><a href="#every-fn-seq-rest-seqs-boolean">every</a></li>
   <li><a href="#notevery-fn-seq-rest-seqs-boolean">notevery</a></li>
   <li><a href="#notany-fn-seq-rest-seqs-boolean">notany</a></li>
+  <li><a href="#arrayp">arrayp</a></li>
+  <li><a href="#vectorp">vectorp</a></li>
+  <li><a href="#simple-vector-p">simple-vector-p</a></li>
+  <li><a href="#bit-vector-p">bit-vector-p</a></li>
+  <li><a href="#simple-bit-vector-p">simple-bit-vector-p</a></li>
+  <li><a href="#adjustable-array-p">adjustable-array-p</a></li>
+  <li><a href="#array-has-fill-pointer-p">array-has-fill-pointer-p</a></li>
+  <li><a href="#array-in-bounds-p">array-in-bounds-p</a></li>
   <li><a href="#iteration" class="nav-header">Iteration</a></li>
-  <li><a href="#dolist-var-list-result-form-result">dolist</a></li>
-  <li><a href="#mapcar">mapcar</a></li>
-  <li><a href="#maplist">maplist</a></li>
-  <li><a href="#mapcan">mapcan</a></li>
-  <li><a href="#mapcon">mapcon</a></li>
-  <li><a href="#mapc">mapc</a></li>
-  <li><a href="#mapl">mapl</a></li>
-  <li><a href="#alexandriamappend-fn-rest-lists-list">mappend</a></li>
-  <li><a href="#alexandriamap-product-fn-list-rest-lists-list">map-product</a></li>
   <li><a href="#map-result-type-fn-rest-seqs-result">map</a></li>
   <li><a href="#map-into-result-seq-fn-rest-seqs-result-seq">map-into</a></li>
   <li><a href="#remove-if-not-fn-seq-key-from-end-start-end-count-key-seq">remove-if-not</a></li>
@@ -162,63 +147,34 @@
           </nav>
         </aside>
         <article class="span9">
-<h1 id="lists">Lists</h1>
+<h1 id="vectors">Vectors</h1>
+<p>A vector is a basic integer-indexed collection, a one-dimensional <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm">array</a>. Vectors and lists are collectively considered to be <em>sequences</em>.</p>
 <ul>
-<li><a href="http://www.gigamonkeys.com/book/they-called-it-lisp-for-a-reason-list-processing.html">PCL: List Processing</a></li>
-</ul>
-<p>The type <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm">sequence</a> encompasses both lists and vectors (one-dimensional arrays).</p>
-<ul>
-<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/c_sequen.htm">HyperSpec: Sequences Dictionary</a></li>
-<li><a href="http://www.gigamonkeys.com/book/collections.html">PCL: Ch 11. Collections</a></li>
-<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node141.html">CLtL2: Ch 14. Sequences</a></li>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node30.html">CLtL2: Vectors</a></li>
+<li><a href="http://www.gigamonkeys.com/book/collections.html#vectors">PCL: Vectors</a></li>
 </ul>
 <h2 id="create">Create</h2>
-<h3 id="cons-x-y-cons"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm">cons</a> x y &rArr; cons</h3>
-<pre><code>(cons 1 2)      ;&rArr; (1 . 2)
-(cons 1 &#39;(2 3)) ;&rArr; (1 2 3)</code></pre>
-<h3 id="list-objects-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a> objects* &rArr; list</h3>
-<p>Returns a list containing <em>objects</em>.</p>
-<pre><code>(list 1 2 3 4)     ;&rArr; (1 2 3 4)</code></pre>
-<h3 id="list-objects-list-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_.htm">list*</a> objects* list &rArr; list</h3>
-<p>Returns a list containing <em>objects</em> with the last argument becoming the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">cdr</a> of the last <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm">cons</a> constructed.</p>
-<pre><code>(list* &#39;a &#39;b)      ;&rArr; (A . B)
-(list* 1 2 &#39;(3 4)) ;&rArr; (1 2 3 4)</code></pre>
-<h3 id="make-list-size-key-initial-element-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_lis.htm">make-list</a> size &amp;key initial-element &rArr; list</h3>
-<p>Returns a list of length <em>size</em>.</p>
-<pre><code>(make-list 3)                     ;&rArr; (NIL NIL NIL)
-(make-list 2 :initial-element &#39;a) ;&rArr; (A A)</code></pre>
-<h3 id="copy-list-list-copy"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_lis.htm">copy-list</a> list &rArr; copy</h3>
-<p>Returns a copy of <em>list</em>. Only the list structure is copied; the elements of the resulting list are the same as the corresponding elements of the given list.</p>
+<h3 id="vector-rest-objects-vector"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm">vector</a> &amp;rest objects* &rArr; vector</h3>
+<h3 id="make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm">make-array</a> dims &amp;key type initial-element initial-contents adjustable fill-pointer displaced-to displaced-index-offset &rArr; new-array</h3>
+<pre><code>(make-array &#39;(2 3)) ;&rArr; #2A((0 0 0) (0 0 0))
+(make-array 5 :fill-pointer 0 :adjustable t :element-type &#39;character) ;&rArr; &quot;&quot;</code></pre>
+<h3 id="adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_adjust.htm">adjust-array</a> array new-dims &amp;key type initial-element initial-contents fill-pointer displaced-to displaced-index-offset &rArr; adjusted-array</h3>
+<h3 id="alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-copy_002darray">alexandria:copy-array</a> array &amp;key element-type fill-pointer adjustable &rArr; new-array</h3>
+<p>Returns an undisplaced copy of <em>array</em>, with same fill-pointer and adjustability as the original.</p>
 <h2 id="select">Select</h2>
-<h3 id="first"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm">first</a></h3>
-<p>Also <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">car</a></p>
-<pre><code>(first &#39;(:a :b :c)) ;&rArr; :A
-(car &#39;(:a :b :c))   ;&rArr; :A</code></pre>
-<h3 id="rest"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rest.htm">rest</a></h3>
-<p>Also <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">cdr</a></p>
-<pre><code>(rest &#39;(:a :b :c)) ;&rArr; (:B :C)
-(cdr &#39;(:a :b :c))  ;&rArr; (:B :C)</code></pre>
-<p>cXr … cadr, caddr, etc.</p>
-<h3 id="nth"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_nth.htm">nth</a></h3>
-<p>Also <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm">first</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm">second</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm">third</a>, … <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_firstc.htm">tenth</a>.</p>
-<h3 id="nthcdr"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_nthcdr.htm">nthcdr</a></h3>
-<pre><code>(nthcdr 2 &#39;(:a :b :c :d)) ;&rArr; (:C :D)</code></pre>
-<h3 id="last"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_last.htm">last</a></h3>
-<pre><code>(last &#39;(:a :b :c :d))   ;&rArr; (:D)
-(last &#39;(:a :b :c :d) 2) ;&rArr; (:C :D)</code></pre>
-<h3 id="butlast-list-optional-n-result-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_butlas.htm">butlast</a> list &amp;optional n &rArr; result-list</h3>
-<p>Returns a copy of <em>list</em> with the last <em>n</em> conses omitted, defaults to 1. The destructive vesion is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_butlas.htm">nbutlast</a>.</p>
-<pre><code>(butlast &#39;(a b c d))   ;&rArr; (A B C)
-(butlast &#39;(a b c d) 2) ;&rArr; (A B)</code></pre>
-<h3 id="ldiff-list-sublist-result-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ldiffc.htm">ldiff</a> list sublist &rArr; result-list</h3>
-<p>Returns the list difference, in a new list, whose elements of <em>list</em> appear before <em>sublist</em>. If <em>sublist</em> is not the tail of <em>list</em>, then return a copy of the entire <em>list</em>.</p>
-<pre><code>(setf list1 &#39;(a b c d))
-(setf list2 (last list1 2)) ;&rArr; (C D)
-(ldiff list1 list2)         ;&rArr; (A B)</code></pre>
-<h3 id="list-length-list-length"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_l.htm">list-length</a> list &rArr; length</h3>
-<p>Returns the length of <em>list</em>. If <em>list</em> is a circular list, return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
-<pre><code>(list-length &#39;(a b c d))   ;&rArr; 4
-(list-length &#39;(a (b c) d)) ;&rArr; 3</code></pre>
+<h3 id="svref-simple-vector-index-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_svref.htm">svref</a> simple-vector index &rArr; element</h3>
+<p>Accesses the element of <em>simple-vector</em> specified by <em>index</em>.</p>
+<h3 id="fill-pointer-vector-fill-pointer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fill_p.htm">fill-pointer</a> vector &rArr; fill-pointer</h3>
+<p>Accesses the fill pointer of <em>vector</em>.</p>
+<pre><code>(setf arr (make-array 8 :fill-pointer 4)) ;&rArr; #(NIL NIL NIL NIL)
+(fill-pointer arr)                        ;&rArr; 4
+(vector-push &#39;a arr)
+(fill-pointer arr)                        ;&rArr; 5</code></pre>
+<h3 id="aref-array-rest-subscripts-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm">aref</a> array &amp;rest subscripts &rArr; element</h3>
+<p>Access array elements. Related: <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_svref.htm">svref</a> —Access index of a simple vector.</p>
+<pre><code>(setf a (make-array &#39;(2 2) :initial-contents &#39;((1 2) (3 4))))
+(aref a 1 1) ;&rArr; 4
+(setf (aref a 0 1) 99) ; a &rArr; #2A((1 99) (3 4))</code></pre>
 <h3 id="elt-seq-idx-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_elt.htm">elt</a> seq idx &rArr; element</h3>
 <p>Related: <code>nth</code>, <code>nthcdr</code>, <code>car</code>, <code>cdr</code>, <code>first</code> … <code>tenth</code></p>
 <pre><code>(setf seq &#39;(a b c))
@@ -259,30 +215,18 @@
 <p>Return the index position where two sequences diverge.</p>
 <pre><code>(mismatch &quot;foobarbaz&quot; &quot;foom&quot;) ;&rArr; 3</code></pre>
 <h2 id="modify">Modify</h2>
-<h3 id="append-lists-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_append.htm">append</a> lists* &rArr; list</h3>
-<p>Return a new list that is the concatenation of the arguments. The destructive version is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_nconc.htm">nconc</a>. To append in place, use <a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-appendf">alexandria:appendf</a>.</p>
-<pre><code>(append &#39;(a b) &#39;() &#39;(c d)) ;&rArr; (A B C D)</code></pre>
-<h3 id="revappend-list-tail-result-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_revapp.htm">revappend</a> list tail &rArr; result-list</h3>
-<p>Constructs a copy of <em>list</em> with the elements in reverse order, then append <em>tail</em>. The destructive version is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_revapp.htm">nreconc</a>.</p>
-<pre><code>(revappend &#39;(1 2 3) &#39;(a b c)) ;&rArr; (3 2 1 A B C)</code></pre>
-<h3 id="push-item-list-new-place-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_push.htm">push</a> item list &rArr; new-place-value</h3>
-<p>Prepend item to the front of the list and store in place. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_pshnew.htm">pushnew</a> will only add the item if it does not already exist in the list.</p>
-<pre><code>(setf lst &#39;(a b c))
-(cons &#39;d lst)       ;&rArr; (D A B C) [lst &rArr; (A B C)]
-(push &#39;d lst)       ;&rArr; (D A B C) [lst &rArr; (D A B C)]</code></pre>
-<h3 id="pop-list-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_pop.htm">pop</a> list &rArr; element</h3>
-<p>Returns the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">car</a> of a list and store in place.</p>
-<pre><code>(setf lst &#39;(a b c))
-(car lst)           ;&rArr; A [lst &rArr; (A B C)]
-(pop lst)           ;&rArr; A [lst &rArr; (B C)]</code></pre>
-<h3 id="rplaca-cons-object-cons"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rplaca.htm">rplaca</a> cons object &rArr; cons</h3>
-<p>Replaces the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">car</a> of the <em>cons</em> with <em>object</em>. Modifies <em>cons</em> in-place.</p>
-<pre><code>(setf lst &#39;(a b c)) 
-(rplaca lst &#39;d)     ;&rArr; (D B C) </code></pre>
-<h3 id="rplacd-cons-object-cons"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rplaca.htm">rplacd</a> cons object &rArr; cons</h3>
-<p>Replaces the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">cdr</a> of the <em>cons</em> with <em>object</em>. Modifies <em>cons</em> in-place.</p>
-<pre><code>(setf lst &#39;(a b c))
-(rplacd lst &#39;(d e)) ;&rArr; (A D E)</code></pre>
+<h3 id="vector-push-new-element-vector-index"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vec_ps.htm">vector-push</a> new-element vector &rArr; index</h3>
+<pre><code>(setf v (make-array 2 :fill-pointer 0)) ;&rArr; #()
+(vector-push &#39;a v)                      ;&rArr; 0   [v &rArr; #(A)]
+(vector-push &#39;b v)                      ;&rArr; 1   [v &rArr; #(A B)]
+(vector-push &#39;c v)                      ;&rArr; NIL [v &rArr; #(A B)]</code></pre>
+<h3 id="vector-push-extend-new-element-vector-extension-index"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vec_ps.htm">vector-push-extend</a> new-element vector [extension] &rArr; index</h3>
+<pre><code>(setf v (make-array 2 :fill-pointer 0 :adjustable t) ;&rArr; #()
+(vector-push &#39;a v)                      ;&rArr; 0   [v &rArr; #(A)]
+(vector-push &#39;b v)                      ;&rArr; 1   [v &rArr; #(A B)]
+(vector-push-extend &#39;c v)               ;&rArr; 2   [v &rArr; #(A B C)]</code></pre>
+<h3 id="vector-pop"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vec_po.htm">vector-pop</a></h3>
+<p>Decreases the fill pointer of vector by one, and retrieves the element of vector that is designated by the new fill pointer.</p>
 <h3 id="concatenate-result-type-rest-seqs-result-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm">concatenate</a> result-type &amp;rest seqs… &rArr; result-seq</h3>
 <pre><code>(concatenate &#39;list &#39;(a b) &#39;(c d)) ;&rArr; (A B C D)
 (concatenate &#39;string &quot;hello&quot; &quot;world&quot;) ;&rArr; &quot;helloworld&quot;</code></pre>
@@ -309,6 +253,7 @@
 <p>Destructive variant is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_dup.htm">delete-duplicates</a>.</p>
 <pre><code>(remove-duplicates &#39;(1 2 1 2 3 1 2 3 4)) ;&rArr; (1 2 3 4)</code></pre>
 <h2 id="sort">Sort</h2>
+<h2 id="sort-1">Sort</h2>
 <h3 id="reverse-seq-reversed-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_revers.htm">reverse</a> seq &rArr; reversed-seq</h3>
 <p>Reverse the order of elements in a sequence. The destructive version is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_revers.htm">nreverse</a>. To save the result in place, use <a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-reversef">alexandria:reversef</a>.</p>
 <pre><code>(reverse &#39;(a b c d)) ;&rArr; (D C B A)</code></pre>
@@ -325,13 +270,6 @@
 <h3 id="alexandriashuffle-seq-key-start-end-result-seq"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-shuffle">alexandria:shuffle</a> seq &amp;key start end &rArr; result-seq</h3>
 <p>Returns a random permutation of a sequence bounded by <em>:start</em> and <em>:end</em>. The original sequence may be modified.</p>
 <h2 id="predicates">Predicates</h2>
-<h3 id="listp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_listp.htm">listp</a> object &rArr; boolean</h3>
-<h3 id="consp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_consp.htm">consp</a> object &rArr; boolean</h3>
-<h3 id="atom-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_atom.htm">atom</a> object &rArr; boolean</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">T</a> if object is <em>not</em> a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_cons.htm">cons</a>.</p>
-<h3 id="null-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_null.htm">null</a> object &rArr; boolean</h3>
-<h3 id="endp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_endp.htm">endp</a> object &rArr; boolean</h3>
-<h3 id="tailp-x-list-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ldiffc.htm">tailp</a> x list = &gt; boolean</h3>
 <h3 id="some-fn-seq-rest-seqs-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_everyc.htm">some</a> fn seq &amp;rest seqs* &rArr; result</h3>
 <p>Returns the first non-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> value which is returned by an invocation of the predicate <em>fn</em>.</p>
 <pre><code>(some #&#39;evenp &#39;(1 2 3 4))  ;&rArr; T
@@ -349,33 +287,15 @@
 <p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> as soon as any invocation of predicate <em>fn</em> returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>.</p>
 <pre><code>(notany #&#39;numberp &#39;(1 2 3 4)) ;&rArr; NIL
 (notany #&#39;evenp &#39;(1 2 3 4))   ;&rArr; NIL</code></pre>
+<h3 id="arrayp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_arrayp.htm">arrayp</a></h3>
+<h3 id="vectorp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vecp.htm">vectorp</a></h3>
+<h3 id="simple-vector-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_ve.htm">simple-vector-p</a></h3>
+<h3 id="bit-vector-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_vec.htm">bit-vector-p</a></h3>
+<h3 id="simple-bit-vector-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_smp_bt.htm">simple-bit-vector-p</a></h3>
+<h3 id="adjustable-array-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_adju_1.htm">adjustable-array-p</a></h3>
+<h3 id="array-has-fill-pointer-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_has.htm">array-has-fill-pointer-p</a></h3>
+<h3 id="array-in-bounds-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_in_.htm">array-in-bounds-p</a></h3>
 <h2 id="iteration">Iteration</h2>
-<h3 id="dolist-var-list-result-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_dolist.htm">dolist</a> (var list [result]) form* &rArr; result*</h3>
-<p>Iterate over the elements of a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a>. Terminate loop immediately with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm">return</a>.</p>
-<pre><code>(dolist (x &#39;(1 2 3 4))
-  (print x))
-
-(dolist (x &#39;(1 2 3 4) (print &#39;done))
-  (print x))</code></pre>
-<h3 id="mapcar"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapcar</a></h3>
-<p>Iterates over successive list elements and returns the accumlated results. <strong>mapc</strong> is similar except the results are <em>not</em> accumulated and the first list is returned.</p>
-<pre><code>(mapcar #&#39;+ &#39;(1 2) &#39;(3 4)) ;&rArr; (4 6)
-(mapcar (alexandria:compose #&#39;print #&#39;1+) &#39;(1 2 3)) ;&rArr; (2 3 4) [prints 2,3,4]</code></pre>
-<h3 id="maplist"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">maplist</a></h3>
-<h3 id="mapcan"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapcan</a></h3>
-<h3 id="mapcon"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapcon</a></h3>
-<h3 id="mapc"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapc</a></h3>
-<h3 id="mapl"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mapc_.htm">mapl</a></h3>
-<h3 id="alexandriamappend-fn-rest-lists-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-mappend">alexandria:mappend</a> fn &amp;rest lists… &rArr; list</h3>
-<p>Zips up list components and returns a flattened list. <em>fn</em> must return a list.</p>
-<pre><code>(mappend #&#39;list &#39;(1 3) &#39;(2 4)) ;&rArr; ((1 2) (3 4)) &rArr; (1 2 3 4)
-
-(flet ((zipper (x y) (list (+ x y))))
-  (mappend #&#39;zipper &#39;(1 3) &#39;(2 4))) ;&rArr; ((+ 1 2) (+ 3 4)) &rArr; (3 7)</code></pre>
-<h3 id="alexandriamap-product-fn-list-rest-lists-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dproduct">alexandria:map-product</a> fn list &amp;rest lists… &rArr; list</h3>
-<p>Results of calling <code>fn</code> with one argument per list for every combination.</p>
-<pre><code>(map-product #&#39;list &#39;(1 2) &#39;(3 4) &#39;(5 6))
-  ;&rArr; ((1 3 5) (1 3 6) (1 4 5) (1 4 6) (2 3 5) (2 3 6) (2 4 5) (2 4 6))</code></pre>
 <h3 id="map-result-type-fn-rest-seqs-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_map.htm">map</a> result-type fn &amp;rest seqs* &rArr; result</h3>
 <p>Applies the function to elements of each sequence in turn. The result sequence is as long as the shortest of the sequences.</p>
 <pre><code>(map &#39;list #&#39;cons &#39;(a b) &#39;(c d))              ;&rArr; ((A . C) (B . D))

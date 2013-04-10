@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Output</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a href="./index.html" class="brand">Common Lisp MiniSpec</a>
+			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+					<li><a href="./lists.html">Lists</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#set">Set</a></li>
+              <li><a href="./list-structires.html#tree">Tree</a></li>
+							<li><a href="./list-structures.html#plist">Property List</a></li>
+							<li><a href="./list-structures.html#alist">Association List</a></li>
+							<li class="nav-header"><a href="./arrays.html">Array</a></li>
+							<li><a href="./arrays.html">Array</a></li>
+							<li><a href="./vectors.html">Vector</a></li>
+							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+							<li><a href="./data-structures.html#structs">Structs</a></li>
+							<li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+					<li><a href="./strings.html">Strings</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li><a href="./iteration.html">Iteration</a></li>
+          <li><a href="./control.html">Control</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+							<li><a href="./time.html">Time</a></li>
+							<li><a href="./output.html">Output</a></li>
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#output" class="nav-header">Output</a></li>
+  <li><a href="#character-streams" class="nav-header">Character Streams</a></li>
+  <li><a href="#write-object-key-object">write</a></li>
+  <li><a href="#prin1-object-output-stream-object">prin1</a></li>
+  <li><a href="#print-object-output-stream-object">print</a></li>
+  <li><a href="#pprint-object-output-stream-object">pprint</a></li>
+  <li><a href="#princ-object-output-stream-object">princ</a></li>
+  <li><a href="#write-to-string-object-key-object">write-to-string</a></li>
+  <li><a href="#prin1-to-string-object-object">prin1-to-string</a></li>
+  <li><a href="#princ-to-string-object-object">princ-to-string</a></li>
+  <li><a href="#write-char-character-output-stream-character">write-char</a></li>
+  <li><a href="#write-string-string-output-stream-key-start-end-string">write-string</a></li>
+  <li><a href="#write-line-string-output-stream-key-start-end-string">write-line</a></li>
+  <li><a href="#terpri-output-stream-nil">terpri</a></li>
+  <li><a href="#fresh-line-output-stream-boolean">fresh-line</a></li>
+  <li><a href="#finish-output-output-stream-nil">finish-output</a></li>
+  <li><a href="#force-output-output-stream-nil">force-output</a></li>
+  <li><a href="#clear-output-output-stream-nil">clear-output</a></li>
+  <li><a href="#print-unreadable-object-object-stream-key-type-identity-form-nil">print-unreadable-object</a></li>
+  <li><a href="#print-readably">*print-readably*</a></li>
+  <li><a href="#binary-streams" class="nav-header">Binary Streams</a></li>
+  <li><a href="#write-byte-integer-binary-output-stream">write-byte</a></li>
+  <li><a href="#formatted-output" class="nav-header">Formatted Output</a></li>
+  <li><a href="#format-destination-control-string-args-result">format</a></li>
+  <li><a href="#basic-directives" class="nav-header">Basic Directives:</a></li>
+  <li><a href="#number-directives" class="nav-header">Number Directives:</a></li>
+  <li><a href="#formatting-directives" class="nav-header">Formatting Directives:</a></li>
+  <li><a href="#control-directives" class="nav-header">Control Directives:</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="output">Output</h1>
+<ul>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node197.html">CLtL2: Output Functions</a></li>
+</ul>
+<h2 id="character-streams">Character Streams</h2>
+<h3 id="write-object-key-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">write</a> object [&amp;key*] &rArr; object</h3>
+<h3 id="prin1-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">prin1</a> object [output-stream] &rArr; object</h3>
+<p>produces output suitable for input to read.</p>
+<h3 id="print-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">print</a> object [output-stream] &rArr; object</h3>
+<p>like prin1 except that the printed representation of object is preceded by a newline and followed by a space.</p>
+<h3 id="pprint-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">pprint</a> object [output-stream] &rArr; object</h3>
+<p>just like print except that the trailing space is omitted and object is printed with the <em>print-pretty</em> flag non-nil to produce pretty output.</p>
+<h3 id="princ-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">princ</a> object [output-stream] &rArr; object</h3>
+<p>is just like prin1 except that the output has no escape characters. The general rule is that output from princ is intended to look good to people, while output from prin1 is intended to be acceptable to read.</p>
+<h3 id="write-to-string-object-key-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">write-to-string</a> object [&amp;key*] &rArr; object</h3>
+<h3 id="prin1-to-string-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">prin1-to-string</a> object &rArr; object</h3>
+<h3 id="princ-to-string-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">princ-to-string</a> object &rArr; object</h3>
+<h3 id="write-char-character-output-stream-character"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_cha.htm">write-char</a> character [output-stream] &rArr; character</h3>
+<h3 id="write-string-string-output-stream-key-start-end-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm">write-string</a> string [output-stream] &amp;key :start :end &rArr; string</h3>
+<h3 id="write-line-string-output-stream-key-start-end-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm">write-line</a> string [output-stream] &amp;key :start :end &rArr; string</h3>
+<h3 id="terpri-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm">terpri</a> [output-stream] &rArr; nil</h3>
+<h3 id="fresh-line-output-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm">fresh-line</a> [output-stream] &rArr; boolean</h3>
+<h3 id="finish-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">finish-output</a> [output-stream] &rArr; nil</h3>
+<h3 id="force-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">force-output</a> [output-stream] &rArr; nil</h3>
+<h3 id="clear-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">clear-output</a> [output-stream] &rArr; nil</h3>
+<h3 id="print-unreadable-object-object-stream-key-type-identity-form-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_pr_unr.htm">print-unreadable-object</a> (object stream &amp;key type identity) form* &rArr; nil</h3>
+<h3 id="print-readably"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_rda.htm">*print-readably*</a></h3>
+<h2 id="binary-streams">Binary Streams</h2>
+<h3 id="write-byte-integer-binary-output-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_by.htm">write-byte</a> integer binary-output-stream</h3>
+<h2 id="formatted-output">Formatted Output</h2>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm">HyperSpec: Formatted Output</a></li>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node200.html">CLtL2: Formatted Output to Character Streams</a></li>
+<li><a href="http://www.gigamonkeys.com/book/a-few-format-recipes.html">PCL: A Few FORMAT Recipes</a></li>
+</ul>
+<h3 id="format-destination-control-string-args-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_format.htm">format</a> destination control-string args* &rArr; result</h3>
+<p>Creates formatted output using the <em>control-string</em> and observing tilde indicated directives. If <em>destination</em> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a>, a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm">stream</a>, or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>, then the <em>result</em> is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Otherwise, the <em>result</em> is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a> containing the formatted output.</p>
+<pre><code>(format nil &quot;Hello, ~a&quot; &#39;lisp) ;&rArr; &quot;Hello, LISP!&quot;</code></pre>
+<h4 id="basic-directives">Basic Directives:</h4>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cda.htm"><code>~A</code></a> —Aesthetic. Print without escape characters (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">princ</a>).</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cdb.htm"><code>~S</code></a> —Standard. Print with escape characters (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">prin1</a>).</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cab.htm"><code>~%</code></a> —Newline character. <code>~n%</code> outputs <em>n</em> newlines.</li>
+</ul>
+<h4 id="number-directives">Number Directives:</h4>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cbb.htm"><code>~D</code></a> —Decimal.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cbc.htm"><code>~B</code></a> —Binary. Prints radix 2.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cbd.htm"><code>~O</code></a> —Octal. Prints radix 8.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cbe.htm"><code>~X</code></a> —Hexadecimal. Prints radix 16.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cba.htm"><code>~R</code></a> —Radix. <code>~nR</code> prints in radix <em>n</em>.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cca.htm"><code>~F</code></a> —Float. <code>~width,count,scale,overflowchar,padcharF</code></li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_ccb.htm"><code>~E</code></a> —Exponential notation. <code>~width,count,scale,overflowchar,padchar,exptcharE.</code></li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_ccc.htm"><code>~G</code></a> —General floating-point. <code>~width,count,scale,overflowchar,padchar,exptcharG.</code></li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_ccd.htm"><code>~$</code></a> —Dollars. <code>~count,min-count,min-width,padchar$</code></li>
+</ul>
+<p>The <code>@</code> modifer causes the sign to always print. <code>:</code> adds commas between groups of digits. The most general form of <code>~D</code> is <code>~mincol,padchar,commachar,comma-intervalD.</code></p>
+<h4 id="formatting-directives">Formatting Directives:</h4>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cdc.htm"><code>~W</code></a> —Write. Obey every printer-control variable (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">write</a>).</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_caa.htm"><code>~C</code></a> —Character.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cae.htm"><code>~~</code></a> —Escape tilde character.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cac.htm"><code>~&amp;</code></a> —Fresh line.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cic.htm"><code>~&lt;newline&gt;</code></a> —Ignores the newline and any whitespace that follows.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cea.htm"><code>~_</code></a> —Conditional newline.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cad.htm"><code>~|</code></a> —Page separator character.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cfa.htm"><code>~T</code></a> —Tabulate.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cec.htm"><code>~I</code></a> —Indent.</li>
+</ul>
+<h4 id="control-directives">Control Directives:</h4>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_ceb.htm"><code>~:&gt;</code></a> —Logical Block.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_ced.htm"><code>~/</code></a> —Call function.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cfb.htm"><code>~&lt;</code></a> —Justification.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cfc.htm"><code>~&gt;</code></a> —End justifcation.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cga.htm"><code>~*</code></a> —Go-To.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cgb.htm"><code>~[</code></a> —Conditional expression.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cgc.htm"><code>~]</code></a> —End conditional expression.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cgd.htm"><code>~{</code></a> —Iteration.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cge.htm"><code>~}</code></a> —End iteration.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cgf.htm"><code>~?</code></a> —Recursive processing.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cha.htm"><code>~(</code></a> —Case conversion.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_chb.htm"><code>~)</code></a> —End case conversion.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_chc.htm"><code>~P</code></a> —Plural.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cia.htm"><code>~;</code></a> —Clause separator.</li>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_cib.htm"><code>~^</code></a> —Escape upward.</li>
+</ul>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+		<script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CL TurboSpec: Arrays</title>
+    <title>CL MiniSpec: Arrays</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -27,7 +27,7 @@
         <span class="icon-bar"></span>
       </button>
       
-			<a href="./index.html" class="brand">Common Lisp TurboSpec</a>
+			<a href="./index.html" class="brand">Common Lisp MiniSpec</a>
 			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
@@ -38,28 +38,24 @@
               <li><a href="./definitions.html#macros">Macros</a></li>
             </ul>
           </li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Lists<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./lists.html">List</a></li>
-              <li><a href="./lists.html#set">Set</a></li>
-              <li><a href="./lists.html#tree">Tree</a></li>
-            </ul>
-          </li>
+					<li><a href="./lists.html">Lists</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
             <ul class="dropdown-menu">
 							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+							<li><a href="./list-structures.html#set">Set</a></li>
+              <li><a href="./list-structires.html#tree">Tree</a></li>
 							<li><a href="./list-structures.html#plist">Property List</a></li>
 							<li><a href="./list-structures.html#alist">Association List</a></li>
 							<li class="nav-header"><a href="./arrays.html">Array</a></li>
-							<li><a href="./arrays.html#arrays">Array</a></li>
-							<li><a href="./arrays.html#vectors">Vector</a></li>
-							<li><a href="./arrays.html#strings">String</a></li>
+							<li><a href="./arrays.html">Array</a></li>
+							<li><a href="./vectors.html">Vector</a></li>
 							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
 							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
 							<li><a href="./data-structures.html#structs">Structs</a></li>
 							<li><a href="./clos.html">Common Lisp Object System</a></li>
             </ul>
           </li>
+					<li><a href="./strings.html">Strings</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">Numbers</a></li>
@@ -71,6 +67,8 @@
           <li><a href="./control.html">Control</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
             <ul class="dropdown-menu">
+							<li><a href="./time.html">Time</a></li>
+							<li><a href="./output.html">Output</a></li>
               <li><a href="./regular-expressions.html">Regular Expressions</a></li>
             </ul>
           </li>
@@ -86,80 +84,32 @@
           <nav class="well" data-spy="affix">
 <ul class="nav nav-list">
   <li><a href="#arrays" class="nav-header">Arrays</a></li>
+  <li><a href="#create" class="nav-header">Create</a></li>
   <li><a href="#make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array">make-array</a></li>
   <li><a href="#adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array">adjust-array</a></li>
   <li><a href="#alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array">copy-array</a></li>
+  <li><a href="#select" class="nav-header">Select</a></li>
   <li><a href="#aref-array-rest-subscripts-element">aref</a></li>
-  <li><a href="#row-major-aref">row-major-aref</a></li>
-  <li><a href="#array-row-major-index">array-row-major-index</a></li>
-  <li><a href="#array-dimensions">array-dimensions</a></li>
-  <li><a href="#array-dimension">array-dimension</a></li>
-  <li><a href="#array-total-size">array-total-size</a></li>
-  <li><a href="#array-rank">array-rank</a></li>
-  <li><a href="#array-displacement">array-displacement</a></li>
+  <li><a href="#row-major-aref-array-index-element">row-major-aref</a></li>
+  <li><a href="#array-row-major-index-array-subscripts-index">array-row-major-index</a></li>
+  <li><a href="#array-dimensions-array-dimensions">array-dimensions</a></li>
+  <li><a href="#array-dimension-array-axis-number-dimension">array-dimension</a></li>
+  <li><a href="#array-total-size-array-size">array-total-size</a></li>
+  <li><a href="#array-rank-array-rank">array-rank</a></li>
+  <li><a href="#array-displacement-array-displaced-to-displaced-index-offset">array-displacement</a></li>
   <li><a href="#array-rank-limit">array-rank-limit</a></li>
   <li><a href="#array-dimension-limit">array-dimension-limit</a></li>
   <li><a href="#array-total-size-limit">array-total-size-limit</a></li>
-  <li><a href="#vectors" class="nav-header">Vectors</a></li>
-  <li><a href="#vector-rest-objects-vector">vector</a></li>
-  <li><a href="#svref-simple-vector-index-element">svref</a></li>
-  <li><a href="#vector-push-new-element-vector-index">vector-push</a></li>
-  <li><a href="#vector-push-extend-new-element-vector-extension-index">vector-push-extend</a></li>
-  <li><a href="#vector-pop">vector-pop</a></li>
-  <li><a href="#fill-pointer-vector-fill-pointer">fill-pointer</a></li>
-  <li><a href="#bit-vectors" class="nav-header">Bit-Vectors</a></li>
-  <li><a href="#bit-bit-array-rest-subscripts-bit">bit</a></li>
-  <li><a href="#bit-not-bit-arrray-opt-resulting-bit-array">bit-not</a></li>
-  <li><a href="#bit-eqv-bit-array1-bit-array2-opt-resulting-bit-array">bit-eqv</a></li>
-  <li><a href="#bit-and-bit-array1-bit-array2-opt-resulting-bit-array">bit-and</a></li>
-  <li><a href="#bit-andc1-bit-array1-bit-array2-opt-resulting-bit-array">bit-andc1</a></li>
-  <li><a href="#bit-andc2-bit-array1-bit-array2-opt-resulting-bit-array">bit-andc2</a></li>
-  <li><a href="#bit-nand-bit-array1-bit-array2-opt-resulting-bit-array">bit-nand</a></li>
-  <li><a href="#bit-ior-bit-array1-bit-array2-opt-resulting-bit-array">bit-ior</a></li>
-  <li><a href="#bit-orc1-bit-array1-bit-array2-opt-resulting-bit-array">bit-orc1</a></li>
-  <li><a href="#bit-orc2-bit-array1-bit-array2-opt-resulting-bit-array">bit-orc2</a></li>
-  <li><a href="#bit-xor-bit-array1-bit-array2-opt-resulting-bit-array">bit-xor</a></li>
-  <li><a href="#bit-nor-bit-array1-bit-array2-opt-resulting-bit-array">bit-nor</a></li>
-  <li><a href="#strings" class="nav-header">Strings</a></li>
-  <li><a href="#construction" class="nav-header">Construction</a></li>
-  <li><a href="#string-x-string">string</a></li>
-  <li><a href="#make-string-size-key-initial-element-element-type-string">make-string</a></li>
-  <li><a href="#parse-integer-str-key-start-end-radix-junk-allowed-int-idx">parse-integer</a></li>
-  <li><a href="#access" class="nav-header">Access</a></li>
-  <li><a href="#char-str-idx-character">char</a></li>
-  <li><a href="#manipulation" class="nav-header">Manipulation</a></li>
-  <li><a href="#string-trim-chars-str-new-str">string-trim</a></li>
-  <li><a href="#string-left-trim-chars-str-new-str">string-left-trim</a></li>
-  <li><a href="#string-right-trim-chars-str-new-str">string-right-trim</a></li>
-  <li><a href="#string-upcase-str-key-start-end-new-str">string-upcase</a></li>
-  <li><a href="#string-downcase-str-key-start-end-new-str">string-downcase</a></li>
-  <li><a href="#string-capitalize-str-key-start-end-new-str">string-capitalize</a></li>
-  <li><a href="#comparison" class="nav-header">Comparison</a></li>
-  <li><a href="#stringp-obj-boolean">stringp</a></li>
-  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-boolean">string=</a></li>
-  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx">string/=</a></li>
-  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-1">string<</a></li>
-  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-2">string></a></li>
-  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-3">string<=</a></li>
-  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-4">string>=</a></li>
-  <li><a href="#sequences" class="nav-header">Sequences</a></li>
-  <li><a href="#length-seq-n">length</a></li>
   <li><a href="#elt-seq-idx-element">elt</a></li>
-  <li><a href="#concatenate-result-type-rest-seqs-result-seq">concatenate</a></li>
-  <li><a href="#subseq-seq-start-optional-end-sub-seq">subseq</a></li>
-  <li><a href="#cl-utilitiessplit-sequence-delimiter-seq-key-count-remove-empty-subseqs-from-end-start-end-test-test-not-key-list-idx">split-sequence</a></li>
-  <li><a href="#cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element">extremum</a></li>
+  <li><a href="#alexandriarandom-elt">random-elt</a></li>
+  <li><a href="#length-seq-n">length</a></li>
   <li><a href="#find-item-seq-key-from-end-test-test-not-start-end-key-element">find</a></li>
   <li><a href="#position-item-seq-key-from-end-test-test-not-start-end-key-idx">position</a></li>
   <li><a href="#count-item-seq-key-from-end-start-end-key-test-test-not-n">count</a></li>
+  <li><a href="#cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element">extremum</a></li>
+  <li><a href="#subseq-seq-start-optional-end-sub-seq">subseq</a></li>
   <li><a href="#search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">search</a></li>
   <li><a href="#mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">mismatch</a></li>
-  <li><a href="#modify" class="nav-header">Modify</a></li>
-  <li><a href="#fill-seq-item-key-start-end-seq">fill</a></li>
-  <li><a href="#replace-seq1-seq2-key-start1-end1-start2-end2-seq1">replace</a></li>
-  <li><a href="#substitute-new-old-seq-key-from-end-test-test-not-start-end-count-key">substitute</a></li>
-  <li><a href="#remove-item-seq-key-from-end-test-test-not-start-end-count-key-result-seq">remove</a></li>
-  <li><a href="#remove-duplicates-seq-key-from-end-test-test-not-start-end-key">remove-duplicates</a></li>
 </ul>
           </nav>
         </aside>
@@ -172,172 +122,66 @@
 <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node157.html">CLtL2</a></li>
 <li><a href="http://www.gigamonkeys.com/book/collections.html">PCL</a></li>
 </ul>
+<h2 id="create">Create</h2>
 <h3 id="make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ar.htm">make-array</a> dims &amp;key type initial-element initial-contents adjustable fill-pointer displaced-to displaced-index-offset &rArr; new-array</h3>
 <pre><code>(make-array &#39;(2 3)) ;&rArr; #2A((0 0 0) (0 0 0))
 (make-array 5 :fill-pointer 0 :adjustable t :element-type &#39;character) ;&rArr; &quot;&quot;</code></pre>
 <h3 id="adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_adjust.htm">adjust-array</a> array new-dims &amp;key type initial-element initial-contents fill-pointer displaced-to displaced-index-offset &rArr; adjusted-array</h3>
 <h3 id="alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-copy_002darray">alexandria:copy-array</a> array &amp;key element-type fill-pointer adjustable &rArr; new-array</h3>
 <p>Returns an undisplaced copy of <em>array</em>, with same fill-pointer and adjustability as the original.</p>
+<h2 id="select">Select</h2>
 <h3 id="aref-array-rest-subscripts-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_aref.htm">aref</a> array &amp;rest subscripts &rArr; element</h3>
 <p>Access array elements. Related: <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_svref.htm">svref</a> —Access index of a simple vector.</p>
 <pre><code>(setf a (make-array &#39;(2 2) :initial-contents &#39;((1 2) (3 4))))
 (aref a 1 1) ;&rArr; 4
 (setf (aref a 0 1) 99) ; a &rArr; #2A((1 99) (3 4))</code></pre>
-<h3 id="row-major-aref"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm">row-major-aref</a></h3>
-<h3 id="array-row-major-index"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_row.htm">array-row-major-index</a></h3>
-<h3 id="array-dimensions"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm">array-dimensions</a></h3>
-<h3 id="array-dimension"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm">array-dimension</a></h3>
-<h3 id="array-total-size"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm">array-total-size</a></h3>
-<h3 id="array-rank"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_ran.htm">array-rank</a></h3>
-<h3 id="array-displacement"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dis.htm">array-displacement</a></h3>
+<h3 id="row-major-aref-array-index-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_row_ma.htm">row-major-aref</a> array index &rArr; element</h3>
+<p>Considers array as a vector by viewing its elements in row-major order, and returns the element of that vector which is referred to by the given index.</p>
+<h3 id="array-row-major-index-array-subscripts-index"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_row.htm">array-row-major-index</a> array subscripts* &rArr; index</h3>
+<p>Computes the position according to the row-major ordering of array for the element that is specified by subscripts, and returns the offset of the element in the computed position from the beginning of array.</p>
+<h3 id="array-dimensions-array-dimensions"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_d_1.htm">array-dimensions</a> array &rArr; dimensions</h3>
+<p>Returns a list of the dimensions of array. (If array is a vector with a fill pointer, that fill pointer is ignored.)</p>
+<pre><code>(array-dimensions (make-array 4))                 ;&rArr; (4)
+(array-dimensions (make-array &#39;(2 3)))            ;&rArr; (2 3)
+(array-dimensions (make-array 4 :fill-pointer 2)) ;&rArr; (4)</code></pre>
+<h3 id="array-dimension-array-axis-number-dimension"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dim.htm">array-dimension</a> array axis-number &rArr; dimension</h3>
+<p>Returns the axis-number dimension[1] of array. (Any fill pointer is ignored.)</p>
+<pre><code>(array-dimension (make-array 4) 0)      ;&rArr; 4
+(array-dimension (make-array &#39;(2 3)) 1) ;&rArr; 3</code></pre>
+<h3 id="array-total-size-array-size"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_tot.htm">array-total-size</a> array &rArr; size</h3>
+<p>Returns the array total size of the array.</p>
+<pre><code>(array-total-size (make-array 4))                 ;&rArr; 4
+(array-total-size (make-array 4 :fill-pointer 2)) ;&rArr; 4
+(array-total-size (make-array 0))                 ;&rArr; 0
+(array-total-size (make-array &#39;(4 2)))            ;&rArr; 8
+(array-total-size (make-array &#39;(4 0)))            ;&rArr; 0
+(array-total-size (make-array &#39;()))               ;&rArr; 1</code></pre>
+<h3 id="array-rank-array-rank"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_ran.htm">array-rank</a> array &rArr; rank</h3>
+<p>Returns the number of dimensions of array.</p>
+<pre><code>(array-rank (make-array &#39;()))    ;&rArr; 0
+(array-rank (make-array 4))      ;&rArr; 1
+(array-rank (make-array &#39;(4)))   ;&rArr; 1
+(array-rank (make-array &#39;(2 3))) ;&rArr; 2</code></pre>
+<h3 id="array-displacement-array-displaced-to-displaced-index-offset"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ar_dis.htm">array-displacement</a> array &rArr; displaced-to, displaced-index-offset</h3>
+<p>If the array is a displaced array, returns the values of the :displaced-to and :displaced-index-offset options for the array (see the functions make-array and adjust-array). If the array is not a displaced array, nil and 0 are returned.</p>
 <h3 id="array-rank-limit"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_ar_ran.htm">array-rank-limit</a></h3>
+<p>Constant.</p>
 <h3 id="array-dimension-limit"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_ar_dim.htm">array-dimension-limit</a></h3>
+<p>Constant.</p>
 <h3 id="array-total-size-limit"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_ar_tot.htm">array-total-size-limit</a></h3>
-<h2 id="vectors">Vectors</h2>
-<p>A vector is a basic integer-indexed collection, a one-dimensional <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm">array</a>. Vectors and lists are collectively considered to be <em>sequences</em>.</p>
-<ul>
-<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node30.html">CLtL2: Vectors</a></li>
-<li><a href="http://www.gigamonkeys.com/book/collections.html#vectors">PCL: Vectors</a></li>
-</ul>
-<h3 id="vector-rest-objects-vector"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm">vector</a> &amp;rest objects* &rArr; vector</h3>
-<h3 id="svref-simple-vector-index-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_svref.htm">svref</a> simple-vector index &rArr; element</h3>
-<p>Accesses the element of <em>simple-vector</em> specified by <em>index</em>.</p>
-<h3 id="vector-push-new-element-vector-index"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vec_ps.htm">vector-push</a> new-element vector &rArr; index</h3>
-<pre><code>(setf v (make-array 2 :fill-pointer 0)) ;&rArr; #()
-(vector-push &#39;a v)                      ;&rArr; 0   [v &rArr; #(A)]
-(vector-push &#39;b v)                      ;&rArr; 1   [v &rArr; #(A B)]
-(vector-push &#39;c v)                      ;&rArr; NIL [v &rArr; #(A B)]</code></pre>
-<h3 id="vector-push-extend-new-element-vector-extension-index"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vec_ps.htm">vector-push-extend</a> new-element vector [extension] &rArr; index</h3>
-<pre><code>(setf v (make-array 2 :fill-pointer 0 :adjustable t) ;&rArr; #()
-(vector-push &#39;a v)                      ;&rArr; 0   [v &rArr; #(A)]
-(vector-push &#39;b v)                      ;&rArr; 1   [v &rArr; #(A B)]
-(vector-push-extend &#39;c v)               ;&rArr; 2   [v &rArr; #(A B C)]</code></pre>
-<h3 id="vector-pop"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vec_po.htm">vector-pop</a></h3>
-<p>Decreases the fill pointer of vector by one, and retrieves the element of vector that is designated by the new fill pointer.</p>
-<h3 id="fill-pointer-vector-fill-pointer"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fill_p.htm">fill-pointer</a> vector &rArr; fill-pointer</h3>
-<p>Accesses the fill pointer of <em>vector</em>.</p>
-<pre><code>(setf arr (make-array 8 :fill-pointer 4)) ;&rArr; #(NIL NIL NIL NIL)
-(fill-pointer arr)                        ;&rArr; 4
-(vector-push &#39;a arr)
-(fill-pointer arr)                        ;&rArr; 5</code></pre>
-<h2 id="bit-vectors">Bit-Vectors</h2>
-<ul>
-<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node161.html">CLtL2: Bit-Vectors</a></li>
-</ul>
-<h3 id="bit-bit-array-rest-subscripts-bit"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_bit.htm">bit</a> bit-array &amp;rest subscripts &rArr; bit</h3>
-<p>Access the bit-array element specified by <em>subscripts</em>. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_sb.htm">sbit</a> is similar but takes a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_bt.htm">simple-bit-vector</a>.</p>
-<pre><code>(setf b #*00100)
-(bit b 2)          ;&rArr; 1
-(setf (bit b 2) 0) ;&rArr; 0 [b &rArr; #\*00000]</code></pre>
-<h3 id="bit-not-bit-arrray-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-not</a> bit-arrray [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-eqv-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-eqv</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-and-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-and</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-andc1-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-andc1</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-andc2-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-andc2</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-nand-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-nand</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-ior-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-ior</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-orc1-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-orc1</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-orc2-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-orc2</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-xor-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-xor</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h3 id="bit-nor-bit-array1-bit-array2-opt-resulting-bit-array"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_bt_and.htm">bit-nor</a> bit-array1 bit-array2 [opt] &rArr; resulting-bit-array</h3>
-<h1 id="strings">Strings</h1>
-<p>Inherits: <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_vector.htm">vector</a> &rArr; <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm">array</a> &rArr; <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_seq.htm">sequence</a> &rArr; <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a></p>
-<p>A string is a specialized vector (one-dimensional array) whose elements are characters.</p>
-<ul>
-<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node164.html">CLtL2</a></li>
-<li><a href="http://www.gigamonkeys.com/book/numbers-characters-and-strings.html">PCL: Ch 10. Numbers, Characters, and Strings</a></li>
-<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/c_string.htm">HyperSpec: Strings Dictionary</a></li>
-</ul>
-<h2 id="construction">Construction</h2>
-<h3 id="string-x-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a> x &rArr; string</h3>
-<p>Convert <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_symbol.htm">symbol</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_kwd.htm">keyword</a>, or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_ch.htm">character</a> to a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a>.</p>
-<pre><code>(string :hello) ;&rArr; &quot;hello&quot;</code></pre>
-<h3 id="make-string-size-key-initial-element-element-type-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_stg.htm">make-string</a> size &amp;key initial-element element-type &rArr; string</h3>
-<p>Return a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_smp_st.htm">simple-string</a> of length <em>size</em>.</p>
-<pre><code>(make-string 10 :initial-element #\5) ;&rArr; &quot;5555555555&quot;</code></pre>
-<h3 id="parse-integer-str-key-start-end-radix-junk-allowed-int-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_parse_.htm">parse-integer</a> str &amp;key start end radix junk-allowed &rArr; int, idx</h3>
-<p>Parses an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a> in the specified <em>:radix</em>.</p>
-<pre><code>(parse-integer &quot;24h&quot; :junk-allowed t) ;&rArr; 24, 2</code></pre>
-<h2 id="access">Access</h2>
-<h3 id="char-str-idx-character"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_char_.htm">char</a> str idx &rArr; character</h3>
-<p>Specialized element accessor for type <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a>. Is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_setf.htm">setf</a>able.</p>
-<pre><code>(char &quot;hello&quot; 1) ;&rArr; #\e
-(elt &quot;hello&quot; 1)  ;&rArr; #\e</code></pre>
-<h2 id="manipulation">Manipulation</h2>
-<h3 id="string-trim-chars-str-new-str"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_tr.htm">string-trim</a> chars str &rArr; new-str</h3>
-<p>Returns a substring of <em>str</em>, with all characters in <em>chars</em> stripped off the beginning and end.</p>
-<pre><code>(string-trim &quot;abc&quot; &quot;abcaakaaakabcaaa&quot;) ;&rArr; &quot;kaaak&quot;
-(string-trim &#39;(#\Space #\Tab #\Newline) &quot; garbanzo beans &quot;) ;&rArr; &quot;garbanzo beans&quot;
-(string-trim &quot; (*)&quot; &quot; ( *three (silly) words* ) &quot;) ;&rArr; &quot;three (silly) words&quot;</code></pre>
-<h3 id="string-left-trim-chars-str-new-str"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_tr.htm">string-left-trim</a> chars str &rArr; new-str</h3>
-<pre><code>(string-left-trim &quot;abc&quot; &quot;labcabcabc&quot;) ;&rArr; &quot;labcabcabc&quot;
-(string-left-trim &quot; (*)&quot; &quot; ( *three (silly) words* ) &quot;) ;&rArr; &quot;three (silly) words* ) &quot;</code></pre>
-<h3 id="string-right-trim-chars-str-new-str"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_tr.htm">string-right-trim</a> chars str &rArr; new-str</h3>
-<pre><code>(string-right-trim &quot; (*)&quot; &quot; ( *three (silly) words* ) &quot;) ;&rArr; &quot; ( *three (silly) words&quot;</code></pre>
-<h3 id="string-upcase-str-key-start-end-new-str"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm">string-upcase</a> str &amp;key start end &rArr; new-str</h3>
-<p>Also <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm">nstring-upcase</a></p>
-<h3 id="string-downcase-str-key-start-end-new-str"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm">string-downcase</a> str &amp;key start end &rArr; new-str</h3>
-<p>Also <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm">nstring-downcase</a></p>
-<h3 id="string-capitalize-str-key-start-end-new-str"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm">string-capitalize</a> str &amp;key start end &rArr; new-str</h3>
-<p>Also <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stg_up.htm">nstring-capitalize</a></p>
-<h2 id="comparison">Comparison</h2>
-<h3 id="stringp-obj-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgp.htm">stringp</a> obj &rArr; boolean</h3>
-<p>Test if an object is a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a>.</p>
-<h3 id="string-str1-str2-key-start1-end1-start2-end2-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; boolean</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if the given strings are of the same length and contain the same characters, otherwise return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-equal</a>.</p>
-<pre><code>(string= &quot;foo&quot; &quot;foo&quot;) ;&rArr; T
-(string= &quot;foo&quot; &quot;Foo&quot;) ;&rArr; NIL
-(string= &quot;abcd&quot; &quot;01234abcd9012&quot; :start2 5 :end2 9) ;&rArr; T
-(string-equal &quot;foo&quot; &quot;Foo&quot;) ;&rArr; T</code></pre>
-<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string/=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if the given strings are different, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-not-equal</a>.</p>
-<pre><code>(string-not-equal &quot;AAAA&quot; &quot;aaaA&quot;) ;&rArr; NIL</code></pre>
-<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&lt;</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is less than <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-lessp</a>.</p>
-<pre><code>(string&lt; &quot;aaaa&quot; &quot;aaab&quot;) ;&rArr; 3
-(string-lessp &quot;012AAAA789&quot; &quot;01aaab6&quot; :start1 3 :end1 7 :start2 2 :end2 6) ;&rArr; 6</code></pre>
-<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-2"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&gt;</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is greater than <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-greaterp</a>.</p>
-<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-3"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&lt;=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is less than or equal to <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-not-greaterp</a>.</p>
-<pre><code>(string&gt;= &quot;aaaaa&quot; &quot;aaaa&quot;) ;&rArr; 4
-(string-not-greaterp &quot;Abcde&quot; &quot;abcdE&quot;) ;&rArr; 5</code></pre>
-<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-4"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&gt;=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
-<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is greater than or equal to <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-not-lessp</a>.</p>
-<h2 id="sequences">Sequences</h2>
-<p>Slicing and dicing. The type sequence encompasses both lists and vectors (one-dimensional arrays).</p>
-<ul>
-<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/c_sequen.htm">HyperSpec: Sequences Dictionary</a></li>
-<li><a href="http://www.gigamonkeys.com/book/collections.html">PCL: Ch 11. Collections</a></li>
-<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node141.html">CLtL2: Ch 14. Sequences</a></li>
-</ul>
-<h3 id="length-seq-n"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm">length</a> seq &rArr; n</h3>
-<pre><code>(length &#39;(a b c)) ;&rArr; 3
-(length &quot;hello&quot;) ;&rArr; 5</code></pre>
+<p>Constant variable. The upper exclusive bound on the array total size of an array.</p>
 <h3 id="elt-seq-idx-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_elt.htm">elt</a> seq idx &rArr; element</h3>
-<p>Use <code>alexandria:random-elt</code> to return a random element. Related: <code>nth</code>, <code>nthcdr</code>, <code>car</code>, <code>cdr</code>, <code>first</code> … <code>tenth</code></p>
+<p>Related: <code>nth</code>, <code>nthcdr</code>, <code>car</code>, <code>cdr</code>, <code>first</code> … <code>tenth</code></p>
 <pre><code>(setf seq &#39;(a b c))
 (elt seq 1)             ;&rArr; B
 (setf (elt seq 1) &quot;hi&quot;) ; seq &rArr; (A &quot;hi&quot; C)</code></pre>
-<h3 id="concatenate-result-type-rest-seqs-result-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_concat.htm">concatenate</a> result-type &amp;rest seqs… &rArr; result-seq</h3>
-<pre><code>(concatenate &#39;list &#39;(a b) &#39;(c d)) ;&rArr; (A B C D)
-(concatenate &#39;string &quot;hello&quot; &quot;world&quot;) ;&rArr; &quot;helloworld&quot;</code></pre>
-<h3 id="subseq-seq-start-optional-end-sub-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_subseq.htm">subseq</a> seq start &amp;optional end &rArr; sub-seq</h3>
-<p>Returns the subsequence of <em>seq</em> specified by <em>start</em> and <em>end</em>.</p>
-<pre><code>(setf str &quot;hello&quot;)
-(subseq str 2 4) ;&rArr; &quot;ll&quot;
-(setf (subseq str 2 4) &quot;ad&quot;) ; str &rArr; &quot;heado&quot;</code></pre>
-<h3 id="cl-utilitiessplit-sequence-delimiter-seq-key-count-remove-empty-subseqs-from-end-start-end-test-test-not-key-list-idx"><a href="http://common-lisp.net/project/cl-utilities/doc/split-sequence.html">cl-utilities:split-sequence</a> delimiter seq &amp;key count remove-empty-subseqs from-end start end test test-not key &rArr; list, idx</h3>
-<p>Splits sequence into a <em>list</em> of subsequences delimited by objects satisfying the test. Also returns the lenbth of the sequence <em>idx</em>. Functional variants are <code>split-sequence-if</code> and <code>split-sequence-if-not</code>. <a href="http://common-lisp.net/project/cl-utilities/doc/split-sequence.html">ref</a></p>
-<pre><code>(split-sequence #\Space &quot;hello world&quot;)           ;&rArr; (&quot;hello&quot; &quot;world&quot;), 11
-(split-sequence-if #&#39;evenp &#39;(1 1 2 1 3 4 1 3 5)) ;&rArr; ((1 1) (1 3) (1 3 5)), 9</code></pre>
-<h3 id="cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element"><a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">cl-utilities:extremum</a> seq fn &amp;key key (start 0) end &rArr; smallest-element</h3>
-<p>Returns first element of <em>sequence</em> if it were ordered by <code>sort</code> using the predicate <em>fn</em>. <code>extrema</code> is similar but returns a list of values since there may be more than one extremum determined by the predicate. <code>n-most-extreme</code> returns a list of <em>n</em> values of a sorted sequence. <a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">ref</a></p>
-<pre><code>(extremum &#39;(1 2 9 7 3 2) #&#39;&gt;)         ;&rArr; 9
-(extrema &#39;(1 2 9 7 3 2) #&#39;&gt;)          ;&rArr; (9)
-(n-most-extreme 3 &#39;(1 2 9 7 3 2) #&#39;&gt;) ;&rArr; (9 7 3)</code></pre>
+<h3 id="alexandriarandom-elt"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-random_002delt">alexandria:random-elt</a></h3>
+<p>Return a random element from a sequence.</p>
+<h3 id="length-seq-n"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_length.htm">length</a> seq &rArr; n</h3>
+<pre><code>(length &#39;(a b c)) ;&rArr; 3
+(length &quot;hello&quot;)  ;&rArr; 5</code></pre>
 <h3 id="find-item-seq-key-from-end-test-test-not-start-end-key-element"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm">find</a> item seq &amp;key from-end test test-not start end key &rArr; element</h3>
-<p>If the sequence contains an element satisfying the test, then the leftmost such element is returned; otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> is returned. Functional variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm">find-if</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm">find-if-not</a>.</p>
+<p>If the sequence <em>seq</em> contains an element satisfying <em>test</em>, then the leftmost such element is returned; otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> is returned. Functional variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm">find-if</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_.htm">find-if-not</a>.</p>
 <pre><code>(find 3 &#39;(1 2 3 4 5))                            ;&rArr; 3
 (find-if #&#39;oddp &#39;(1 2 3 4 5) :end 3 :from-end t) ;&rArr; 3</code></pre>
 <h3 id="position-item-seq-key-from-end-test-test-not-start-end-key-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pos_p.htm">position</a> item seq &amp;key from-end test test-not start end key &rArr; idx</h3>
@@ -348,32 +192,23 @@
 <p>The number of elements in the specified subsequence of <em>seq</em>. Functional variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_countc.htm">count-if</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_countc.htm">count-if-not</a>.</p>
 <pre><code>(count &#39;a &#39;(a b c a))      ;&rArr; 2
 (count-if #&#39;oddp &#39;(1 2 3)) ;&rArr; 2</code></pre>
+<h3 id="cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element"><a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">cl-utilities:extremum</a> seq fn &amp;key key (start 0) end &rArr; smallest-element</h3>
+<p>Returns first element of <em>sequence</em> if it were ordered by <code>sort</code> using the predicate <em>fn</em>. <code>extrema</code> is similar but returns a list of values since there may be more than one extremum determined by the predicate. <code>n-most-extreme</code> returns a list of <em>n</em> values of a sorted sequence. <a href="http://common-lisp.net/project/cl-utilities/doc/extremum.html">ref</a></p>
+<pre><code>(extremum &#39;(1 2 9 7 3 2) #&#39;&gt;)         ;&rArr; 9
+(extrema &#39;(1 2 9 7 3 2) #&#39;&gt;)          ;&rArr; (9)
+(n-most-extreme 3 &#39;(1 2 9 7 3 2) #&#39;&gt;) ;&rArr; (9 7 3)</code></pre>
+<h3 id="subseq-seq-start-optional-end-sub-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_subseq.htm">subseq</a> seq start &amp;optional end &rArr; sub-seq</h3>
+<p>Returns the sub-sequence of <em>seq</em> specified by <em>start</em> and <em>end</em>.</p>
+<pre><code>(setf str &quot;hello&quot;)
+(subseq str 2 4) ;&rArr; &quot;ll&quot;
+(setf (subseq str 2 4) &quot;ad&quot;) ; str &rArr; &quot;heado&quot;</code></pre>
 <h3 id="search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_search.htm">search</a> seq1 seq2 &amp;key from-end test test-not key start1 start2 end1 end2 &rArr; idx</h3>
-<p>Searches sequence <em>seq2</em> for a subsequence that matches <em>seq1</em>. Returns its index position.</p>
+<p>Searches sequence <em>seq2</em> for a sub-sequence that matches <em>seq1</em>. Returns its index position.</p>
 <pre><code>(search &#39;(c d) &#39;(a b c d)) ;&rArr; 2
 (search &quot;bar&quot; &quot;foobarbaz&quot;) ;&rArr; 3</code></pre>
 <h3 id="mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mismat.htm">mismatch</a> seq1 seq2 &amp;key from-end test test-not key start1 start2 end1 end2 &rArr; idx</h3>
 <p>Return the index position where two sequences diverge.</p>
 <pre><code>(mismatch &quot;foobarbaz&quot; &quot;foom&quot;) ;&rArr; 3</code></pre>
-<h2 id="modify">Modify</h2>
-<h3 id="fill-seq-item-key-start-end-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fill.htm">fill</a> seq item &amp;key start end &rArr; seq</h3>
-<p>Destructively replaces the elements of <em>seq</em> bounded by <em>:start</em> and <em>:end</em> with <em>item</em>.</p>
-<pre><code>(fill &#39;(a b c d) &#39;x :start 1 :end 3) ;&rArr; (A X X D)</code></pre>
-<h3 id="replace-seq1-seq2-key-start1-end1-start2-end2-seq1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_replac.htm">replace</a> seq1 seq2 &amp;key start1 end1 start2 end2 &rArr; seq1</h3>
-<p>Destructively replaces the elements of <em>se1</em> bounded by <em>:start1</em> and <em>:end1</em> with the elements of <em>seq2</em> bounded by <em>:start2</em> and <em>:end2</em>.</p>
-<pre><code>(replace &quot;abcde&quot; &quot;98765&quot; :start1 1 :end1 3 :start2 3) ;&rArr; &quot;a65de&quot;</code></pre>
-<h3 id="substitute-new-old-seq-key-from-end-test-test-not-start-end-count-key"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">substitute</a> new old seq &amp;key from-end test test-not start end count key</h3>
-<p>Functional variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">substitute-if</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">substitute-if-not</a>. Destructive variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">nsubstitute</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">nsubstitute-if</a>, and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">nsubstitute-if-not</a>. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_substc.htm">subst</a> performs substitutions throughout a <em>tree</em>.</p>
-<pre><code>(substitute 10 1 &#39;(1 2 1 3 1 4))      ;&rArr; (10 2 10 3 10 4)
-(substitute-if 0 #&#39;oddp &#39;(1 2 3 4 5)) ;&rArr; (0 2 0 4 0)</code></pre>
-<h3 id="remove-item-seq-key-from-end-test-test-not-start-end-count-key-result-seq"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">remove</a> item seq &amp;key from-end test test-not start end count key &rArr; result-seq</h3>
-<p>Functional variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">remove-if</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">remove-if-not</a>. The destructive variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">delete</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">delete-if</a>, and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_rm.htm">delete-if-not</a>. To remove in place, use <a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-removef">alexandria:removef</a> or <a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-deletef">alexandria:deletef</a>.</p>
-<pre><code>(remove 4 &#39;(1 2 4 1 3 4 5))           ;&rArr; (1 2 1 3 5)
-(remove-if #&#39;oddp &#39;(1 2 4 1 3 4 5))   ;&rArr; (2 4 4)
-(remove-if-not #&#39;oddp &#39;(1 2 1 3 4 5)) ;&rArr; (1 1 3 5)</code></pre>
-<h3 id="remove-duplicates-seq-key-from-end-test-test-not-start-end-key"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_dup.htm">remove-duplicates</a> seq &amp;key from-end test test-not start end key</h3>
-<p>Destructive variant is <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rm_dup.htm">delete-duplicates</a>.</p>
-<pre><code>(remove-duplicates &#39;(1 2 1 2 3 1 2 3 4)) ;&rArr; (1 2 3 4)</code></pre>
         </article>
       </div>
     </div>
