@@ -1,4 +1,4 @@
-### [append] &rest lists... => list
+### [append] lists\* => list
 
 Return a new list that is the concatenation of the
 arguments. The destructive version is [nconc]. To append in
@@ -8,10 +8,14 @@ place, use [alexandria:appendf].
 (append '(a b) '() '(c d)) ;=> (A B C D)
 ~~~
 
-### [revappend]
+### [revappend] list tail => result-list
 
-Also [nreconc]
+Constructs a copy of *list* with the elements in reverse
+order, then append *tail*. The destructive version is [nreconc].
 
+~~~
+(revappend '(1 2 3) '(a b c)) ;=> (3 2 1 A B C)
+~~~
 
 ### [push] item list => new-place-value
 

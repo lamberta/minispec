@@ -1,13 +1,5 @@
-### [length] seq => n
-
-~~~
-(length '(a b c)) ;=> 3
-(length "hello") ;=> 5
-~~~
-
 ### [elt] seq idx => element
 
-Use `alexandria:random-elt` to return a random element.
 Related: `nth`, `nthcdr`, `car`, `cdr`, `first` ... `tenth`
 
 ~~~
@@ -16,33 +8,20 @@ Related: `nth`, `nthcdr`, `car`, `cdr`, `first` ... `tenth`
 (setf (elt seq 1) "hi") ; seq => (A "hi" C)
 ~~~
 
-### [subseq] seq start &optional end => sub-seq
+### [alexandria:random-elt]
 
-Returns the subsequence of *seq* specified by *start* and *end*.
+Return a random element from a sequence.
 
-~~~
-(setf str "hello")
-(subseq str 2 4) ;=> "ll"
-(setf (subseq str 2 4) "ad") ; str => "heado"
-~~~
-
-### [cl-utilities:extremum] seq fn &key key (start 0) end => smallest-element
-
-Returns first element of *sequence* if it were ordered by
-`sort` using the predicate *fn*. `extrema` is similar but
-returns a list of values since there may be more than one
-extremum determined by the predicate. `n-most-extreme`
-returns a list of *n* values of a sorted sequence. [ref](http://common-lisp.net/project/cl-utilities/doc/extremum.html)
+### [length] seq => n
 
 ~~~
-(extremum '(1 2 9 7 3 2) #'>)         ;=> 9
-(extrema '(1 2 9 7 3 2) #'>)          ;=> (9)
-(n-most-extreme 3 '(1 2 9 7 3 2) #'>) ;=> (9 7 3)
+(length '(a b c)) ;=> 3
+(length "hello")  ;=> 5
 ~~~
 
 ### [find] item seq &key from-end test test-not start end key => element
 
-If the sequence contains an element satisfying the test,
+If the sequence *seq* contains an element satisfying *test*,
 then the leftmost such element is returned; otherwise [nil]
 is returned. Functional variants are [find-if] and [find-if-not].
 
@@ -71,9 +50,33 @@ The number of elements in the specified subsequence of
 (count-if #'oddp '(1 2 3)) ;=> 2
 ~~~
 
+### [cl-utilities:extremum] seq fn &key key (start 0) end => smallest-element
+
+Returns first element of *sequence* if it were ordered by
+`sort` using the predicate *fn*. `extrema` is similar but
+returns a list of values since there may be more than one
+extremum determined by the predicate. `n-most-extreme`
+returns a list of *n* values of a sorted sequence. [ref](http://common-lisp.net/project/cl-utilities/doc/extremum.html)
+
+~~~
+(extremum '(1 2 9 7 3 2) #'>)         ;=> 9
+(extrema '(1 2 9 7 3 2) #'>)          ;=> (9)
+(n-most-extreme 3 '(1 2 9 7 3 2) #'>) ;=> (9 7 3)
+~~~
+
+### [subseq] seq start &optional end => sub-seq
+
+Returns the sub-sequence of *seq* specified by *start* and *end*.
+
+~~~
+(setf str "hello")
+(subseq str 2 4) ;=> "ll"
+(setf (subseq str 2 4) "ad") ; str => "heado"
+~~~
+
 ### [search] seq1 seq2 &key from-end test test-not key start1 start2 end1 end2 => idx
 
-Searches sequence *seq2* for a subsequence that matches
+Searches sequence *seq2* for a sub-sequence that matches
 *seq1*. Returns its index position.
 
 ~~~

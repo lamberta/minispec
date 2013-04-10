@@ -1,5 +1,3 @@
-### [list-length]
-
 ### [first]
 
 Also [car]
@@ -57,4 +55,14 @@ tail of *list*, then return a copy of the entire *list*.
 (setf list1 '(a b c d))
 (setf list2 (last list1 2)) ;=> (C D)
 (ldiff list1 list2)         ;=> (A B)
+~~~
+
+### [list-length] list => length
+
+Returns the length of *list*. If *list* is a circular list,
+return [nil].
+
+~~~
+(list-length '(a b c d))   ;=> 4
+(list-length '(a (b c) d)) ;=> 3
 ~~~
