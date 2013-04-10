@@ -1,5 +1,3 @@
-## Predicates
-
 ### [arrayp]
 
 ### [vectorp]
