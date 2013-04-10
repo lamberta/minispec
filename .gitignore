@@ -1,2 +1,7 @@
-html/
 tmp/
+html/
+include/
+*.html
+!build/
+!sections/
+!pages/
