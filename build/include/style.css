@@ -109,7 +109,7 @@ article h1, article h2 {
 
 /* function title
  */
-article h3 {
+article h3, article h4 {
 	font-size: 1.2em;
 	color: HEADER;
 }

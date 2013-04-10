@@ -4,40 +4,48 @@
 
 ## Character Streams
 
-### [write]
+### [write] object \[&key\*\] => object
 
-### [prin1] object \[output-stream\]
+### [prin1] object \[output-stream\] => object
 
-### [print] object \[output-stream\]
+produces output suitable for input to read.
 
-### [pprint] object \[output-stream\]
+### [print] object \[output-stream\] => object
 
-### [princ] object \[output-stream\]
+like prin1 except that the printed representation of object is preceded by a newline and followed by a space.
 
-### [write-to-string] object &key :escape :radix :base :circle :pretty :level :length :case :gensym :array
+### [pprint] object \[output-stream\] => object
 
-### [prin1-to-string] object
+just like print except that the trailing space is omitted and object is printed with the *print-pretty* flag non-nil to produce pretty output.
 
-### [princ-to-string] object
+### [princ] object \[output-stream\] => object
 
-### [write-char] character \[output-stream\]
+is just like prin1 except that the output has no escape
+characters. The general rule is that output from princ is intended to look good to people, while output from prin1 is intended to be acceptable to read.
 
-### [write-string] string \[output-stream\] &key :start :end
+### [write-to-string] object \[&key\*\] => object
 
-### [write-line] string \[output-stream\] &key :start :end
+### [prin1-to-string] object => object
 
-### [terpri] \[output-stream\]
+### [princ-to-string] object => object
 
-### [fresh-line] \[output-stream\]
+### [write-char] character \[output-stream\] => character
 
-### [finish-output] \[output-stream\]
+### [write-string] string \[output-stream\] &key :start :end => string
 
-### [force-output] \[output-stream\]
+### [write-line] string \[output-stream\] &key :start :end => string
 
-### [clear-output] \[output-stream\]
+### [terpri] \[output-stream\] => nil
 
-### [print-unreadable-object] \(object stream \[\[ :type type | :identity id \]\]\) \{declaration\}\* \{form\}\*
+### [fresh-line] \[output-stream\] => boolean
 
+### [finish-output] \[output-stream\] => nil
+
+### [force-output] \[output-stream\] => nil
+
+### [clear-output] \[output-stream\] => nil
+
+### [print-unreadable-object] \(object stream &key type identity\) form\* => nil
 
 ### [\*print-readably\*]
 
