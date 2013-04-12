@@ -2,6 +2,6 @@ tmp/
 html/
 include/
 *.html
-!build/
-!sections/
-!pages/
+!build/*
+!sections/*
+!pages/*

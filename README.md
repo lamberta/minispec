@@ -1,8 +1,9 @@
-# Common Lisp TurboSpec
+# The Common Lisp MiniSpec
 
-This is a *Work In Progress*; don't expect much, yet.
+This is a *Work in Progress* that still requires much
+filling-out. Contributing is easy and would be appreciated.
 
-The *TurboSpec* started out as a cheat-sheet and then evolved
+The *MiniSpec* started out as a cheat-sheet that evolved
 into something more. The project's goal is to help Common
 Lisp programmers quickly find what they need. To that end,
 its focus is on navigation and usability, using
@@ -10,16 +11,15 @@ example-driven documentation paired with concise
 descriptions and readily available links to more exhaustive
 references.
 
-## Structure
+## Project Structure
 
-* `sections` ---Groups of functions and symbols documented
-  in [Markdown](http://daringfireball.net/projects/markdown/)
-  These files should be split up so that each symbol is listed
-  in only one section---and documented once.
-* `pages` ---A documentation page navigable from the
-  website. A page may contain *sections*, and a section may
-  appear in multiple pages.
-* `build` ---Contains build scripts, HTML templates, and
+* `sections` ---Collections of symbol defintions documented
+  in [Markdown](http://daringfireball.net/projects/markdown/).
+  These files are split up so that each definition is only
+  listed once (hopefully).
+* `pages` ---Pages navigable from the website. These can be
+  built out of *sections* which can appear in multiple pages.
+* `build` ---Build scripts, HTML templates, and
   reference links used to generate the documentation.
 * `html` ---The output directory of the generated documentation.
 

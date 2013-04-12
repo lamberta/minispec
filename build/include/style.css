@@ -9,6 +9,7 @@ m4_define(`SIDEBAR_LINK_HOVER', `#530505')
 m4_define(`SIDEBAR_LINK_BG_ACTIVE', `#820000')
 m4_define(`SIDEBAR_LINK_HEADER', `#8A887D')
 m4_define(`WELL_BG', `whiteSmoke')
+m4_define(`TOP_OFFSET', `40px')
 m4_define(`TRANSITION', `0.5s ease')
 
 body {
@@ -92,8 +93,12 @@ aside nav .nav-header {
 
 /* main
  */
+div.main {
+	margin: TOP_OFFSET 0 0 4px !important;
+}
+
 article {
-	margin: 40px 0 0 0 !important;
+	margin: TOP_OFFSET 0 0 0 !important;
 }
 
 article h1:first-child {
