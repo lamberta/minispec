@@ -40,6 +40,13 @@ To re-generate all of the supporting reference links before building:
 $ make all
 ~~~
 
+## Frontend Dependencies
+
+* [jQuery](http://jquery.com/)
+* [Bootstrap](http://twitter.github.io/bootstrap/)
+* [Highlight-Lisp](https://github.com/orthecreedence/highlight-lisp)
+* [Typeahead.js](https://github.com/twitter/typeahead.js)
+
 ## Style Guide
 
     # Page Level Heading
