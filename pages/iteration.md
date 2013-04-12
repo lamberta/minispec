@@ -1,6 +1,8 @@
-# Iteration
+## Do Forms
 
 m4_include(../sections/do.md)
+
+## Map/Reduce/Filter
 
 m4_include(../sections/list/iteration.md)
 
@@ -8,9 +10,9 @@ m4_include(../sections/sequence/iteration.md)
 
 m4_include(../sections/plist-iteration.md)
 
-m4_include(../sections/hashtable-iteration.md)
+## Hash-Tables
 
-m4_include(../sections/loop.md)
+m4_include(../sections/hashtable-iteration.md)
 
 ## Recursion
 

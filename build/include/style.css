@@ -109,12 +109,17 @@ article h1, article h2 {
 
 /* function title
  */
-article h3, article h4 {
+article h3 {
 	font-size: 1.2em;
 	color: HEADER;
 }
 
-article h3 a, article h3 a:visited {
+article h4 {
+	font-size: 1em;
+	color: HEADER;
+}
+
+article h3 a, article h3 a:visited, article h4 a, article h4 a:visited {
 	font-weight: bold;
 }
 

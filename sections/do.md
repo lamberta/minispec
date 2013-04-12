@@ -1,5 +1,3 @@
-## do
-
 ### [do] ((var \[start \[step\]\])\*) (stop result\*) form\* => result\*
 
 Iterate over a group of statements while a test condition
