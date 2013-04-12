@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Loop Iterate</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
+      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+          <li><a href="./lists.html">Lists</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+              <li><a href="./list-structures.html#set">Set</a></li>
+              <li><a href="./list-structires.html#tree">Tree</a></li>
+              <li><a href="./list-structures.html#plist">Property List</a></li>
+              <li><a href="./list-structures.html#alist">Association List</a></li>
+              <li class="nav-header"><a href="./arrays.html">Array</a></li>
+              <li><a href="./arrays.html">Array</a></li>
+              <li><a href="./vectors.html">Vector</a></li>
+              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+              <li><a href="./data-structures.html#structs">Structs</a></li>
+              <li><a href="./clos.html">Common Lisp Object System</a></li>
+            </ul>
+          </li>
+          <li><a href="./strings.html">Strings</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Numbers</a></li>
+              <li><a href="#">Characters</a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./iteration.html">Iteration</a></li>
+              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+            </ul>
+          </li>
+          <li><a href="./control.html">Control</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./time.html">Time</a></li>
+              <li><a href="./output.html">Output</a></li>
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#loop-and-iterate" class="nav-header">Loop and Iterate</a></li>
+  <li><a href="#loop-simple-form" class="nav-header">Loop Simple Form</a></li>
+  <li><a href="#loop-form-result">loop</a></li>
+  <li><a href="#loop-extended-form" class="nav-header">Loop Extended Form</a></li>
+  <li><a href="#loop-name-variable-clause-main-clause-result">loop</a></li>
+  <li><a href="#counting" class="nav-header">Counting</a></li>
+  <li><a href="#iterate" class="nav-header">Iterate</a></li>
+  <li><a href="#iterateiter-clauses-forms">iter</a></li>
+  <li><a href="#numerical-iteration" class="nav-header">Numerical Iteration</a></li>
+  <li><a href="#repeat-iteraterepeat-n">repeat</a></li>
+  <li><a href="#for-iteratefor-var-sequence-keywords">for</a></li>
+  <li><a href="#sequence-iteration" class="nav-header">Sequence Iteration</a></li>
+  <li><a href="#for-iteratefor-in-var-in-list-by-step-function">for...in</a></li>
+  <li><a href="#for-iteratefor-on-var-on-list-by-step-function">for...on</a></li>
+  <li><a href="#for-iteratefor-in-sequence-var-in-sequence-seq-sequence-keywords">for...in-sequence</a></li>
+  <li><a href="#for-iteratefor-index-of-sequence-var-index-of-sequence-sequence-sequence-keywords">for...index-of-sequence</a></li>
+  <li><a href="#for-iteratefor-in-vector-var-in-vector-vector-sequence-keywords">for...in-vector</a></li>
+  <li><a href="#for-iteratefor-index-of-vector-var-index-of-vector-vector-sequence-keywords">for...index-of-vector</a></li>
+  <li><a href="#for-iteratefor-in-string-var-in-string-string-sequence-keywords">for...in-string</a></li>
+  <li><a href="#for-iteratefor-index-of-string-var-index-of-string-string-sequence-keywords">for...index-of-string</a></li>
+  <li><a href="#for-iteratefor-in-hashtable-key-value-in-hashtable-table">for...in-hashtable</a></li>
+  <li><a href="#for-iteratefor-in-package-var-in-package-package-external-only-ext">for...in-package</a></li>
+  <li><a href="#for-iteratefor-in-packages-sym-access-type-pkg-in-packages-packages-having-access-symbol-types">for...in-packages</a></li>
+  <li><a href="#for-iteratefor-in-file-var-in-file-name-using-reader">for...in-file</a></li>
+  <li><a href="#for-iteratefor-in-stream-var-in-stream-stream-using-reader">for...in-stream</a></li>
+  <li><a href="#variable-binding" class="nav-header">Variable Binding</a></li>
+  <li><a href="#with-iteratewith-var-value">with</a></li>
+  <li><a href="#for-iteratefor-var-form">for...=</a></li>
+  <li><a href="#for-iteratefor-initially-then-var-initially-init-expr-then-then-expr">for...initially...then</a></li>
+  <li><a href="#for-iteratefor-first-then-var-first-first-expr-then-then-expr">for...first...then</a></li>
+  <li><a href="#for-iteratefor-previous-pvar-previous-var-initially-init-back-n">for...previous</a></li>
+  <li><a href="#accumulate" class="nav-header">Accumulate</a></li>
+  <li><a href="#collect-iteratecollect-value-into-var-at-place-result-type-type">collect</a></li>
+  <li><a href="#adjoining-iterateadjoining-value-into-var-test-test-at-place-result-type-type">adjoining</a></li>
+  <li><a href="#appending-iterateappending-value-into-var-at-place">appending</a></li>
+  <li><a href="#nconcing-iteratenconcing-value-into-var-at-place">nconcing</a></li>
+  <li><a href="#unioning-iterateunioning-value-into-var-test-test-at-place">unioning</a></li>
+  <li><a href="#nunioning-iteratenunioning-value-into-var-test-test-at-place">nunioning</a></li>
+  <li><a href="#accumulate-iterateaccumulate-value-by-fn-initial-value-init-val-into-var">accumulate</a></li>
+  <li><a href="#reduce" class="nav-header">Reduce</a></li>
+  <li><a href="#sum-iteratesum-value-into-var">sum</a></li>
+  <li><a href="#multiply-iteratemultiply-value-into-var">multiply</a></li>
+  <li><a href="#counting-iteratecounting-value-into-var">counting</a></li>
+  <li><a href="#maximize-iteratemaximize-value-into-var">maximize</a></li>
+  <li><a href="#minimize-iterateminimize-value-into-var">minimize</a></li>
+  <li><a href="#reducing-iteratereducing-value-by-fn-initial-value-init-val-into-var">reducing</a></li>
+  <li><a href="#tests" class="nav-header">Tests</a></li>
+  <li><a href="#finding-iteratefinding-such-that-value-such-that-test-into-var-on-failure-failure-value">finding...such-that</a></li>
+  <li><a href="#finding-iteratefinding-maximizing-expr-maximizing-m-expr-into-var">finding...maximizing</a></li>
+  <li><a href="#finding-iteratefinding-minimizing-expr-minimizing-m-expr-into-var">finding...minimizing</a></li>
+  <li><a href="#first-iteration-p-iteratefirst-iteration-p">first-iteration-p</a></li>
+  <li><a href="#first-time-p-iteratefirst-time-p">first-time-p</a></li>
+  <li><a href="#always-iteratealways-expr">always</a></li>
+  <li><a href="#never-iteratenever-expr">never</a></li>
+  <li><a href="#thereis-iteratethereis-expr">thereis</a></li>
+  <li><a href="#control-flow" class="nav-header">Control Flow</a></li>
+  <li><a href="#finish-iteratefinish">finish</a></li>
+  <li><a href="#leave-iterateleave-value">leave</a></li>
+  <li><a href="#next-iteration-iteratenext-iteration">next-iteration</a></li>
+  <li><a href="#while-iteratewhile-expr">while</a></li>
+  <li><a href="#until-iterateuntil-expr">until</a></li>
+  <li><a href="#if-first-time-iterateif-first-time-then-else">if-first-time</a></li>
+  <li><a href="#code-placement" class="nav-header">Code Placement</a></li>
+  <li><a href="#initially-iterateinitially-forms">initially</a></li>
+  <li><a href="#after-each-iterateafter-each-forms">after-each</a></li>
+  <li><a href="#else-iterateelse-forms">else</a></li>
+  <li><a href="#finally-iteratefinally-forms">finally</a></li>
+  <li><a href="#finally-protected-iteratefinally-protected-forms">finally-protected</a></li>
+  <li><a href="#in-iteratein-name-forms">in</a></li>
+  <li><a href="#destructuring" class="nav-header">Destructuring</a></li>
+  <li><a href="#dsetq-iteratedsetq-template-expr">dsetq</a></li>
+  <li><a href="#extend" class="nav-header">Extend</a></li>
+  <li><a href="#for-iteratefor-next-var-next-expr">for...next</a></li>
+  <li><a href="#for-iteratefor-do-next-var-do-next-form">for...do-next</a></li>
+  <li><a href="#defmacro-clause-iteratedefmacro-clause-arglist-body-form">defmacro-clause</a></li>
+  <li><a href="#defmacro-driver-iteratedefmacro-driver-arglist-body-form">defmacro-driver</a></li>
+  <li><a href="#defsynonym-iteratedefsynonym-syn-word">defsynonym</a></li>
+  <li><a href="#defclause-sequence-iteratedefclause-sequence-element-name-index-name-keys">defclause-sequence</a></li>
+  <li><a href="#display-iterate-clauses-iteratedisplay-iterate-clauses-clause-spec">display-iterate-clauses</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h1 id="loop-and-iterate">Loop and Iterate</h1>
+<h2 id="loop-simple-form">Loop Simple Form</h2>
+<h3 id="loop-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_loop.htm">loop</a> form* &rArr; result*</h3>
+<p>Evaluate <em>forms</em> forever in a loop within an implict block named <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<pre><code>(setf i 0)
+(loop
+  (print i)
+  (if (&lt; i 10)
+    (incf i)
+    (return))) ;&rArr; NIL [prints 0...10]</code></pre>
+<h2 id="loop-extended-form">Loop Extended Form</h2>
+<ul>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node235.html">CLtL2: Loop</a></li>
+<li><a href="http://www.gigamonkeys.com/book/loop-for-black-belts.html">PCL: LOOP for Black Belts</a></li>
+</ul>
+<h3 id="loop-name-variable-clause-main-clause-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_loop.htm">loop</a> [name] [variable-clause*] [main-clause*] &rArr; result*</h3>
+<p>Use <em>loop keywords</em> to iterate over forms and accumulate values.</p>
+<pre><code>(loop for item in (list &#39;a &#39;b &#39;c &#39;d)
+  do (print item))                         ;&rArr; NIL [prints A, B, C, D]
+
+(loop for item in (list &#39;a &#39;b &#39;c &#39;d)
+  collect item)                            ;&rArr; (A B C D)
+
+(loop for item across (vector &#39;a &#39;b &#39;c &#39;d)
+  collect item)                            ;&rArr; (A B C D)
+
+(loop for item in &#39;(1 2 3 4)
+      for x = (1+ item)
+  collect (* item x))                      ;&rArr; (2 5 12 20)
+
+(loop for x on (list 10 20 30)
+  collect x)                               ;&rArr; ((10 20 30) (20 30) (30))</code></pre>
+<p>Variables declared using <code>with</code> are local and cease to exists when the loop terminates.</p>
+<pre><code>(loop with x = 0
+      with y = (1+ x)
+  return (list x y))    ;&rArr; (0 1)</code></pre>
+<h2 id="counting">Counting</h2>
+<pre><code>(loop for i upto 4 collect i) ;&rArr; (0 1 2 3 4)</code></pre>
+<h2 id="iterate">Iterate</h2>
+<ul>
+<li><a href="http://common-lisp.net/project/iterate/doc/">The Iterate Manual</a></li>
+<li><a href="http://common-lisp.net/project/iterate/doc/Don_0027t-Loop-Iterate.html">Don’t Loop, Iterate</a></li>
+</ul>
+<pre><code>(ql:quickload :iterate)</code></pre>
+<h3 id="iterateiter-clauses-forms"><a href="http://common-lisp.net/project/iterate/doc/Introduction.html">iterate:iter</a> [clauses*] forms*</h3>
+<p>A powerful iteration facility that provides abstractions for many common iteration patterns and allows for the definition of additional patterns. While it is similar to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_loop.htm">loop</a>, <em>iterate</em> offers a more Lisp-like syntax and enhanced extensibility.</p>
+<h2 id="numerical-iteration">Numerical Iteration</h2>
+<h4 id="repeatiteraterepeat-n"><a href="http://common-lisp.net/project/iterate/doc/Drivers.html#index-repeat-1">repeat</a> n</h4>
+<p>Iterate loop <em>n</em> times. If <em>n</em> is &lt;= 0 the loop will not execute.</p>
+<pre><code>(iter (repeat 5)
+  (print &#39;hello))   ;&rArr; NIL [prints HELLO five times]</code></pre>
+<h4 id="foriteratefor-var-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Numerical-Iteration.html#index-for-3">for</a> var sequence-keywords</h4>
+<p>Iterate over a sequence of numbers with a variable and one or more keywords that provide the bounds and step size of the iteration. Valid <em>sequence-keywords</em> are: <code>from</code>, <code>upfrom</code>, <code>downfrom</code>, <code>to</code>, <code>downto</code>, <code>above</code>, <code>below</code> and <code>by</code>.</p>
+<pre><code>(for i from 5)              ;i &rArr; 5 6 7 ... (same as upfrom)
+(for i downfrom 0)          ;i &rArr; 0 -1 -2 ...
+(for i from 1 to 3)         ;i &rArr; 1 2 3
+(for i from 5 downto 3)     ;i &rArr; 5 4 3
+(for i from 1 below 3)      ;i &rArr; 1 2
+(for i from 3 above 1)      ;i &rArr; 3 2
+(for i from 1 to 3 by 2)    ;i &rArr; 1 3
+(for i from 1 below 3 by 2) ;i &rArr; 1</code></pre>
+<h2 id="sequence-iteration">Sequence Iteration</h2>
+<p>The <em>step-function</em>, which defaults to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_car_c.htm">cdr</a>, is used to obtain the next sublist.</p>
+<p>Valid <em>sequence-keywords</em> are as before: <code>from</code>, <code>upfrom</code>, <code>downfrom</code>, <code>to</code>, <code>downto</code>, <code>above</code>, <code>below</code> and <code>by</code>. In addition, <code>with-index</code> takes a symbol as argument and uses it for the index variable.</p>
+<h4 id="foriteratefor...in-var-in-list-by-step-function"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din-5">for</a> var <strong>in</strong> list [<strong>by</strong> step-function]</h4>
+<p>Set <em>var</em> to successive elements of <em>list</em>.</p>
+<pre><code>(iter (for x in &#39;(a b c d) by #&#39;cddr)
+  (collect x))                        ;&rArr; (A C)</code></pre>
+<h4 id="foriteratefor...on-var-on-list-by-step-function"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007don-7">for</a> var <strong>on</strong> list [<strong>by</strong> step-function]</h4>
+<p>Set <em>var</em> to successive sublists of <em>list</em>.</p>
+<pre><code>(iter (for x on &#39;(a b c))
+  (collect x))            ;&rArr; ((A B C) (B C) (C))</code></pre>
+<h4 id="foriteratefor...in-sequence-var-in-sequence-seq-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dsequence-12">for</a> var <strong>in-sequence</strong> seq sequence-keywords</h4>
+<p>Set <em>var</em> to successive elements of <em>seq</em>.</p>
+<pre><code>(iter (for x in-sequence &#39;(a b c) with-index i)
+  (collect (list i x)))                         ;&rArr; ((0 A) (1 B) (2 C))</code></pre>
+<h4 id="foriteratefor...index-of-sequence-var-index-of-sequence-sequence-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007dindex_002dof_002dsequence-17">for</a> var <strong>index-of-sequence</strong> sequence sequence-keywords</h4>
+<p>Set <em>var</em> to the index number of <em>sequence</em> element.</p>
+<pre><code>(iter (for i index-of-sequence #(a b c))
+  (collect i))                           ;&rArr; (0 1 2)</code></pre>
+<h4 id="foriteratefor...in-vector-var-in-vector-vector-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dvector-10">for</a> var <strong>in-vector</strong> vector sequence-keywords</h4>
+<p>Set <em>var</em> to successive elements of <em>vector</em>.</p>
+<pre><code>(iter (for x in-vector #(a b c))
+  (collect x))                   ;&rArr; (A B C)</code></pre>
+<h4 id="foriteratefor...index-of-vector-var-index-of-vector-vector-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007dindex_002dof_002dvector-16">for</a> var <strong>index-of-vector</strong> vector sequence-keywords</h4>
+<p>Set <em>var</em> to the index number of <em>vector</em> element.</p>
+<pre><code>(iter (for i index-of-vector #(a b c))
+  (collect i))                         ;&rArr; (0 1 2)</code></pre>
+<h4 id="foriteratefor...in-string-var-in-string-string-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dstring-14">for</a> var <strong>in-string</strong> string sequence-keywords</h4>
+<p>Set <em>var</em> to successive elements of <em>string</em>.</p>
+<pre><code>(iter (for x in-string &quot;hello&quot; downfrom 4)
+  (collect x))                             ;&rArr; (#\o #\l #\l #\e #\h)</code></pre>
+<h4 id="foriteratefor...index-of-string-var-index-of-string-string-sequence-keywords"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007dindex_002dof_002dstring-18">for</a> var <strong>index-of-string</strong> string sequence-keywords</h4>
+<p>Set <em>var</em> to the index number of <em>string</em> character.</p>
+<pre><code>(iter (for i index-of-string &quot;hello&quot; downfrom 4)
+  (collect i))                                   ;&rArr; (4 3 2 1 0)</code></pre>
+<h4 id="foriteratefor...in-hashtable-key-value-in-hashtable-table"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dhashtable-22">for</a> (key value) <strong>in-hashtable</strong> table</h4>
+<p>Iterate over the <em>keys</em> and <em>values</em> of a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_hash_t.htm">hash-table</a>.</p>
+<pre><code>(setf ht (alexandria:plist-hash-table &#39;(:a 1 :b 2)))
+(iter (for (key val) in-hashtable ht)
+  (collect (list key val)))           ;&rArr; ((:A 1) (:B 2))</code></pre>
+<h4 id="foriteratefor...in-package-var-in-package-package-external-only-ext"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dpackage-24">for</a> var <strong>in-package</strong> package [<strong>external-only</strong> ext]</h4>
+<p>Iterate over all symbols in a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_pkg.htm">package</a>, or only external symbols if specified.</p>
+<pre><code>(iter (for sym in-package :iterate external-only t)
+  (collect sym))       :&rArr; (SUM FIRST-ITERATION-P NCONCING FIRST-TIME-P ...)</code></pre>
+<h4 id="foriteratefor...in-packages-sym-access-type-pkg-in-packages-packages-having-access-symbol-types"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dpackages-26">for</a> (sym access-type pkg) <strong>in-packages</strong> (packages) [<strong>having-access</strong> (symbol-types)]</h4>
+<p>Iterates over all symbols from the list of <em>packages</em> and having visibility given by <em>symbol-types</em>, which defaults to the list <code>(:external :internal :inherited)</code>.</p>
+<pre><code>(iter (for (sym access-type pkg) in-packages &#39;(:iterate) having-access (:external))
+  (collect (list sym access-type pkg)))</code></pre>
+<h4 id="foriteratefor...in-file-var-in-file-name-using-reader"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dfile-28">for</a> var <strong>in-file</strong> name [<strong>using</strong> reader]</h4>
+<p>Opens the file <em>name</em> (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_string.htm">string</a> or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm">pathname</a>) and iterate over its contents. <em>reader</em> defaults to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm">read</a> and will bind <em>var</em> to successive forms in the file. The file is closed no matter how the iterate loop exits.</p>
+<pre><code>(iter (for line in-file &quot;/etc/passwd&quot; using #&#39;read-line)
+  (collect line))   ;&rArr; (&quot;root:*:0:0:System Administrator:/var/root:/bin/sh&quot; ...)</code></pre>
+<h4 id="foriteratefor...in-stream-var-in-stream-stream-using-reader"><a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dstream-30">for</a> var <strong>in-stream</strong> stream [<strong>using</strong> reader]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Sequence-Iteration.html#index-for_0040dots_007b_007din_002dfile-28">for…in-file</a> except that <em>stream</em> should be an existing <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stream.htm">stream</a> object that supports input operations.</p>
+<pre><code>(with-input-from-string (in &quot;hello 1 2 three&quot;)
+  (iter (for sym in-stream in)
+    (collect line)))                           ;&rArr; (HELLO 1 2 THREE)</code></pre>
+<h2 id="variable-binding">Variable Binding</h2>
+<h4 id="withiteratewith-var-value"><a href="http://common-lisp.net/project/iterate/doc/Variable-Binding-and-Setting.html#index-with-39">with</a> var [<strong>=</strong> value]</h4>
+<p>Causes <em>var</em> to be bound to <em>value</em> before the loop body is entered.</p>
+<pre><code>(setf n 0)
+(iter (for x in &#39;(a b c))
+      (with i = n)
+  (incf n)
+  (collect (list i x)))   ;&rArr; ((0 A) (0 B) (0 C))</code></pre>
+<h4 id="foriteratefor...-var-form"><a href="http://common-lisp.net/project/iterate/doc/Variable-Binding-and-Setting.html#index-for_0040dots_007b_007d_003d-41">for</a> var <strong>=</strong> form</h4>
+<p>On each iteration, <em>form</em> is evaluated and <em>var</em> is set to its value.</p>
+<pre><code>(setf n 0)
+(iter (for x in &#39;(a b c))
+      (for i = n)
+  (incf n)
+  (collect (list i x)))   ;&rArr; ((0 A) (1 B) (2 C))</code></pre>
+<h4 id="foriteratefor...initially...then-var-initially-init-expr-then-then-expr"><a href="http://common-lisp.net/project/iterate/doc/Variable-Binding-and-Setting.html#index-for_0040dots_007b_007dinitially_0040dots_007b_007dthen-43">for</a> var <strong>initially</strong> init-expr <strong>then</strong> then-expr</h4>
+<p>Before loop begins, <em>var</em> is set to <em>init-expr</em>; after the first iteration, it is set to <em>then-expr</em>.</p>
+<pre><code>(iter (repeat 4)
+      (for i initially 10 then (1+ i))
+  (collect i))                         ;&rArr; (10 11 12 13)</code></pre>
+<h4 id="foriteratefor...first...then-var-first-first-expr-then-then-expr"><a href="http://common-lisp.net/project/iterate/doc/Variable-Binding-and-Setting.html#index-for_0040dots_007b_007dfirst_0040dots_007b_007dthen-45">for</a> var <strong>first</strong> first-expr <strong>then</strong> then-expr</h4>
+<p>On the first iteration, <em>var</em> is set to <em>init-form</em>; on subsequent iterations, it is set to <em>then-expr</em>. This differs from <a href="http://common-lisp.net/project/iterate/doc/Variable-Binding-and-Setting.html#index-for_0040dots_007b_007dinitially_0040dots_007b_007dthen-43">for…initially</a> in that <em>var</em> is set inside the loop body.</p>
+<h4 id="foriteratefor...previous-pvar-previous-var-initially-init-back-n"><a href="http://common-lisp.net/project/iterate/doc/Previous-Values-of-Driver-Variables.html#index-for_0040dots_007b_007dprevious-37">for</a> pvar <strong>previous</strong> var [<strong>initially</strong> init] [<strong>back</strong> n]</h4>
+<p>Sets <em>pvar</em> to the previous value of <em>var</em>, another loop variable.</p>
+<pre><code>(iter (for x in &#39;(1 2 3))
+      (for y previous x initially 0)
+  (collect (list x y)))              ;&rArr; ((1 0) (2 1) (3 2))</code></pre>
+<h2 id="accumulate">Accumulate</h2>
+<h4 id="collectiteratecollect-value-into-var-at-place-result-type-type"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-collect-59">collect</a> value [<strong>into</strong> var <strong>at</strong> place <strong>result-type</strong> type]</h4>
+<p>Returns a sequence of <em>values</em> produced from each iteration. Each value is <em>placed</em> in the collected sequence at the <code>start</code> or <code>end</code> (default).</p>
+<pre><code>(iter (for i in &#39;(1 2 3))
+  (collect x)             ;&rArr; (1 2 3)
+
+(iter (for i in &#39;(1 2 3))
+  (collect x at start)    ;&rArr; (3 2 1)</code></pre>
+<h4 id="adjoiningiterateadjoining-value-into-var-test-test-at-place-result-type-type"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-adjoining-61">adjoining</a> value [<strong>into</strong> var <strong>test</strong> test <strong>at</strong> place <strong>result-type</strong> type]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-collect-59">collect</a>, but only adds the <em>value</em> if it is not already present.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 2 3 3 1))
+  (adjoining i))                  ;&rArr; (1 2 3)</code></pre>
+<h4 id="appendingiterateappending-value-into-var-at-place"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-appending-63">appending</a> value [<strong>into</strong> var <strong>at</strong> place]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-collect-59">collect</a>, but using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_append.htm">append</a>.</p>
+<h4 id="nconcingiteratenconcing-value-into-var-at-place"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-nconcing-64">nconcing</a> value [<strong>into</strong> var <strong>at</strong> place]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-collect-59">collect</a>, but using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_nconc.htm">nconc</a>.</p>
+<h4 id="unioningiterateunioning-value-into-var-test-test-at-place"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-unioning-65">unioning</a> value [<strong>into</strong> var <strong>test</strong> test <strong>at</strong> place]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-collect-59">collect</a>, but using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_unionc.htm">union</a>. Assumes that the <em>value</em> contains no duplicates.</p>
+<h4 id="nunioningiteratenunioning-value-into-var-test-test-at-place"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-nunioning-66">nunioning</a> value [<strong>into</strong> var <strong>test</strong> test <strong>at</strong> place]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-collect-59">collect</a>, but using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_unionc.htm">nunion</a>. Assumes that the <em>value</em> contains no duplicates.</p>
+<h4 id="accumulateiterateaccumulate-value-by-fn-initial-value-init-val-into-var"><a href="http://common-lisp.net/project/iterate/doc/Accumulations.html#index-accumulate-71">accumulate</a> value <strong>by</strong> fn [<strong>initial-value</strong> init-val <strong>into</strong> var]</h4>
+<p>The general-purpose accumulation clause. Function <em>fn</em> takes two arguments, the <em>value</em> and the value accumulated so far in the iteration, and it should return the updated value. If no <em>initial-value</em> is supplied, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> is used.</p>
+<h2 id="reduce">Reduce</h2>
+<p>An iteration pattern in which the results of successive applications of a binary operation are accumulated.</p>
+<h4 id="sumiteratesum-value-into-var"><a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-sum-47">sum</a> value [<strong>into</strong> var]</h4>
+<p>On each iteration, <em>value</em> is added to a variable, which is initially bound to zero.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 4))
+  (sum i))                  ;&rArr; 10</code></pre>
+<h4 id="multiplyiteratemultiply-value-into-var"><a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-multiply-49">multiply</a> value [<strong>into</strong> var]</h4>
+<p>Like <a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-sum-47">sum</a>, but the initial value of the result is 1, and is updated by multiplying <em>value</em> into it.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 4))
+  (multiply i))             ;&rArr; 24</code></pre>
+<h4 id="countingiteratecounting-value-into-var"><a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-counting-51">counting</a> value [<strong>into</strong> var]</h4>
+<p>On each iteration, if <em>value</em> evaluates to non-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, increment the counter, which initially starts at zero.</p>
+<pre><code>(iter (for x in &#39;(a 2 nil d))
+  (counting x))               ;&rArr; 3</code></pre>
+<h4 id="maximizeiteratemaximize-value-into-var"><a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-maximize-53">maximize</a> value [<strong>into</strong> var]</h4>
+<p>Evaluate <em>value</em> on each iteration and store the maximum in the accumulation variable.</p>
+<pre><code>(iter (for i in &#39;(1 4 2 2))
+  (maximize i))             ;&rArr; 4</code></pre>
+<h4 id="minimizeiterateminimize-value-into-var"><a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-minimize-54">minimize</a> value [<strong>into</strong> var]</h4>
+<p>Evaluate <em>value</em> on each iteration and store the minimum in the accumulation variable.</p>
+<pre><code>(iter (for i in &#39;(1 4 2 2))
+  (minimize i))             ;&rArr; 1</code></pre>
+<h4 id="reducingiteratereducing-value-by-fn-initial-value-init-val-into-var"><a href="http://common-lisp.net/project/iterate/doc/Reductions.html#index-reducing-57">reducing</a> value <strong>by</strong> fn [<strong>initial-value</strong> init-val <strong>into</strong> var]</h4>
+<p>The general way to perform reductions. Function <em>fn</em> takes two arguments, the first is the value computed so far and the second is the <em>value</em>. It should return a new value.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 4))
+  (reducing i by #&#39;(lambda (x y) (+ x y)))) ;&rArr; 10</code></pre>
+<h2 id="tests">Tests</h2>
+<h4 id="findingiteratefinding...such-that-value-such-that-test-into-var-on-failure-failure-value"><a href="http://common-lisp.net/project/iterate/doc/Finders.html#index-finding_0040dots_007b_007dsuch_002dthat-73">finding</a> value <strong>such-that</strong> test [<strong>into</strong> var <strong>on-failure</strong> failure-value]</h4>
+<p>If <em>test</em> ever evaluates to non-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, the loop is stopped and the current <em>value</em> is returned.</p>
+<pre><code>(iter (for i in &#39;(1 2 3))
+  (finding i such-that #&#39;oddp))  ;&rArr; 1
+
+(iter (for i in &#39;(1 2 3))
+  (finding i such-that #&#39;evenp)) ;&rArr; 2</code></pre>
+<h4 id="findingiteratefinding...maximizing-expr-maximizing-m-expr-into-var"><a href="http://common-lisp.net/project/iterate/doc/Finders.html#index-finding_0040dots_007b_007dmaximizing-75">finding</a> expr <strong>maximizing</strong> m-expr [<strong>into</strong> var]</h4>
+<p>Computes the maximum value of <em>m-expr</em> over all iterations, and returns the value of the corresponding <em>expr</em>.</p>
+<pre><code>(iter (for lst in &#39;((a b c) (x y) (1 2 3 4)))
+  (finding lst maximizing (length lst)))      ;&rArr; (1 2 3 4)</code></pre>
+<h4 id="findingiteratefinding...minimizing-expr-minimizing-m-expr-into-var"><a href="http://common-lisp.net/project/iterate/doc/Finders.html#index-finding_0040dots_007b_007dminimizing-76">finding</a> expr <strong>minimizing</strong> m-expr [<strong>into</strong> var]</h4>
+<p>Computes the minimum value of <em>m-expr</em> over all iterations, and returns the value of the corresponding <em>expr</em>.</p>
+<pre><code>(iter (for lst in &#39;((a b c) (x y) (1 2 3 4)))
+  (finding lst minimizing #&#39;length))          ;&rArr; (X Y)</code></pre>
+<h4 id="first-iteration-piteratefirst-iteration-p"><a href="http://common-lisp.net/project/iterate/doc/Boolean-Tests.html#index-first_002diteration_002dp-79">first-iteration-p</a></h4>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> in the first cycle of the loop, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<pre><code>(iter (repeat 3)
+  (collect (first-iteration-p))) ;&rArr; (T NIL NIL)</code></pre>
+<h4 id="first-time-piteratefirst-time-p"><a href="http://common-lisp.net/project/iterate/doc/Boolean-Tests.html#index-first_002dtime_002dp-81">first-time-p</a></h4>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> the first time the expression is evaluated, and then <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> forever.</p>
+<pre><code>(iter (for i in &#39;(1 2 3))
+  (collect (list (first-time-p) i))) ;&rArr; ((T 1) (NIL 2) (NIL 3))</code></pre>
+<h4 id="alwaysiteratealways-expr"><a href="http://common-lisp.net/project/iterate/doc/Aggregated-Boolean-Tests.html#index-always-83">always</a> expr</h4>
+<p>If <em>expr</em> ever evaluates to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, then <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> is immediately returned; the epilogue code is not executed.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 4))
+      (always (evenp i)))   ;&rArr; NIL</code></pre>
+<h4 id="neveriteratenever-expr"><a href="http://common-lisp.net/project/iterate/doc/Aggregated-Boolean-Tests.html#index-never-85">never</a> expr</h4>
+<p>Like <code>(always (not expr))</code>, but does not influence the last value returned by a possible other always clause.</p>
+<pre><code>(iter (for i in &#39;(2 4 6 8))
+      (always (evenp i)))   ;&rArr; T</code></pre>
+<h4 id="thereisiteratethereis-expr"><a href="http://common-lisp.net/project/iterate/doc/Aggregated-Boolean-Tests.html#index-thereis-87">thereis</a> expr</h4>
+<p>If <em>expr</em> is ever non-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, its value is immediately returned without running epilogue code.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 4))
+      (thereis (characterp i))) ;&rArr; NIL</code></pre>
+<h2 id="control-flow">Control Flow</h2>
+<p>Alter the usual flow of control in a loop.</p>
+<h4 id="finishiteratefinish"><a href="http://common-lisp.net/project/iterate/doc/Control-Flow.html#index-finish-89">finish</a></h4>
+<p>Stops the loop and runs the epilogue code.</p>
+<pre><code>(iter (for x in &#39;(a b c 1 2 3))
+  (if (numberp x)
+    (finish))
+  (collect x))                  ;&rArr; (A B C)</code></pre>
+<h4 id="leaveiterateleave-value"><a href="http://common-lisp.net/project/iterate/doc/Control-Flow.html#index-leave-91">leave</a> [value]</h4>
+<p>Immediately returns <em>value</em> (default <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>) from the loop, skipping the epilogue code. Equivalent to using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ret_fr.htm">return-from</a>.</p>
+<pre><code>(iter (for x in &#39;(a b c 1 2 3))
+  (if (numberp x)
+    (leave x)))                 ;&rArr; 1</code></pre>
+<h4 id="next-iterationiteratenext-iteration"><a href="http://common-lisp.net/project/iterate/doc/Control-Flow.html#index-next_002diteration-93">next-iteration</a></h4>
+<p>Skips the remainder of the loop body and begins the next iteration.</p>
+<pre><code>(iter (for x in &#39;(a b c 1 2 d e))
+  (if (numberp x)
+    (next-iteration))
+  (collect x))                    ;&rArr; (A B C D E)</code></pre>
+<h4 id="whileiteratewhile-expr"><a href="http://common-lisp.net/project/iterate/doc/Control-Flow.html#index-while-95">while</a> expr</h4>
+<p>If <em>expr</em> ever evaluates to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, the loop stops and the epilogue code is run. Equivalent to <code>(if (not expr) (finish))</code>.</p>
+<pre><code>(iter (for x in &#39;(1 2 a b 3 4))
+  (while (numberp x))
+  (collect x))                    ;&rArr; (1 2)</code></pre>
+<h4 id="untiliterateuntil-expr"><a href="http://common-lisp.net/project/iterate/doc/Control-Flow.html#index-until-97">until</a> expr</h4>
+<p>Equivalent to <code>(if expr (finish))</code>.</p>
+<pre><code>(iter (for x in &#39;(a b c 1 2 d e))
+  (until (numberp x))
+  (collect x))                    ;&rArr; (A B C)</code></pre>
+<h4 id="if-first-timeiterateif-first-time-then-else"><a href="http://common-lisp.net/project/iterate/doc/Control-Flow.html#index-if_002dfirst_002dtime-99">if-first-time</a> then [else]</h4>
+<p>If this clause is executed for the first time in the iterate form, the <em>then</em> code is evaluated; otherwise the <em>else</em> code is evaluated.</p>
+<pre><code>(iter (for i in &#39;(1 2 3 4))
+  (collect (if-first-time
+             nil
+             i)))           ;&rArr; (NIL 2 3 4)</code></pre>
+<h2 id="code-placement">Code Placement</h2>
+<p>For control over where code is placed in a loop.</p>
+<ul>
+<li><a href="http://common-lisp.net/project/iterate/doc/Problems-with-Code-Movement.html">Problems with Code Movement</a></li>
+</ul>
+<h4 id="initiallyiterateinitially-forms"><a href="http://common-lisp.net/project/iterate/doc/Code-Placement.html#index-initially-101">initially</a> forms*</h4>
+<p>Place <em>forms</em> in the prologue section of the loop. They are executed once, before the loop body is entered.</p>
+<h4 id="after-eachiterateafter-each-forms"><a href="http://common-lisp.net/project/iterate/doc/Code-Placement.html#index-after_002deach-103">after-each</a> forms*</h4>
+<p>Place <em>forms</em> at the end of the loop body, where they are executed after each iteration.</p>
+<h4 id="elseiterateelse-forms"><a href="http://common-lisp.net/project/iterate/doc/Code-Placement.html#index-else-105">else</a> forms*</h4>
+<p>Place <em>forms</em> in the epilogue section of the loop, where they are executed if this <em>else</em> clause is never met during execution of the loop and the loop terminates normally.</p>
+<h4 id="finallyiteratefinally-forms"><a href="http://common-lisp.net/project/iterate/doc/Code-Placement.html#index-finally-107">finally</a> forms*</h4>
+<p>Place <em>forms</em> in the epilogue section of the loop, where they are executed after the loop has terminated normally.</p>
+<h4 id="finally-protectediteratefinally-protected-forms"><a href="http://common-lisp.net/project/iterate/doc/Code-Placement.html#index-finally_002dprotected-109">finally-protected</a> forms*</h4>
+<p>Place <em>forms</em> in the second form of an <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_unwind.htm">unwind-protect</a> outside the loop. They are always executed after the loop has terminated, regardless of how the termination occurred.</p>
+<h4 id="initeratein-name-forms"><a href="http://common-lisp.net/project/iterate/doc/Named-Blocks.html#index-in-111">in</a> name &amp;forms*</h4>
+<p>Evaluate <em>forms</em> as if they were part of the iterate form <em>name</em>.</p>
+<pre><code>(iter outer (for i in &#39;(1 2 3))
+  (iter (for j in &#39;(10 20))
+    (in outer (collect (* i j))))) ;&rArr; (10 20 20 40 30 60)</code></pre>
+<h2 id="destructuring">Destructuring</h2>
+<p>In many places where a variable is expected, a list can be written instead. The value to be assigned is destructured according to the pattern described by the list.</p>
+<pre><code>(for (x y) in &#39;((1 2) (3 4)))
+(for (key . val) in alist)
+(for (values (a . b) c d) = (three-valued-function ...))</code></pre>
+<h4 id="dsetqiteratedsetq-template-expr"><a href="http://common-lisp.net/project/iterate/doc/Destructuring.html#index-dsetq-113">dsetq</a> template expr</h4>
+<p>Performs destructuring of <em>expr</em> using <em>template</em>. May be used outside of an <code>iterate</code> form. Yields the primary value of <em>expr</em>.</p>
+<pre><code>(dsetq (values a b) (floor 4.5)) ;&rArr; 4
+(list a b)                       ;&rArr; (4 0.5)</code></pre>
+<h2 id="extend">Extend</h2>
+<p>Write new clauses that embody new iteration patterns.</p>
+<ul>
+<li><a href="http://common-lisp.net/project/iterate/doc/Generators.html">Generators</a></li>
+<li><a href="http://common-lisp.net/project/iterate/doc/Rolling-Your-Own.html">Rolling Your Own</a></li>
+</ul>
+<h4 id="foriteratefor...next-var-next-expr"><a href="http://common-lisp.net/project/iterate/doc/Generalized-Drivers.html#index-for_0040dots_007b_007dnext-33">for</a> var <strong>next</strong> expr</h4>
+<p>Set <em>var</em> to <em>expr</em> each time through the loop. Destructuring is performed. When the clause is used as a generator, <em>expr</em> is the code that is executed when (next <em>var</em>) is encountered.</p>
+<h4 id="foriteratefor...do-next-var-do-next-form"><a href="http://common-lisp.net/project/iterate/doc/Generalized-Drivers.html#index-for_0040dots_007b_007ddo_002dnext-35">for</a> var <strong>do-next</strong> form</h4>
+<p>Evaluate <em>form</em> each time through the loop. Its value is not set to <em>var</em>; that’s done in <em>form</em>. <em>var</em> is only present so that <code>iterate</code> knows it is a driver variable.</p>
+<h4 id="defmacro-clauseiteratedefmacro-clause-arglist-body-form"><a href="http://common-lisp.net/project/iterate/doc/Rolling-Your-Own.html#index-defmacro_002dclause-120">defmacro-clause</a> arglist body-form</h4>
+<p>Defines a new <code>iterate</code> clause. <em>arglist</em> is a list of symbols which are alternating keywords and arguments.</p>
+<pre><code>(defmacro-clause (MULTIPLY expr &amp;optional INTO var)
+  `(reducing ,expr by #&#39;* into ,var initial-value 1))</code></pre>
+<h4 id="defmacro-driveriteratedefmacro-driver-arglist-body-form"><a href="http://common-lisp.net/project/iterate/doc/Writing-Drivers.html#index-defmacro_002ddriver-122">defmacro-driver</a> arglist body-form</h4>
+<p>Defines a driver clause in both the for and generate forms, and provides a parameter generate which body can examine to determine how it was invoked.</p>
+<h4 id="defsynonymiteratedefsynonym-syn-word"><a href="http://common-lisp.net/project/iterate/doc/Extensibility-Aids.html#index-defsynonym-126">defsynonym</a> syn word</h4>
+<p>Makes <em>syn</em> a synonym for the existing iterate keyword <em>word</em>.</p>
+<h4 id="defclause-sequenceiteratedefclause-sequence-element-name-index-name-keys"><a href="http://common-lisp.net/project/iterate/doc/Extensibility-Aids.html#index-defclause_002dsequence-128">defclause-sequence</a> element-name index-name &amp;keys*</h4>
+<p>Provides a simple way to define sequence clauses. Generates two clauses, one for iterating over the sequence’s elements, the other for iterating over its indices.</p>
+<h4 id="display-iterate-clausesiteratedisplay-iterate-clauses-clause-spec"><a href="http://common-lisp.net/project/iterate/doc/On_002dline-Help.html#index-display_002diterate_002dclauses-115">display-iterate-clauses</a> [clause-spec]</h4>
+<p>Displays a list of [iterate][iter] clauses. If <em>clause-spec</em> is not provided, all clauses are shown.</p>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+    <script src="./include/typeahead/typeahead.min.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

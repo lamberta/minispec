@@ -27,8 +27,8 @@
         <span class="icon-bar"></span>
       </button>
       
-			<a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-			<form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
+      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
@@ -38,37 +38,42 @@
               <li><a href="./definitions.html#macros">Macros</a></li>
             </ul>
           </li>
-					<li><a href="./lists.html">Lists</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+          <li><a href="./lists.html">Lists</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
             <ul class="dropdown-menu">
-							<li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-							<li><a href="./list-structures.html#set">Set</a></li>
+              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+              <li><a href="./list-structures.html#set">Set</a></li>
               <li><a href="./list-structires.html#tree">Tree</a></li>
-							<li><a href="./list-structures.html#plist">Property List</a></li>
-							<li><a href="./list-structures.html#alist">Association List</a></li>
-							<li class="nav-header"><a href="./arrays.html">Array</a></li>
-							<li><a href="./arrays.html">Array</a></li>
-							<li><a href="./vectors.html">Vector</a></li>
-							<li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-							<li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-							<li><a href="./data-structures.html#structs">Structs</a></li>
-							<li><a href="./clos.html">Common Lisp Object System</a></li>
+              <li><a href="./list-structures.html#plist">Property List</a></li>
+              <li><a href="./list-structures.html#alist">Association List</a></li>
+              <li class="nav-header"><a href="./arrays.html">Array</a></li>
+              <li><a href="./arrays.html">Array</a></li>
+              <li><a href="./vectors.html">Vector</a></li>
+              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+              <li><a href="./data-structures.html#structs">Structs</a></li>
+              <li><a href="./clos.html">Common Lisp Object System</a></li>
             </ul>
           </li>
-					<li><a href="./strings.html">Strings</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+          <li><a href="./strings.html">Strings</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">Numbers</a></li>
               <li><a href="#">Characters</a></li>
             </ul>
           </li>
           <li><a href="./math.html">Math</a></li>
-          <li><a href="./iteration.html">Iteration</a></li>
-          <li><a href="./control.html">Control</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
             <ul class="dropdown-menu">
-							<li><a href="./time.html">Time</a></li>
-							<li><a href="./output.html">Output</a></li>
+              <li><a href="./iteration.html">Iteration</a></li>
+              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+            </ul>
+          </li>
+          <li><a href="./control.html">Control</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./time.html">Time</a></li>
+              <li><a href="./output.html">Output</a></li>
               <li><a href="./regular-expressions.html">Regular Expressions</a></li>
             </ul>
           </li>
@@ -83,10 +88,10 @@
         <aside class="span3">
           <nav class="well" data-spy="affix">
 <ul class="nav nav-list">
-  <li><a href="#iteration" class="nav-header">Iteration</a></li>
-  <li><a href="#do" class="nav-header">do</a></li>
+  <li><a href="#do-forms" class="nav-header">Do Forms</a></li>
   <li><a href="#do-var-start-step-stop-result-form-result">do</a></li>
   <li><a href="#dotimes-var-i-result-form-result">dotimes</a></li>
+  <li><a href="#map-reduce-filter" class="nav-header">Map/Reduce/Filter</a></li>
   <li><a href="#dolist-var-list-result-form-result">dolist</a></li>
   <li><a href="#mapcar">mapcar</a></li>
   <li><a href="#maplist">maplist</a></li>
@@ -105,18 +110,16 @@
   <li><a href="#alexandriamap-derangements-fn-seq-key-start-end-copy">map-derangements</a></li>
   <li><a href="#alexandriamap-permutations-fn-seq-key-start-end-length-copy">map-permutations</a></li>
   <li><a href="#alexandriadoplist-key-val-plist-optional-values-forms">doplist</a></li>
+  <li><a href="#hash-tables" class="nav-header">Hash-Tables</a></li>
   <li><a href="#maphash-fn-hash-table-nil">maphash</a></li>
   <li><a href="#alexandriamaphash-keys-fn-hash-table-nil">maphash-keys</a></li>
   <li><a href="#alexandriamaphash-values-fn-hash-table-nil">maphash-values</a></li>
-  <li><a href="#loop" class="nav-header">Loop</a></li>
-  <li><a href="#loop-form-result">loop</a></li>
   <li><a href="#recursion" class="nav-header">Recursion</a></li>
 </ul>
           </nav>
         </aside>
         <article class="span9">
-<h1 id="iteration">Iteration</h1>
-<h2 id="do">do</h2>
+<h2 id="do-forms">Do Forms</h2>
 <h3 id="do-var-start-step-stop-result-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_do.htm">do</a> ((var [start [step]])*) (stop result*) form* &rArr; result*</h3>
 <p>Iterate over a group of statements while a test condition holds. Variables are bound within the iteration and stepped in parallel.</p>
 <p>Using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_do.htm">do*</a> causes the variable bindings and steppings to be performed sequentially rather than in parallel.</p>
@@ -140,6 +143,7 @@
 
 (dotimes (i 10 (print &#39;done))
   (print i))</code></pre>
+<h2 id="mapreducefilter">Map/Reduce/Filter</h2>
 <h3 id="dolist-var-list-result-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_dolist.htm">dolist</a> (var list [result]) form* &rArr; result*</h3>
 <p>Iterate over the elements of a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a>. Terminate loop immediately with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_return.htm">return</a>.</p>
 <pre><code>(dolist (x &#39;(1 2 3 4))
@@ -186,21 +190,12 @@
 <h3 id="alexandriamap-derangements-fn-seq-key-start-end-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dderangements">alexandria:map-derangements</a> fn seq &amp;key start end copy</h3>
 <h3 id="alexandriamap-permutations-fn-seq-key-start-end-length-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dpermutations">alexandria:map-permutations</a> fn seq &amp;key start end length copy</h3>
 <h3 id="alexandriadoplist-key-val-plist-optional-values-forms"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Macro-doplist">alexandria:doplist</a> (key val plist &amp;optional values) forms*</h3>
+<h2 id="hash-tables">Hash-Tables</h2>
 <h3 id="maphash-fn-hash-table-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_maphas.htm">maphash</a> fn hash-table &rArr; nil</h3>
 <p>Iterates function over key/value entries in the <em>hash-table</em>.</p>
 <pre><code>(maphash #&#39;(lambda (k v) (list k v)) hash-table)</code></pre>
 <h3 id="alexandriamaphash-keys-fn-hash-table-nil"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-maphash_002dkeys">alexandria:maphash-keys</a> fn hash-table &rArr; nil</h3>
 <h3 id="alexandriamaphash-values-fn-hash-table-nil"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-maphash_002dvalues">alexandria:maphash-values</a> fn hash-table &rArr; nil</h3>
-<h2 id="loop">Loop</h2>
-<p>The <code>loop</code> function has a <em>simple</em> and <em>extended</em> form.</p>
-<h3 id="loop-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_loop.htm">loop</a> form* &rArr; result*</h3>
-<p>The <em>simple</em> loop form.</p>
-<pre><code>(setf i 0)
-(loop
-  (print i)
-  (if (&lt; i 10)
-    (incf i)
-    (return))) ;&rArr; NIL [prints 0...10]</code></pre>
 <h2 id="recursion">Recursion</h2>
 <p>Tesing if a list contains an element using tail-recursion:</p>
 <pre><code>(defun our-member (obj lst)
