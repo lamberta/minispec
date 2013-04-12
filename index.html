@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Common Lisp MiniSpec</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -86,15 +86,36 @@
     </header>
     <div id="container" class="container-fluid">
       <div class="row-fluid">
-        <article>
-          <h1>The Common Lisp MiniSpec</h1>
+        <div class="main span6">
+          <p>
+            This documentation tool is a cheat-sheet and a concept-navigation aid.
+            Its goal is to help Common Lisp programmers quickly browse symbols for their definition and usage.
+            The listings are example-driven, paired with concise descriptions, and providing readily
+            available links to more comprehensive documentation.
+          </p>
+          <p>
+            The <b>MiniSpec</b> is still a <em>Work in Progress</em>. General features were included
+            first, with more added as time allows. Contribute to <a href="https://github.com/lamberta/minispec">the project</a> if you can.
+          </p>
+
+          <h2>Features</h2>
+          <ul>
+            <li>Easy to navigate. Symbols are grouped by concept while maintaining a searchable index.</li>
+            <li>Definitions are example-driven and can appear in multiple sections, if appropriate.</li>
+            <li>More comprehensive documentation is always accessible (just click the symbol name).</li>
+            <li>Includes popular libraries such as <a href="http://common-lisp.net/project/alexandria/">Alexandria</a>, <a href="http://common-lisp.net/project/cl-utilities/">CL-Utilities</a>, <a href="http://common-lisp.net/project/iterate/">Iterate</a>, and more.</li>
+            <li>Updating is simple. Fill in descriptions and examples using Markdown, or add your own pet library to a local build.</li>
+          </ul>
+
+          <h2>Other Documentation</h2>
+          <p>These are invaluable sources and have been incorporated in some capacity.</p>
           <ul>
             <li><a href="http://www.lispworks.com/documentation/HyperSpec/Front/">Common Lisp HyperSpec</a></li>
             <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/clm.html">Common Lisp the Language, 2nd Edition</a></li>
             <li><a href="http://www.gigamonkeys.com/book/">Practical Common Lisp</a></li>
             <li><a href="http://clqr.boundp.org">Common Lisp Quick Reference</a></li>
           </ul>
-        </article>
+        </div>
       </div><!--/row-fluid-->
     </div><!--/container-->
 
@@ -102,6 +123,6 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.min.js"></script>
+    <script src="./include/typeahead/typeahead.js"></script>
   </body>
 </html>

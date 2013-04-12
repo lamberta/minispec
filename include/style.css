@@ -11,6 +11,7 @@
 
 
 
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1em;
@@ -92,6 +93,10 @@ aside nav .nav-header {
 
 /* main
  */
+div.main {
+	margin: 40px 0 0 4px !important;
+}
+
 article {
 	margin: 40px 0 0 0 !important;
 }
