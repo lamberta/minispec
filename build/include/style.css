@@ -161,7 +161,8 @@ article p a:hover {
  */
 header nav .navbar-inner {
 	min-height: inherit;
-	background: NAVBAR_BG !important; 
+	background: NAVBAR_BG !important;
+	filter: none;
 }
 
 header nav ul {
