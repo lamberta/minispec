@@ -211,7 +211,7 @@
 (rotatef a b c)       ;&rArr; NIL
 (list a b c)          ;&rArr; (:B :C :A)</code></pre>
 <h3 id="makunbound-symbol-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_makunb.htm">makunbound</a> symbol &rArr; symbol</h3>
-<p>Delete a special variable, if it exists.</p>
+<p>Makes <em>symbol</em> unbound, regardless of whether it was previously bound.</p>
 <pre><code>(setf a 1)
 (boundp &#39;a)     ;&rArr; T
 (makunbound &#39;a) ;&rArr; A
