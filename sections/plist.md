@@ -1,4 +1,4 @@
-## Property Lists (plist)
+## Property List (plist)
 
 Lists with alternating keys and values: `(:x 10 :y 20)`.
 Uses `#'eq` for `:test`, so should only use symbols as

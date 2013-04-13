@@ -107,7 +107,7 @@ article h1:first-child {
 
 /* section header
  */
-article h1, article h2 {
+article h1, article h2, div.main h2 {
 	font-size: 1.4em;
 	color: HEADER;
 }
