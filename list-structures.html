@@ -43,23 +43,23 @@
             <ul class="dropdown-menu">
               <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
               <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structires.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#plist">Property List</a></li>
-              <li><a href="./list-structures.html#alist">Association List</a></li>
+              <li><a href="./list-structures.html#tree">Tree</a></li>
+              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
               <li class="nav-header"><a href="./arrays.html">Array</a></li>
               <li><a href="./arrays.html">Array</a></li>
               <li><a href="./vectors.html">Vector</a></li>
               <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
               <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structs">Structs</a></li>
+              <li><a href="./data-structures.html#structures">Structs</a></li>
               <li><a href="./clos.html">Common Lisp Object System</a></li>
             </ul>
           </li>
           <li><a href="./strings.html">Strings</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Numbers</a></li>
-              <li><a href="#">Characters</a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
             </ul>
           </li>
           <li><a href="./math.html">Math</a></li>
@@ -106,7 +106,7 @@
   <li><a href="#sublis-alist-tree-key-key-test-test-not-new-tree">sublis</a></li>
   <li><a href="#alexandriaflatten-tree-list">flatten</a></li>
   <li><a href="#alexandriacircular-tree-p-object-boolean">circular-tree-p</a></li>
-  <li><a href="#property-lists-plist" class="nav-header">Property Lists (plist)</a></li>
+  <li><a href="#property-list-plist" class="nav-header">Property List (plist)</a></li>
   <li><a href="#getf-plist-indicator-optional-default-value">getf</a></li>
   <li><a href="#remf-place-indicator-boolean">remf</a></li>
   <li><a href="#get-properties-plist-indicator-list-indicator-value-tail">get-properties</a></li>
@@ -185,7 +185,7 @@
 <pre><code>(flatten &#39;(1 2 (3 2 1) ((1 1 nil) (2 2)))) ;&rArr; (1 2 3 2 1 1 1 2 2)</code></pre>
 <h3 id="alexandriacircular-tree-p-object-boolean"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-circular_002dtree_002dp">alexandria:circular-tree-p</a> object &rArr; boolean</h3>
 <p>Test if <em>object</em> is a circular <em>tree</em>.</p>
-<h2 id="property-lists-plist">Property Lists (plist)</h2>
+<h2 id="property-list-plist">Property List (plist)</h2>
 <p>Lists with alternating keys and values: <code>(:x 10 :y 20)</code>. Uses <code>#'eq</code> for <code>:test</code>, so should only use symbols as keywords.</p>
 <p>Every symbol contains metadata on it stored as a plist:</p>
 <pre><code>(symbol-plist &#39;symbol) ;access plist of symbol
