@@ -126,7 +126,7 @@ Rotate values of *places* left, the first becoming new last place’s value.
 
 ### [makunbound] symbol => symbol
 
-Delete a special variable, if it exists.
+Makes *symbol* unbound, regardless of whether it was previously bound.
 
 ~~~
 (setf a 1)
