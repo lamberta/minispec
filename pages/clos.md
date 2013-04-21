@@ -24,7 +24,8 @@ Defines a new named [class], returning the new class object as its result.
      :documentation "Dog name.")
    (sound
      :accessor sound                         ;getter/setter
-	 :initform "woof")))
+	 :initform "woof"))
+  (:documentation "Man's best friend."))
 ~~~
 
 And to pretty-print the object at the REPL:
