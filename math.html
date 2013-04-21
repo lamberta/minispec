@@ -52,9 +52,9 @@
               <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
               <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
               <li><a href="./data-structures.html#structures">Structs</a></li>
-              <li><a href="./clos.html">Common Lisp Object System</a></li>
             </ul>
           </li>
+          <li><a href="./clos.html">CLOS</a></li>
           <li><a href="./strings.html">Strings</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -72,6 +72,7 @@
           <li><a href="./control.html">Control</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
             <ul class="dropdown-menu">
+              <li><a href="./comparison.html">Comparison</a></li>
               <li><a href="./time.html">Time</a></li>
               <li><a href="./output.html">Output</a></li>
               <li><a href="./regular-expressions.html">Regular Expressions</a></li>
@@ -88,8 +89,7 @@
         <aside class="span3">
           <nav class="well" data-spy="affix">
 <ul class="nav nav-list">
-  <li><a href="#numbers" class="nav-header">Numbers</a></li>
-  <li><a href="#predicates" class="nav-header">Predicates</a></li>
+  <li><a href="#numbers-and-math" class="nav-header">Numbers and Math</a></li>
   <li><a href="#rest-numbers-boolean">=</a></li>
   <li><a href="#rest-numbers-boolean-1">/=</a></li>
   <li><a href="#rest-numbers-boolean-2">></a></li>
@@ -108,7 +108,6 @@
   <li><a href="#integerp-object-boolean">integerp</a></li>
   <li><a href="#complexp-object-boolean">complexp</a></li>
   <li><a href="#random-state-p-object-boolean">random-state-p</a></li>
-  <li><a href="#numeric-functions" class="nav-header">Numeric Functions</a></li>
   <li><a href="#rest-numbers-sum">+</a></li>
   <li><a href="#rest-numbers-product">*</a></li>
   <li><a href="#rest-numbers-difference">-</a></li>
@@ -235,8 +234,7 @@
           </nav>
         </aside>
         <article class="span9">
-<h1 id="numbers">Numbers</h1>
-<h2 id="predicates">Predicates</h2>
+<h2 id="numbers-and-math">Numbers and Math</h2>
 <h3 id="rest-numbers-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">=</a> &amp;rest numbers* &rArr; boolean</h3>
 <p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if all numbers are the same in value, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
 <pre><code>(+ 6 6 6) ;&rArr; T</code></pre>
@@ -258,7 +256,6 @@
 <h3 id="integerp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_inte_1.htm">integerp</a> object &rArr; boolean</h3>
 <h3 id="complexp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comp_3.htm">complexp</a> object &rArr; boolean</h3>
 <h3 id="random-state-p-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rnd_st.htm">random-state-p</a> object &rArr; boolean</h3>
-<h2 id="numeric-functions">Numeric Functions</h2>
 <h3 id="rest-numbers-sum"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pl.htm">+</a> &amp;rest numbers* &rArr; sum</h3>
 <h3 id="rest-numbers-product"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_st.htm">*</a> &amp;rest numbers* &rArr; product</h3>
 <h3 id="rest-numbers-difference"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a__.htm">-</a> &amp;rest numbers* &rArr; difference</h3>

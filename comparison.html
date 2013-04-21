@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Comparison</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <header>
+<nav class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
+      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./definitions.html#variables">Variables</a></li>
+              <li><a href="./definitions.html#functions">Functions</a></li>
+              <li><a href="./definitions.html#macros">Macros</a></li>
+            </ul>
+          </li>
+          <li><a href="./lists.html">Lists</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
+              <li><a href="./list-structures.html#set">Set</a></li>
+              <li><a href="./list-structures.html#tree">Tree</a></li>
+              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+              <li class="nav-header"><a href="./arrays.html">Array</a></li>
+              <li><a href="./arrays.html">Array</a></li>
+              <li><a href="./vectors.html">Vector</a></li>
+              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
+              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+              <li><a href="./data-structures.html#structures">Structs</a></li>
+            </ul>
+          </li>
+          <li><a href="./clos.html">CLOS</a></li>
+          <li><a href="./strings.html">Strings</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"></a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          <li><a href="./math.html">Math</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./iteration.html">Iteration</a></li>
+              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+            </ul>
+          </li>
+          <li><a href="./control.html">Control</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="./comparison.html">Comparison</a></li>
+              <li><a href="./time.html">Time</a></li>
+              <li><a href="./output.html">Output</a></li>
+              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</nav>
+    </header>
+    <div id="container" class="container-fluid">
+      <div class="row-fluid">
+        <aside class="span3">
+          <nav class="well" data-spy="affix">
+<ul class="nav nav-list">
+  <li><a href="#equality" class="nav-header">Equality</a></li>
+  <li><a href="#eq-x-y-boolean">eq</a></li>
+  <li><a href="#eql-x-y-boolean">eql</a></li>
+  <li><a href="#equal-x-y-boolean">equal</a></li>
+  <li><a href="#equalp-x-y-boolean">equalp</a></li>
+  <li><a href="#not">not</a></li>
+  <li><a href="#rest-numbers-boolean">=</a></li>
+  <li><a href="#rest-numbers-boolean-1">/=</a></li>
+  <li><a href="#rest-numbers-boolean-2">></a></li>
+  <li><a href="#rest-numbers-boolean-3">>=</a></li>
+  <li><a href="#rest-numbers-boolean-4"><</a></li>
+  <li><a href="#rest-numbers-boolean-5"><=</a></li>
+  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-boolean">string=</a></li>
+  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx">string/=</a></li>
+  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-1">string<</a></li>
+  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-2">string></a></li>
+  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-3">string<=</a></li>
+  <li><a href="#string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-4">string>=</a></li>
+  <li><a href="#predicates" class="nav-header">Predicates</a></li>
+  <li><a href="#zerop-number-boolean">zerop</a></li>
+  <li><a href="#plusp-real-boolean">plusp</a></li>
+  <li><a href="#minusp-real-boolean">minusp</a></li>
+  <li><a href="#evenp-integer-boolean">evenp</a></li>
+  <li><a href="#oddp-integer-boolean">oddp</a></li>
+  <li><a href="#numberp-object-boolean">numberp</a></li>
+  <li><a href="#realp-object-boolean">realp</a></li>
+  <li><a href="#rationalp-object-boolean">rationalp</a></li>
+  <li><a href="#floatp-object-boolean">floatp</a></li>
+  <li><a href="#integerp-object-boolean">integerp</a></li>
+  <li><a href="#complexp-object-boolean">complexp</a></li>
+  <li><a href="#random-state-p-object-boolean">random-state-p</a></li>
+  <li><a href="#boundp">boundp</a></li>
+  <li><a href="#fboundp">fboundp</a></li>
+  <li><a href="#constantp">constantp</a></li>
+  <li><a href="#functionp">functionp</a></li>
+</ul>
+          </nav>
+        </aside>
+        <article class="span9">
+<h2 id="equality">Equality</h2>
+<ul>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node74.html">CLtL2: Equality Predicates</a></li>
+<li><a href="http://www.gigamonkeys.com/book/syntax-and-semantics.html#truth-falsehood-and-equality">PCL: Truth, Falsehood, and Equality</a></li>
+</ul>
+<h3 id="eq-x-y-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm">eq</a> x y &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if the objects are identical. Should <em>not</em> be used for numbers or characters since those types are implementation-dependant.</p>
+<pre><code>(eq 3 3.0)                  ;&rArr; NIL
+(eq 3.0 3.0)                ;&rArr; T
+(eq &quot;Foo&quot; (copy-seq &quot;Foo&quot;)) ;&rArr; NIL
+(eq &quot;FOO&quot; &quot;foo&quot;)            ;&rArr; NIL</code></pre>
+<h3 id="eql-x-y-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm">eql</a> x y &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if the objects are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq.htm">eq</a> and also considers two objects of the same class representing the same value as equivalent,</p>
+<pre><code>(eql &#39;a &#39;a) ;&rArr; T
+(eql 3 3)   ;&rArr; T
+(eql 3 3.0) ;&rArr; NIL [int and float are different classes]</code></pre>
+<h3 id="equal-x-y-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equal.htm">equal</a> x y &rArr; boolean</h3>
+<p>Considers lists equivalent if they contain the same structure and contents. Strings are equivalent if they contain the same characters. Falls back to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_eql.htm">eql</a> for other types.</p>
+<h3 id="equalp-x-y-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equalp.htm">equalp</a> x y &rArr; boolean</h3>
+<p>Numbers are equivalent if they represent the same value, ignores differences in string case. Sequences with <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_equalp.htm">equalp</a> elements are equivalent.</p>
+<pre><code>(equalp 1 1.0)           ;&rArr; T
+(equalp &quot;HeLlo&quot; &quot;hello&quot;) ;&rArr; T</code></pre>
+<h3 id="not"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_not.htm">not</a></h3>
+<h3 id="rest-numbers-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">=</a> &amp;rest numbers* &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if all numbers are the same in value, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<pre><code>(+ 6 6 6) ;&rArr; T</code></pre>
+<h3 id="rest-numbers-boolean-1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">/=</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-2"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&gt;</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-3"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&gt;=</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-4"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&lt;</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="rest-numbers-boolean-5"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eq_sle.htm">&lt;=</a> &amp;rest numbers* &rArr; boolean</h3>
+<h3 id="string-str1-str2-key-start1-end1-start2-end2-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if the given strings are of the same length and contain the same characters, otherwise return <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-equal</a>.</p>
+<pre><code>(string= &quot;foo&quot; &quot;foo&quot;) ;&rArr; T
+(string= &quot;foo&quot; &quot;Foo&quot;) ;&rArr; NIL
+(string= &quot;abcd&quot; &quot;01234abcd9012&quot; :start2 5 :end2 9) ;&rArr; T
+(string-equal &quot;foo&quot; &quot;Foo&quot;) ;&rArr; T</code></pre>
+<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string/=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if the given strings are different, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-not-equal</a>.</p>
+<pre><code>(string-not-equal &quot;AAAA&quot; &quot;aaaA&quot;) ;&rArr; NIL</code></pre>
+<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&lt;</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is less than <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-lessp</a>.</p>
+<pre><code>(string&lt; &quot;aaaa&quot; &quot;aaab&quot;) ;&rArr; 3
+(string-lessp &quot;012AAAA789&quot; &quot;01aaab6&quot; :start1 3 :end1 7 :start2 2 :end2 6) ;&rArr; 6</code></pre>
+<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-2"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&gt;</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is greater than <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-greaterp</a>.</p>
+<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-3"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&lt;=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is less than or equal to <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-not-greaterp</a>.</p>
+<pre><code>(string&gt;= &quot;aaaaa&quot; &quot;aaaa&quot;) ;&rArr; 4
+(string-not-greaterp &quot;Abcde&quot; &quot;abcdE&quot;) ;&rArr; 5</code></pre>
+<h3 id="string-str1-str2-key-start1-end1-start2-end2-mismatch-idx-4"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string&gt;=</a> str1 str2 &amp;key start1 end1 start2 end2 &rArr; mismatch-idx</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>str1</em> is greater than or equal to <em>str2</em>, otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>. Ignore differences in case using <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stgeq_.htm">string-not-lessp</a>.</p>
+<h2 id="predicates">Predicates</h2>
+<h3 id="zerop-number-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm">zerop</a> number &rArr; boolean</h3>
+<h3 id="plusp-real-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_minusp.htm">plusp</a> real &rArr; boolean</h3>
+<h3 id="minusp-real-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_minusp.htm">minusp</a> real &rArr; boolean</h3>
+<p>Returns <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> if <em>number</em> is zero (<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_intege.htm">integer</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_float.htm">float</a>, or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_comple.htm">complex</a>); otherwise <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<h3 id="evenp-integer-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_evenpc.htm">evenp</a> integer &rArr; boolean</h3>
+<h3 id="oddp-integer-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_evenpc.htm">oddp</a> integer &rArr; boolean</h3>
+<h3 id="numberp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_nump.htm">numberp</a> object &rArr; boolean</h3>
+<h3 id="realp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_realp.htm">realp</a> object &rArr; boolean</h3>
+<h3 id="rationalp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rati_1.htm">rationalp</a> object &rArr; boolean</h3>
+<h3 id="floatp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_floatp.htm">floatp</a> object &rArr; boolean</h3>
+<h3 id="integerp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_inte_1.htm">integerp</a> object &rArr; boolean</h3>
+<h3 id="complexp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comp_3.htm">complexp</a> object &rArr; boolean</h3>
+<h3 id="random-state-p-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rnd_st.htm">random-state-p</a> object &rArr; boolean</h3>
+<h3 id="boundp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_boundp.htm">boundp</a></h3>
+<h3 id="fboundp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fbound.htm">fboundp</a></h3>
+<h3 id="constantp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_consta.htm">constantp</a></h3>
+<h3 id="functionp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fnp.htm">functionp</a></h3>
+        </article>
+      </div>
+    </div>
+    <footer></footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./include/bootstrap/js/bootstrap.js"></script>
+    <script src="./include/typeahead/typeahead.js"></script>
+    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

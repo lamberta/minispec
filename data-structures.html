@@ -52,9 +52,9 @@
               <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
               <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
               <li><a href="./data-structures.html#structures">Structs</a></li>
-              <li><a href="./clos.html">Common Lisp Object System</a></li>
             </ul>
           </li>
+          <li><a href="./clos.html">CLOS</a></li>
           <li><a href="./strings.html">Strings</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -72,6 +72,7 @@
           <li><a href="./control.html">Control</a></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
             <ul class="dropdown-menu">
+              <li><a href="./comparison.html">Comparison</a></li>
               <li><a href="./time.html">Time</a></li>
               <li><a href="./output.html">Output</a></li>
               <li><a href="./regular-expressions.html">Regular Expressions</a></li>
@@ -103,6 +104,13 @@
   <li><a href="#alexandriacopy-hash-table-table-key-key-test-size-rehash-size-rehash-threshold-hash-table">copy-hash-table</a></li>
   <li><a href="#alexandriahash-table-alist-hash-table-list">hash-table-alist</a></li>
   <li><a href="#alexandriahash-table-plist-hash-table-list">hash-table-plist</a></li>
+  <li><a href="#with-hash-table-iterator-name-hash-table-declaration-form-result">with-hash-table-iterator</a></li>
+  <li><a href="#hash-table-test-hash-table-test">hash-table-test</a></li>
+  <li><a href="#hash-table-size-hash-table-size">hash-table-size</a></li>
+  <li><a href="#hash-table-rehash-size-hash-table-rehash-size">hash-table-rehash-size</a></li>
+  <li><a href="#hash-table-rehash-threshold-hash-table-rehash-threshold">hash-table-rehash-threshold</a></li>
+  <li><a href="#sxhash-object-hash-code">sxhash</a></li>
+  <li><a href="#iteration" class="nav-header">Iteration</a></li>
   <li><a href="#maphash-fn-hash-table-nil">maphash</a></li>
   <li><a href="#alexandriamaphash-keys-fn-hash-table-nil">maphash-keys</a></li>
   <li><a href="#alexandriamaphash-values-fn-hash-table-nil">maphash-values</a></li>
@@ -143,6 +151,14 @@
 <h3 id="alexandriacopy-hash-table-table-key-key-test-size-rehash-size-rehash-threshold-hash-table"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-copy_002dhash_002dtable">alexandria:copy-hash-table</a> table &amp;key key test size rehash-size rehash-threshold &rArr; hash-table</h3>
 <h3 id="alexandriahash-table-alist-hash-table-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-hash_002dtable_002dalist">alexandria:hash-table-alist</a> hash-table &rArr; list</h3>
 <h3 id="alexandriahash-table-plist-hash-table-list"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-hash_002dtable_002dplist">alexandria:hash-table-plist</a> hash-table &rArr; list</h3>
+<h3 id="with-hash-table-iterator-name-hash-table-declaration-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_hash.htm">with-hash-table-iterator</a> (name hash-table) declaration* form* &rArr; result*</h3>
+<h3 id="hash-table-test-hash-table-test"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_5.htm">hash-table-test</a> hash-table &rArr; test</h3>
+<h3 id="hash-table-size-hash-table-size"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_4.htm">hash-table-size</a> hash-table &rArr; size</h3>
+<h3 id="hash-table-rehash-size-hash-table-rehash-size"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_2.htm">hash-table-rehash-size</a> hash-table &rArr; rehash-size</h3>
+<h3 id="hash-table-rehash-threshold-hash-table-rehash-threshold"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_hash_3.htm">hash-table-rehash-threshold</a> hash-table &rArr; rehash-threshold</h3>
+<h3 id="sxhash-object-hash-code"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sxhash.htm">sxhash</a> object &rArr; hash-code</h3>
+<p>Computes a hash code for <em>object</em>.</p>
+<h2 id="iteration">Iteration</h2>
 <h3 id="maphash-fn-hash-table-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_maphas.htm">maphash</a> fn hash-table &rArr; nil</h3>
 <p>Iterates function over key/value entries in the <em>hash-table</em>.</p>
 <pre><code>(maphash #&#39;(lambda (k v) (list k v)) hash-table)</code></pre>
