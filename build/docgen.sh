@@ -21,7 +21,7 @@ REF_FILES=($(find "$REF_ROOT" -type f -name '*.md'))
 
 function preprocess_file {
 		local in_path="$1"
-		local m4_init="m4_changequote(,)" #ignore all m4 quoting for markdown
+		local m4_init="m4_changequote(,)m4_dnl" #ignore m4 quoting for markdown
 		echo "$(cd $(dirname $in_path) && m4 --prefix-builtins <(echo $m4_init) $in_path)"
 }
 
