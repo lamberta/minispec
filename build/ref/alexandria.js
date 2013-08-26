@@ -1,7 +1,7 @@
 var page = require('webpage').create(),
 		args = require('system').args,
 		fs = require('fs'),
-		jquery_src = "http://code.jquery.com/jquery.js",
+		jquery_src = "http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js",
 		doc_root = "http://common-lisp.net/project/alexandria/draft/alexandria.html",
 		pkg_name = "alexandria";
 
