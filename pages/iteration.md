@@ -12,7 +12,7 @@ m4_include(../sections/plist-iteration.md)
 
 ## Hash-Tables
 
-m4_include(../sections/hashtable-iteration.md)
+m4_include(../sections/hashtable/iteration.md)
 
 ## Recursion
 

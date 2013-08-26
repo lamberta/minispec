@@ -1,8 +1,3 @@
-## Hash-Tables
-
-* [PCL](http://gigamonkeys.com/book/collections.html#hash-tables)
-* [HS](http://www.lispworks.com/documentation/HyperSpec/Body/18_aa.htm)
-
 ### [make-hash-table] &key test size rehash-size rehash-threshold => hash-table
 
 Default *test* is `#'eql`.
@@ -12,6 +7,8 @@ Default *test* is `#'eql`.
 Converts an *alist* to a *hash-table* format.
 
 ### [alexandria:plist-hash-table] plist &rest hash-table-initargs => hash-table
+
+### [alexandria:copy-hash-table] table &key key test size rehash-size rehash-threshold => hash-table
 
 ### [hash-table-p] object => boolean
 
@@ -50,22 +47,6 @@ Removes all entries from *hash-table*, and then returns that empty *hash-table*.
 
 ### [alexandria:hash-table-values] hash-table => list
 
-### [alexandria:copy-hash-table] table &key key test size rehash-size rehash-threshold => hash-table
-
 ### [alexandria:hash-table-alist] hash-table => list
 
 ### [alexandria:hash-table-plist] hash-table => list
-
-### [with-hash-table-iterator] \(name hash-table) declaration\* form\* => result\*
-
-### [hash-table-test] hash-table => test
-
-### [hash-table-size] hash-table => size
-
-### [hash-table-rehash-size] hash-table => rehash-size
-
-### [hash-table-rehash-threshold] hash-table => rehash-threshold
-
-### [sxhash] object => hash-code
-
-Computes a hash code for *object*.
