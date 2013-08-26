@@ -36,6 +36,15 @@ Destructively replaces the elements of *se1* bounded by
 (replace "abcde" "98765" :start1 1 :end1 3 :start2 3) ;=> "a65de"
 ~~~
 
+To remove an element from a sequence at a given position:
+
+~~~
+(setf lst '(a b c d e))
+(setf i (position 'b lst))                 ;=> 1
+(replace lst lst :start1 i :start2 (1+ i)) ;=> (A C D E E)
+(butlast lst)                              ;=> (A C D E)
+~~~
+
 ### [substitute] new old seq &key from-end test test-not start end count key
 
 Functional variants are [substitute-if],

@@ -1,5 +1,7 @@
 ## Functions
 
+* [PCL: Functions](http://www.gigamonkeys.com/book/functions.html)
+
 ### [defun] name lambda-list \[\[declare\* | doc\]\] form* => name
 
 Define a [function] with a given *name*, which acts as an
