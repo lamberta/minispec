@@ -10,35 +10,45 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
     <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <!--<link rel="stylesheet" href="./include/style.css">-->
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
+    <div>
+
+      <header>
+        <div class="section-padding">
 $navbar$
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-$toc$
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 $body$
 $for(include-after)$
 $include-after$
 $endfor$
+          </div>
         </article>
       </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+$toc$
+          </nav>
+        </div>
+      </aside>
+      
+      <footer>
+        Common Lisp Minispec
+      </footer>
     </div>
-    <footer></footer>
 
     <script src="./include/jquery.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
     <script src="./include/typeahead/typeahead.js"></script>
     <script src="./include/highlight/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>

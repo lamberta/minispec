@@ -1,0 +1,157 @@
+body, ul, h1, h2, h3, h4, h5 {
+  margin: 0;
+  padding: 0;
+	font-weight: normal;
+	font-size: 1em;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+.section-padding {
+  margin: 0 10px;
+}
+
+/* main
+ */
+.article-wrapper {
+  float: left;
+  width: 100%;
+	margin-top: 30px;
+}
+
+article {
+  margin-left: 200px; /*set to aside width*/
+  background: #ffc0cb;;
+}
+
+footer {
+  clear: left;
+  width: 100%;
+  background: black;
+  color: #FFF;
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* sidebar
+ */
+aside {
+  float: left;
+  width: 200px;
+	margin-top: 30px;
+  margin-left: -100%;
+  background: #00ff00;
+}
+
+/* navbar
+ */
+header {
+	position: fixed;
+	width: 100%;
+  background: #820000;
+}
+
+#navbar {
+  height: 30px;
+  font-size: 0.8em;
+}
+
+#navbar h1 {
+	float: left;
+}
+
+#navbar ul {
+	float: right;
+}
+
+#navbar ul, li, a {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar li {
+  list-style: none;
+}
+
+#navbar ul > li {
+  float: left;
+}
+
+#navbar ul > li a {
+  color: #fff;
+  line-height: 30px;
+  height: 30px;
+  display: block;
+  padding: 0px 10px;
+}
+
+#navbar ul li a:hover, #navbar form .tt-suggestion.tt-is-under-cursor {
+	background: #530505;
+	-webkit-transition: background 0.5s ease;
+	-moz-transition: background 0.5s ease;
+	-o-transition: background 0.5s ease;
+	transition: background 0.5s ease;
+}
+
+#navbar ul li ul {
+  display: none;
+  position: absolute;
+  background: #820000;//navbar
+}
+
+#navbar ul li ul li {
+  float: none;
+  line-height: 30px;
+  height: 30px;
+}
+
+#navbar .navbar-header {
+	font-size: 0.8em;
+	text-transform: uppercase;
+}
+
+#navbar .brand {
+	font-size: 1.3em;
+	line-height: 30px;
+	color: #fff;
+}
+
+#navbar .caret {
+	font-size: 0.5em;
+	padding-left: 2px;
+}
+
+#navbar form {
+	margin-top: 2px;
+}
+
+/* typeahead.js classes for auto-complete */
+#navbar form .tt-dropdown-menu {
+	color: #fff;
+	background-color: #820000;
+	margin-left: 4px;
+	font-size: 0.8em;
+	width: 150px;
+}
+
+#navbar form .tt-query {
+	background-color: #fff !important;
+}
+
+#navbar form .tt-hint {
+	display: none !important;
+}
+
+#navbar form .tt-suggestion {
+	padding: 0 5px;
+}
+
+#navbar form .tt-suggestion p {
+	margin: 4px;
+}

@@ -6,8 +6,27 @@ $(document).ready(function () {
 	});
 	HighlightLisp.highlight_auto();
 
-	/* Sidebar toc bootstrap-scrollspy <http://getbootstrap.com/javascript/>
+	/* Navbar dropdown
 	 */
+	$('#navbar li').click(function () {
+		$('#navbar li > ul').not($(this).children('ul').toggle()).hide();
+	});
+	$('html').click(function () {
+		$('#navbar li > ul').hide();  //if any click, hide dropdowns...
+	});
+	$('header').click(function (evt) {
+		if (!$(evt.target).is('a')) { //if navbar link, then close...
+			evt.stopPropagation();      //otherwise, leave dropdown open.
+		}
+	});
+	$('#navbar li > ul').parent().click(function (evt) {
+		if ($(this).children()[0] === evt.target) { //ignore clicks to dropdown heads
+			return false;
+		}
+	});
+	
+	/* Sidebar toc bootstrap-scrollspy <http://getbootstrap.com/javascript/>
+	 *
 	var navbar = $('header nav'),
 			sidebar = $('aside nav'),
 			top_offset = parseInt(sidebar.css('margin-top'));
@@ -24,6 +43,7 @@ $(document).ready(function () {
 		window.scrollBy(0, -top_offset);
 		return false;
 	});
+	**/
 
 	/* Minimize advanced section
 	 */
@@ -43,10 +63,11 @@ $(document).ready(function () {
 	
 	/* Search typeahead <https://github.com/twitter/typeahead.js>
 	 */ 
-	var search_form = navbar.find('form');
+	var search_form = $('#navbar form');
 	search_form.find('input').typeahead({
 		name: 'index',
-		prefetch: './search-index.json'
+		prefetch: './search-index.json',
+		limit: 20
 	});
 	search_form.find('input').on('typeahead:selected typeahead:autocompleted', function (evt, data) {
 		document.location.href = data.url;
