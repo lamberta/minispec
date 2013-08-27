@@ -24,26 +24,15 @@ $(document).ready(function () {
 			return false;
 		}
 	});
-	
-	/* Sidebar toc bootstrap-scrollspy <http://getbootstrap.com/javascript/>
-	 *
-	var navbar = $('header nav'),
-			sidebar = $('aside nav'),
-			top_offset = parseInt(sidebar.css('margin-top'));
-	$('body').attr({
-		'data-spy': "scroll",
-		'data-offset': top_offset
+
+	/* Sidebar
+	 */
+	var sidebar_li = $('aside nav li');
+	//highlight toc entry on click
+	$('aside nav li > a').click(function () {
+		sidebar_li.removeClass('active');
+		$(this).parent().toggleClass('active');
 	});
-	sidebar.scrollspy();
-	//offset main article beneath fixed top navbar
-	sidebar.find('li a').click(function (evt) {
-		evt.preventDefault();
-		var target_id = $(this).attr('href').slice(1); //remove hash symbol
-		document.getElementById(target_id).scrollIntoView();
-		window.scrollBy(0, -top_offset);
-		return false;
-	});
-	**/
 
 	/* Minimize advanced section
 	 */
@@ -58,7 +47,7 @@ $(document).ready(function () {
 	});
 	//hide sidebar toc links
 	adv_section.filter('h3').each(function (i, elem) {
-		$('aside nav a[href="#'+ elem.id +'"]').hide();
+		$('aside nav a[href="#'+ elem.id +'"]').parent().hide();
 	});
 	
 	/* Search typeahead <https://github.com/twitter/typeahead.js>

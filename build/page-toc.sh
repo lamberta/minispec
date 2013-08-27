@@ -39,12 +39,12 @@ done < <(cat "$FILE" | grep '^#' | sed 's/^#\{1,\}[[:space:]]//') #strip header 
 
 ## generate html ...
 
-echo "<ul class=\"nav nav-list\">"
+echo "<ul>"
 for id in "${ID_ARR[@]}"; do
 		name=$(echo "${ID_MAP[$id]}" | cut -d '|' -f1)
 		is_header=$(echo "${ID_MAP[$id]}" | cut -d '|' -f2)
 		if [[ $is_header == 1 ]]; then
-				echo "  <li><a href=\"#$id\" class=\"nav-header\">$name</a></li>"
+				echo "  <li><a href=\"#$id\" class=\"toc-header\">$name</a></li>"
 		else
 				echo "  <li><a href=\"#$id\">$name</a></li>"
 		fi

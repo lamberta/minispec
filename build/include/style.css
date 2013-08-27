@@ -49,6 +49,56 @@ aside {
   background: #00ff00;
 }
 
+aside nav {
+	position: fixed;
+	width: 170px;
+	max-height: 85%;
+	margin-top: 5px;
+	padding: 4px;
+	border: 1px solid #E3E3E3;
+	overflow-y: scroll;
+	background-color: whiteSmoke;
+	white-space: nowrap;
+	font-size: 0.8em;
+}
+
+/*force scrollbar on webkit*/
+aside nav::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+}
+
+aside nav::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+aside nav ul li a {
+	display: block;
+	color: #820000;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+aside nav ul li a:hover {
+	color: #530505;
+}
+
+aside nav ul li:hover {
+	background-color: #eee;;
+}
+
+aside nav ul li.active a {
+  background-color: #820000;
+	color: #fff;
+}
+
+aside nav .toc-header {
+	color: #8A887D;
+}
+
 /* navbar
  */
 header {
@@ -64,6 +114,7 @@ header {
 
 #navbar h1 {
 	float: left;
+	margin-left: 4px;
 }
 
 #navbar ul {
@@ -88,7 +139,7 @@ header {
   line-height: 30px;
   height: 30px;
   display: block;
-  padding: 0px 10px;
+  padding: 0px 6px;
 }
 
 #navbar ul li a:hover, #navbar form .tt-suggestion.tt-is-under-cursor {
