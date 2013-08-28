@@ -133,7 +133,6 @@ article pre code {
 	font-size: 0.9em !important;
 }
 
-
 footer {
   clear: left;
   width: 100%;
@@ -244,12 +243,12 @@ header {
   padding: 0px 6px;
 }
 
-#navbar ul li a:hover, #navbar form .tt-suggestion.tt-is-under-cursor {
+#navbar ul li a:hover {
 	background: #530505;
-	-webkit-transition: background 0.5s ease;
-	-moz-transition: background 0.5s ease;
-	-o-transition: background 0.5s ease;
-	transition: background 0.5s ease;
+	-webkit-transition: background 0.3s ease;
+	-moz-transition: background 0.3s ease;
+	-o-transition: background 0.3s ease;
+	transition: background 0.3s ease;
 }
 
 #navbar ul li ul {
@@ -291,20 +290,32 @@ header {
 }
 
 #navbar form {
-	margin-top: 2px;
+	margin-top: 6px;
+	padding-left: 6px;
 }
 
-/* typeahead.js classes for auto-complete */
+/*input field from typeahead.js*/
+#navbar form .tt-query {
+	padding-left: 4px;
+	color: #a8a8a8;
+	background-color: #fff !important;
+	border: 0;
+	border-radius: 20px;
+	width: 110px;
+}
+
+/*dropdowns*/
 #navbar form .tt-dropdown-menu {
+	left: -60px !important;
 	color: #fff;
 	background-color: #820000;
 	margin-left: 4px;
 	font-size: 0.8em;
-	width: 150px;
-}
-
-#navbar form .tt-query {
-	background-color: #fff !important;
+	width: 180px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.2) 2px 3px 10px;
+	z-index: 2;
 }
 
 #navbar form .tt-hint {
@@ -317,4 +328,14 @@ header {
 
 #navbar form .tt-suggestion p {
 	margin: 4px;
+}
+
+#navbar form .tt-suggestion.tt-is-under-cursor {
+	background: #530505;
+}
+
+/* Front page
+ */
+article.index p {
+	max-width: 640px;
 }
