@@ -10,134 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#common-lisp-object-system" class="nav-header">Common Lisp Object System</a></li>
-  <li><a href="#classes" class="nav-header">Classes</a></li>
-  <li><a href="#defclass-name-superclass-definitions-new-class">defclass</a></li>
-  <li><a href="#make-instance-class-instance">make-instance</a></li>
-  <li><a href="#slot-value-instance-slot-value">slot-value</a></li>
-  <li><a href="#with-slots-slots-instance-forms-result">with-slots</a></li>
-  <li><a href="#with-accessors-accessors-instance-forms-result">with-accessors</a></li>
-  <li><a href="#slot-exists-p-instance-name-boolean">slot-exists-p</a></li>
-  <li><a href="#slot-boundp-instance-name-boolean">slot-boundp</a></li>
-  <li><a href="#slot-makunbound-instance-name-instance">slot-makunbound</a></li>
-  <li><a href="#class-of-instance-class">class-of</a></li>
-  <li><a href="#find-class-symbol-optional-errorp-environment-class">find-class</a></li>
-  <li><a href="#class-name-class-name">class-name</a></li>
-  <li><a href="#methods" class="nav-header">Methods</a></li>
-  <li><a href="#defgeneric-name-lambda-list-rest-options-and-methods-generic-fn">defgeneric</a></li>
-  <li><a href="#defmethod-name-lambda-list-rest-forms-method">defmethod</a></li>
-  <li><a href="#initialize-instance-instance-rest-initargs-key-allow-other-keys-instance">initialize-instance</a></li>
-  <li><a href="#add-method-generic-fn-method-generic-fn">add-method</a></li>
-  <li><a href="#remove-method-generic-fn-method-generic-fn">remove-method</a></li>
-  <li><a href="#ensure-generic-function-fn-name-key-generic-fn">ensure-generic-function</a></li>
-  <li><a href="#invalid-method-error-method-format-control-rest-args-implementation-dependent">invalid-method-error</a></li>
-  <li><a href="#method-combination-error-format-control-rest-args-implementation-dependent">method-combination-error</a></li>
-  <li><a href="#method-combination" class="nav-header">Method Combination</a></li>
-  <li><a href="#next-method-p-boolean">next-method-p</a></li>
-  <li><a href="#call-next-method-rest-args-result">call-next-method</a></li>
-  <li><a href="#define-method-combination-name-lambda-list-rest-forms-name">define-method-combination</a></li>
-  <li><a href="#call-method-method-name-optional-next-method-list-result">call-method</a></li>
-  <li><a href="#method-selection" class="nav-header">Method Selection</a></li>
-  <li><a href="#find-method-generic-fn-method-qualifiers-specializers-optional-errorp-method">find-method</a></li>
-  <li><a href="#compute-applicable-methods-generic-fn-fn-args-methods">compute-applicable-methods</a></li>
-  <li><a href="#function-keywords-method-keys-allow-other-keys-p">function-keywords</a></li>
-  <li><a href="#method-qualifiers-method-qualifiers">method-qualifiers</a></li>
-  <li><a href="#redefine" class="nav-header">Redefine</a></li>
-  <li><a href="#reinitialize-instance-instance-rest-initargs-key-allow-other-keys-instance">reinitialize-instance</a></li>
-  <li><a href="#change-class-instance-new-class-key-allow-other-keys-instance">change-class</a></li>
-  <li><a href="#make-instances-obsolete-class-class">make-instances-obsolete</a></li>
-  <li><a href="#allocate-instance-class-rest-initargs-key-allow-other-keys-new-instance">allocate-instance</a></li>
-  <li><a href="#shared-initialize-instance-slot-names-rest-initargs-key-allow-other-keys-instance">shared-initialize</a></li>
-  <li><a href="#internal" class="nav-header">Internal</a></li>
-  <li><a href="#slot-missing-class-instance-slot-name-operation-optional-new-value-result">slot-missing</a></li>
-  <li><a href="#slot-unbound-class-instance-slot-name-result">slot-unbound</a></li>
-  <li><a href="#update-instance-for-redefined-class-instance-args-result">update-instance-for-redefined-class</a></li>
-  <li><a href="#update-instance-for-different-class-previous-current-rest-implementation-dependent">update-instance-for-different-class</a></li>
-  <li><a href="#no-applicable-method-generic-fn-rest-fn-args-result">no-applicable-method</a></li>
-  <li><a href="#no-next-method-generic-fn-method-rest-args-result">no-next-method</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="common-lisp-object-system">Common Lisp Object System</h1>
 <ul>
 <li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/07_.htm">HyperSpec: Objects</a></li>
@@ -325,15 +265,70 @@
 <p>Called on invocation of generic-function on args if there is no applicable method.</p>
 <h3 id="no-next-method-generic-fn-method-rest-args-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_no_nex.htm">no-next-method</a> generic-fn method &amp;rest args &rArr; result</h3>
 <p>Called on invocation of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_call_n.htm">call-next-method</a> when there is no next method.</p>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#common-lisp-object-system" class="toc-header">Common Lisp Object System</a></li>
+  <li><a href="#classes" class="toc-header">Classes</a></li>
+  <li><a href="#defclass-name-superclass-definitions-new-class">defclass</a></li>
+  <li><a href="#make-instance-class-instance">make-instance</a></li>
+  <li><a href="#slot-value-instance-slot-value">slot-value</a></li>
+  <li><a href="#with-slots-slots-instance-forms-result">with-slots</a></li>
+  <li><a href="#with-accessors-accessors-instance-forms-result">with-accessors</a></li>
+  <li><a href="#slot-exists-p-instance-name-boolean">slot-exists-p</a></li>
+  <li><a href="#slot-boundp-instance-name-boolean">slot-boundp</a></li>
+  <li><a href="#slot-makunbound-instance-name-instance">slot-makunbound</a></li>
+  <li><a href="#class-of-instance-class">class-of</a></li>
+  <li><a href="#find-class-symbol-optional-errorp-environment-class">find-class</a></li>
+  <li><a href="#class-name-class-name">class-name</a></li>
+  <li><a href="#methods" class="toc-header">Methods</a></li>
+  <li><a href="#defgeneric-name-lambda-list-rest-options-and-methods-generic-fn">defgeneric</a></li>
+  <li><a href="#defmethod-name-lambda-list-rest-forms-method">defmethod</a></li>
+  <li><a href="#initialize-instance-instance-rest-initargs-key-allow-other-keys-instance">initialize-instance</a></li>
+  <li><a href="#add-method-generic-fn-method-generic-fn">add-method</a></li>
+  <li><a href="#remove-method-generic-fn-method-generic-fn">remove-method</a></li>
+  <li><a href="#ensure-generic-function-fn-name-key-generic-fn">ensure-generic-function</a></li>
+  <li><a href="#invalid-method-error-method-format-control-rest-args-implementation-dependent">invalid-method-error</a></li>
+  <li><a href="#method-combination-error-format-control-rest-args-implementation-dependent">method-combination-error</a></li>
+  <li><a href="#method-combination" class="toc-header">Method Combination</a></li>
+  <li><a href="#next-method-p-boolean">next-method-p</a></li>
+  <li><a href="#call-next-method-rest-args-result">call-next-method</a></li>
+  <li><a href="#define-method-combination-name-lambda-list-rest-forms-name">define-method-combination</a></li>
+  <li><a href="#call-method-method-name-optional-next-method-list-result">call-method</a></li>
+  <li><a href="#method-selection" class="toc-header">Method Selection</a></li>
+  <li><a href="#find-method-generic-fn-method-qualifiers-specializers-optional-errorp-method">find-method</a></li>
+  <li><a href="#compute-applicable-methods-generic-fn-fn-args-methods">compute-applicable-methods</a></li>
+  <li><a href="#function-keywords-method-keys-allow-other-keys-p">function-keywords</a></li>
+  <li><a href="#method-qualifiers-method-qualifiers">method-qualifiers</a></li>
+  <li><a href="#redefine" class="toc-header">Redefine</a></li>
+  <li><a href="#reinitialize-instance-instance-rest-initargs-key-allow-other-keys-instance">reinitialize-instance</a></li>
+  <li><a href="#change-class-instance-new-class-key-allow-other-keys-instance">change-class</a></li>
+  <li><a href="#make-instances-obsolete-class-class">make-instances-obsolete</a></li>
+  <li><a href="#allocate-instance-class-rest-initargs-key-allow-other-keys-new-instance">allocate-instance</a></li>
+  <li><a href="#shared-initialize-instance-slot-names-rest-initargs-key-allow-other-keys-instance">shared-initialize</a></li>
+  <li><a href="#internal" class="toc-header">Internal</a></li>
+  <li><a href="#slot-missing-class-instance-slot-name-operation-optional-new-value-result">slot-missing</a></li>
+  <li><a href="#slot-unbound-class-instance-slot-name-result">slot-unbound</a></li>
+  <li><a href="#update-instance-for-redefined-class-instance-args-result">update-instance-for-redefined-class</a></li>
+  <li><a href="#update-instance-for-different-class-previous-current-rest-implementation-dependent">update-instance-for-different-class</a></li>
+  <li><a href="#no-applicable-method-generic-fn-rest-fn-args-result">no-applicable-method</a></li>
+  <li><a href="#no-next-method-generic-fn-method-rest-args-result">no-next-method</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

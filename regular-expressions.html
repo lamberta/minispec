@@ -10,127 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#regular-expressions" class="nav-header">Regular Expressions</a></li>
-  <li><a href="#install" class="nav-header">Install</a></li>
-  <li><a href="#scanning" class="nav-header">Scanning</a></li>
-  <li><a href="#cl-ppcrecreate-scanner">create-scanner</a></li>
-  <li><a href="#cl-ppcrescan">scan</a></li>
-  <li><a href="#cl-ppcrescan-to-strings">scan-to-strings</a></li>
-  <li><a href="#cl-ppcreregister-groups-bind">register-groups-bind</a></li>
-  <li><a href="#cl-ppcredo-scans">do-scans</a></li>
-  <li><a href="#cl-ppcredo-matches">do-matches</a></li>
-  <li><a href="#cl-ppcredo-matches-as-strings">do-matches-as-strings</a></li>
-  <li><a href="#cl-ppcreall-matches">all-matches</a></li>
-  <li><a href="#cl-ppcreall-matches-as-strings">all-matches-as-strings</a></li>
-  <li><a href="#splitting-and-replacing" class="nav-header">Splitting and Replacing</a></li>
-  <li><a href="#cl-ppcresplit">split</a></li>
-  <li><a href="#cl-ppcreregex-replace">regex-replace</a></li>
-  <li><a href="#cl-ppcreregex-replace-all">regex-replace-all</a></li>
-  <li><a href="#modifying-scanner-behaviour" class="nav-header">Modifying Scanner Behaviour</a></li>
-  <li><a href="#cl-ppcre-property-resolver">*property-resolver*</a></li>
-  <li><a href="#cl-ppcreparse-tree-synonym">parse-tree-synonym</a></li>
-  <li><a href="#cl-ppcre-regex-char-code-limit">*regex-char-code-limit*</a></li>
-  <li><a href="#cl-ppcre-use-bmh-matchers">*use-bmh-matchers*</a></li>
-  <li><a href="#cl-ppcre-optimize-char-classes">*optimize-char-classes*</a></li>
-  <li><a href="#cl-ppcre-allow-quoting">*allow-quoting*</a></li>
-  <li><a href="#cl-ppcre-allow-names-registers">*allow-names-registers*</a></li>
-  <li><a href="#misc" class="nav-header">Misc</a></li>
-  <li><a href="#cl-ppcreparse-string">parse-string</a></li>
-  <li><a href="#cl-ppcrecreate-optimized-test-function">create-optimized-test-function</a></li>
-  <li><a href="#cl-ppcrequote-meta-chars">quote-meta-chars</a></li>
-  <li><a href="#cl-ppcreregex-apropos">regex-apropos</a></li>
-  <li><a href="#cl-ppcreregex-apropos-list">regex-apropos-list</a></li>
-  <li><a href="#conditions" class="nav-header">Conditions</a></li>
-  <li><a href="#cl-ppcreppcre-error">ppcre-error</a></li>
-  <li><a href="#cl-ppcreppcre-invocation-error">ppcre-invocation-error</a></li>
-  <li><a href="#cl-ppcreppcre-syntax-error">ppcre-syntax-error</a></li>
-  <li><a href="#cl-ppcreppcre-syntax-error-string">ppcre-syntax-error-string</a></li>
-  <li><a href="#cl-ppcreppcre-syntax-error-pos">ppcre-syntax-error-pos</a></li>
-  <li><a href="#unicode" class="nav-header">Unicode</a></li>
-  <li><a href="#cl-ppcreunicode-property-resolver">unicode-property-resolver</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="regular-expressions">Regular Expressions</h1>
 <ul>
 <li><a href="http://weitz.de/cl-ppcre/">CL-PPCRE</a></li>
@@ -178,15 +125,63 @@
 <h3 id="cl-ppcreppcre-syntax-error-pos"><a href="http://weitz.de/cl-ppcre/#ppcre-syntax-error-pos">cl-ppcre:ppcre-syntax-error-pos</a></h3>
 <h2 id="unicode">Unicode</h2>
 <h3 id="cl-ppcreunicode-property-resolver"><a href="http://weitz.de/cl-ppcre/#unicode-property-resolver">cl-ppcre:unicode-property-resolver</a></h3>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#regular-expressions" class="toc-header">Regular Expressions</a></li>
+  <li><a href="#install" class="toc-header">Install</a></li>
+  <li><a href="#scanning" class="toc-header">Scanning</a></li>
+  <li><a href="#cl-ppcrecreate-scanner">create-scanner</a></li>
+  <li><a href="#cl-ppcrescan">scan</a></li>
+  <li><a href="#cl-ppcrescan-to-strings">scan-to-strings</a></li>
+  <li><a href="#cl-ppcreregister-groups-bind">register-groups-bind</a></li>
+  <li><a href="#cl-ppcredo-scans">do-scans</a></li>
+  <li><a href="#cl-ppcredo-matches">do-matches</a></li>
+  <li><a href="#cl-ppcredo-matches-as-strings">do-matches-as-strings</a></li>
+  <li><a href="#cl-ppcreall-matches">all-matches</a></li>
+  <li><a href="#cl-ppcreall-matches-as-strings">all-matches-as-strings</a></li>
+  <li><a href="#splitting-and-replacing" class="toc-header">Splitting and Replacing</a></li>
+  <li><a href="#cl-ppcresplit">split</a></li>
+  <li><a href="#cl-ppcreregex-replace">regex-replace</a></li>
+  <li><a href="#cl-ppcreregex-replace-all">regex-replace-all</a></li>
+  <li><a href="#modifying-scanner-behaviour" class="toc-header">Modifying Scanner Behaviour</a></li>
+  <li><a href="#cl-ppcre-property-resolver">*property-resolver*</a></li>
+  <li><a href="#cl-ppcreparse-tree-synonym">parse-tree-synonym</a></li>
+  <li><a href="#cl-ppcre-regex-char-code-limit">*regex-char-code-limit*</a></li>
+  <li><a href="#cl-ppcre-use-bmh-matchers">*use-bmh-matchers*</a></li>
+  <li><a href="#cl-ppcre-optimize-char-classes">*optimize-char-classes*</a></li>
+  <li><a href="#cl-ppcre-allow-quoting">*allow-quoting*</a></li>
+  <li><a href="#cl-ppcre-allow-names-registers">*allow-names-registers*</a></li>
+  <li><a href="#misc" class="toc-header">Misc</a></li>
+  <li><a href="#cl-ppcreparse-string">parse-string</a></li>
+  <li><a href="#cl-ppcrecreate-optimized-test-function">create-optimized-test-function</a></li>
+  <li><a href="#cl-ppcrequote-meta-chars">quote-meta-chars</a></li>
+  <li><a href="#cl-ppcreregex-apropos">regex-apropos</a></li>
+  <li><a href="#cl-ppcreregex-apropos-list">regex-apropos-list</a></li>
+  <li><a href="#conditions" class="toc-header">Conditions</a></li>
+  <li><a href="#cl-ppcreppcre-error">ppcre-error</a></li>
+  <li><a href="#cl-ppcreppcre-invocation-error">ppcre-invocation-error</a></li>
+  <li><a href="#cl-ppcreppcre-syntax-error">ppcre-syntax-error</a></li>
+  <li><a href="#cl-ppcreppcre-syntax-error-string">ppcre-syntax-error-string</a></li>
+  <li><a href="#cl-ppcreppcre-syntax-error-pos">ppcre-syntax-error-pos</a></li>
+  <li><a href="#unicode" class="toc-header">Unicode</a></li>
+  <li><a href="#cl-ppcreunicode-property-resolver">unicode-property-resolver</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

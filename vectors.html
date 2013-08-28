@@ -10,149 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#vectors" class="nav-header">Vectors</a></li>
-  <li><a href="#create" class="nav-header">Create</a></li>
-  <li><a href="#vector-rest-objects-vector">vector</a></li>
-  <li><a href="#make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array">make-array</a></li>
-  <li><a href="#adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array">adjust-array</a></li>
-  <li><a href="#alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array">copy-array</a></li>
-  <li><a href="#select" class="nav-header">Select</a></li>
-  <li><a href="#svref-simple-vector-index-element">svref</a></li>
-  <li><a href="#fill-pointer-vector-fill-pointer">fill-pointer</a></li>
-  <li><a href="#aref-array-rest-subscripts-element">aref</a></li>
-  <li><a href="#elt-seq-idx-element">elt</a></li>
-  <li><a href="#alexandriarandom-elt">random-elt</a></li>
-  <li><a href="#length-seq-n">length</a></li>
-  <li><a href="#find-item-seq-key-from-end-test-test-not-start-end-key-element">find</a></li>
-  <li><a href="#position-item-seq-key-from-end-test-test-not-start-end-key-idx">position</a></li>
-  <li><a href="#count-item-seq-key-from-end-start-end-key-test-test-not-n">count</a></li>
-  <li><a href="#cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element">extremum</a></li>
-  <li><a href="#subseq-seq-start-optional-end-sub-seq">subseq</a></li>
-  <li><a href="#search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">search</a></li>
-  <li><a href="#mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">mismatch</a></li>
-  <li><a href="#modify" class="nav-header">Modify</a></li>
-  <li><a href="#vector-push-new-element-vector-index">vector-push</a></li>
-  <li><a href="#vector-push-extend-new-element-vector-extension-index">vector-push-extend</a></li>
-  <li><a href="#vector-pop">vector-pop</a></li>
-  <li><a href="#concatenate-result-type-rest-seqs-result-seq">concatenate</a></li>
-  <li><a href="#cl-utilitiessplit-sequence-delimiter-seq-key-count-remove-empty-subseqs-from-end-start-end-test-test-not-key-list-idx">split-sequence</a></li>
-  <li><a href="#fill-seq-item-key-start-end-seq">fill</a></li>
-  <li><a href="#replace-seq1-seq2-key-start1-end1-start2-end2-seq1">replace</a></li>
-  <li><a href="#substitute-new-old-seq-key-from-end-test-test-not-start-end-count-key">substitute</a></li>
-  <li><a href="#remove-item-seq-key-from-end-test-test-not-start-end-count-key-result-seq">remove</a></li>
-  <li><a href="#remove-duplicates-seq-key-from-end-test-test-not-start-end-key">remove-duplicates</a></li>
-  <li><a href="#sort" class="nav-header">Sort</a></li>
-  <li><a href="#sort-1" class="nav-header">Sort</a></li>
-  <li><a href="#reverse-seq-reversed-seq">reverse</a></li>
-  <li><a href="#sort-seq-fn-key-key-sorted-seq">sort</a></li>
-  <li><a href="#merge-result-type-seq1-seq2-fn-key-key-result-seq">merge</a></li>
-  <li><a href="#alexandriarotate-seq-optional-n-result-seq">rotate</a></li>
-  <li><a href="#alexandriashuffle-seq-key-start-end-result-seq">shuffle</a></li>
-  <li><a href="#predicates" class="nav-header">Predicates</a></li>
-  <li><a href="#some-fn-seq-rest-seqs-result">some</a></li>
-  <li><a href="#every-fn-seq-rest-seqs-boolean">every</a></li>
-  <li><a href="#notevery-fn-seq-rest-seqs-boolean">notevery</a></li>
-  <li><a href="#notany-fn-seq-rest-seqs-boolean">notany</a></li>
-  <li><a href="#arrayp">arrayp</a></li>
-  <li><a href="#vectorp">vectorp</a></li>
-  <li><a href="#simple-vector-p">simple-vector-p</a></li>
-  <li><a href="#bit-vector-p">bit-vector-p</a></li>
-  <li><a href="#simple-bit-vector-p">simple-bit-vector-p</a></li>
-  <li><a href="#adjustable-array-p">adjustable-array-p</a></li>
-  <li><a href="#array-has-fill-pointer-p">array-has-fill-pointer-p</a></li>
-  <li><a href="#array-in-bounds-p">array-in-bounds-p</a></li>
-  <li><a href="#iteration" class="nav-header">Iteration</a></li>
-  <li><a href="#map-result-type-fn-rest-seqs-result">map</a></li>
-  <li><a href="#map-into-result-seq-fn-rest-seqs-result-seq">map-into</a></li>
-  <li><a href="#remove-if-not-fn-seq-key-from-end-start-end-count-key-seq">remove-if-not</a></li>
-  <li><a href="#remove-if-fn-seq-key-from-end-start-end-count-key-seq">remove-if</a></li>
-  <li><a href="#reduce-fn-seq-key-key-from-end-start-end-initial-value-result">reduce</a></li>
-  <li><a href="#alexandriamap-combinations-fn-seq-key-start-end-length-copy">map-combinations</a></li>
-  <li><a href="#alexandriamap-derangements-fn-seq-key-start-end-copy">map-derangements</a></li>
-  <li><a href="#alexandriamap-permutations-fn-seq-key-start-end-length-copy">map-permutations</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="vectors">Vectors</h1>
 <p>A vector is a basic integer-indexed collection, a one-dimensional <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_array.htm">array</a>. Vectors and lists are collectively considered to be <em>sequences</em>.</p>
 <ul>
@@ -246,6 +171,11 @@
 <h3 id="replace-seq1-seq2-key-start1-end1-start2-end2-seq1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_replac.htm">replace</a> seq1 seq2 &amp;key start1 end1 start2 end2 &rArr; seq1</h3>
 <p>Destructively replaces the elements of <em>se1</em> bounded by <em>:start1</em> and <em>:end1</em> with the elements of <em>seq2</em> bounded by <em>:start2</em> and <em>:end2</em>.</p>
 <pre><code>(replace &quot;abcde&quot; &quot;98765&quot; :start1 1 :end1 3 :start2 3) ;&rArr; &quot;a65de&quot;</code></pre>
+<p>To remove an element from a sequence at a given position:</p>
+<pre><code>(setf lst &#39;(a b c d e))
+(setf i (position &#39;b lst))                 ;&rArr; 1
+(replace lst lst :start1 i :start2 (1+ i)) ;&rArr; (A C D E E)
+(butlast lst)                              ;&rArr; (A C D E)</code></pre>
 <h3 id="substitute-new-old-seq-key-from-end-test-test-not-start-end-count-key"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">substitute</a> new old seq &amp;key from-end test test-not start end count key</h3>
 <p>Functional variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">substitute-if</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">substitute-if-not</a>. Destructive variants are <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">nsubstitute</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">nsubstitute-if</a>, and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_sbs_s.htm">nsubstitute-if-not</a>. <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_substc.htm">subst</a> performs substitutions throughout a <em>tree</em>.</p>
 <pre><code>(substitute 10 1 &#39;(1 2 1 3 1 4))      ;&rArr; (10 2 10 3 10 4)
@@ -321,15 +251,85 @@
 <h3 id="alexandriamap-combinations-fn-seq-key-start-end-length-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dcombinations">alexandria:map-combinations</a> fn seq &amp;key start end length copy</h3>
 <h3 id="alexandriamap-derangements-fn-seq-key-start-end-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dderangements">alexandria:map-derangements</a> fn seq &amp;key start end copy</h3>
 <h3 id="alexandriamap-permutations-fn-seq-key-start-end-length-copy"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-map_002dpermutations">alexandria:map-permutations</a> fn seq &amp;key start end length copy</h3>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#vectors" class="toc-header">Vectors</a></li>
+  <li><a href="#create" class="toc-header">Create</a></li>
+  <li><a href="#vector-rest-objects-vector">vector</a></li>
+  <li><a href="#make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array">make-array</a></li>
+  <li><a href="#adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array">adjust-array</a></li>
+  <li><a href="#alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array">copy-array</a></li>
+  <li><a href="#select" class="toc-header">Select</a></li>
+  <li><a href="#svref-simple-vector-index-element">svref</a></li>
+  <li><a href="#fill-pointer-vector-fill-pointer">fill-pointer</a></li>
+  <li><a href="#aref-array-rest-subscripts-element">aref</a></li>
+  <li><a href="#elt-seq-idx-element">elt</a></li>
+  <li><a href="#alexandriarandom-elt">random-elt</a></li>
+  <li><a href="#length-seq-n">length</a></li>
+  <li><a href="#find-item-seq-key-from-end-test-test-not-start-end-key-element">find</a></li>
+  <li><a href="#position-item-seq-key-from-end-test-test-not-start-end-key-idx">position</a></li>
+  <li><a href="#count-item-seq-key-from-end-start-end-key-test-test-not-n">count</a></li>
+  <li><a href="#cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element">extremum</a></li>
+  <li><a href="#subseq-seq-start-optional-end-sub-seq">subseq</a></li>
+  <li><a href="#search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">search</a></li>
+  <li><a href="#mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">mismatch</a></li>
+  <li><a href="#modify" class="toc-header">Modify</a></li>
+  <li><a href="#vector-push-new-element-vector-index">vector-push</a></li>
+  <li><a href="#vector-push-extend-new-element-vector-extension-index">vector-push-extend</a></li>
+  <li><a href="#vector-pop">vector-pop</a></li>
+  <li><a href="#concatenate-result-type-rest-seqs-result-seq">concatenate</a></li>
+  <li><a href="#cl-utilitiessplit-sequence-delimiter-seq-key-count-remove-empty-subseqs-from-end-start-end-test-test-not-key-list-idx">split-sequence</a></li>
+  <li><a href="#fill-seq-item-key-start-end-seq">fill</a></li>
+  <li><a href="#replace-seq1-seq2-key-start1-end1-start2-end2-seq1">replace</a></li>
+  <li><a href="#substitute-new-old-seq-key-from-end-test-test-not-start-end-count-key">substitute</a></li>
+  <li><a href="#remove-item-seq-key-from-end-test-test-not-start-end-count-key-result-seq">remove</a></li>
+  <li><a href="#remove-duplicates-seq-key-from-end-test-test-not-start-end-key">remove-duplicates</a></li>
+  <li><a href="#sort" class="toc-header">Sort</a></li>
+  <li><a href="#sort-1" class="toc-header">Sort</a></li>
+  <li><a href="#reverse-seq-reversed-seq">reverse</a></li>
+  <li><a href="#sort-seq-fn-key-key-sorted-seq">sort</a></li>
+  <li><a href="#merge-result-type-seq1-seq2-fn-key-key-result-seq">merge</a></li>
+  <li><a href="#alexandriarotate-seq-optional-n-result-seq">rotate</a></li>
+  <li><a href="#alexandriashuffle-seq-key-start-end-result-seq">shuffle</a></li>
+  <li><a href="#predicates" class="toc-header">Predicates</a></li>
+  <li><a href="#some-fn-seq-rest-seqs-result">some</a></li>
+  <li><a href="#every-fn-seq-rest-seqs-boolean">every</a></li>
+  <li><a href="#notevery-fn-seq-rest-seqs-boolean">notevery</a></li>
+  <li><a href="#notany-fn-seq-rest-seqs-boolean">notany</a></li>
+  <li><a href="#arrayp">arrayp</a></li>
+  <li><a href="#vectorp">vectorp</a></li>
+  <li><a href="#simple-vector-p">simple-vector-p</a></li>
+  <li><a href="#bit-vector-p">bit-vector-p</a></li>
+  <li><a href="#simple-bit-vector-p">simple-bit-vector-p</a></li>
+  <li><a href="#adjustable-array-p">adjustable-array-p</a></li>
+  <li><a href="#array-has-fill-pointer-p">array-has-fill-pointer-p</a></li>
+  <li><a href="#array-in-bounds-p">array-in-bounds-p</a></li>
+  <li><a href="#iteration" class="toc-header">Iteration</a></li>
+  <li><a href="#map-result-type-fn-rest-seqs-result">map</a></li>
+  <li><a href="#map-into-result-seq-fn-rest-seqs-result-seq">map-into</a></li>
+  <li><a href="#remove-if-not-fn-seq-key-from-end-start-end-count-key-seq">remove-if-not</a></li>
+  <li><a href="#remove-if-fn-seq-key-from-end-start-end-count-key-seq">remove-if</a></li>
+  <li><a href="#reduce-fn-seq-key-key-from-end-start-end-initial-value-result">reduce</a></li>
+  <li><a href="#alexandriamap-combinations-fn-seq-key-start-end-length-copy">map-combinations</a></li>
+  <li><a href="#alexandriamap-derangements-fn-seq-key-start-end-copy">map-derangements</a></li>
+  <li><a href="#alexandriamap-permutations-fn-seq-key-start-end-length-copy">map-permutations</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

@@ -10,122 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#list-structures" class="nav-header">List Structures</a></li>
-  <li><a href="#set" class="nav-header">Set</a></li>
-  <li><a href="#alexandriasetp-object-key-test-key-boolean">setp</a></li>
-  <li><a href="#subsetp-list1-list2-key-key-test-test-not-boolean">subsetp</a></li>
-  <li><a href="#alexandriaset-equal-list1-list2-key-test-key-boolean">set-equal</a></li>
-  <li><a href="#member-item-list-key-key-test-test-not-tail">member</a></li>
-  <li><a href="#adjoin-item-list-key-key-test-test-not-new-list">adjoin</a></li>
-  <li><a href="#union-list1-list2-key-key-test-test-not-result-list">union</a></li>
-  <li><a href="#intersection-list1-list2-key-key-test-test-not-result-list">intersection</a></li>
-  <li><a href="#set-difference-list1-list2-key-key-test-test-not-result-list">set-difference</a></li>
-  <li><a href="#set-exclusive-or-list1-list2-key-key-test-test-not-result-list">set-exclusive-or</a></li>
-  <li><a href="#tree" class="nav-header">Tree</a></li>
-  <li><a href="#tree-equal">tree-equal</a></li>
-  <li><a href="#copy-tree-tree-new-tree">copy-tree</a></li>
-  <li><a href="#subst-new-old-tree-key-key-test-test-not-new-tree">subst</a></li>
-  <li><a href="#sublis-alist-tree-key-key-test-test-not-new-tree">sublis</a></li>
-  <li><a href="#alexandriaflatten-tree-list">flatten</a></li>
-  <li><a href="#alexandriacircular-tree-p-object-boolean">circular-tree-p</a></li>
-  <li><a href="#property-list-plist" class="nav-header">Property List (plist)</a></li>
-  <li><a href="#getf-plist-indicator-optional-default-value">getf</a></li>
-  <li><a href="#remf-place-indicator-boolean">remf</a></li>
-  <li><a href="#get-properties-plist-indicator-list-indicator-value-tail">get-properties</a></li>
-  <li><a href="#alexandriaplist-alist-plist">plist-alist</a></li>
-  <li><a href="#alexandriaplist-hash-table-plist-rest-hash-table-initargs">plist-hash-table</a></li>
-  <li><a href="#alexandriaremove-from-plist-plist-rest-keys">remove-from-plist</a></li>
-  <li><a href="#alexandriaremove-from-plistf-plist-rest-keys">remove-from-plistf</a></li>
-  <li><a href="#alexandriadoplist-key-val-plist-optional-values-forms">doplist</a></li>
-  <li><a href="#association-list-alist" class="nav-header">Association List (alist)</a></li>
-  <li><a href="#acons-key-datum-alist-new-alist">acons</a></li>
-  <li><a href="#pairlis-keys-data-optional-alist-new-alist">pairlis</a></li>
-  <li><a href="#assoc-item-alist-key-key-test-test-not-entry">assoc</a></li>
-  <li><a href="#copy-alist-alist-new-alist">copy-alist</a></li>
-  <li><a href="#alexandriaalist-plist-alist">alist-plist</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="list-structures">List Structures</h1>
 <h2 id="set">Set</h2>
 <ul>
@@ -225,15 +177,58 @@
 <h3 id="alexandriaalist-plist-alist"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-alist_002dplist">alexandria:alist-plist</a> alist</h3>
 <p>Converts an <em>alist</em> to a <em>plist</em> format.</p>
 <pre><code>(alist-plist &#39;((:x . 10) (:y . 20))) ;&rArr; (:x 10 :y 20)</code></pre>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#list-structures" class="toc-header">List Structures</a></li>
+  <li><a href="#set" class="toc-header">Set</a></li>
+  <li><a href="#alexandriasetp-object-key-test-key-boolean">setp</a></li>
+  <li><a href="#subsetp-list1-list2-key-key-test-test-not-boolean">subsetp</a></li>
+  <li><a href="#alexandriaset-equal-list1-list2-key-test-key-boolean">set-equal</a></li>
+  <li><a href="#member-item-list-key-key-test-test-not-tail">member</a></li>
+  <li><a href="#adjoin-item-list-key-key-test-test-not-new-list">adjoin</a></li>
+  <li><a href="#union-list1-list2-key-key-test-test-not-result-list">union</a></li>
+  <li><a href="#intersection-list1-list2-key-key-test-test-not-result-list">intersection</a></li>
+  <li><a href="#set-difference-list1-list2-key-key-test-test-not-result-list">set-difference</a></li>
+  <li><a href="#set-exclusive-or-list1-list2-key-key-test-test-not-result-list">set-exclusive-or</a></li>
+  <li><a href="#tree" class="toc-header">Tree</a></li>
+  <li><a href="#tree-equal">tree-equal</a></li>
+  <li><a href="#copy-tree-tree-new-tree">copy-tree</a></li>
+  <li><a href="#subst-new-old-tree-key-key-test-test-not-new-tree">subst</a></li>
+  <li><a href="#sublis-alist-tree-key-key-test-test-not-new-tree">sublis</a></li>
+  <li><a href="#alexandriaflatten-tree-list">flatten</a></li>
+  <li><a href="#alexandriacircular-tree-p-object-boolean">circular-tree-p</a></li>
+  <li><a href="#property-list-plist" class="toc-header">Property List (plist)</a></li>
+  <li><a href="#getf-plist-indicator-optional-default-value">getf</a></li>
+  <li><a href="#remf-place-indicator-boolean">remf</a></li>
+  <li><a href="#get-properties-plist-indicator-list-indicator-value-tail">get-properties</a></li>
+  <li><a href="#alexandriaplist-alist-plist">plist-alist</a></li>
+  <li><a href="#alexandriaplist-hash-table-plist-rest-hash-table-initargs">plist-hash-table</a></li>
+  <li><a href="#alexandriaremove-from-plist-plist-rest-keys">remove-from-plist</a></li>
+  <li><a href="#alexandriaremove-from-plistf-plist-rest-keys">remove-from-plistf</a></li>
+  <li><a href="#alexandriadoplist-key-val-plist-optional-values-forms">doplist</a></li>
+  <li><a href="#association-list-alist" class="toc-header">Association List (alist)</a></li>
+  <li><a href="#acons-key-datum-alist-new-alist">acons</a></li>
+  <li><a href="#pairlis-keys-data-optional-alist-new-alist">pairlis</a></li>
+  <li><a href="#assoc-item-alist-key-key-test-test-not-entry">assoc</a></li>
+  <li><a href="#copy-alist-alist-new-alist">copy-alist</a></li>
+  <li><a href="#alexandriaalist-plist-alist">alist-plist</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

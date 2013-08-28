@@ -10,137 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#define-variables-functions-macros" class="nav-header">Define Variables, Functions, Macros</a></li>
-  <li><a href="#variables" class="nav-header">Variables</a></li>
-  <li><a href="#defparameter-name-value-doc-name">defparameter</a></li>
-  <li><a href="#defvar-name-value-doc-name">defvar</a></li>
-  <li><a href="#defconstant-name-value-doc-name">defconstant</a></li>
-  <li><a href="#setf-place-value-result">setf</a></li>
-  <li><a href="#let-var-var-value-forms-result">let</a></li>
-  <li><a href="#multiple-value-bind-vars-values-form-body-forms-result">multiple-value-bind</a></li>
-  <li><a href="#destructuring-bind-lambda-list-expression-forms-result">destructuring-bind</a></li>
-  <li><a href="#multiple-value-setq-vars-form-result">multiple-value-setq</a></li>
-  <li><a href="#progv-symbols-values-forms-result">progv</a></li>
-  <li><a href="#shiftf-place-newvalue-first-value">shiftf</a></li>
-  <li><a href="#rotatef-places-nil">rotatef</a></li>
-  <li><a href="#makunbound-symbol-symbol">makunbound</a></li>
-  <li><a href="#functions" class="nav-header">Functions</a></li>
-  <li><a href="#defun-name-lambda-list-declare-doc-form-name">defun</a></li>
-  <li><a href="#lambda-lambda-list-declare-doc-form-function">lambda</a></li>
-  <li><a href="#labels-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">labels</a></li>
-  <li><a href="#function-name-function">function</a></li>
-  <li><a href="#funcall-function-rest-args-result">funcall</a></li>
-  <li><a href="#apply-function-args-arg-list-result">apply</a></li>
-  <li><a href="#multiple-value-call-function-forms-result">multiple-value-call</a></li>
-  <li><a href="#values-objects-objects">values</a></li>
-  <li><a href="#values-list-list-objects">values-list</a></li>
-  <li><a href="#multiple-value-list-form-list">multiple-value-list</a></li>
-  <li><a href="#nth-value-n-form-object">nth-value</a></li>
-  <li><a href="#complement-function-complement-function">complement</a></li>
-  <li><a href="#constantly-value-function">constantly</a></li>
-  <li><a href="#identity-object-object">identity</a></li>
-  <li><a href="#function-lambda-expression-function-lambda-expression-closure-p-name">function-lambda-expression</a></li>
-  <li><a href="#fdefinition-name-definition">fdefinition</a></li>
-  <li><a href="#fmakunbound-name-name">fmakunbound</a></li>
-  <li><a href="#function-composition" class="nav-header">Function Composition</a></li>
-  <li><a href="#alexandriacompose-fn-rest-fns-function">compose</a></li>
-  <li><a href="#alexandriamultiple-value-compose-fn-rest-fns-function">multiple-value-compose</a></li>
-  <li><a href="#alexandriadisjoin-pred-rest-preds-function">disjoin</a></li>
-  <li><a href="#alexandriaconjoin-pred-rest-preds-function">conjoin</a></li>
-  <li><a href="#alexandriacurry-fn-rest-args-function">curry</a></li>
-  <li><a href="#alexandriarcurry-fn-rest-args-function">rcurry</a></li>
-  <li><a href="#macros" class="nav-header">Macros</a></li>
-  <li><a href="#defmacro-name-lambda-list-declare-doc-forms-name">defmacro</a></li>
-  <li><a href="#macrolet-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">macrolet</a></li>
-  <li><a href="#define-symbol-macro-symbol-expansion-symbol">define-symbol-macro</a></li>
-  <li><a href="#symbol-macrolet-symbol-expansion-declare-forms-result">symbol-macrolet</a></li>
-  <li><a href="#define-modify-macro-name-lambda-list-function-doc-name">define-modify-macro</a></li>
-  <li><a href="#defsetf-access-fn-update-fn-doc-access-fn">defsetf</a></li>
-  <li><a href="#get-setf-expansion-place-optional-env-vars-vals-store-vars-writer-form-reader-form">get-setf-expansion</a></li>
-  <li><a href="#define-setf-expander-access-fn-lambda-list-declaration-doc-form-access-fn">define-setf-expander</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="define-variables-functions-macros">Define Variables, Functions, Macros</h1>
 <ul>
 <li><a href="#variables">Variables</a></li>
@@ -218,6 +155,9 @@
 (makunbound &#39;a) ;&rArr; A
 (boundp &#39;a)     ;&rArr; NIL</code></pre>
 <h2 id="functions">Functions</h2>
+<ul>
+<li><a href="http://www.gigamonkeys.com/book/functions.html">PCL: Functions</a></li>
+</ul>
 <h3 id="defun-name-lambda-list-declare-doc-form-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defun.htm">defun</a> name lambda-list [[declare* | doc]] form* &rArr; name</h3>
 <p>Define a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> with a given <em>name</em>, which acts as an implicit <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_block.htm">block</a> when evaluating <em>forms</em>. Optionally <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_declar.htm">declare</a> type information about the function parameters.</p>
 <pre><code>(defun adder (a b)
@@ -388,15 +328,73 @@ a                   ;&rArr; (A 2 C)</code></pre>
 (last-element l)          ;&rArr; D
 (setf (last-element l) 4)
 l                         ;&rArr; (A B C 4)</code></pre>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#define-variables-functions-macros" class="toc-header">Define Variables, Functions, Macros</a></li>
+  <li><a href="#variables" class="toc-header">Variables</a></li>
+  <li><a href="#defparameter-name-value-doc-name">defparameter</a></li>
+  <li><a href="#defvar-name-value-doc-name">defvar</a></li>
+  <li><a href="#defconstant-name-value-doc-name">defconstant</a></li>
+  <li><a href="#setf-place-value-result">setf</a></li>
+  <li><a href="#let-var-var-value-forms-result">let</a></li>
+  <li><a href="#multiple-value-bind-vars-values-form-body-forms-result">multiple-value-bind</a></li>
+  <li><a href="#destructuring-bind-lambda-list-expression-forms-result">destructuring-bind</a></li>
+  <li><a href="#multiple-value-setq-vars-form-result">multiple-value-setq</a></li>
+  <li><a href="#progv-symbols-values-forms-result">progv</a></li>
+  <li><a href="#shiftf-place-newvalue-first-value">shiftf</a></li>
+  <li><a href="#rotatef-places-nil">rotatef</a></li>
+  <li><a href="#makunbound-symbol-symbol">makunbound</a></li>
+  <li><a href="#functions" class="toc-header">Functions</a></li>
+  <li><a href="#defun-name-lambda-list-declare-doc-form-name">defun</a></li>
+  <li><a href="#lambda-lambda-list-declare-doc-form-function">lambda</a></li>
+  <li><a href="#labels-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">labels</a></li>
+  <li><a href="#function-name-function">function</a></li>
+  <li><a href="#funcall-function-rest-args-result">funcall</a></li>
+  <li><a href="#apply-function-args-arg-list-result">apply</a></li>
+  <li><a href="#multiple-value-call-function-forms-result">multiple-value-call</a></li>
+  <li><a href="#values-objects-objects">values</a></li>
+  <li><a href="#values-list-list-objects">values-list</a></li>
+  <li><a href="#multiple-value-list-form-list">multiple-value-list</a></li>
+  <li><a href="#nth-value-n-form-object">nth-value</a></li>
+  <li><a href="#complement-function-complement-function">complement</a></li>
+  <li><a href="#constantly-value-function">constantly</a></li>
+  <li><a href="#identity-object-object">identity</a></li>
+  <li><a href="#function-lambda-expression-function-lambda-expression-closure-p-name">function-lambda-expression</a></li>
+  <li><a href="#fdefinition-name-definition">fdefinition</a></li>
+  <li><a href="#fmakunbound-name-name">fmakunbound</a></li>
+  <li><a href="#function-composition" class="toc-header">Function Composition</a></li>
+  <li><a href="#alexandriacompose-fn-rest-fns-function">compose</a></li>
+  <li><a href="#alexandriamultiple-value-compose-fn-rest-fns-function">multiple-value-compose</a></li>
+  <li><a href="#alexandriadisjoin-pred-rest-preds-function">disjoin</a></li>
+  <li><a href="#alexandriaconjoin-pred-rest-preds-function">conjoin</a></li>
+  <li><a href="#alexandriacurry-fn-rest-args-function">curry</a></li>
+  <li><a href="#alexandriarcurry-fn-rest-args-function">rcurry</a></li>
+  <li><a href="#macros" class="toc-header">Macros</a></li>
+  <li><a href="#defmacro-name-lambda-list-declare-doc-forms-name">defmacro</a></li>
+  <li><a href="#macrolet-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">macrolet</a></li>
+  <li><a href="#define-symbol-macro-symbol-expansion-symbol">define-symbol-macro</a></li>
+  <li><a href="#symbol-macrolet-symbol-expansion-declare-forms-result">symbol-macrolet</a></li>
+  <li><a href="#define-modify-macro-name-lambda-list-function-doc-name">define-modify-macro</a></li>
+  <li><a href="#defsetf-access-fn-update-fn-doc-access-fn">defsetf</a></li>
+  <li><a href="#get-setf-expansion-place-optional-env-vars-vals-store-vars-writer-form-reader-form">get-setf-expansion</a></li>
+  <li><a href="#define-setf-expander-access-fn-lambda-list-declaration-doc-form-access-fn">define-setf-expander</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

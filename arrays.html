@@ -10,116 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#arrays" class="nav-header">Arrays</a></li>
-  <li><a href="#create" class="nav-header">Create</a></li>
-  <li><a href="#make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array">make-array</a></li>
-  <li><a href="#adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array">adjust-array</a></li>
-  <li><a href="#alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array">copy-array</a></li>
-  <li><a href="#select" class="nav-header">Select</a></li>
-  <li><a href="#aref-array-rest-subscripts-element">aref</a></li>
-  <li><a href="#row-major-aref-array-index-element">row-major-aref</a></li>
-  <li><a href="#array-row-major-index-array-subscripts-index">array-row-major-index</a></li>
-  <li><a href="#array-dimensions-array-dimensions">array-dimensions</a></li>
-  <li><a href="#array-dimension-array-axis-number-dimension">array-dimension</a></li>
-  <li><a href="#array-total-size-array-size">array-total-size</a></li>
-  <li><a href="#array-rank-array-rank">array-rank</a></li>
-  <li><a href="#array-displacement-array-displaced-to-displaced-index-offset">array-displacement</a></li>
-  <li><a href="#array-rank-limit">array-rank-limit</a></li>
-  <li><a href="#array-dimension-limit">array-dimension-limit</a></li>
-  <li><a href="#array-total-size-limit">array-total-size-limit</a></li>
-  <li><a href="#elt-seq-idx-element">elt</a></li>
-  <li><a href="#alexandriarandom-elt">random-elt</a></li>
-  <li><a href="#length-seq-n">length</a></li>
-  <li><a href="#find-item-seq-key-from-end-test-test-not-start-end-key-element">find</a></li>
-  <li><a href="#position-item-seq-key-from-end-test-test-not-start-end-key-idx">position</a></li>
-  <li><a href="#count-item-seq-key-from-end-start-end-key-test-test-not-n">count</a></li>
-  <li><a href="#cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element">extremum</a></li>
-  <li><a href="#subseq-seq-start-optional-end-sub-seq">subseq</a></li>
-  <li><a href="#search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">search</a></li>
-  <li><a href="#mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">mismatch</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h2 id="arrays">Arrays</h2>
 <p>An array is an object with components arranged according to a rectilinear coordinate system. One-dimensional arrays are called <em>vectors</em>.</p>
 <p>A <em>general array</em> may contain any Lisp object, whereas a <em>specialized array</em> contains elements restricted to a specified type. Vectors whose elements are restricted to type <em>string-char</em> are called <em>strings</em>. Vectors whose elements are restricted to type <em>bit</em> are called <em>bit-vectors</em>.</p>
@@ -215,15 +173,52 @@
 <h3 id="mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mismat.htm">mismatch</a> seq1 seq2 &amp;key from-end test test-not key start1 start2 end1 end2 &rArr; idx</h3>
 <p>Return the index position where two sequences diverge.</p>
 <pre><code>(mismatch &quot;foobarbaz&quot; &quot;foom&quot;) ;&rArr; 3</code></pre>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#arrays" class="toc-header">Arrays</a></li>
+  <li><a href="#create" class="toc-header">Create</a></li>
+  <li><a href="#make-array-dims-key-type-initial-element-initial-contents-adjustable-fill-pointer-displaced-to-displaced-index-offset-new-array">make-array</a></li>
+  <li><a href="#adjust-array-array-new-dims-key-type-initial-element-initial-contents-fill-pointer-displaced-to-displaced-index-offset-adjusted-array">adjust-array</a></li>
+  <li><a href="#alexandriacopy-array-array-key-element-type-fill-pointer-adjustable-new-array">copy-array</a></li>
+  <li><a href="#select" class="toc-header">Select</a></li>
+  <li><a href="#aref-array-rest-subscripts-element">aref</a></li>
+  <li><a href="#row-major-aref-array-index-element">row-major-aref</a></li>
+  <li><a href="#array-row-major-index-array-subscripts-index">array-row-major-index</a></li>
+  <li><a href="#array-dimensions-array-dimensions">array-dimensions</a></li>
+  <li><a href="#array-dimension-array-axis-number-dimension">array-dimension</a></li>
+  <li><a href="#array-total-size-array-size">array-total-size</a></li>
+  <li><a href="#array-rank-array-rank">array-rank</a></li>
+  <li><a href="#array-displacement-array-displaced-to-displaced-index-offset">array-displacement</a></li>
+  <li><a href="#array-rank-limit">array-rank-limit</a></li>
+  <li><a href="#array-dimension-limit">array-dimension-limit</a></li>
+  <li><a href="#array-total-size-limit">array-total-size-limit</a></li>
+  <li><a href="#elt-seq-idx-element">elt</a></li>
+  <li><a href="#alexandriarandom-elt">random-elt</a></li>
+  <li><a href="#length-seq-n">length</a></li>
+  <li><a href="#find-item-seq-key-from-end-test-test-not-start-end-key-element">find</a></li>
+  <li><a href="#position-item-seq-key-from-end-test-test-not-start-end-key-idx">position</a></li>
+  <li><a href="#count-item-seq-key-from-end-start-end-key-test-test-not-n">count</a></li>
+  <li><a href="#cl-utilitiesextremum-seq-fn-key-key-start-0-end-smallest-element">extremum</a></li>
+  <li><a href="#subseq-seq-start-optional-end-sub-seq">subseq</a></li>
+  <li><a href="#search-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">search</a></li>
+  <li><a href="#mismatch-seq1-seq2-key-from-end-test-test-not-key-start1-start2-end1-end2-idx">mismatch</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

@@ -10,126 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#control-flow" class="nav-header">Control Flow</a></li>
-  <li><a href="#conditionals" class="nav-header">Conditionals</a></li>
-  <li><a href="#if-test-then-else-result">if</a></li>
-  <li><a href="#and-forms-result">and</a></li>
-  <li><a href="#or-forms-results">or</a></li>
-  <li><a href="#when-test-forms-result">when</a></li>
-  <li><a href="#unless-test-forms-result">unless</a></li>
-  <li><a href="#cond-test-then-result">cond</a></li>
-  <li><a href="#case-test-key-key-otherwise-form-result">case</a></li>
-  <li><a href="#sequencing" class="nav-header">Sequencing</a></li>
-  <li><a href="#progn-forms-result">progn</a></li>
-  <li><a href="#multiple-value-prog1-first-form-forms-first-form-results">multiple-value-prog1</a></li>
-  <li><a href="#prog1-first-form-forms-first-form-result">prog1</a></li>
-  <li><a href="#prog2-first-form-second-form-forms-second-form-result">prog2</a></li>
-  <li><a href="#prog-name-name-value-declare-tag-form-result">prog</a></li>
-  <li><a href="#sleep-seconds-nil">sleep</a></li>
-  <li><a href="#blocks-and-exits" class="nav-header">Blocks and Exits</a></li>
-  <li><a href="#block-name-forms-result">block</a></li>
-  <li><a href="#return-from-name-result-result">return-from</a></li>
-  <li><a href="#return-result-result">return</a></li>
-  <li><a href="#tagbody-tag-form-nil">tagbody</a></li>
-  <li><a href="#go-tag">go</a></li>
-  <li><a href="#catch-tag-forms-result">catch</a></li>
-  <li><a href="#throw-tag-form">throw</a></li>
-  <li><a href="#unwind-protect-protected-form-cleanup-forms-protected-form-result">unwind-protect</a></li>
-  <li><a href="#condition-control-flow" class="nav-header">Condition Control Flow</a></li>
-  <li><a href="#handler-case-expr-error-clause-no-error-clause-result">handler-case</a></li>
-  <li><a href="#handler-bind-condition-type-handler-function-forms-result">handler-bind</a></li>
-  <li><a href="#restart-case-form-restarts-result">restart-case</a></li>
-  <li><a href="#with-simple-restart-name-format-control-format-arg-forms-result">with-simple-restart</a></li>
-  <li><a href="#restart-bind">restart-bind</a></li>
-  <li><a href="#invoke-restart">invoke-restart</a></li>
-  <li><a href="#invoke-restart-interactively">invoke-restart-interactively</a></li>
-  <li><a href="#find-restart">find-restart</a></li>
-  <li><a href="#compute-restarts">compute-restarts</a></li>
-  <li><a href="#restart-name">restart-name</a></li>
-  <li><a href="#with-condition-restarts">with-condition-restarts</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="control-flow">Control Flow</h1>
 <h2 id="conditionals">Conditionals</h2>
 <h3 id="if-test-then-else-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_if.htm">if</a> test then [else] &rArr; result*</h3>
@@ -349,15 +297,62 @@
 <h3 id="compute-restarts"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comp_1.htm">compute-restarts</a></h3>
 <h3 id="restart-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rst_na.htm">restart-name</a></h3>
 <h3 id="with-condition-restarts"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_cnd_.htm">with-condition-restarts</a></h3>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#control-flow" class="toc-header">Control Flow</a></li>
+  <li><a href="#conditionals" class="toc-header">Conditionals</a></li>
+  <li><a href="#if-test-then-else-result">if</a></li>
+  <li><a href="#and-forms-result">and</a></li>
+  <li><a href="#or-forms-results">or</a></li>
+  <li><a href="#when-test-forms-result">when</a></li>
+  <li><a href="#unless-test-forms-result">unless</a></li>
+  <li><a href="#cond-test-then-result">cond</a></li>
+  <li><a href="#case-test-key-key-otherwise-form-result">case</a></li>
+  <li><a href="#sequencing" class="toc-header">Sequencing</a></li>
+  <li><a href="#progn-forms-result">progn</a></li>
+  <li><a href="#multiple-value-prog1-first-form-forms-first-form-results">multiple-value-prog1</a></li>
+  <li><a href="#prog1-first-form-forms-first-form-result">prog1</a></li>
+  <li><a href="#prog2-first-form-second-form-forms-second-form-result">prog2</a></li>
+  <li><a href="#prog-name-name-value-declare-tag-form-result">prog</a></li>
+  <li><a href="#sleep-seconds-nil">sleep</a></li>
+  <li><a href="#blocks-and-exits" class="toc-header">Blocks and Exits</a></li>
+  <li><a href="#block-name-forms-result">block</a></li>
+  <li><a href="#return-from-name-result-result">return-from</a></li>
+  <li><a href="#return-result-result">return</a></li>
+  <li><a href="#tagbody-tag-form-nil">tagbody</a></li>
+  <li><a href="#go-tag">go</a></li>
+  <li><a href="#catch-tag-forms-result">catch</a></li>
+  <li><a href="#throw-tag-form">throw</a></li>
+  <li><a href="#unwind-protect-protected-form-cleanup-forms-protected-form-result">unwind-protect</a></li>
+  <li><a href="#condition-control-flow" class="toc-header">Condition Control Flow</a></li>
+  <li><a href="#handler-case-expr-error-clause-no-error-clause-result">handler-case</a></li>
+  <li><a href="#handler-bind-condition-type-handler-function-forms-result">handler-bind</a></li>
+  <li><a href="#restart-case-form-restarts-result">restart-case</a></li>
+  <li><a href="#with-simple-restart-name-format-control-format-arg-forms-result">with-simple-restart</a></li>
+  <li><a href="#restart-bind">restart-bind</a></li>
+  <li><a href="#invoke-restart">invoke-restart</a></li>
+  <li><a href="#invoke-restart-interactively">invoke-restart-interactively</a></li>
+  <li><a href="#find-restart">find-restart</a></li>
+  <li><a href="#compute-restarts">compute-restarts</a></li>
+  <li><a href="#restart-name">restart-name</a></li>
+  <li><a href="#with-condition-restarts">with-condition-restarts</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

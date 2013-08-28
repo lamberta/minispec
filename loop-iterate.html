@@ -10,168 +10,74 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
-<nav class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-      <a href="./index.html" class="brand">Common Lisp MiniSpec</a>
-      <form class="navbar-search pull-right"><input type="search" placeholder="symbol" class="search-query span2"></input></form>
-      <div class="nav-collapse collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Definitions<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./definitions.html#variables">Variables</a></li>
-              <li><a href="./definitions.html#functions">Functions</a></li>
-              <li><a href="./definitions.html#macros">Macros</a></li>
-            </ul>
-          </li>
-          <li><a href="./lists.html">Lists</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Structures<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header"><a href="./list-structures.html">List Structures</a></li>
-              <li><a href="./list-structures.html#set">Set</a></li>
-              <li><a href="./list-structures.html#tree">Tree</a></li>
-              <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-              <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-              <li class="nav-header"><a href="./arrays.html">Array</a></li>
-              <li><a href="./arrays.html">Array</a></li>
-              <li><a href="./vectors.html">Vector</a></li>
-              <li class="nav-header"><a href="./data-structures.html">Objects</a></li>
-              <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-              <li><a href="./data-structures.html#structures">Structs</a></li>
-            </ul>
-          </li>
-          <li><a href="./clos.html">CLOS</a></li>
-          <li><a href="./strings.html">Strings</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Types<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#"></a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </li>
-          <li><a href="./math.html">Math</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Iteration<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./iteration.html">Iteration</a></li>
-              <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
-            </ul>
-          </li>
-          <li><a href="./control.html">Control</a></li>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="./comparison.html">Comparison</a></li>
-              <li><a href="./time.html">Time</a></li>
-              <li><a href="./output.html">Output</a></li>
-              <li><a href="./regular-expressions.html">Regular Expressions</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+      <ul>
+        <li><a href="./definitions.html#variables">Variables</a></li>
+        <li><a href="./definitions.html#functions">Functions</a></li>
+        <li><a href="./definitions.html#macros">Macros</a></li>
+      </ul>
+    </li>
+    <li><a href="./lists.html">Lists</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+      <ul>
+        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
+        <li><a href="./list-structures.html#set">Set</a></li>
+        <li><a href="./list-structures.html#tree">Tree</a></li>
+        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
+        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
+        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
+        <li><a href="./arrays.html">Array</a></li>
+        <li><a href="./vectors.html">Vector</a></li>
+        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
+        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
+        <li><a href="./data-structures.html#structures">Structs</a></li>
+      </ul>
+    </li>
+    <li><a href="./clos.html">CLOS</a></li>
+    <li><a href="./strings.html">Strings</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
+      <ul>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./output.html">Output</a></li>
+        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+		<li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
 </nav>
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <aside class="span3">
-          <nav class="well" data-spy="affix">
-<ul class="nav nav-list">
-  <li><a href="#loop-and-iterate" class="nav-header">Loop and Iterate</a></li>
-  <li><a href="#loop-simple-form" class="nav-header">Loop Simple Form</a></li>
-  <li><a href="#loop-form-result">loop</a></li>
-  <li><a href="#loop-extended-form" class="nav-header">Loop Extended Form</a></li>
-  <li><a href="#loop-name-variable-clause-main-clause-result">loop</a></li>
-  <li><a href="#counting" class="nav-header">Counting</a></li>
-  <li><a href="#iterate" class="nav-header">Iterate</a></li>
-  <li><a href="#iterateiter-clauses-forms">iter</a></li>
-  <li><a href="#numerical-iteration" class="nav-header">Numerical Iteration</a></li>
-  <li><a href="#repeat-iteraterepeat-n">repeat</a></li>
-  <li><a href="#for-iteratefor-var-sequence-keywords">for</a></li>
-  <li><a href="#sequence-iteration" class="nav-header">Sequence Iteration</a></li>
-  <li><a href="#for-iteratefor-in-var-in-list-by-step-function">for...in</a></li>
-  <li><a href="#for-iteratefor-on-var-on-list-by-step-function">for...on</a></li>
-  <li><a href="#for-iteratefor-in-sequence-var-in-sequence-seq-sequence-keywords">for...in-sequence</a></li>
-  <li><a href="#for-iteratefor-index-of-sequence-var-index-of-sequence-sequence-sequence-keywords">for...index-of-sequence</a></li>
-  <li><a href="#for-iteratefor-in-vector-var-in-vector-vector-sequence-keywords">for...in-vector</a></li>
-  <li><a href="#for-iteratefor-index-of-vector-var-index-of-vector-vector-sequence-keywords">for...index-of-vector</a></li>
-  <li><a href="#for-iteratefor-in-string-var-in-string-string-sequence-keywords">for...in-string</a></li>
-  <li><a href="#for-iteratefor-index-of-string-var-index-of-string-string-sequence-keywords">for...index-of-string</a></li>
-  <li><a href="#for-iteratefor-in-hashtable-key-value-in-hashtable-table">for...in-hashtable</a></li>
-  <li><a href="#for-iteratefor-in-package-var-in-package-package-external-only-ext">for...in-package</a></li>
-  <li><a href="#for-iteratefor-in-packages-sym-access-type-pkg-in-packages-packages-having-access-symbol-types">for...in-packages</a></li>
-  <li><a href="#for-iteratefor-in-file-var-in-file-name-using-reader">for...in-file</a></li>
-  <li><a href="#for-iteratefor-in-stream-var-in-stream-stream-using-reader">for...in-stream</a></li>
-  <li><a href="#variable-binding" class="nav-header">Variable Binding</a></li>
-  <li><a href="#with-iteratewith-var-value">with</a></li>
-  <li><a href="#for-iteratefor-var-form">for...=</a></li>
-  <li><a href="#for-iteratefor-initially-then-var-initially-init-expr-then-then-expr">for...initially...then</a></li>
-  <li><a href="#for-iteratefor-first-then-var-first-first-expr-then-then-expr">for...first...then</a></li>
-  <li><a href="#for-iteratefor-previous-pvar-previous-var-initially-init-back-n">for...previous</a></li>
-  <li><a href="#accumulate" class="nav-header">Accumulate</a></li>
-  <li><a href="#collect-iteratecollect-value-into-var-at-place-result-type-type">collect</a></li>
-  <li><a href="#adjoining-iterateadjoining-value-into-var-test-test-at-place-result-type-type">adjoining</a></li>
-  <li><a href="#appending-iterateappending-value-into-var-at-place">appending</a></li>
-  <li><a href="#nconcing-iteratenconcing-value-into-var-at-place">nconcing</a></li>
-  <li><a href="#unioning-iterateunioning-value-into-var-test-test-at-place">unioning</a></li>
-  <li><a href="#nunioning-iteratenunioning-value-into-var-test-test-at-place">nunioning</a></li>
-  <li><a href="#accumulate-iterateaccumulate-value-by-fn-initial-value-init-val-into-var">accumulate</a></li>
-  <li><a href="#reduce" class="nav-header">Reduce</a></li>
-  <li><a href="#sum-iteratesum-value-into-var">sum</a></li>
-  <li><a href="#multiply-iteratemultiply-value-into-var">multiply</a></li>
-  <li><a href="#counting-iteratecounting-value-into-var">counting</a></li>
-  <li><a href="#maximize-iteratemaximize-value-into-var">maximize</a></li>
-  <li><a href="#minimize-iterateminimize-value-into-var">minimize</a></li>
-  <li><a href="#reducing-iteratereducing-value-by-fn-initial-value-init-val-into-var">reducing</a></li>
-  <li><a href="#tests" class="nav-header">Tests</a></li>
-  <li><a href="#finding-iteratefinding-such-that-value-such-that-test-into-var-on-failure-failure-value">finding...such-that</a></li>
-  <li><a href="#finding-iteratefinding-maximizing-expr-maximizing-m-expr-into-var">finding...maximizing</a></li>
-  <li><a href="#finding-iteratefinding-minimizing-expr-minimizing-m-expr-into-var">finding...minimizing</a></li>
-  <li><a href="#first-iteration-p-iteratefirst-iteration-p">first-iteration-p</a></li>
-  <li><a href="#first-time-p-iteratefirst-time-p">first-time-p</a></li>
-  <li><a href="#always-iteratealways-expr">always</a></li>
-  <li><a href="#never-iteratenever-expr">never</a></li>
-  <li><a href="#thereis-iteratethereis-expr">thereis</a></li>
-  <li><a href="#control-flow" class="nav-header">Control Flow</a></li>
-  <li><a href="#finish-iteratefinish">finish</a></li>
-  <li><a href="#leave-iterateleave-value">leave</a></li>
-  <li><a href="#next-iteration-iteratenext-iteration">next-iteration</a></li>
-  <li><a href="#while-iteratewhile-expr">while</a></li>
-  <li><a href="#until-iterateuntil-expr">until</a></li>
-  <li><a href="#if-first-time-iterateif-first-time-then-else">if-first-time</a></li>
-  <li><a href="#code-placement" class="nav-header">Code Placement</a></li>
-  <li><a href="#initially-iterateinitially-forms">initially</a></li>
-  <li><a href="#after-each-iterateafter-each-forms">after-each</a></li>
-  <li><a href="#else-iterateelse-forms">else</a></li>
-  <li><a href="#finally-iteratefinally-forms">finally</a></li>
-  <li><a href="#finally-protected-iteratefinally-protected-forms">finally-protected</a></li>
-  <li><a href="#in-iteratein-name-forms">in</a></li>
-  <li><a href="#destructuring" class="nav-header">Destructuring</a></li>
-  <li><a href="#dsetq-iteratedsetq-template-expr">dsetq</a></li>
-  <li><a href="#extend" class="nav-header">Extend</a></li>
-  <li><a href="#for-iteratefor-next-var-next-expr">for...next</a></li>
-  <li><a href="#for-iteratefor-do-next-var-do-next-form">for...do-next</a></li>
-  <li><a href="#defmacro-clause-iteratedefmacro-clause-arglist-body-form">defmacro-clause</a></li>
-  <li><a href="#defmacro-driver-iteratedefmacro-driver-arglist-body-form">defmacro-driver</a></li>
-  <li><a href="#defsynonym-iteratedefsynonym-syn-word">defsynonym</a></li>
-  <li><a href="#defclause-sequence-iteratedefclause-sequence-element-name-index-name-keys">defclause-sequence</a></li>
-  <li><a href="#display-iterate-clauses-iteratedisplay-iterate-clauses-clause-spec">display-iterate-clauses</a></li>
-</ul>
-          </nav>
-        </aside>
-        <article class="span9">
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
 <h1 id="loop-and-iterate">Loop and Iterate</h1>
 <h2 id="loop-simple-form">Loop Simple Form</h2>
 <h3 id="loop-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_loop.htm">loop</a> form* &rArr; result*</h3>
@@ -487,15 +393,104 @@
 <p>Provides a simple way to define sequence clauses. Generates two clauses, one for iterating over the sequence’s elements, the other for iterating over its indices.</p>
 <h4 id="display-iterate-clausesiteratedisplay-iterate-clauses-clause-spec"><a href="http://common-lisp.net/project/iterate/doc/On_002dline-Help.html#index-display_002diterate_002dclauses-115">display-iterate-clauses</a> [clause-spec]</h4>
 <p>Displays a list of [iterate][iter] clauses. If <em>clause-spec</em> is not provided, all clauses are shown.</p>
+          </div>
         </article>
       </div>
-    </div>
-    <footer></footer>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#loop-and-iterate" class="toc-header">Loop and Iterate</a></li>
+  <li><a href="#loop-simple-form" class="toc-header">Loop Simple Form</a></li>
+  <li><a href="#loop-form-result">loop</a></li>
+  <li><a href="#loop-extended-form" class="toc-header">Loop Extended Form</a></li>
+  <li><a href="#loop-name-variable-clause-main-clause-result">loop</a></li>
+  <li><a href="#counting" class="toc-header">Counting</a></li>
+  <li><a href="#iterate" class="toc-header">Iterate</a></li>
+  <li><a href="#iterateiter-clauses-forms">iter</a></li>
+  <li><a href="#numerical-iteration" class="toc-header">Numerical Iteration</a></li>
+  <li><a href="#repeat-iteraterepeat-n">repeat</a></li>
+  <li><a href="#for-iteratefor-var-sequence-keywords">for</a></li>
+  <li><a href="#sequence-iteration" class="toc-header">Sequence Iteration</a></li>
+  <li><a href="#for-iteratefor-in-var-in-list-by-step-function">for...in</a></li>
+  <li><a href="#for-iteratefor-on-var-on-list-by-step-function">for...on</a></li>
+  <li><a href="#for-iteratefor-in-sequence-var-in-sequence-seq-sequence-keywords">for...in-sequence</a></li>
+  <li><a href="#for-iteratefor-index-of-sequence-var-index-of-sequence-sequence-sequence-keywords">for...index-of-sequence</a></li>
+  <li><a href="#for-iteratefor-in-vector-var-in-vector-vector-sequence-keywords">for...in-vector</a></li>
+  <li><a href="#for-iteratefor-index-of-vector-var-index-of-vector-vector-sequence-keywords">for...index-of-vector</a></li>
+  <li><a href="#for-iteratefor-in-string-var-in-string-string-sequence-keywords">for...in-string</a></li>
+  <li><a href="#for-iteratefor-index-of-string-var-index-of-string-string-sequence-keywords">for...index-of-string</a></li>
+  <li><a href="#for-iteratefor-in-hashtable-key-value-in-hashtable-table">for...in-hashtable</a></li>
+  <li><a href="#for-iteratefor-in-package-var-in-package-package-external-only-ext">for...in-package</a></li>
+  <li><a href="#for-iteratefor-in-packages-sym-access-type-pkg-in-packages-packages-having-access-symbol-types">for...in-packages</a></li>
+  <li><a href="#for-iteratefor-in-file-var-in-file-name-using-reader">for...in-file</a></li>
+  <li><a href="#for-iteratefor-in-stream-var-in-stream-stream-using-reader">for...in-stream</a></li>
+  <li><a href="#variable-binding" class="toc-header">Variable Binding</a></li>
+  <li><a href="#with-iteratewith-var-value">with</a></li>
+  <li><a href="#for-iteratefor-var-form">for...=</a></li>
+  <li><a href="#for-iteratefor-initially-then-var-initially-init-expr-then-then-expr">for...initially...then</a></li>
+  <li><a href="#for-iteratefor-first-then-var-first-first-expr-then-then-expr">for...first...then</a></li>
+  <li><a href="#for-iteratefor-previous-pvar-previous-var-initially-init-back-n">for...previous</a></li>
+  <li><a href="#accumulate" class="toc-header">Accumulate</a></li>
+  <li><a href="#collect-iteratecollect-value-into-var-at-place-result-type-type">collect</a></li>
+  <li><a href="#adjoining-iterateadjoining-value-into-var-test-test-at-place-result-type-type">adjoining</a></li>
+  <li><a href="#appending-iterateappending-value-into-var-at-place">appending</a></li>
+  <li><a href="#nconcing-iteratenconcing-value-into-var-at-place">nconcing</a></li>
+  <li><a href="#unioning-iterateunioning-value-into-var-test-test-at-place">unioning</a></li>
+  <li><a href="#nunioning-iteratenunioning-value-into-var-test-test-at-place">nunioning</a></li>
+  <li><a href="#accumulate-iterateaccumulate-value-by-fn-initial-value-init-val-into-var">accumulate</a></li>
+  <li><a href="#reduce" class="toc-header">Reduce</a></li>
+  <li><a href="#sum-iteratesum-value-into-var">sum</a></li>
+  <li><a href="#multiply-iteratemultiply-value-into-var">multiply</a></li>
+  <li><a href="#counting-iteratecounting-value-into-var">counting</a></li>
+  <li><a href="#maximize-iteratemaximize-value-into-var">maximize</a></li>
+  <li><a href="#minimize-iterateminimize-value-into-var">minimize</a></li>
+  <li><a href="#reducing-iteratereducing-value-by-fn-initial-value-init-val-into-var">reducing</a></li>
+  <li><a href="#tests" class="toc-header">Tests</a></li>
+  <li><a href="#finding-iteratefinding-such-that-value-such-that-test-into-var-on-failure-failure-value">finding...such-that</a></li>
+  <li><a href="#finding-iteratefinding-maximizing-expr-maximizing-m-expr-into-var">finding...maximizing</a></li>
+  <li><a href="#finding-iteratefinding-minimizing-expr-minimizing-m-expr-into-var">finding...minimizing</a></li>
+  <li><a href="#first-iteration-p-iteratefirst-iteration-p">first-iteration-p</a></li>
+  <li><a href="#first-time-p-iteratefirst-time-p">first-time-p</a></li>
+  <li><a href="#always-iteratealways-expr">always</a></li>
+  <li><a href="#never-iteratenever-expr">never</a></li>
+  <li><a href="#thereis-iteratethereis-expr">thereis</a></li>
+  <li><a href="#control-flow" class="toc-header">Control Flow</a></li>
+  <li><a href="#finish-iteratefinish">finish</a></li>
+  <li><a href="#leave-iterateleave-value">leave</a></li>
+  <li><a href="#next-iteration-iteratenext-iteration">next-iteration</a></li>
+  <li><a href="#while-iteratewhile-expr">while</a></li>
+  <li><a href="#until-iterateuntil-expr">until</a></li>
+  <li><a href="#if-first-time-iterateif-first-time-then-else">if-first-time</a></li>
+  <li><a href="#code-placement" class="toc-header">Code Placement</a></li>
+  <li><a href="#initially-iterateinitially-forms">initially</a></li>
+  <li><a href="#after-each-iterateafter-each-forms">after-each</a></li>
+  <li><a href="#else-iterateelse-forms">else</a></li>
+  <li><a href="#finally-iteratefinally-forms">finally</a></li>
+  <li><a href="#finally-protected-iteratefinally-protected-forms">finally-protected</a></li>
+  <li><a href="#in-iteratein-name-forms">in</a></li>
+  <li><a href="#destructuring" class="toc-header">Destructuring</a></li>
+  <li><a href="#dsetq-iteratedsetq-template-expr">dsetq</a></li>
+  <li><a href="#extend" class="toc-header">Extend</a></li>
+  <li><a href="#for-iteratefor-next-var-next-expr">for...next</a></li>
+  <li><a href="#for-iteratefor-do-next-var-do-next-form">for...do-next</a></li>
+  <li><a href="#defmacro-clause-iteratedefmacro-clause-arglist-body-form">defmacro-clause</a></li>
+  <li><a href="#defmacro-driver-iteratedefmacro-driver-arglist-body-form">defmacro-driver</a></li>
+  <li><a href="#defsynonym-iteratedefsynonym-syn-word">defsynonym</a></li>
+  <li><a href="#defclause-sequence-iteratedefclause-sequence-element-name-index-name-keys">defclause-sequence</a></li>
+  <li><a href="#display-iterate-clauses-iteratedisplay-iterate-clauses-clause-spec">display-iterate-clauses</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>
