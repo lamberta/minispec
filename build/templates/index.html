@@ -10,70 +10,58 @@
     <!--<link rel="shortcut icon" href="./include/fav.png">-->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
-    <link rel="stylesheet" href="./include/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="./include/typeahead/typeahead.js-bootstrap.css">
-    <link rel="stylesheet" href="./include/highlight/themes/github.css">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
     <link rel="stylesheet" href="./include/style.css">
     <meta name="description" content="">
   </head>
   <body>
-    <header>
+    <div>
+
+      <header>
+        <div class="section-padding">
 m4_include(./navbar.html)
-    </header>
-    <div id="container" class="container-fluid">
-      <div class="row-fluid">
-        <div class="main span8">
-          <p>
-            This documentation tool is a cheat-sheet and a concept-navigation aid.
-            Its goal is to help Common Lisp programmers quickly browse symbols for their definition and usage.
-            The listings are example-driven, paired with concise descriptions, and providing readily
-            available links to more comprehensive documentation.
-          </p>
-          <p>
-            The <b>MiniSpec</b> is still a <em>Work in Progress</em>. General features were included
-            first, with more added as time allows.
-          </p>
-
-          <h2>Features</h2>
-          <ul>
-            <li>Easy to navigate. Symbols are grouped by concept while maintaining a searchable index.</li>
-            <li>Definitions are example-driven and can appear in multiple sections, if appropriate.</li>
-            <li>More comprehensive documentation is always accessible (just click the symbol name).</li>
-            <li>Includes popular libraries such as <a href="http://common-lisp.net/project/alexandria/">Alexandria</a>, <a href="http://common-lisp.net/project/cl-utilities/">CL-Utilities</a>, <a href="http://common-lisp.net/project/iterate/">Iterate</a>, and more.</li>
-            <li>Updating is simple. Fill in descriptions and examples using Markdown, or include a pet library in a local build.</li>
-          </ul>
-
-          <h2>Contribute?</h2>
-          <p>
-            Any help would be appreciated! For the most part, the front-end scaffolding is in place and there are a number of examples
-            to convey the overall "vision". Aside from the style and organizational issues, a lot of the symbol definitions need to be
-            filled out and existing ones reviewed for accuracy and clarity.
-          </p>
-          <p>
-            Here's the <a href="https://github.com/lamberta/minispec">GitHub repo</a> where you'll find the entries,
-            in particular the <a href="https://github.com/lamberta/minispec/tree/master/sections">sections</a> and
-            <a href="https://github.com/lamberta/minispec/tree/master/pages">pages</a> directories.
-            And editing can even be done through the GitHub interface! See the readme file for more info.
-          </p>
-
-          <h2>Other Documentation</h2>
-          <p>These are invaluable sources and have been incorporated in some capacity.</p>
-          <ul>
-            <li><a href="http://www.lispworks.com/documentation/HyperSpec/Front/">Common Lisp HyperSpec</a></li>
-            <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/clm.html">Common Lisp the Language, 2nd Edition</a></li>
-            <li><a href="http://www.gigamonkeys.com/book/">Practical Common Lisp</a></li>
-            <li><a href="http://clqr.boundp.org">Common Lisp Quick Reference</a></li>
-          </ul>
         </div>
-      </div><!--/row-fluid-->
-    </div><!--/container-->
+      </header>
+      
+      <div class="article-wrapper">
+        <article class="index">
+          <div class="section-padding">
+            <p>This documentation tool is a cheat-sheet and a concept-navigation aid, its goal is to help Common Lisp programmers quickly browse symbols for their definition and usage. The listings are example-driven, paired with concise descriptions, and providing readily available links to more comprehensive references.</p>
+            <p>Everything is still a <em>work-in-progress</em>, starting with common needs before filling out the obscure.</p>
 
-    <footer></footer>
+            <h2>Features</h2>
+            <ul>
+              <li>Easy to navigate. Symbols are grouped by concept while maintaining a searchable index.</li>
+              <li>Definitions are example-driven and can appear in multiple sections, if appropriate.</li>
+              <li>More comprehensive documentation is always accessible (just click the symbol name).</li>
+              <li>Includes popular libraries such as <a href="http://common-lisp.net/project/alexandria/">Alexandria</a>, <a href="http://common-lisp.net/project/cl-utilities/">CL-Utilities</a>, <a href="http://common-lisp.net/project/iterate/">Iterate</a>, and more.</li>
+              <li>Contributing is easy! Edit an entry, or example, in the <a href="https://github.com/lamberta/minispec">GitHub repo</a> using Markdown.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+            <ul>
+              <li class="toc-header">Reference</li>
+              <li><a href="http://www.lispworks.com/documentation/HyperSpec/Front/">HyperSpec</a></li>
+              <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/clm.html">CL the Language, 2nd Ed</a></li>
+              <li><a href="http://www.gigamonkeys.com/book/">Practical Common Lisp</a></li>
+              <li><a href="http://clqr.boundp.org">CL Quick Reference</a></li>
+              <li><a href="http://quickdocs.org">Quickdocs</a></li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
 
     <script src="./include/jquery.js"></script>
-    <script src="./include/bootstrap/js/bootstrap.js"></script>
-    <script src="./include/typeahead/typeahead.js"></script>
-    <script src="./include/highlight/highlight-lisp.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
     <script src="./include/init.js"></script>
   </body>
 </html>

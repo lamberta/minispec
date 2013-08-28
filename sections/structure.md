@@ -1,7 +1,3 @@
-## Structures
-
-* [CLtL2: Structures](http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node168.html)
-
 ### [defstruct] structure-name \[slot-options\*\] \[doc\] => structure-name
 
 Defines a named structured type, with named slots as

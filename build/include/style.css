@@ -1,4 +1,4 @@
-body, ul, h1, h2, h3, h4, h5 {
+body, p, ul, h1, h2, h3, h4, h5 {
   margin: 0;
   padding: 0;
 	font-weight: normal;
@@ -9,12 +9,17 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-a {
+a, h3 {
 	text-decoration: none;
+	color: #820000;
 }
 
 .section-padding {
   margin: 0 10px;
+}
+
+article div.section-padding {
+	margin-left: 0;
 }
 
 /* main
@@ -27,16 +32,114 @@ a {
 
 article {
   margin-left: 200px; /*set to aside width*/
-  background: #ffc0cb;;
+	padding-top: 4px;
 }
+
+.offset-navbar {
+	margin-top: -30px;
+	padding-top: 30px;
+}
+
+article h1, article h2 {
+	font-size: 1.2em;
+}
+
+article h1 {
+	margin-bottom: 0.5em;
+	padding-bottom: 0px;
+	border-bottom: 1px dotted #ccc;
+}
+
+article h1:not(:first-child) {
+	padding-top: 1.5em;
+}
+
+article h2 {
+	padding: 10px 0;
+}
+
+article h2.advanced-header {
+	cursor: pointer;
+}
+
+article .advanced-toggle {
+	font-size: 1.5em;
+}
+
+article .advanced-container {
+	margin-top: -0.5em;
+	padding: 0 0.3em;
+	border: 1px dashed #ccc;
+	border-radius: 3px;
+}
+
+article .advanced-container > p {
+	margin: 0.5em 0;
+	padding-left: 0.2em;
+	font-size: 0.9em;
+	font-style: italic;
+	color: #808080;
+	cursor: pointer;
+}
+
+article ul, article ol {
+	padding-left: 20px;
+}
+
+/*function title*/
+article h3 {
+	padding-top: 0.5em;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+article h3 a, article h3 a:visited, article h4 a, article h4 a:visited {
+	font-weight: bold;
+}
+
+article p {
+	line-height: 1.6em;
+	margin-bottom: 0.5em;
+}
+
+article p a {
+	white-space: nowrap;
+}
+
+article:not(.index) p a:hover {
+	border: 1px solid #820000;
+	text-decoration: none;
+}
+
+/*Links and inline-code in the description look similar.*/
+article p code, article:not(.index) p a {
+	font-family: 'Inconsolata', 'Consolas', monospace;
+	font-size: 0.9em;
+	text-decoration: none;
+	background-color: whiteSmoke;
+	color: #000;
+	padding: 2px 4px;
+	border: 1px solid #E3E3E3;
+}
+
+/*code blocks*/
+article pre {
+	margin: 0.5em 0;
+	line-height: 1.4em;
+}
+
+article pre code {
+	font-size: 0.9em !important;
+}
+
 
 footer {
   clear: left;
   width: 100%;
-  background: black;
-  color: #FFF;
   text-align: center;
-  padding: 4px 0;
+  padding: 2em 0 0.5em 0;
+	font-size: 0.8em;
 }
 
 /* sidebar
@@ -46,7 +149,6 @@ aside {
   width: 200px;
 	margin-top: 30px;
   margin-left: -100%;
-  background: #00ff00;
 }
 
 aside nav {
@@ -77,7 +179,6 @@ aside nav::-webkit-scrollbar-thumb {
 
 aside nav ul li a {
 	display: block;
-	color: #820000;
 	overflow-x: hidden;
 	text-overflow: ellipsis;
 }
@@ -105,6 +206,7 @@ header {
 	position: fixed;
 	width: 100%;
   background: #820000;
+	z-index: 1;
 }
 
 #navbar {
@@ -153,13 +255,23 @@ header {
 #navbar ul li ul {
   display: none;
   position: absolute;
-  background: #820000;//navbar
+  background: #820000;
+	min-width: 80px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.2) 2px 3px 10px;
+	border-top: 1px dashed #530505;
+	z-index: 2;
 }
 
 #navbar ul li ul li {
   float: none;
   line-height: 30px;
   height: 30px;
+}
+
+#navbar ul li ul li a {
+	padding: 0 14px;
 }
 
 #navbar .navbar-header {
@@ -174,8 +286,8 @@ header {
 }
 
 #navbar .caret {
-	font-size: 0.5em;
-	padding-left: 2px;
+	font-size: 8px;
+	padding-right: 2px;
 }
 
 #navbar form {
