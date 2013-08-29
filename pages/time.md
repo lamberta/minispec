@@ -68,6 +68,12 @@ Causes execution to cease and become dormant for
 approximately the *seconds* of real time indicated by
 seconds, whereupon execution is resumed.
 
+~~~
+(let ((then (get-universal-time)))
+  (sleep 10)
+  (- (get-universal-time) then))   ;=> 5 [secs elapsed]
+~~~
+
 ### [internal-time-units-per-second]
 
 Constant, a positive integer. The number of internal time

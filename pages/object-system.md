@@ -7,9 +7,9 @@
 
 ## Classes
 
-### [defclass] name ([superclass]) definitions... => new-class
+### [defclass] name ([superclass]) definitions\* => new-class
 
-Defines a new named [class], returning the new class object as its result.
+Defines a named [class], returning the new class object as its result.
 
 ~~~
 (defclass mammal ()
@@ -43,6 +43,27 @@ And to pretty-print the object at the REPL:
 (setf mydog (make-instance 'dog :name "Sparky"))
 ~~~
 
+### [class-of] instance => class
+
+~~~
+(class-of mydog)  ;=> #<STANDARD-CLASS DOG>
+~~~
+
+### [find-class] symbol \[error-p environment\] => class
+
+~~~
+(find-class 'dog) ;=> #<STANDARD-CLASS DOG>
+~~~
+
+### [class-name] class => name
+
+Returns the name of the given [class].
+
+~~~
+(class-name (find-class 'dog))                ;=> DOG
+(setf (class-name (find-class 'dog)) 'doggie)
+~~~
+
 ### [slot-value] instance slot => value
 
 ~~~
@@ -51,7 +72,7 @@ And to pretty-print the object at the REPL:
 (slot-value mydog 'breed)         ;=> [throws error]
 ~~~
 
-### [with-slots] (slots...) instance forms... => result
+### [with-slots] \(slots\*\) instance forms\* => result
 
 ~~~
 (with-slots (name sound) mydog
@@ -61,7 +82,7 @@ And to pretty-print the object at the REPL:
   (list n l))                         ;=> ("Sparky" 4)
 ~~~
 
-### [with-accessors] (accessors...) instance forms... => result
+### [with-accessors] \(accessors\*\) instance forms\* => result
 
 ~~~
 (with-accessors (sound) mydog
@@ -84,31 +105,9 @@ error if no such slot.
 
 Unbind the slot on the given object instance.
 
-### [class-of] instance => class
-
-~~~
-(class-of mydog)  ;=> #<STANDARD-CLASS DOG>
-~~~
-
-### [find-class] symbol &optional errorp environment => class
-
-~~~
-(find-class 'dog) ;=> #<STANDARD-CLASS DOG>
-~~~
-
-### [class-name] class => name
-
-Returns the name of the given [class].
-
-~~~
-(class-name (find-class 'dog))                ;=> DOG
-(setf (class-name (find-class 'dog)) 'doggie)
-~~~
-
-
 ## Methods
 
-### [defgeneric] name lambda-list &rest options-and-methods... => generic-fn
+### [defgeneric] name lambda-list ...options-and-methods => generic-function
 
 Define or modify a *generic function*.
 
@@ -121,7 +120,7 @@ Define or modify a *generic function*.
   (:method ((d dog)) (print "wag tail")))
 ~~~
 
-### [defmethod] name lambda-list &rest forms... => method
+### [defmethod] name lambda-list ...forms\* => method
 
 Defines a method on a *generic function*.
 
@@ -143,7 +142,7 @@ Use [setf] to define a class setter method:
 (setf (make-sound mydog) "bark!")
 ~~~
 
-### [initialize-instance] instance &rest initargs &key &allow-other-keys => instance
+### [initialize-instance] instance ...initargs &key &allow-other-keys => instance
 
 Called by [make-instance] to initialize a newly created
 instance. Use with method combination to create a
@@ -154,23 +153,25 @@ constructor-like function.
   (setf (slot-value dog 'legs) 4))
 ~~~
 
-### [add-method] generic-fn method => generic-fn
+## Advanced
 
-Adds a [method] to a *generic function*.
+### [add-method] generic-function method => generic-function
 
-### [remove-method] generic-fn method => generic-fn
+Adds a [method] to a *generic-function*.
+
+### [remove-method] generic-function method => generic-function
 
 Removes a [method] from a *generic-function*.
 
-### [ensure-generic-function] fn-name &key... => generic-fn
+### [ensure-generic-function] name &key... => generic-function
 
-Define or modify a *generic function*.
+Define or modify a *generic-function*.
 
-### [invalid-method-error] method format-control &rest args => implementation-dependent
+### [invalid-method-error] method format-control ...args => implementation-dependent
 
 Signal error on applicable method with invalid qualifiers.
 
-### [method-combination-error] format-control &rest args => implementation-dependent
+### [method-combination-error] format-control ...args => implementation-dependent
 
 Signal error on applicable method with invalid method combination.
 
@@ -203,29 +204,7 @@ Using standard method combination:
 (bedtime mydog) ;=> ZZZZZ [prints YAWN, LAY-DOWN, ZZZZZ, WAKE-UP, GET-UP]
 ~~~
 
-### [next-method-p] => boolean
-
-Called within a *method* to determine whether a *next method* exists.
-
-### [call-next-method] &rest args... => result
-
-Used within a method to call the *next method*.
-
-~~~
-(defgeneric itch (mammal body-part))
-
-(defmethod itch ((m mammal) body-part)
-  (format t "twitch ~a" body-part))
-
-(defmethod itch ((d dog) body-part)
-  (format t "scratch ~a~%" body-part)
-  (if (next-method-p)
-    (call-next-method)))
-
-(itch mydog "leg") ;=> [prints "scratch leg" then "twitch leg"]
-~~~
-
-### [define-method-combination] name lambda-list &rest forms... => name
+### [define-method-combination] name lambda-list ...forms\* => name
 
 Define a new [method-combination] type.
 
@@ -246,7 +225,29 @@ most-specific to least-specific order.
 (eat mydog) ;=> DIGEST [prints LICK, DIGEST]
 ~~~
 
-### [call-method] method-name &optional next-method-list => result
+### [next-method-p] => boolean
+
+Called within a *method* to determine whether a *next method* exists.
+
+### [call-next-method] ...args => result
+
+Used within a method to call the *next method*.
+
+~~~
+(defgeneric itch (mammal body-part))
+
+(defmethod itch ((m mammal) body-part)
+  (format t "twitch ~a" body-part))
+
+(defmethod itch ((d dog) body-part)
+  (format t "scratch ~a~%" body-part)
+  (if (next-method-p)
+    (call-next-method)))
+
+(itch mydog "leg") ;=> [prints "scratch leg" then "twitch leg"]
+~~~
+
+### [call-method] method-name \[next-method-list\] => result
 
 From within a [method], call *method-name* with the
 arguments of the generic function and with information about
@@ -255,7 +256,9 @@ its next-methods; return its values.
 
 ## Method Selection
 
-### [find-method] generic-fn method-qualifiers specializers &optional errorp => method
+## Advanced
+
+### [find-method] generic-function method-qualifiers specializers \[error-p\] => method
 
 Return suitable method, or signal *error*.
 
@@ -263,9 +266,9 @@ Return suitable method, or signal *error*.
 (find-method #'say-hello '() '(mammal)) ;=> #<STANDARD-METHOD SAY-HELLO (MAMMAL)>
 ~~~
 
-### [compute-applicable-methods] generic-fn fn-args => methods
+### [compute-applicable-methods] generic-function args => methods
 
-List of methods suitable for *fn-args*, most specific first.
+List of methods suitable for *args*, most specific first.
 
 ~~~
 (compute-applicable-methods #'say-hello (list mydog))
@@ -283,7 +286,9 @@ Returns the keyword parameter specifiers for a method.
 
 ## Redefine
 
-### [reinitialize-instance] instance &rest initargs &key &allow-other-keys => instance
+## Advanced
+
+### [reinitialize-instance] instance ...initargs &key &allow-other-keys => instance
 
 Change the values of local slots of an object instance according to *initargs*.
 
@@ -296,20 +301,21 @@ destructively modifies and returns the instance.
 
 Update all existing instances of class using [update-instance-for-redefined-class].
 
-### [allocate-instance] class &rest initargs &key &allow-other-keys => new-instance
+### [allocate-instance] class ...initargs &key &allow-other-keys => new-instance
 
 Creates and returns a new instance of the class, without
 initializing it. Called by [make-instance].
 
-### [shared-initialize] instance slot-names &rest initargs &key &allow-other-keys => instance
+### [shared-initialize] instance slot-names ...initargs &key &allow-other-keys => instance
 
 Fill the slots of an object instance using *initargs* and
 *:initform* forms. Called when an instance is created.
 
-
 ## Internal
 
-### [slot-missing] class instance slot-name operation &optional new-value => result
+## Advanced
+
+### [slot-missing] class instance slot-name operation \[new-value\] => result
 
 Called on attempted access to non-existing slot.
 
@@ -321,14 +327,14 @@ Called on attempted access to unbound slot.
 
 Set any initarg slots to their corresponding values.
 
-### [update-instance-for-different-class] previous current &rest... => implementation-dependent
+### [update-instance-for-different-class] previous current ... => implementation-dependent
 
 Set slots on behalf of [change-class] by means of [shared-initialize].
 
-### [no-applicable-method] generic-fn &rest fn-args => result
+### [no-applicable-method] generic-function ...args => result
 
 Called on invocation of generic-function on args if there is no applicable method.
 
-### [no-next-method] generic-fn method &rest args => result
+### [no-next-method] generic-function method ...args => result
 
 Called on invocation of [call-next-method] when there is no next method.

@@ -32,12 +32,8 @@ for execution.
 
 m4_include(../sections/macro.md)
 
-## Packages
+## Composition
 
-* [PCL: Programming in the Large: Packages and Symbols](http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html)
+Functional composition.
 
-~~~
-*package* ;=> #<Package "EXAMPLE-PACKAGE">
-~~~
-
-m4_include(../sections/packages.md)
+m4_include(../sections/compose.md)

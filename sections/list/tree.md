@@ -1,4 +1,4 @@
-## Tree
+## Tree Functions
 
 Lists of lists.
 

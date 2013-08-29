@@ -41,33 +41,32 @@ functions defined by [flet] are not.
 
 ### [function] name => function
 
-Return the lexically innermost [function] for *name*. The
-notation `#'` can be used as an abbreviation for `(function name)`.
+The shorthand notation is `#'`. Return the [function] for *name*.
 
 ~~~
 (funcall #'list 'a 'b) ;=> (A B)
 ~~~
 
-### [funcall] function &rest args\* => result\*
+### [funcall] function args\* => result
 
-Applies *function* to *args*.
+Apply values as arguments to *function*.
 
 ~~~
 (funcall #'+ 1 2 3) ;=> 6
 ~~~
 
-### [apply] function \[args\*\] arg-list => result\*
+### [apply] function \[args\*\] arg-list => result
 
-Applies *function* to arguments in a [list].
+Apply values as arguments to *function*, the final one a [list].
 
 ~~~
 (apply #'+ '(1 2 3))   ;=> 6
 (apply #'+ 1 2 '(3 4)) ;=> 10
 ~~~
 
-### [multiple-value-call] function forms\* => result\*
+### [multiple-value-call] function forms\* => result
 
-Call *function* with all the values of each form as its arguments.
+Apply all values returned from *forms* as arguments to *function*.
 
 ~~~
 (multiple-value-call #'+ (floor 5.5) (floor 4.3)) ;= (+ 5 0.5 4 0.3) => 9.8
@@ -75,14 +74,11 @@ Call *function* with all the values of each form as its arguments.
 
 ### [values] objects\* => objects\*
 
-Return *objects* as multiple values. Is `setf`able.
+Return *objects* as multiple values. `setf`able.
 
 ~~~
-(values 'a 'b)      ;=> A, B
-(list (values 1 2)) ;=> (A)
-
-(multiple-value-bind (a b) (floor 7.5)
-  (list a b))                          ;=> (7 0.5)
+(values 'a 'b)        ;=> A, B
+(list (values 'a 'b)) ;=> (A)
 
 (setf (values a b) (floor 7.5))
 (list a b)                             ;=> (7 0.5)
@@ -90,7 +86,7 @@ Return *objects* as multiple values. Is `setf`able.
 
 ### [values-list] list => objects\*
 
-Return elements of *list* as multiple values.
+Return *list* elements as multiple values.
 
 ~~~
 (values-list '(A B)) ;=> A, B
@@ -101,11 +97,29 @@ Return elements of *list* as multiple values.
 
 ### [multiple-value-list] form => list
 
-Evaluates *form* and creates a [list] of the multiple values it returns.
+Evaluates *form* returning multiple values and returns a
+[list] containing them.
 
 ~~~
 (multiple-value-list (floor 7.5)) ;=> (7 0.5)
 ~~~
+
+### [fmakunbound] name => name
+
+Removes the function or macro definition.
+
+~~~
+(defun add-some (x) (+ x 19))   ;=> ADD-SOME
+(fboundp 'add-some)             ;=> T
+(flet ((add-some (x) (+ x 37)))
+  (fmakunbound 'add-some)
+  (add-some 1))                 ;=> 38
+(fboundp 'add-some)             ;=> NIL
+~~~
+
+## Advanced
+
+### [flet] \(\(name lambda-list \[\[local-declare\ | local-doc\]\] local-forms\*)\*\) \[declare\*\] forms\* => result\*
 
 ### [nth-value] n form => object
 
@@ -114,36 +128,6 @@ Return the *n*th value yielded by *form*, zero-indexed.
 ~~~
 (nth-value 0 (values 'a 'b)) ;=> A
 (nth-value 1 (values 'a 'b)) ;=> B
-~~~
-
-### [complement] function => complement-function
-
-Return new [function] with same arguments and side effects
-as *function*, but with the opposite truth value.
-
-~~~
-(funcall (complement #'numberp) 1)          ;=> NIL
-(funcall (complement #'member) 'd '(a b c)) ;=> T
-
-(complement fn) ;≈ #'(lambda (&rest args) (not (apply fn args)))
-~~~
-
-### [constantly] value => function
-
-Returns a [function] that always returns *value*, and takes
-any number of arguments.
-
-~~~
-(mapcar (constantly 3) '(a b c d)) ;=> (3 3 3 3)
-~~~
-
-### [identity] object => object
-
-Returns its argument *object*. Intended for use with
-functions that require a [function] as an argument.
-
-~~~
-(eql x (identity x)) ;=> T
 ~~~
 
 ### [function-lambda-expression] function => lambda-expression, closure-p, name
@@ -162,59 +146,4 @@ Definition of global function foo; `setf`able.
 
 ~~~
 (fdefinition 'list) ;=> #<Compiled-function LIST>
-~~~
-
-### [fmakunbound] name => name
-
-Removes the function or macro definition, if any, of name in the global environment.
-
-~~~
-(defun add-some (x) (+ x 19))   ;=> ADD-SOME
-(fboundp 'add-some)             ;=> T
-(flet ((add-some (x) (+ x 37)))
-  (fmakunbound 'add-some)
-  (add-some 1))                 ;=> 38
-(fboundp 'add-some)             ;=> NIL
-~~~
-
-## Function Composition
-
-### [alexandria:compose] fn &rest fns\* => function
-
-Compose function that applies its arguments to each in turn.
-
-~~~
-(compose #'fn2 #'fn1) ;=> (lambda (x) (fn2 (fn1 x)))
-~~~
-
-### [alexandria:multiple-value-compose] fn &rest fns\* => function
-
-Compose functions that return multiple values. *fn1(x,y)* => *fn2(x1,y1)* => x2,y2
-
-~~~
-(funcall (multiple-value-compose #'fn2 #'fn1) x y) ;=> x2,y2
-~~~
-
-### [alexandria:disjoin] pred &rest preds\* => function
-
-~~~
-(disjoin #'zerop #'oddp) ;≈ (lambda (x) (or (zerop x) (oddp x)))
-~~~
-
-### [alexandria:conjoin] pred &rest preds\* => function
-
-~~~
-(conjoin #'zerop #'oddp) ;≈ (lambda (x) (and (zerop x) (oddp x)))
-~~~
-
-### [alexandria:curry] fn &rest args\* => function
-
-~~~
-(funcall (curry #'list 'a 'b) 'c 'd) ;=> (A B C D)
-~~~
-
-### [alexandria:rcurry] fn &rest args\* => function
-
-~~~
-(funcall (rcurry #'list 'a 'b) 'c 'd) ;=> (C D A B)
 ~~~

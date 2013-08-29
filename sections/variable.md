@@ -1,18 +1,16 @@
-### [defparameter] name value \[doc\] => name
+### [defparameter] name value \[doc-string\] => name
 
 Unconditionally assign *value* to a global dynamic
 variable. The convention for naming a (global) special
-variable is: `*name*`.
+variable is `*name*`.
 
 ~~~
 (defparameter *x* 1) ;=> *X*
 ~~~
 
-### [defvar] name \[value \[doc\]\] => name
+### [defvar] name \[value doc-string\] => name
 
-Unless bound already, assign *value* to a global dynamic
-variable. The convention for naming a (global) special
-variable is: `*name*`.
+Unless bound already, assign *value* to a global dynamic variable.
 
 ~~~
 (defvar *x* 'a) ;=> *X*
@@ -20,18 +18,18 @@ variable is: `*name*`.
 *x*             ;=> A
 ~~~
 
-### [defconstant] name value \[doc\] => name
+### [defconstant] name value \[doc-string\] => name
 
 Assign *value* to a global constant variable. A constant can
 be redefined by [defconstant]. The convention for naming a
-constant is: `+name+`.
+constant is `+name+`.
 
 ~~~
 (defconstant +x+ 'a) ;=> +X+
 (setf +x+ 'b)        ;=> [error]
 ~~~
 
-### [setf] \{place value\}\* => result\*
+### [setf] \{place value\}\* => result
 
 Sets the value of *place* to *value*. Multiple pairs are set
 sequentially, use `psetf` to set in parallel. `setf` works
@@ -82,25 +80,6 @@ return their values.
   (list a b c whole)) ;=> (1 2 3 (:C 3 :B 2 :A 1))
 ~~~
 
-### [multiple-value-setq] \(vars\) form => result
-
-Assign multiple values returned by *form* to *vars*.
-
-~~~
-(multiple-value-setq (a b) (values 1 2))
-~~~
-
-### [progv] symbols values forms\* => result\*
-
-Evaluate *forms* with locally established dynamic bindings of
-*symbols* to *values*.
-
-~~~
-(setf *a* 1)
-(progv '(*a*) '(2)
-  (print *a*))     ;=> [prints 2]
-~~~
-
 ### [shiftf] place\* newvalue => first-value
 
 Store *newvalue* in rightmost *place*, shifting values of
@@ -131,4 +110,31 @@ Makes *symbol* unbound, regardless of whether it was previously bound.
 (boundp 'a)     ;=> T
 (makunbound 'a) ;=> A
 (boundp 'a)     ;=> NIL
+~~~
+
+## Advanced
+
+### [psetf] \{place value\}\* => nil
+
+### [setq] \{place value\}\* => result
+
+### [psetq] \{place value\}\* => nil
+
+### [multiple-value-setq] \(vars\) form => result
+
+Assign multiple values returned by *form* to *vars*.
+
+~~~
+(multiple-value-setq (a b) (values 1 2))
+~~~
+
+### [progv] symbols values forms\* => result\*
+
+Evaluate *forms* with locally established dynamic bindings of
+*symbols* to *values*.
+
+~~~
+(setf *a* 1)
+(progv '(*a*) '(2)
+  (print *a*))     ;=> [prints 2]
 ~~~

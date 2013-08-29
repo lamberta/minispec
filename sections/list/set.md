@@ -1,4 +1,4 @@
-## Set
+## Set Functions
 
 * [PCL: Beyond Lists: Other Uses for Cons Cells](http://www.gigamonkeys.com/book/beyond-lists-other-uses-for-cons-cells.html#sets)
 

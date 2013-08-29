@@ -146,17 +146,6 @@ statements. Use [prog\*] to bind local variables sequentially.
     (go tag2)) ;=> 1
 ~~~
 
-### [sleep] seconds => nil
-
-Causes execution to cease for a number of *seconds* before resuming.
-
-~~~
-(let ((then (get-universal-time)))
-  (sleep 10)
-  (- (get-universal-time) then))   ;=> 5 [secs elapsed]
-~~~
-
-
 ## Blocks and Exits
 
 * [HyperSpec: Transfer of Control to an Exit Point](http://www.lispworks.com/documentation/HyperSpec/Body/05_b.htm)
