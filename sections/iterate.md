@@ -1,12 +1,3 @@
-## Iterate
-
-* [The Iterate Manual](http://common-lisp.net/project/iterate/doc/)
-* [Don't Loop, Iterate](http://common-lisp.net/project/iterate/doc/Don_0027t-Loop-Iterate.html)
-
-~~~
-(ql:quickload :iterate)
-~~~
-
 ### [iterate:iter] \[clauses\*\] forms\*
 
 A powerful iteration facility that provides abstractions for
@@ -602,6 +593,8 @@ a generator, *expr* is the code that is executed when (next
 Evaluate *form* each time through the loop. Its value is not
 set to *var*; that's done in *form*. *var* is only present
 so that `iterate` knows it is a driver variable.
+
+## Advanced
 
 #### [defmacro-clause][iterate:defmacro-clause] arglist body-form
 

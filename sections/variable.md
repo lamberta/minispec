@@ -1,5 +1,3 @@
-## Variables
-
 ### [defparameter] name value \[doc\] => name
 
 Unconditionally assign *value* to a global dynamic

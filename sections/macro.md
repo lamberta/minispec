@@ -1,18 +1,3 @@
-## Macros
-
-The Common Lisp macro facility allows the user to define
-arbitrary functions that convert certain Lisp forms into
-different forms before evaluating or compiling them. This is
-done at the expression level, not at the character-string
-level as in most other languages. Macros are important in
-the writing of good code: they make it possible to write
-code that is clear and elegant at the user level but that is
-converted to a more complex or more efficient internal form
-for execution.
-
-* [CLtL2: Macros](http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node97.html)
-* [PCL: Macros: Defining Your Own](http://www.gigamonkeys.com/book/macros-defining-your-own.html)
-
 ### [defmacro] name lambda-list \[\[declare\* | doc\]\] forms\* => name
 
 Define a macro with a given *name*, which acts as an
@@ -50,6 +35,8 @@ b                               ;=> 1
 a                               ;=> (5 2 3)
 b                               ;=> 5
 ~~~
+
+## Advanced
 
 ### [symbol-macrolet] \(\(symbol expansion\)\*\) declare\* forms\* => result\*
 

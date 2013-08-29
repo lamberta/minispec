@@ -1,9 +1,3 @@
-## Packages
-
-~~~
-*package* ;=> #<Package "EXAMPLE-PACKAGE">
-~~~
-
 [defpackage](http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm#defpackage)
 
 ~~~
