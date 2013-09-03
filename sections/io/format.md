@@ -1,9 +1,3 @@
-## Formatted Output
-
-* [HyperSpec: Formatted Output](http://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm)
-* [CLtL2: Formatted Output to Character Streams](http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node200.html)
-* [PCL: A Few FORMAT Recipes](http://www.gigamonkeys.com/book/a-few-format-recipes.html)
-
 ### [format] destination control-string args\* => result
 
 Creates formatted output using the *control-string* and

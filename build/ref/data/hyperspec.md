@@ -976,3 +976,13 @@
 [y-or-n-p]: http://www.lispworks.com/documentation/HyperSpec/Body/f_y_or_n.htm
 [yes-or-no-p]: http://www.lispworks.com/documentation/HyperSpec/Body/f_y_or_n.htm
 [zerop]: http://www.lispworks.com/documentation/HyperSpec/Body/f_zerop.htm
+[t-class]: http://www.lispworks.com/documentation/HyperSpec/Body/t_t.htm
+[nil-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_nil.htm
+[function-class]: http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm
+[method-combination-class]: http://www.lispworks.com/documentation/HyperSpec/Body/t_meth_1.htm
+[member-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_member.htm
+[not-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_not.htm
+[and-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_and.htm
+[or-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm
+[values-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm
+[eql-type]: http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm

@@ -31,9 +31,3 @@ for execution.
 * [PCL: Macros: Defining Your Own](http://www.gigamonkeys.com/book/macros-defining-your-own.html)
 
 m4_include(../sections/macro.md)
-
-## Composition
-
-Functional composition.
-
-m4_include(../sections/compose.md)

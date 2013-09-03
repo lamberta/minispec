@@ -1,0 +1,1 @@
+### [readtablep] object => boolean

@@ -1,0 +1,1 @@
+### [packagep] object => boolean
