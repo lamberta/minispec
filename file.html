@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: File</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
+      <ul>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
+      <ul>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
+</nav>
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
+<h1 id="files">Files</h1>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/20_a.htm">HS: File System Concepts</a></li>
+<li><a href="http://www.gigamonkeys.com/book/files-and-file-io.html">PCL: Files and File I/O</a></li>
+</ul>
+<h3 id="directory-pathspec-key-pathnames"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_dir.htm">directory</a> pathspec &amp;key &rArr; pathnames</h3>
+<h3 id="probe-file-pathspec-truename"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_probe_.htm">probe-file</a> pathspec &rArr; truename</h3>
+<h3 id="ensure-directories-exist-pathspec-verbose-pathspec-created"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ensu_1.htm">ensure-directories-exist</a> pathspec [:verbose] &rArr; pathspec, created</h3>
+<h3 id="truename-filespec-truename"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tn.htm">truename</a> filespec &rArr; truename</h3>
+<h3 id="file-author-pathspec-author"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_file_a.htm">file-author</a> pathspec &rArr; author</h3>
+<h3 id="file-write-date-pathspec-date"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_file_w.htm">file-write-date</a> pathspec &rArr; date</h3>
+<h3 id="rename-file-filespec-new-name-defaulted-new-name-old-truename-new-truename"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rn_fil.htm">rename-file</a> filespec new-name &rArr; defaulted-new-name, old-truename, new-truename</h3>
+<h3 id="delete-file-filespec-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_del_fi.htm">delete-file</a> filespec &rArr; t</h3>
+<h3 id="file-length"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_file_l.htm">file-length</a></h3>
+<h3 id="file-position"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_file_p.htm">file-position</a></h3>
+<h3 id="file-string-length"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_file_s.htm">file-string-length</a></h3>
+<h3 id="with-open-file"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_open.htm">with-open-file</a></h3>
+<h3 id="file-error-pathname-condition-pathspec"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_file_e.htm">file-error-pathname</a> condition &rArr; pathspec</h3>
+<h3 id="alexandriaread-file-into-string-pathname-buffer-size-external-format"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-read_002dfile_002dinto_002dstring">alexandria:read-file-into-string</a> pathname [:buffer-size :external-format]</h3>
+<h3 id="alexandriaread-file-into-byte-vector-pathname"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-read_002dfile_002dinto_002dbyte_002dvector">alexandria:read-file-into-byte-vector</a> pathname</h3>
+<h1 id="pathnames">Pathnames</h1>
+<ul>
+<li><a href="http://www.gigamonkeys.com/book/files-and-file-io.html#filenames">PCL: Files and File I/O: Filenames</a></li>
+<li><a href="http://www.gigamonkeys.com/book/practical-a-portable-pathname-library.html">PCL: A Portable Pathname Library</a></li>
+<li><a href="http://weitz.de/cl-fad/">CL-FAD</a></li>
+</ul>
+<h3 id="default-pathname-defaults-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_defaul.htm">*default-pathname-defaults*</a> = pathname</h3>
+<p>Implementation-dependent <em>pathname</em> used as the default whenever a function needs a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm">pathname</a> and one is not supplied. Typically, the working directory where Common Lisp was started up.</p>
+<h3 id="user-homedir-pathname-host-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_user_h.htm">user-homedir-pathname</a> [host] &rArr; pathname</h3>
+<h3 id="pathname-pathspec-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_pn.htm">pathname</a> pathspec &rArr; pathname</h3>
+<h3 id="make-pathname-host-device-directory-name-type-version-defaults-case-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_pn.htm">make-pathname</a> [:host :device :directory :name :type :version :defaults :case] &rArr; pathname</h3>
+<h3 id="pathname-host-pathname-key-case-host"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_hos.htm">pathname-host</a> pathname &amp;key case &rArr; host</h3>
+<h3 id="pathname-device-pathname-key-case-device"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_hos.htm">pathname-device</a> pathname &amp;key case &rArr; device</h3>
+<h3 id="pathname-directory-pathname-key-case-directory"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_hos.htm">pathname-directory</a> pathname &amp;key case &rArr; directory</h3>
+<h3 id="pathname-name-pathname-key-case-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_hos.htm">pathname-name</a> pathname &amp;key case &rArr; name</h3>
+<h3 id="pathname-type-pathname-key-case-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_hos.htm">pathname-type</a> pathname &amp;key case &rArr; type</h3>
+<h3 id="pathname-version-pathname-key-case-version"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_hos.htm">pathname-version</a> pathname &amp;key case &rArr; version</h3>
+<h3 id="load-logical-pathname-translations-host-just-loaded"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_ld_log.htm">load-logical-pathname-translations</a> host &rArr; just-loaded</h3>
+<h3 id="logical-pathname-translations-host-translations"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_logica.htm">logical-pathname-translations</a> host &rArr; translations</h3>
+<p><code>setf</code>able.</p>
+<h3 id="logical-pathname-pathspec-logical-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_logica.htm">logical-pathname</a> pathspec &rArr; logical-pathname</h3>
+<h3 id="namestring-pathname-namestring"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_namest.htm">namestring</a> pathname &rArr; namestring</h3>
+<h3 id="file-namestring-pathname-namestring"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_namest.htm">file-namestring</a> pathname &rArr; namestring</h3>
+<h3 id="directory-namestring-pathname-namestring"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_namest.htm">directory-namestring</a> pathname &rArr; namestring</h3>
+<h3 id="host-namestring-pathname-namestring"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_namest.htm">host-namestring</a> pathname &rArr; namestring</h3>
+<h3 id="enough-namestring-pathname-defaults-namestring"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_namest.htm">enough-namestring</a> pathname [defaults] &rArr; namestring</h3>
+<h3 id="parse-namestring-thing-host-default-pathname-start-end-junk-allowed-pathname-position"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pars_1.htm">parse-namestring</a> thing [host default-pathname :start :end :junk-allowed] &rArr; pathname, position</h3>
+<h3 id="translate-logical-pathname-pathname-key-physical-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tr_log.htm">translate-logical-pathname</a> pathname &amp;key &rArr; physical-pathname</h3>
+<h3 id="translate-pathname-source-from-wildcard-to-wildcard-key-translated-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tr_pn.htm">translate-pathname</a> source from-wildcard to-wildcard &amp;key &rArr; translated-pathname</h3>
+<h3 id="merge-pathnames-pathname-default-pathname-default-version-merged-pathname"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_merge_.htm">merge-pathnames</a> pathname [default-pathname default-version] &rArr; merged-pathname</h3>
+<h2 id="predicates">Predicates</h2>
+<h3 id="pathnamep-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pnp.htm">pathnamep</a> object &rArr; boolean</h3>
+<h3 id="wild-pathname-p-pathname-field-key-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wild_p.htm">wild-pathname-p</a> pathname [field-key] &rArr; boolean</h3>
+<h3 id="pathname-match-p-pathname-wildcard-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pn_mat.htm">pathname-match-p</a> pathname wildcard &rArr; boolean</h3>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#files" class="toc-header">Files</a></li>
+  <li><a href="#directory-pathspec-key-pathnames">directory</a></li>
+  <li><a href="#probe-file-pathspec-truename">probe-file</a></li>
+  <li><a href="#ensure-directories-exist-pathspec-verbose-pathspec-created">ensure-directories-exist</a></li>
+  <li><a href="#truename-filespec-truename">truename</a></li>
+  <li><a href="#file-author-pathspec-author">file-author</a></li>
+  <li><a href="#file-write-date-pathspec-date">file-write-date</a></li>
+  <li><a href="#rename-file-filespec-new-name-defaulted-new-name-old-truename-new-truename">rename-file</a></li>
+  <li><a href="#delete-file-filespec-t">delete-file</a></li>
+  <li><a href="#file-length">file-length</a></li>
+  <li><a href="#file-position">file-position</a></li>
+  <li><a href="#file-string-length">file-string-length</a></li>
+  <li><a href="#with-open-file">with-open-file</a></li>
+  <li><a href="#file-error-pathname-condition-pathspec">file-error-pathname</a></li>
+  <li><a href="#alexandriaread-file-into-string-pathname-buffer-size-external-format">read-file-into-string</a></li>
+  <li><a href="#alexandriaread-file-into-byte-vector-pathname">read-file-into-byte-vector</a></li>
+  <li><a href="#pathnames" class="toc-header">Pathnames</a></li>
+  <li><a href="#default-pathname-defaults-pathname">*default-pathname-defaults*</a></li>
+  <li><a href="#user-homedir-pathname-host-pathname">user-homedir-pathname</a></li>
+  <li><a href="#pathname-pathspec-pathname">pathname</a></li>
+  <li><a href="#make-pathname-host-device-directory-name-type-version-defaults-case-pathname">make-pathname</a></li>
+  <li><a href="#pathname-host-pathname-key-case-host">pathname-host</a></li>
+  <li><a href="#pathname-device-pathname-key-case-device">pathname-device</a></li>
+  <li><a href="#pathname-directory-pathname-key-case-directory">pathname-directory</a></li>
+  <li><a href="#pathname-name-pathname-key-case-name">pathname-name</a></li>
+  <li><a href="#pathname-type-pathname-key-case-type">pathname-type</a></li>
+  <li><a href="#pathname-version-pathname-key-case-version">pathname-version</a></li>
+  <li><a href="#load-logical-pathname-translations-host-just-loaded">load-logical-pathname-translations</a></li>
+  <li><a href="#logical-pathname-translations-host-translations">logical-pathname-translations</a></li>
+  <li><a href="#logical-pathname-pathspec-logical-pathname">logical-pathname</a></li>
+  <li><a href="#namestring-pathname-namestring">namestring</a></li>
+  <li><a href="#file-namestring-pathname-namestring">file-namestring</a></li>
+  <li><a href="#directory-namestring-pathname-namestring">directory-namestring</a></li>
+  <li><a href="#host-namestring-pathname-namestring">host-namestring</a></li>
+  <li><a href="#enough-namestring-pathname-defaults-namestring">enough-namestring</a></li>
+  <li><a href="#parse-namestring-thing-host-default-pathname-start-end-junk-allowed-pathname-position">parse-namestring</a></li>
+  <li><a href="#translate-logical-pathname-pathname-key-physical-pathname">translate-logical-pathname</a></li>
+  <li><a href="#translate-pathname-source-from-wildcard-to-wildcard-key-translated-pathname">translate-pathname</a></li>
+  <li><a href="#merge-pathnames-pathname-default-pathname-default-version-merged-pathname">merge-pathnames</a></li>
+  <li><a href="#predicates" class="toc-header">Predicates</a></li>
+  <li><a href="#pathnamep-object-boolean">pathnamep</a></li>
+  <li><a href="#wild-pathname-p-pathname-field-key-boolean">wild-pathname-p</a></li>
+  <li><a href="#pathname-match-p-pathname-wildcard-boolean">pathname-match-p</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Common Lisp MiniSpec</title>
+    <title>CL MiniSpec: Structure</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -79,25 +79,30 @@
     <li><form><input type="search" placeholder="symbol"></input></form></li>
   </ul>
 </nav>
-
         </div>
       </header>
       
       <div class="article-wrapper">
-        <article class="index">
+        <article>
           <div class="section-padding">
-            <h1>Welcome</h1>
-            <p>This documentation tool is a cheat-sheet and a concept-navigation aid, its goal is to help Common Lisp programmers quickly browse symbols for their definition and usage. The listings are example-driven, paired with concise descriptions, and providing readily available links to more comprehensive references.</p>
-            <p>Everything is still a <em>work-in-progress</em>, starting with common needs before filling out the obscure.</p>
+<h1 id="structures">Structures</h1>
+<ul>
+<li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node168.html">CLtL2: Structures</a></li>
+</ul>
+<h3 id="defstruct-structure-name-slot-options-doc-structure-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defstr.htm">defstruct</a> structure-name [slot-options*] [doc] &rArr; structure-name</h3>
+<p>Defines a named structured type, with named slots as specified by the <em>slot-options</em>. Implictly defines a constructor function, slot accessors, and convenience functions for the structure: <code>make-[struct]</code>, <code>[struct]-p</code>, <code>copy-[struct]</code>, <code>[struct]-[slotname]</code>.</p>
+<pre><code>(defstruct point
+  x
+  (y 10))
 
-            <h2>Features</h2>
-            <ul>
-              <li>Easy to navigate. Symbols are grouped by concept while maintaining a searchable index.</li>
-              <li>Definitions are example-driven and can appear in multiple sections, if appropriate.</li>
-              <li>More comprehensive documentation is always accessible (just click the symbol name).</li>
-              <li>Includes popular libraries such as <a href="http://common-lisp.net/project/alexandria/">Alexandria</a>, <a href="http://common-lisp.net/project/cl-utilities/">CL-Utilities</a>, <a href="http://common-lisp.net/project/iterate/">Iterate</a>, and more.</li>
-              <li>Contributing is easy! Edit an entry, or example, in the <a href="https://github.com/lamberta/minispec">GitHub repo</a> using Markdown.</li>
-            </ul>
+(setf pt (make-point :x 5)) ;&rArr; #S(POINT :X 5 :Y 10)
+(point-y pt)                ;&rArr; 10
+(setf (point-y pt) 20)
+(point-p pt)                ;&rArr; T
+(typeof pt &#39;point)          ;&rArr; T
+(copy-point pt)             ;&rArr; #S(POINT :X 5 :Y 20)</code></pre>
+<h3 id="copy-structure-structure-copy"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_stu.htm">copy-structure</a> structure &rArr; copy</h3>
+<p>Returns a <em>copy</em> of the <em>structure</em>. Only the structure itself is copied; not the values of the slots.</p>
           </div>
         </article>
       </div>
@@ -105,15 +110,11 @@
       <aside>
         <div class="section-padding">
           <nav>
-            <ul>
-              <li class="toc-header">Reference</li>
-              <li><a href="http://www.lispworks.com/documentation/HyperSpec/Front/">HyperSpec</a></li>
-              <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/clm.html">CL the Language, 2nd Ed</a></li>
-              <li><a href="http://www.gigamonkeys.com/book/">Practical Common Lisp</a></li>
-              <li><a href="http://clqr.boundp.org">CL Quick Reference</a></li>
-              <li><a href="http://quickdocs.org">Quickdocs</a></li>
-              <li><a href="http://cl-cookbook.sourceforge.net">CL Cookbook</a></li>
-            </ul>
+<ul>
+  <li><a href="#structures" class="toc-header">Structures</a></li>
+  <li><a href="#defstruct-structure-name-slot-options-doc-structure-name">defstruct</a></li>
+  <li><a href="#copy-structure-structure-copy">copy-structure</a></li>
+</ul>
           </nav>
         </div>
       </aside>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CL MiniSpec: Definitions</title>
+    <title>CL MiniSpec: Symbol</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -20,37 +20,32 @@
       <header>
         <div class="section-padding">
 <nav id="navbar">
-	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
   <ul>
-    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
       <ul>
-        <li><a href="./definitions.html#variables">Variables</a></li>
-        <li><a href="./definitions.html#functions">Functions</a></li>
-        <li><a href="./definitions.html#macros">Macros</a></li>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
       </ul>
     </li>
-    <li><a href="./lists.html">Lists</a></li>
-    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
       <ul>
-        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
-        <li><a href="./list-structures.html#set">Set</a></li>
-        <li><a href="./list-structures.html#tree">Tree</a></li>
-        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
-        <li><a href="./arrays.html">Array</a></li>
-        <li><a href="./vectors.html">Vector</a></li>
-        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
-        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-        <li><a href="./data-structures.html#structures">Structs</a></li>
-      </ul>
-    </li>
-    <li><a href="./clos.html">CLOS</a></li>
-    <li><a href="./strings.html">Strings</a></li>
-    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
-      <ul>
-        <li><a href="#"></a></li>
-        <li><a href="#"></a></li>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
       </ul>
     </li>
     <li><a href="./math.html">Math</a></li>
@@ -61,15 +56,27 @@
       </ul>
     </li>
     <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
     <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
       <ul>
         <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
         <li><a href="./time.html">Time</a></li>
-        <li><a href="./output.html">Output</a></li>
-        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
       </ul>
     </li>
-		<li><form><input type="search" placeholder="symbol"></input></form></li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
   </ul>
 </nav>
         </div>
@@ -78,31 +85,26 @@
       <div class="article-wrapper">
         <article>
           <div class="section-padding">
-<h1 id="define-variables-functions-macros">Define Variables, Functions, Macros</h1>
-<ul>
-<li><a href="#variables">Variables</a></li>
-<li><a href="#functions">Functions</a></li>
-<li><a href="#macros">Macros</a></li>
-</ul>
-<p>Style Guides</p>
+<h1 id="symbol-definition">Symbol Definition</h1>
+<h2 id="style-guides">Style Guides</h2>
 <ul>
 <li><a href="http://www.cliki.net/Naming%20conventions">Naming Conventions</a></li>
-<li><a href="http://google-styleguide.googlecode.com/svn/trunk/lispguide.xml">Google Common Lisp Style Guide</a></li>
+<li><a href="http://google-styleguide.googlecode.com/svn/trunk/lispguide.xml">Google Style Guide</a></li>
 </ul>
 <h2 id="variables">Variables</h2>
-<h3 id="defparameter-name-value-doc-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpar.htm">defparameter</a> name value [doc] &rArr; name</h3>
-<p>Unconditionally assign <em>value</em> to a global dynamic variable. The convention for naming a (global) special variable is: <code>*name*</code>.</p>
+<h3 id="defparameter-name-value-doc-string-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpar.htm">defparameter</a> name value [doc-string] &rArr; name</h3>
+<p>Unconditionally assign <em>value</em> to a global dynamic variable. The convention for naming a (global) special variable is <code>*name*</code>.</p>
 <pre><code>(defparameter *x* 1) ;&rArr; *X*</code></pre>
-<h3 id="defvar-name-value-doc-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpar.htm">defvar</a> name [value [doc]] &rArr; name</h3>
-<p>Unless bound already, assign <em>value</em> to a global dynamic variable. The convention for naming a (global) special variable is: <code>*name*</code>.</p>
+<h3 id="defvar-name-value-doc-string-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpar.htm">defvar</a> name [value doc-string] &rArr; name</h3>
+<p>Unless bound already, assign <em>value</em> to a global dynamic variable.</p>
 <pre><code>(defvar *x* &#39;a) ;&rArr; *X*
 (defvar *x* &#39;b)
 *x*             ;&rArr; A</code></pre>
-<h3 id="defconstant-name-value-doc-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcon.htm">defconstant</a> name value [doc] &rArr; name</h3>
-<p>Assign <em>value</em> to a global constant variable. A constant can be redefined by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcon.htm">defconstant</a>. The convention for naming a constant is: <code>+name+</code>.</p>
+<h3 id="defconstant-name-value-doc-string-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcon.htm">defconstant</a> name value [doc-string] &rArr; name</h3>
+<p>Assign <em>value</em> to a global constant variable. A constant can be redefined by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcon.htm">defconstant</a>. The convention for naming a constant is <code>+name+</code>.</p>
 <pre><code>(defconstant +x+ &#39;a) ;&rArr; +X+
 (setf +x+ &#39;b)        ;&rArr; [error]</code></pre>
-<h3 id="setf-place-value-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_setf.htm">setf</a> {place value}* &rArr; result*</h3>
+<h3 id="setf-place-value-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_setf.htm">setf</a> {place value}* &rArr; result</h3>
 <p>Sets the value of <em>place</em> to <em>value</em>. Multiple pairs are set sequentially, use <code>psetf</code> to set in parallel. <code>setf</code> works with symbols and forms, and is preferred, while <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_setq.htm">setq</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_psetq.htm">psetq</a> can only set symbols.</p>
 <h3 id="let-var-var-value-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm">let</a> ({var | (var [value])}*) forms* &rArr; result*</h3>
 <p>Evaluate <em>forms</em> with <em>vars</em> lexically bound (or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">NIL</a>) to values, assigned in parallel. Use <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_let_l.htm">let*</a> to assign sequentially.</p>
@@ -130,14 +132,6 @@
 
 (destructuring-bind (&amp;whole whole &amp;key a b c) (list :c 3 :b 2 :a 1)
   (list a b c whole)) ;&rArr; (1 2 3 (:C 3 :B 2 :A 1))</code></pre>
-<h3 id="multiple-value-setq-vars-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_mult_2.htm">multiple-value-setq</a> (vars) form &rArr; result</h3>
-<p>Assign multiple values returned by <em>form</em> to <em>vars</em>.</p>
-<pre><code>(multiple-value-setq (a b) (values 1 2))</code></pre>
-<h3 id="progv-symbols-values-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm">progv</a> symbols values forms* &rArr; result*</h3>
-<p>Evaluate <em>forms</em> with locally established dynamic bindings of <em>symbols</em> to <em>values</em>.</p>
-<pre><code>(setf *a* 1)
-(progv &#39;(*a*) &#39;(2)
-  (print *a*))     ;&rArr; [prints 2]</code></pre>
 <h3 id="shiftf-place-newvalue-first-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_shiftf.htm">shiftf</a> place* newvalue &rArr; first-value</h3>
 <p>Store <em>newvalue</em> in rightmost <em>place</em>, shifting values of places left, returning first <em>place</em>.</p>
 <pre><code>(setf a :a b :b)
@@ -154,6 +148,18 @@
 (boundp &#39;a)     ;&rArr; T
 (makunbound &#39;a) ;&rArr; A
 (boundp &#39;a)     ;&rArr; NIL</code></pre>
+<h2 id="advanced">Advanced</h2>
+<h3 id="psetf-place-value-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_setf_.htm">psetf</a> {place value}* &rArr; nil</h3>
+<h3 id="setq-place-value-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_setq.htm">setq</a> {place value}* &rArr; result</h3>
+<h3 id="psetq-place-value-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_psetq.htm">psetq</a> {place value}* &rArr; nil</h3>
+<h3 id="multiple-value-setq-vars-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_mult_2.htm">multiple-value-setq</a> (vars) form &rArr; result</h3>
+<p>Assign multiple values returned by <em>form</em> to <em>vars</em>.</p>
+<pre><code>(multiple-value-setq (a b) (values 1 2))</code></pre>
+<h3 id="progv-symbols-values-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_progv.htm">progv</a> symbols values forms* &rArr; result*</h3>
+<p>Evaluate <em>forms</em> with locally established dynamic bindings of <em>symbols</em> to <em>values</em>.</p>
+<pre><code>(setf *a* 1)
+(progv &#39;(*a*) &#39;(2)
+  (print *a*))     ;&rArr; [prints 2]</code></pre>
 <h2 id="functions">Functions</h2>
 <ul>
 <li><a href="http://www.gigamonkeys.com/book/functions.html">PCL: Functions</a></li>
@@ -181,82 +187,54 @@
          (+ a b)))
   (adder 4 3))                ;&rArr; 7</code></pre>
 <h3 id="function-name-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> name &rArr; function</h3>
-<p>Return the lexically innermost <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> for <em>name</em>. The notation <code>#'</code> can be used as an abbreviation for <code>(function name)</code>.</p>
+<p>The shorthand notation is <code>#'</code>. Return the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> for <em>name</em>.</p>
 <pre><code>(funcall #&#39;list &#39;a &#39;b) ;&rArr; (A B)</code></pre>
-<h3 id="funcall-function-rest-args-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm">funcall</a> function &amp;rest args* &rArr; result*</h3>
-<p>Applies <em>function</em> to <em>args</em>.</p>
+<h3 id="funcall-function-args-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm">funcall</a> function args* &rArr; result</h3>
+<p>Apply values as arguments to <em>function</em>.</p>
 <pre><code>(funcall #&#39;+ 1 2 3) ;&rArr; 6</code></pre>
-<h3 id="apply-function-args-arg-list-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm">apply</a> function [args*] arg-list &rArr; result*</h3>
-<p>Applies <em>function</em> to arguments in a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a>.</p>
+<h3 id="apply-function-args-arg-list-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm">apply</a> function [args*] arg-list &rArr; result</h3>
+<p>Apply values as arguments to <em>function</em>, the final one a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a>.</p>
 <pre><code>(apply #&#39;+ &#39;(1 2 3))   ;&rArr; 6
 (apply #&#39;+ 1 2 &#39;(3 4)) ;&rArr; 10</code></pre>
-<h3 id="multiple-value-call-function-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm">multiple-value-call</a> function forms* &rArr; result*</h3>
-<p>Call <em>function</em> with all the values of each form as its arguments.</p>
+<h3 id="multiple-value-call-function-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_multip.htm">multiple-value-call</a> function forms* &rArr; result</h3>
+<p>Apply all values returned from <em>forms</em> as arguments to <em>function</em>.</p>
 <pre><code>(multiple-value-call #&#39;+ (floor 5.5) (floor 4.3)) ;= (+ 5 0.5 4 0.3) &rArr; 9.8</code></pre>
 <h3 id="values-objects-objects"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_values.htm">values</a> objects* &rArr; objects*</h3>
-<p>Return <em>objects</em> as multiple values. Is <code>setf</code>able.</p>
-<pre><code>(values &#39;a &#39;b)      ;&rArr; A, B
-(list (values 1 2)) ;&rArr; (A)
-
-(multiple-value-bind (a b) (floor 7.5)
-  (list a b))                          ;&rArr; (7 0.5)
+<p>Return <em>objects</em> as multiple values. <code>setf</code>able.</p>
+<pre><code>(values &#39;a &#39;b)        ;&rArr; A, B
+(list (values &#39;a &#39;b)) ;&rArr; (A)
 
 (setf (values a b) (floor 7.5))
 (list a b)                             ;&rArr; (7 0.5)</code></pre>
 <h3 id="values-list-list-objects"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_vals_l.htm">values-list</a> list &rArr; objects*</h3>
-<p>Return elements of <em>list</em> as multiple values.</p>
+<p>Return <em>list</em> elements as multiple values.</p>
 <pre><code>(values-list &#39;(A B)) ;&rArr; A, B
 
 (multiple-value-bind (a b) (values-list &#39;(1 2))
   (list a b))  ;&rArr; (1 2)</code></pre>
 <h3 id="multiple-value-list-form-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_mult_1.htm">multiple-value-list</a> form &rArr; list</h3>
-<p>Evaluates <em>form</em> and creates a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a> of the multiple values it returns.</p>
+<p>Evaluates <em>form</em> returning multiple values and returns a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_list.htm">list</a> containing them.</p>
 <pre><code>(multiple-value-list (floor 7.5)) ;&rArr; (7 0.5)</code></pre>
-<h3 id="nth-value-n-form-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_nth_va.htm">nth-value</a> n form &rArr; object</h3>
-<p>Return the <em>n</em>th value yielded by <em>form</em>, zero-indexed.</p>
-<pre><code>(nth-value 0 (values &#39;a &#39;b)) ;&rArr; A
-(nth-value 1 (values &#39;a &#39;b)) ;&rArr; B</code></pre>
-<h3 id="complement-function-complement-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comple.htm">complement</a> function &rArr; complement-function</h3>
-<p>Return new <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> with same arguments and side effects as <em>function</em>, but with the opposite truth value.</p>
-<pre><code>(funcall (complement #&#39;numberp) 1)          ;&rArr; NIL
-(funcall (complement #&#39;member) &#39;d &#39;(a b c)) ;&rArr; T
-
-(complement fn) ;≈ #&#39;(lambda (&amp;rest args) (not (apply fn args)))</code></pre>
-<h3 id="constantly-value-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cons_1.htm">constantly</a> value &rArr; function</h3>
-<p>Returns a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> that always returns <em>value</em>, and takes any number of arguments.</p>
-<pre><code>(mapcar (constantly 3) &#39;(a b c d)) ;&rArr; (3 3 3 3)</code></pre>
-<h3 id="identity-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm">identity</a> object &rArr; object</h3>
-<p>Returns its argument <em>object</em>. Intended for use with functions that require a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> as an argument.</p>
-<pre><code>(eql x (identity x)) ;&rArr; T</code></pre>
-<h3 id="function-lambda-expression-function-lambda-expression-closure-p-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fn_lam.htm">function-lambda-expression</a> function &rArr; lambda-expression, closure-p, name</h3>
-<p>If available, return lambda expression of <em>function</em>, `<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> if <em>function</em> was defined in an environment without bindings, and name of <em>function</em>.</p>
-<pre><code>(function-lambda-expression (funcall #&#39;(lambda (x) #&#39;(lambda () x)) nil)) ;&rArr; NIL, T, NIL</code></pre>
-<h3 id="fdefinition-name-definition"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm">fdefinition</a> name &rArr; definition</h3>
-<p>Definition of global function foo; <code>setf</code>able.</p>
-<pre><code>(fdefinition &#39;list) ;&rArr; #&lt;Compiled-function LIST&gt;</code></pre>
 <h3 id="fmakunbound-name-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fmakun.htm">fmakunbound</a> name &rArr; name</h3>
-<p>Removes the function or macro definition, if any, of name in the global environment.</p>
+<p>Removes the function or macro definition.</p>
 <pre><code>(defun add-some (x) (+ x 19))   ;&rArr; ADD-SOME
 (fboundp &#39;add-some)             ;&rArr; T
 (flet ((add-some (x) (+ x 37)))
   (fmakunbound &#39;add-some)
   (add-some 1))                 ;&rArr; 38
 (fboundp &#39;add-some)             ;&rArr; NIL</code></pre>
-<h2 id="function-composition">Function Composition</h2>
-<h3 id="alexandriacompose-fn-rest-fns-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-compose">alexandria:compose</a> fn &amp;rest fns* &rArr; function</h3>
-<p>Compose function that applies its arguments to each in turn.</p>
-<pre><code>(compose #&#39;fn2 #&#39;fn1) ;&rArr; (lambda (x) (fn2 (fn1 x)))</code></pre>
-<h3 id="alexandriamultiple-value-compose-fn-rest-fns-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-multiple_002dvalue_002dcompose">alexandria:multiple-value-compose</a> fn &amp;rest fns* &rArr; function</h3>
-<p>Compose functions that return multiple values. <em>fn1(x,y)</em> &rArr; <em>fn2(x1,y1)</em> &rArr; x2,y2</p>
-<pre><code>(funcall (multiple-value-compose #&#39;fn2 #&#39;fn1) x y) ;&rArr; x2,y2</code></pre>
-<h3 id="alexandriadisjoin-pred-rest-preds-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-disjoin">alexandria:disjoin</a> pred &amp;rest preds* &rArr; function</h3>
-<pre><code>(disjoin #&#39;zerop #&#39;oddp) ;≈ (lambda (x) (or (zerop x) (oddp x)))</code></pre>
-<h3 id="alexandriaconjoin-pred-rest-preds-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-conjoin">alexandria:conjoin</a> pred &amp;rest preds* &rArr; function</h3>
-<pre><code>(conjoin #&#39;zerop #&#39;oddp) ;≈ (lambda (x) (and (zerop x) (oddp x)))</code></pre>
-<h3 id="alexandriacurry-fn-rest-args-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-curry">alexandria:curry</a> fn &amp;rest args* &rArr; function</h3>
-<pre><code>(funcall (curry #&#39;list &#39;a &#39;b) &#39;c &#39;d) ;&rArr; (A B C D)</code></pre>
-<h3 id="alexandriarcurry-fn-rest-args-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-rcurry">alexandria:rcurry</a> fn &amp;rest args* &rArr; function</h3>
-<pre><code>(funcall (rcurry #&#39;list &#39;a &#39;b) &#39;c &#39;d) ;&rArr; (C D A B)</code></pre>
+<h2 id="advanced-1">Advanced</h2>
+<h3 id="flet-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_flet_.htm">flet</a> ((name lambda-list [[local-declare | local-doc]] local-forms*)*) [declare*] forms* &rArr; result*</h3>
+<h3 id="nth-value-n-form-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_nth_va.htm">nth-value</a> n form &rArr; object</h3>
+<p>Return the <em>n</em>th value yielded by <em>form</em>, zero-indexed.</p>
+<pre><code>(nth-value 0 (values &#39;a &#39;b)) ;&rArr; A
+(nth-value 1 (values &#39;a &#39;b)) ;&rArr; B</code></pre>
+<h3 id="function-lambda-expression-function-lambda-expression-closure-p-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fn_lam.htm">function-lambda-expression</a> function &rArr; lambda-expression, closure-p, name</h3>
+<p>If available, return lambda expression of <em>function</em>, `<a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a> if <em>function</em> was defined in an environment without bindings, and name of <em>function</em>.</p>
+<pre><code>(function-lambda-expression (funcall #&#39;(lambda (x) #&#39;(lambda () x)) nil)) ;&rArr; NIL, T, NIL</code></pre>
+<h3 id="fdefinition-name-definition"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_fdefin.htm">fdefinition</a> name &rArr; definition</h3>
+<p>Definition of global function foo; <code>setf</code>able.</p>
+<pre><code>(fdefinition &#39;list) ;&rArr; #&lt;Compiled-function LIST&gt;</code></pre>
 <h2 id="macros">Macros</h2>
 <p>The Common Lisp macro facility allows the user to define arbitrary functions that convert certain Lisp forms into different forms before evaluating or compiling them. This is done at the expression level, not at the character-string level as in most other languages. Macros are important in the writing of good code: they make it possible to write code that is clear and elegant at the user level but that is converted to a more complex or more efficient internal form for execution.</p>
 <ul>
@@ -282,6 +260,7 @@ b                               ;&rArr; 1
 (setf b 5)
 a                               ;&rArr; (5 2 3)
 b                               ;&rArr; 5</code></pre>
+<h2 id="advanced-2">Advanced</h2>
 <h3 id="symbol-macrolet-symbol-expansion-declare-forms-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_symbol.htm">symbol-macrolet</a> ((symbol expansion)*) declare* forms* &rArr; result*</h3>
 <p>Evaluate <em>forms</em> with locally defined symbol macros.</p>
 <pre><code>(symbol-macrolet ((x &#39;foo))
@@ -336,49 +315,47 @@ l                         ;&rArr; (A B C 4)</code></pre>
         <div class="section-padding">
           <nav>
 <ul>
-  <li><a href="#define-variables-functions-macros" class="toc-header">Define Variables, Functions, Macros</a></li>
+  <li><a href="#symbol-definition" class="toc-header">Symbol Definition</a></li>
+  <li><a href="#style-guides" class="toc-header">Style Guides</a></li>
   <li><a href="#variables" class="toc-header">Variables</a></li>
-  <li><a href="#defparameter-name-value-doc-name">defparameter</a></li>
-  <li><a href="#defvar-name-value-doc-name">defvar</a></li>
-  <li><a href="#defconstant-name-value-doc-name">defconstant</a></li>
+  <li><a href="#defparameter-name-value-doc-string-name">defparameter</a></li>
+  <li><a href="#defvar-name-value-doc-string-name">defvar</a></li>
+  <li><a href="#defconstant-name-value-doc-string-name">defconstant</a></li>
   <li><a href="#setf-place-value-result">setf</a></li>
   <li><a href="#let-var-var-value-forms-result">let</a></li>
   <li><a href="#multiple-value-bind-vars-values-form-body-forms-result">multiple-value-bind</a></li>
   <li><a href="#destructuring-bind-lambda-list-expression-forms-result">destructuring-bind</a></li>
-  <li><a href="#multiple-value-setq-vars-form-result">multiple-value-setq</a></li>
-  <li><a href="#progv-symbols-values-forms-result">progv</a></li>
   <li><a href="#shiftf-place-newvalue-first-value">shiftf</a></li>
   <li><a href="#rotatef-places-nil">rotatef</a></li>
   <li><a href="#makunbound-symbol-symbol">makunbound</a></li>
+  <li><a href="#advanced" class="toc-header">Advanced</a></li>
+  <li><a href="#psetf-place-value-nil">psetf</a></li>
+  <li><a href="#setq-place-value-result">setq</a></li>
+  <li><a href="#psetq-place-value-nil">psetq</a></li>
+  <li><a href="#multiple-value-setq-vars-form-result">multiple-value-setq</a></li>
+  <li><a href="#progv-symbols-values-forms-result">progv</a></li>
   <li><a href="#functions" class="toc-header">Functions</a></li>
   <li><a href="#defun-name-lambda-list-declare-doc-form-name">defun</a></li>
   <li><a href="#lambda-lambda-list-declare-doc-form-function">lambda</a></li>
   <li><a href="#labels-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">labels</a></li>
   <li><a href="#function-name-function">function</a></li>
-  <li><a href="#funcall-function-rest-args-result">funcall</a></li>
+  <li><a href="#funcall-function-args-result">funcall</a></li>
   <li><a href="#apply-function-args-arg-list-result">apply</a></li>
   <li><a href="#multiple-value-call-function-forms-result">multiple-value-call</a></li>
   <li><a href="#values-objects-objects">values</a></li>
   <li><a href="#values-list-list-objects">values-list</a></li>
   <li><a href="#multiple-value-list-form-list">multiple-value-list</a></li>
+  <li><a href="#fmakunbound-name-name">fmakunbound</a></li>
+  <li><a href="#advanced-1" class="toc-header">Advanced</a></li>
+  <li><a href="#flet-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">flet</a></li>
   <li><a href="#nth-value-n-form-object">nth-value</a></li>
-  <li><a href="#complement-function-complement-function">complement</a></li>
-  <li><a href="#constantly-value-function">constantly</a></li>
-  <li><a href="#identity-object-object">identity</a></li>
   <li><a href="#function-lambda-expression-function-lambda-expression-closure-p-name">function-lambda-expression</a></li>
   <li><a href="#fdefinition-name-definition">fdefinition</a></li>
-  <li><a href="#fmakunbound-name-name">fmakunbound</a></li>
-  <li><a href="#function-composition" class="toc-header">Function Composition</a></li>
-  <li><a href="#alexandriacompose-fn-rest-fns-function">compose</a></li>
-  <li><a href="#alexandriamultiple-value-compose-fn-rest-fns-function">multiple-value-compose</a></li>
-  <li><a href="#alexandriadisjoin-pred-rest-preds-function">disjoin</a></li>
-  <li><a href="#alexandriaconjoin-pred-rest-preds-function">conjoin</a></li>
-  <li><a href="#alexandriacurry-fn-rest-args-function">curry</a></li>
-  <li><a href="#alexandriarcurry-fn-rest-args-function">rcurry</a></li>
   <li><a href="#macros" class="toc-header">Macros</a></li>
   <li><a href="#defmacro-name-lambda-list-declare-doc-forms-name">defmacro</a></li>
   <li><a href="#macrolet-name-lambda-list-local-declare-local-doc-local-forms-declare-forms-result">macrolet</a></li>
   <li><a href="#define-symbol-macro-symbol-expansion-symbol">define-symbol-macro</a></li>
+  <li><a href="#advanced-2" class="toc-header">Advanced</a></li>
   <li><a href="#symbol-macrolet-symbol-expansion-declare-forms-result">symbol-macrolet</a></li>
   <li><a href="#define-modify-macro-name-lambda-list-function-doc-name">define-modify-macro</a></li>
   <li><a href="#defsetf-access-fn-update-fn-doc-access-fn">defsetf</a></li>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Read</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
+      <ul>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
+      <ul>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
+</nav>
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
+<h1 id="read">Read</h1>
+<h3 id="read-base-10"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_bas.htm">*read-base*</a> = 10</h3>
+<p>Controls the interpretation of tokens by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm">read</a> as being integers or ratios.</p>
+<h3 id="read-default-float-format-single-float"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_def.htm">*read-default-float-format*</a> = ’single-float</h3>
+<p>Controls the floating-point format that is to be used when reading a floating-point number that has no exponent marker.</p>
+<h3 id="read-eval-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_eva.htm">*read-eval*</a> = t</h3>
+<p>If true, the <code>#.</code> reader macro has its normal effect, otherwise, signals an error.</p>
+<h3 id="read-suppress-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rd_sup.htm">*read-suppress*</a> = nil</h3>
+<p>Supports the operation of the read-time conditional notations <code>#+</code> and <code>#-</code>.</p>
+<h3 id="read-input-stream-eof-error-p-eof-value-recursive-p-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm">read</a> [input-stream eof-error-p eof-value recursive-p] &rArr; object</h3>
+<h3 id="read-preserving-whitespace-input-stream-eof-error-p-eof-value-recursive-p-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_rd.htm">read-preserving-whitespace</a> [input-stream eof-error-p eof-value recursive-p] &rArr; object</h3>
+<h3 id="read-delimited-list-char-input-stream-recursive-p-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_del.htm">read-delimited-list</a> char [input-stream recursive-p] &rArr; list</h3>
+<h3 id="read-from-string-string-eof-error-p-eof-value-start-end-preserve-whitespace-object-position"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_fro.htm">read-from-string</a> string [eof-error-p eof-value :start :end :preserve-whitespace] &rArr; object, position</h3>
+<h3 id="read-char"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_cha.htm">read-char</a></h3>
+<h3 id="read-char-no-hang"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_c_1.htm">read-char-no-hang</a></h3>
+<h3 id="peek-char"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_peek_c.htm">peek-char</a></h3>
+<h3 id="unread-char"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_unrd_c.htm">unread-char</a></h3>
+<h3 id="read-byte"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_by.htm">read-byte</a></h3>
+<h3 id="read-line"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_lin.htm">read-line</a></h3>
+<h3 id="read-sequence"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_seq.htm">read-sequence</a></h3>
+<h3 id="yes-or-no-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_y_or_n.htm">yes-or-no-p</a></h3>
+<p>Or <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_y_or_n.htm">y-or-n-p</a>.</p>
+<h3 id="clear-input"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_clear_.htm">clear-input</a></h3>
+<h3 id="with-input-from-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_in_f.htm">with-input-from-string</a></h3>
+<h1 id="read-macros">Read Macros</h1>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/23_a.htm">HS: Reader Concepts</a></li>
+<li><a href="http://dunsmor.com/lisp/onlisp/onlisp_21.html">OL: Read-Macros</a></li>
+<li><a href="http://letoverlambda.com/index.cl/guest/chap4.html">LoL: Read Macros</a></li>
+</ul>
+<h3 id="readtable-current-readtable"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_rdtabl.htm">*readtable*</a> = current-readtable</h3>
+<p>Controls the parsing behavior of the reader, and can also influence the printer.</p>
+<h3 id="copy-readtable-from-readtable-to-readtable-readtable"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_rdt.htm">copy-readtable</a> [from-readtable to-readtable] &rArr; readtable</h3>
+<h3 id="make-dispatch-macro-character-char-non-terminating-p-readtable-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_dis.htm">make-dispatch-macro-character</a> char [non-terminating-p readtable] &rArr; t</h3>
+<h3 id="readtable-case-readtable-mode"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdtabl.htm">readtable-case</a> readtable &rArr; mode</h3>
+<p><code>setf</code>able.</p>
+<h3 id="get-dispatch-macro-character-disp-char-sub-char-readtable-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set__1.htm">get-dispatch-macro-character</a> disp-char sub-char [readtable] &rArr; function</h3>
+<h3 id="set-dispatch-macro-character-disp-char-sub-char-new-function-readtable-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set__1.htm">set-dispatch-macro-character</a> disp-char sub-char new-function [readtable] &rArr; t</h3>
+<h3 id="get-macro-character-char-readtable-function-non-terminating-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_ma.htm">get-macro-character</a> char [readtable] &rArr; function, non-terminating-p</h3>
+<h3 id="set-macro-character-char-new-function-non-terminating-p-readtable-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_ma.htm">set-macro-character</a> char new-function [non-terminating-p readtable] &rArr; t</h3>
+<h3 id="set-syntax-from-char-to-char-from-char-to-readtable-from-readtable-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set_sy.htm">set-syntax-from-char</a> to-char from-char [to-readtable from-readtable] &rArr; t</h3>
+<h3 id="with-standard-io-syntax-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_std_.htm">with-standard-io-syntax</a> form* &rArr; result</h3>
+<h2 id="predicates">Predicates</h2>
+<h3 id="readtablep-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rdta_1.htm">readtablep</a> object &rArr; boolean</h3>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#read" class="toc-header">Read</a></li>
+  <li><a href="#read-base-10">*read-base*</a></li>
+  <li><a href="#read-default-float-format-single-float">*read-default-float-format*</a></li>
+  <li><a href="#read-eval-t">*read-eval*</a></li>
+  <li><a href="#read-suppress-nil">*read-suppress*</a></li>
+  <li><a href="#read-input-stream-eof-error-p-eof-value-recursive-p-object">read</a></li>
+  <li><a href="#read-preserving-whitespace-input-stream-eof-error-p-eof-value-recursive-p-object">read-preserving-whitespace</a></li>
+  <li><a href="#read-delimited-list-char-input-stream-recursive-p-list">read-delimited-list</a></li>
+  <li><a href="#read-from-string-string-eof-error-p-eof-value-start-end-preserve-whitespace-object-position">read-from-string</a></li>
+  <li><a href="#read-char">read-char</a></li>
+  <li><a href="#read-char-no-hang">read-char-no-hang</a></li>
+  <li><a href="#peek-char">peek-char</a></li>
+  <li><a href="#unread-char">unread-char</a></li>
+  <li><a href="#read-byte">read-byte</a></li>
+  <li><a href="#read-line">read-line</a></li>
+  <li><a href="#read-sequence">read-sequence</a></li>
+  <li><a href="#yes-or-no-p">yes-or-no-p</a></li>
+  <li><a href="#clear-input">clear-input</a></li>
+  <li><a href="#with-input-from-string">with-input-from-string</a></li>
+  <li><a href="#read-macros" class="toc-header">Read Macros</a></li>
+  <li><a href="#readtable-current-readtable">*readtable*</a></li>
+  <li><a href="#copy-readtable-from-readtable-to-readtable-readtable">copy-readtable</a></li>
+  <li><a href="#make-dispatch-macro-character-char-non-terminating-p-readtable-t">make-dispatch-macro-character</a></li>
+  <li><a href="#readtable-case-readtable-mode">readtable-case</a></li>
+  <li><a href="#get-dispatch-macro-character-disp-char-sub-char-readtable-function">get-dispatch-macro-character</a></li>
+  <li><a href="#set-dispatch-macro-character-disp-char-sub-char-new-function-readtable-t">set-dispatch-macro-character</a></li>
+  <li><a href="#get-macro-character-char-readtable-function-non-terminating-p">get-macro-character</a></li>
+  <li><a href="#set-macro-character-char-new-function-non-terminating-p-readtable-t">set-macro-character</a></li>
+  <li><a href="#set-syntax-from-char-to-char-from-char-to-readtable-from-readtable-t">set-syntax-from-char</a></li>
+  <li><a href="#with-standard-io-syntax-form-result">with-standard-io-syntax</a></li>
+  <li><a href="#predicates" class="toc-header">Predicates</a></li>
+  <li><a href="#readtablep-object-boolean">readtablep</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

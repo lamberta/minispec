@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>CL MiniSpec: Output</title>
+    <title>CL MiniSpec: Print</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -20,37 +20,32 @@
       <header>
         <div class="section-padding">
 <nav id="navbar">
-	<h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
   <ul>
-    <li><a href="#"><span class="caret">&#x25BC;</span>Definitions</a>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
       <ul>
-        <li><a href="./definitions.html#variables">Variables</a></li>
-        <li><a href="./definitions.html#functions">Functions</a></li>
-        <li><a href="./definitions.html#macros">Macros</a></li>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
       </ul>
     </li>
-    <li><a href="./lists.html">Lists</a></li>
-    <li><a href="#"><span class="caret">&#x25BC;</span>Data Structures</a>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
       <ul>
-        <li class="navbar-header"><a href="./list-structures.html">List Structures</a></li>
-        <li><a href="./list-structures.html#set">Set</a></li>
-        <li><a href="./list-structures.html#tree">Tree</a></li>
-        <li><a href="./list-structures.html#property-list-plist">Property List</a></li>
-        <li><a href="./list-structures.html#association-list-alist">Association List</a></li>
-        <li class="navbar-header"><a href="./arrays.html">Array</a></li>
-        <li><a href="./arrays.html">Array</a></li>
-        <li><a href="./vectors.html">Vector</a></li>
-        <li class="navbar-header"><a href="./data-structures.html">Objects</a></li>
-        <li><a href="./data-structures.html#hash-tables">Hash Table</a></li>
-        <li><a href="./data-structures.html#structures">Structs</a></li>
-      </ul>
-    </li>
-    <li><a href="./clos.html">CLOS</a></li>
-    <li><a href="./strings.html">Strings</a></li>
-    <li><a href="#"><span class="caret">&#x25BC;</span>Types</a>
-      <ul>
-        <li><a href="#"></a></li>
-        <li><a href="#"></a></li>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
       </ul>
     </li>
     <li><a href="./math.html">Math</a></li>
@@ -61,15 +56,27 @@
       </ul>
     </li>
     <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
     <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
       <ul>
         <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
         <li><a href="./time.html">Time</a></li>
-        <li><a href="./output.html">Output</a></li>
-        <li><a href="./regular-expressions.html">Regular Expressions</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
       </ul>
     </li>
-		<li><form><input type="search" placeholder="symbol"></input></form></li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
   </ul>
 </nav>
         </div>
@@ -82,8 +89,22 @@
 <ul>
 <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node197.html">CLtL2: Output Functions</a></li>
 </ul>
-<h2 id="character-streams">Character Streams</h2>
+<h2 id="print">Print</h2>
 <h3 id="write-object-key-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">write</a> object [&amp;key*] &rArr; object</h3>
+<h3 id="write-byte-integer-binary-output-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_by.htm">write-byte</a> integer binary-output-stream</h3>
+<h3 id="write-char-character-output-stream-character"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_cha.htm">write-char</a> character [output-stream] &rArr; character</h3>
+<h3 id="write-string-string-output-stream-key-start-end-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm">write-string</a> string [output-stream] &amp;key :start :end &rArr; string</h3>
+<h3 id="write-line-string-output-stream-key-start-end-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm">write-line</a> string [output-stream] &amp;key :start :end &rArr; string</h3>
+<h3 id="write-sequence"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_seq.htm">write-sequence</a></h3>
+<h3 id="terpri-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm">terpri</a> [output-stream] &rArr; nil</h3>
+<h3 id="fresh-line-output-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm">fresh-line</a> [output-stream] &rArr; boolean</h3>
+<h3 id="finish-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">finish-output</a> [output-stream] &rArr; nil</h3>
+<h3 id="force-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">force-output</a> [output-stream] &rArr; nil</h3>
+<h3 id="clear-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">clear-output</a> [output-stream] &rArr; nil</h3>
+<h3 id="with-output-to-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_out_.htm">with-output-to-string</a></h3>
+<h3 id="write-to-string-object-key-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">write-to-string</a> object [&amp;key*] &rArr; object</h3>
+<h3 id="prin1-to-string-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">prin1-to-string</a> object &rArr; object</h3>
+<h3 id="princ-to-string-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">princ-to-string</a> object &rArr; object</h3>
 <h3 id="prin1-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">prin1</a> object [output-stream] &rArr; object</h3>
 <p>produces output suitable for input to read.</p>
 <h3 id="print-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">print</a> object [output-stream] &rArr; object</h3>
@@ -92,22 +113,9 @@
 <p>just like print except that the trailing space is omitted and object is printed with the <em>print-pretty</em> flag non-nil to produce pretty output.</p>
 <h3 id="princ-object-output-stream-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_pr.htm">princ</a> object [output-stream] &rArr; object</h3>
 <p>is just like prin1 except that the output has no escape characters. The general rule is that output from princ is intended to look good to people, while output from prin1 is intended to be acceptable to read.</p>
-<h3 id="write-to-string-object-key-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">write-to-string</a> object [&amp;key*] &rArr; object</h3>
-<h3 id="prin1-to-string-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">prin1-to-string</a> object &rArr; object</h3>
-<h3 id="princ-to-string-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_to_.htm">princ-to-string</a> object &rArr; object</h3>
-<h3 id="write-char-character-output-stream-character"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_cha.htm">write-char</a> character [output-stream] &rArr; character</h3>
-<h3 id="write-string-string-output-stream-key-start-end-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm">write-string</a> string [output-stream] &amp;key :start :end &rArr; string</h3>
-<h3 id="write-line-string-output-stream-key-start-end-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_stg.htm">write-line</a> string [output-stream] &amp;key :start :end &rArr; string</h3>
-<h3 id="terpri-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm">terpri</a> [output-stream] &rArr; nil</h3>
-<h3 id="fresh-line-output-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_terpri.htm">fresh-line</a> [output-stream] &rArr; boolean</h3>
-<h3 id="finish-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">finish-output</a> [output-stream] &rArr; nil</h3>
-<h3 id="force-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">force-output</a> [output-stream] &rArr; nil</h3>
-<h3 id="clear-output-output-stream-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_finish.htm">clear-output</a> [output-stream] &rArr; nil</h3>
 <h3 id="print-unreadable-object-object-stream-key-type-identity-form-nil"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_pr_unr.htm">print-unreadable-object</a> (object stream &amp;key type identity) form* &rArr; nil</h3>
 <h3 id="print-readably"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pr_rda.htm">*print-readably*</a></h3>
-<h2 id="binary-streams">Binary Streams</h2>
-<h3 id="write-byte-integer-binary-output-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_wr_by.htm">write-byte</a> integer binary-output-stream</h3>
-<h2 id="formatted-output">Formatted Output</h2>
+<h2 id="format">Format</h2>
 <ul>
 <li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/22_c.htm">HyperSpec: Formatted Output</a></li>
 <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node200.html">CLtL2: Formatted Output to Character Streams</a></li>
@@ -174,28 +182,29 @@
           <nav>
 <ul>
   <li><a href="#output" class="toc-header">Output</a></li>
-  <li><a href="#character-streams" class="toc-header">Character Streams</a></li>
+  <li><a href="#print" class="toc-header">Print</a></li>
   <li><a href="#write-object-key-object">write</a></li>
-  <li><a href="#prin1-object-output-stream-object">prin1</a></li>
-  <li><a href="#print-object-output-stream-object">print</a></li>
-  <li><a href="#pprint-object-output-stream-object">pprint</a></li>
-  <li><a href="#princ-object-output-stream-object">princ</a></li>
-  <li><a href="#write-to-string-object-key-object">write-to-string</a></li>
-  <li><a href="#prin1-to-string-object-object">prin1-to-string</a></li>
-  <li><a href="#princ-to-string-object-object">princ-to-string</a></li>
+  <li><a href="#write-byte-integer-binary-output-stream">write-byte</a></li>
   <li><a href="#write-char-character-output-stream-character">write-char</a></li>
   <li><a href="#write-string-string-output-stream-key-start-end-string">write-string</a></li>
   <li><a href="#write-line-string-output-stream-key-start-end-string">write-line</a></li>
+  <li><a href="#write-sequence">write-sequence</a></li>
   <li><a href="#terpri-output-stream-nil">terpri</a></li>
   <li><a href="#fresh-line-output-stream-boolean">fresh-line</a></li>
   <li><a href="#finish-output-output-stream-nil">finish-output</a></li>
   <li><a href="#force-output-output-stream-nil">force-output</a></li>
   <li><a href="#clear-output-output-stream-nil">clear-output</a></li>
+  <li><a href="#with-output-to-string">with-output-to-string</a></li>
+  <li><a href="#write-to-string-object-key-object">write-to-string</a></li>
+  <li><a href="#prin1-to-string-object-object">prin1-to-string</a></li>
+  <li><a href="#princ-to-string-object-object">princ-to-string</a></li>
+  <li><a href="#prin1-object-output-stream-object">prin1</a></li>
+  <li><a href="#print-object-output-stream-object">print</a></li>
+  <li><a href="#pprint-object-output-stream-object">pprint</a></li>
+  <li><a href="#princ-object-output-stream-object">princ</a></li>
   <li><a href="#print-unreadable-object-object-stream-key-type-identity-form-nil">print-unreadable-object</a></li>
   <li><a href="#print-readably">*print-readably*</a></li>
-  <li><a href="#binary-streams" class="toc-header">Binary Streams</a></li>
-  <li><a href="#write-byte-integer-binary-output-stream">write-byte</a></li>
-  <li><a href="#formatted-output" class="toc-header">Formatted Output</a></li>
+  <li><a href="#format" class="toc-header">Format</a></li>
   <li><a href="#format-destination-control-string-args-result">format</a></li>
   <li><a href="#basic-directives" class="toc-header">Basic Directives:</a></li>
   <li><a href="#number-directives" class="toc-header">Number Directives:</a></li>

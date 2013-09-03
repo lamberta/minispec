@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Types</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
+      <ul>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
+      <ul>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
+</nav>
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
+<h1 id="types">Types</h1>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/04_.htm">HS: Types and Classes</a></li>
+<li><a href="http://sellout.github.io/2012/03/03/common-lisp-type-hierarchy/">Common Lisp Type Hierarchy</a></li>
+</ul>
+<h2 id="system-classes">System Classes</h2>
+<h3 id="tt-class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_t.htm">t</a></h3>
+<p>The set of all objects. It is a supertype of every type, including itself. Every <a href="./object-system.html">object</a> is of type <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a>.</p>
+<h3 id="nilnil-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_nil.htm">nil</a></h3>
+<p>Called an empty type since it contains no objects. It is a subtype of every type. No <a href="./object-system.html">object</a> is of type <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>.</p>
+<h3 id="boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_ban.htm">boolean</a></h3>
+<p>Contains the symbols <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_t.htm">t</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_nil.htm">nil</a>, which represent true and false, respectively.</p>
+<h3 id="functionfunction-class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_fn.htm">function</a></h3>
+<p>A function is an <a href="./object-system.html">object</a> that represents code to be executed when an appropriate number of arguments is supplied.</p>
+<h3 id="compiled-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_cmpd_f.htm">compiled-function</a></h3>
+<h3 id="generic-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_generi.htm">generic-function</a></h3>
+<h3 id="standard-generic-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ge.htm">standard-generic-function</a></h3>
+<h3 id="class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm">class</a></h3>
+<h3 id="built-in-class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm">built-in-class</a></h3>
+<h3 id="structure-class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_cl.htm">structure-class</a></h3>
+<h3 id="standard-class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm">standard-class</a></h3>
+<h3 id="method"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_method.htm">method</a></h3>
+<h3 id="standard-method"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_me.htm">standard-method</a></h3>
+<h3 id="structure-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_stu_ob.htm">structure-object</a></h3>
+<h3 id="standard-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm">standard-object</a></h3>
+<h3 id="method-combinationmethod-combination-class"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_meth_1.htm">method-combination</a></h3>
+<h3 id="satisfies"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_satisf.htm">satisfies</a></h3>
+<h3 id="membermember-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_member.htm">member</a></h3>
+<h3 id="notnot-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_not.htm">not</a></h3>
+<h3 id="andand-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_and.htm">and</a></h3>
+<h3 id="oror-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_or.htm">or</a></h3>
+<h3 id="valuesvalues-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_values.htm">values</a></h3>
+<h3 id="eqleql-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_eql.htm">eql</a></h3>
+<h3 id="coerce"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_coerce.htm">coerce</a></h3>
+<h3 id="deftype"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_deftp.htm">deftype</a></h3>
+<h3 id="type-of"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_of.htm">type-of</a></h3>
+<h3 id="type-error"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_tp_err.htm">type-error</a></h3>
+<h3 id="type-error-datum"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_err.htm">type-error-datum</a></h3>
+<h3 id="type-error-expected-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_tp_err.htm">type-error-expected-type</a></h3>
+<h3 id="simple-type-error"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/e_smp_tp.htm">simple-type-error</a></h3>
+<h2 id="predicates">Predicates</h2>
+<h3 id="typep-object-type-specifier-environment-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_typep.htm">typep</a> object type-specifier [environment] &rArr; boolean</h3>
+<h3 id="subtypep-type-1-type-2-environment-subtype-p-valid-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_subtpp.htm">subtypep</a> type-1 type-2 [environment] &rArr; subtype-p, valid-p</h3>
+<h1 id="declarations">Declarations</h1>
+<h3 id="proclaim"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_procla.htm">proclaim</a></h3>
+<h3 id="declaim"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_declai.htm">declaim</a></h3>
+<h3 id="declare"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_declar.htm">declare</a></h3>
+<h3 id="ignore"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_ignore.htm">ignore</a></h3>
+<h3 id="ignorable"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_ignore.htm">ignorable</a></h3>
+<h3 id="dynamic-extent"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_dynami.htm">dynamic-extent</a></h3>
+<h3 id="type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_type.htm">type</a></h3>
+<h3 id="ftype"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_ftype.htm">ftype</a></h3>
+<h3 id="inline"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_inline.htm">inline</a></h3>
+<h3 id="notinline"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_inline.htm">notinline</a></h3>
+<h3 id="declaration"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_declar.htm">declaration</a></h3>
+<h3 id="optimize"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_optimi.htm">optimize</a></h3>
+<h3 id="special"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/d_specia.htm">special</a></h3>
+<h3 id="locally"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_locall.htm">locally</a></h3>
+<h3 id="the"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_the.htm">the</a></h3>
+<h3 id="special-operator-p"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_specia.htm">special-operator-p</a></h3>
+<h3 id="constantp"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_consta.htm">constantp</a></h3>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#types" class="toc-header">Types</a></li>
+  <li><a href="#system-classes" class="toc-header">System Classes</a></li>
+  <li><a href="#t-t-class">t][t-class</a></li>
+  <li><a href="#nil-nil-type">nil][nil-type</a></li>
+  <li><a href="#boolean">boolean</a></li>
+  <li><a href="#function-function-class">function][function-class</a></li>
+  <li><a href="#compiled-function">compiled-function</a></li>
+  <li><a href="#generic-function">generic-function</a></li>
+  <li><a href="#standard-generic-function">standard-generic-function</a></li>
+  <li><a href="#class">class</a></li>
+  <li><a href="#built-in-class">built-in-class</a></li>
+  <li><a href="#structure-class">structure-class</a></li>
+  <li><a href="#standard-class">standard-class</a></li>
+  <li><a href="#method">method</a></li>
+  <li><a href="#standard-method">standard-method</a></li>
+  <li><a href="#structure-object">structure-object</a></li>
+  <li><a href="#standard-object">standard-object</a></li>
+  <li><a href="#method-combination-method-combination-class">method-combination][method-combination-class</a></li>
+  <li><a href="#satisfies">satisfies</a></li>
+  <li><a href="#member-member-type">member][member-type</a></li>
+  <li><a href="#not-not-type">not][not-type</a></li>
+  <li><a href="#and-and-type">and][and-type</a></li>
+  <li><a href="#or-or-type">or][or-type</a></li>
+  <li><a href="#values-values-type">values][values-type</a></li>
+  <li><a href="#eql-eql-type">eql][eql-type</a></li>
+  <li><a href="#coerce">coerce</a></li>
+  <li><a href="#deftype">deftype</a></li>
+  <li><a href="#type-of">type-of</a></li>
+  <li><a href="#type-error">type-error</a></li>
+  <li><a href="#type-error-datum">type-error-datum</a></li>
+  <li><a href="#type-error-expected-type">type-error-expected-type</a></li>
+  <li><a href="#simple-type-error">simple-type-error</a></li>
+  <li><a href="#predicates" class="toc-header">Predicates</a></li>
+  <li><a href="#typep-object-type-specifier-environment-boolean">typep</a></li>
+  <li><a href="#subtypep-type-1-type-2-environment-subtype-p-valid-p">subtypep</a></li>
+  <li><a href="#declarations" class="toc-header">Declarations</a></li>
+  <li><a href="#proclaim">proclaim</a></li>
+  <li><a href="#declaim">declaim</a></li>
+  <li><a href="#declare">declare</a></li>
+  <li><a href="#ignore">ignore</a></li>
+  <li><a href="#ignorable">ignorable</a></li>
+  <li><a href="#dynamic-extent">dynamic-extent</a></li>
+  <li><a href="#type">type</a></li>
+  <li><a href="#ftype">ftype</a></li>
+  <li><a href="#inline">inline</a></li>
+  <li><a href="#notinline">notinline</a></li>
+  <li><a href="#declaration">declaration</a></li>
+  <li><a href="#optimize">optimize</a></li>
+  <li><a href="#special">special</a></li>
+  <li><a href="#locally">locally</a></li>
+  <li><a href="#the">the</a></li>
+  <li><a href="#special-operator-p">special-operator-p</a></li>
+  <li><a href="#constantp">constantp</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

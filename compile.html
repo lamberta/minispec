@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Common Lisp MiniSpec</title>
+    <title>CL MiniSpec: Compile</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -79,25 +79,27 @@
     <li><form><input type="search" placeholder="symbol"></input></form></li>
   </ul>
 </nav>
-
         </div>
       </header>
       
       <div class="article-wrapper">
-        <article class="index">
+        <article>
           <div class="section-padding">
-            <h1>Welcome</h1>
-            <p>This documentation tool is a cheat-sheet and a concept-navigation aid, its goal is to help Common Lisp programmers quickly browse symbols for their definition and usage. The listings are example-driven, paired with concise descriptions, and providing readily available links to more comprehensive references.</p>
-            <p>Everything is still a <em>work-in-progress</em>, starting with common needs before filling out the obscure.</p>
-
-            <h2>Features</h2>
-            <ul>
-              <li>Easy to navigate. Symbols are grouped by concept while maintaining a searchable index.</li>
-              <li>Definitions are example-driven and can appear in multiple sections, if appropriate.</li>
-              <li>More comprehensive documentation is always accessible (just click the symbol name).</li>
-              <li>Includes popular libraries such as <a href="http://common-lisp.net/project/alexandria/">Alexandria</a>, <a href="http://common-lisp.net/project/cl-utilities/">CL-Utilities</a>, <a href="http://common-lisp.net/project/iterate/">Iterate</a>, and more.</li>
-              <li>Contributing is easy! Edit an entry, or example, in the <a href="https://github.com/lamberta/minispec">GitHub repo</a> using Markdown.</li>
-            </ul>
+<h1 id="compilation">Compilation</h1>
+<h3 id="compile"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm">compile</a></h3>
+<h3 id="eval"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eval.htm">eval</a></h3>
+<h3 id="eval-when"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_eval_w.htm">eval-when</a></h3>
+<h3 id="load-time-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_ld_tim.htm">load-time-value</a></h3>
+<h3 id="quote"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_quote.htm">quote</a></h3>
+<h3 id="compiler-macro-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp_ma.htm">compiler-macro-function</a></h3>
+<h3 id="define-compiler-macro"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_define.htm">define-compiler-macro</a></h3>
+<h3 id="defmacro"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defmac.htm">defmacro</a></h3>
+<h3 id="macro-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_macro_.htm">macro-function</a></h3>
+<h3 id="macroexpand"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mexp_.htm">macroexpand</a></h3>
+<h3 id="macroexpand-1"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mexp_.htm">macroexpand-1</a></h3>
+<h3 id="define-symbol-macro"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defi_1.htm">define-symbol-macro</a></h3>
+<h3 id="symbol-macrolet"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_symbol.htm">symbol-macrolet</a></h3>
+<h3 id="hook">[*-hook*]</h3>
           </div>
         </article>
       </div>
@@ -105,15 +107,23 @@
       <aside>
         <div class="section-padding">
           <nav>
-            <ul>
-              <li class="toc-header">Reference</li>
-              <li><a href="http://www.lispworks.com/documentation/HyperSpec/Front/">HyperSpec</a></li>
-              <li><a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/clm.html">CL the Language, 2nd Ed</a></li>
-              <li><a href="http://www.gigamonkeys.com/book/">Practical Common Lisp</a></li>
-              <li><a href="http://clqr.boundp.org">CL Quick Reference</a></li>
-              <li><a href="http://quickdocs.org">Quickdocs</a></li>
-              <li><a href="http://cl-cookbook.sourceforge.net">CL Cookbook</a></li>
-            </ul>
+<ul>
+  <li><a href="#compilation" class="toc-header">Compilation</a></li>
+  <li><a href="#compile">compile</a></li>
+  <li><a href="#eval">eval</a></li>
+  <li><a href="#eval-when">eval-when</a></li>
+  <li><a href="#load-time-value">load-time-value</a></li>
+  <li><a href="#quote">quote</a></li>
+  <li><a href="#compiler-macro-function">compiler-macro-function</a></li>
+  <li><a href="#define-compiler-macro">define-compiler-macro</a></li>
+  <li><a href="#defmacro">defmacro</a></li>
+  <li><a href="#macro-function">macro-function</a></li>
+  <li><a href="#macroexpand">macroexpand</a></li>
+  <li><a href="#macroexpand-1">macroexpand-1</a></li>
+  <li><a href="#define-symbol-macro">define-symbol-macro</a></li>
+  <li><a href="#symbol-macrolet">symbol-macrolet</a></li>
+  <li><a href="#macroexpand-hook">*macroexpand-hook*</a></li>
+</ul>
           </nav>
         </div>
       </aside>

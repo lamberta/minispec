@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Composition</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
+      <ul>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
+      <ul>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
+</nav>
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
+<h2 id="composition">Composition</h2>
+<p>Functional composition.</p>
+<h3 id="alexandriacompose-fn-rest-fns-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-compose">alexandria:compose</a> fn &amp;rest fns* &rArr; function</h3>
+<p>Compose function that applies its arguments to each in turn.</p>
+<pre><code>(compose #&#39;fn2 #&#39;fn1) ;&rArr; (lambda (x) (fn2 (fn1 x)))</code></pre>
+<h3 id="alexandriamultiple-value-compose-fn-rest-fns-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-multiple_002dvalue_002dcompose">alexandria:multiple-value-compose</a> fn &amp;rest fns* &rArr; function</h3>
+<p>Compose functions that return multiple values. <em>fn1(x,y)</em> &rArr; <em>fn2(x1,y1)</em> &rArr; x2,y2</p>
+<pre><code>(funcall (multiple-value-compose #&#39;fn2 #&#39;fn1) x y) ;&rArr; x2,y2</code></pre>
+<h3 id="alexandriadisjoin-pred-rest-preds-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-disjoin">alexandria:disjoin</a> pred &amp;rest preds* &rArr; function</h3>
+<pre><code>(disjoin #&#39;zerop #&#39;oddp) ;≈ (lambda (x) (or (zerop x) (oddp x)))</code></pre>
+<h3 id="alexandriaconjoin-pred-rest-preds-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-conjoin">alexandria:conjoin</a> pred &amp;rest preds* &rArr; function</h3>
+<pre><code>(conjoin #&#39;zerop #&#39;oddp) ;≈ (lambda (x) (and (zerop x) (oddp x)))</code></pre>
+<h3 id="alexandriacurry-fn-rest-args-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-curry">alexandria:curry</a> fn &amp;rest args* &rArr; function</h3>
+<pre><code>(funcall (curry #&#39;list &#39;a &#39;b) &#39;c &#39;d) ;&rArr; (A B C D)</code></pre>
+<h3 id="alexandriarcurry-fn-rest-args-function"><a href="http://common-lisp.net/project/alexandria/draft/alexandria.html#Function-rcurry">alexandria:rcurry</a> fn &amp;rest args* &rArr; function</h3>
+<pre><code>(funcall (rcurry #&#39;list &#39;a &#39;b) &#39;c &#39;d) ;&rArr; (C D A B)</code></pre>
+<h3 id="complement-function-complement-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_comple.htm">complement</a> function &rArr; complement-function</h3>
+<p>Return new <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> with same arguments and side effects as <em>function</em>, but with the opposite truth value.</p>
+<pre><code>(funcall (complement #&#39;numberp) 1)          ;&rArr; NIL
+(funcall (complement #&#39;member) &#39;d &#39;(a b c)) ;&rArr; T
+
+(complement fn) ;≈ #&#39;(lambda (&amp;rest args) (not (apply fn args)))</code></pre>
+<h3 id="constantly-value-function"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cons_1.htm">constantly</a> value &rArr; function</h3>
+<p>Return a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> taking any number of arguments, which always returns <em>value</em>.</p>
+<pre><code>(setf f (constantly &quot;hi&quot;))
+(funcall f)                        ;&rArr; &quot;hi&quot;
+(mapcar (constantly 3) &#39;(a b c d)) ;&rArr; (3 3 3 3)</code></pre>
+<h3 id="identity-object-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_identi.htm">identity</a> object &rArr; object</h3>
+<p>Returns its own argument <em>object</em>. Intended for functions that require a <a href="http://www.lispworks.com/documentation/HyperSpec/Body/a_fn.htm">function</a> argument.</p>
+<pre><code>(identity 23)                                    ;&rArr; 23
+(mapcan #&#39;identity (list (list 1 2 3) &#39;(4 5 6))) ;&rArr; (1 2 3 4 5 6)</code></pre>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#composition" class="toc-header">Composition</a></li>
+  <li><a href="#alexandriacompose-fn-rest-fns-function">compose</a></li>
+  <li><a href="#alexandriamultiple-value-compose-fn-rest-fns-function">multiple-value-compose</a></li>
+  <li><a href="#alexandriadisjoin-pred-rest-preds-function">disjoin</a></li>
+  <li><a href="#alexandriaconjoin-pred-rest-preds-function">conjoin</a></li>
+  <li><a href="#alexandriacurry-fn-rest-args-function">curry</a></li>
+  <li><a href="#alexandriarcurry-fn-rest-args-function">rcurry</a></li>
+  <li><a href="#complement-function-complement-function">complement</a></li>
+  <li><a href="#constantly-value-function">constantly</a></li>
+  <li><a href="#identity-object-object">identity</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

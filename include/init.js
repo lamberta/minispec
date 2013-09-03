@@ -59,7 +59,7 @@ $(document).ready(function () {
 			hash_ids[adv_header_id] = [];
 			var name_list = [];
 			//iterate entries
-			section.find('h3').each(function (i, h) {
+			section.find('h3, h4').each(function (i, h) {
 				var entry = $(h),
 						entry_id = entry.attr('id');
 				

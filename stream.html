@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Stream</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
+      <ul>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
+      <ul>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
+</nav>
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
+<h1 id="streams">Streams</h1>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/21_aa.htm">HS: Introduction to Streams</a></li>
+<li><a href="http://gigamonkeys.com/book/files-and-file-io.html#other-kinds-of-io">PCL: Other Kinds of I/O</a></li>
+</ul>
+<h3 id="debug-io"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm">*debug-io*</a></h3>
+<h3 id="error-output"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm">*error-output*</a></h3>
+<h3 id="query-io"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm">*query-io*</a></h3>
+<h3 id="standard-input"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm">*standard-input*</a></h3>
+<h3 id="standard-output"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm">*standard-output*</a></h3>
+<h3 id="trace-output"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_debug_.htm">*trace-output*</a></h3>
+<h3 id="terminal-io"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_termin.htm">*terminal-io*</a></h3>
+<h3 id="stream-element-type"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stm_el.htm">stream-element-type</a></h3>
+<h3 id="open"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open.htm">open</a></h3>
+<h3 id="stream-external-format"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stm_ex.htm">stream-external-format</a></h3>
+<h3 id="close"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_close.htm">close</a></h3>
+<h3 id="with-open-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_op_1.htm">with-open-stream</a></h3>
+<h3 id="listen"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_listen.htm">listen</a></h3>
+<h3 id="make-synonym-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_syn.htm">make-synonym-stream</a></h3>
+<h3 id="synonym-stream-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_syn_st.htm">synonym-stream-symbol</a></h3>
+<h3 id="broadcast-stream-streams"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_broadc.htm">broadcast-stream-streams</a></h3>
+<h3 id="make-broadcast-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_bro.htm">make-broadcast-stream</a></h3>
+<h3 id="make-two-way-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_two.htm">make-two-way-stream</a></h3>
+<h3 id="two-way-stream-input-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_two_wa.htm">two-way-stream-input-stream</a></h3>
+<h3 id="two-way-stream-output-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_two_wa.htm">two-way-stream-output-stream</a></h3>
+<h3 id="echo-stream-input-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_echo_s.htm">echo-stream-input-stream</a></h3>
+<h3 id="echo-stream-output-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_echo_s.htm">echo-stream-output-stream</a></h3>
+<h3 id="make-echo-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ech.htm">make-echo-stream</a></h3>
+<h3 id="concatenated-stream-streams"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_conc_1.htm">concatenated-stream-streams</a></h3>
+<h3 id="make-concatenated-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_con.htm">make-concatenated-stream</a></h3>
+<h3 id="get-output-stream-string"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get_ou.htm">get-output-stream-string</a></h3>
+<h3 id="make-string-input-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_s_1.htm">make-string-input-stream</a></h3>
+<h3 id="make-string-output-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_s_2.htm">make-string-output-stream</a></h3>
+<h3 id="stream-error-stream"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stm_er.htm">stream-error-stream</a></h3>
+<h2 id="predicates">Predicates</h2>
+<h3 id="streamp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_stmp.htm">streamp</a> object &rArr; boolean</h3>
+<h3 id="input-stream-p-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_in_stm.htm">input-stream-p</a> stream &rArr; boolean</h3>
+<h3 id="output-stream-p-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_in_stm.htm">output-stream-p</a> stream &rArr; boolean</h3>
+<h3 id="interactive-stream-p-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_intera.htm">interactive-stream-p</a> stream &rArr; boolean</h3>
+<h3 id="open-stream-p-stream-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_open_s.htm">open-stream-p</a> stream &rArr; boolean</h3>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#streams" class="toc-header">Streams</a></li>
+  <li><a href="#debug-io">*debug-io*</a></li>
+  <li><a href="#error-output">*error-output*</a></li>
+  <li><a href="#query-io">*query-io*</a></li>
+  <li><a href="#standard-input">*standard-input*</a></li>
+  <li><a href="#standard-output">*standard-output*</a></li>
+  <li><a href="#trace-output">*trace-output*</a></li>
+  <li><a href="#terminal-io">*terminal-io*</a></li>
+  <li><a href="#stream-element-type">stream-element-type</a></li>
+  <li><a href="#open">open</a></li>
+  <li><a href="#stream-external-format">stream-external-format</a></li>
+  <li><a href="#close">close</a></li>
+  <li><a href="#with-open-stream">with-open-stream</a></li>
+  <li><a href="#listen">listen</a></li>
+  <li><a href="#make-synonym-stream">make-synonym-stream</a></li>
+  <li><a href="#synonym-stream-symbol">synonym-stream-symbol</a></li>
+  <li><a href="#broadcast-stream-streams">broadcast-stream-streams</a></li>
+  <li><a href="#make-broadcast-stream">make-broadcast-stream</a></li>
+  <li><a href="#make-two-way-stream">make-two-way-stream</a></li>
+  <li><a href="#two-way-stream-input-stream">two-way-stream-input-stream</a></li>
+  <li><a href="#two-way-stream-output-stream">two-way-stream-output-stream</a></li>
+  <li><a href="#echo-stream-input-stream">echo-stream-input-stream</a></li>
+  <li><a href="#echo-stream-output-stream">echo-stream-output-stream</a></li>
+  <li><a href="#make-echo-stream">make-echo-stream</a></li>
+  <li><a href="#concatenated-stream-streams">concatenated-stream-streams</a></li>
+  <li><a href="#make-concatenated-stream">make-concatenated-stream</a></li>
+  <li><a href="#get-output-stream-string">get-output-stream-string</a></li>
+  <li><a href="#make-string-input-stream">make-string-input-stream</a></li>
+  <li><a href="#make-string-output-stream">make-string-output-stream</a></li>
+  <li><a href="#stream-error-stream">stream-error-stream</a></li>
+  <li><a href="#predicates" class="toc-header">Predicates</a></li>
+  <li><a href="#streamp-object-boolean">streamp</a></li>
+  <li><a href="#input-stream-p-stream-boolean">input-stream-p</a></li>
+  <li><a href="#output-stream-p-stream-boolean">output-stream-p</a></li>
+  <li><a href="#interactive-stream-p-stream-boolean">interactive-stream-p</a></li>
+  <li><a href="#open-stream-p-stream-boolean">open-stream-p</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>

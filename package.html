@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>CL MiniSpec: Package</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="shortcut icon" href="./include/fav.png">-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Inconsolata">
+    <link rel="stylesheet" href="./include/highlight-lisp.css">
+    <link rel="stylesheet" href="./include/style.css">
+    <meta name="description" content="">
+  </head>
+  <body>
+    <div>
+
+      <header>
+        <div class="section-padding">
+<nav id="navbar">
+  <h1><a href="./index.html" class="brand">Common Lisp MiniSpec</a></h1>
+  <ul>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Symbols</a>
+      <ul>
+        <li><a href="./symbol.html">Overview</a></li>
+        <li><a href="./symbol.html#variables">Variable</a></li>
+        <li><a href="./symbol.html#functions">Function</a></li>
+        <li><a href="./symbol.html#macros">Macro</a></li>
+        <li><a href="./package.html#symbols">Symbol</a></li>
+        <li><a href="./package.html#packages">Package</a></li>
+        <li><a href="#">System</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Collections</a>
+      <ul>
+        <li><a href="./list.html">List</a></li>
+        <li><a href="./list-structure.html#set-functions">Set Functions</a></li>
+        <li><a href="./list-structure.html#tree-functions">Tree Functions</a></li>
+        <li><a href="./list-structure.html#association-list-alist">Association List</a></li>
+        <li><a href="./list-structure.html#property-list-plist">Property List</a></li>
+        <li><a href="./array.html">Array</a></li>
+        <li><a href="./vector.html">Vector</a></li>
+        <li><a href="./string.html">String</a></li>
+        <li><a href="./hash-table.html">Hash Table</a></li>
+        <li><a href="./structure.html">Struct</a></li>
+        <li><a href="./object-system.html">Object System</a></li>
+      </ul>
+    </li>
+    <li><a href="./math.html">Math</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>Iteration</a>
+      <ul>
+        <li><a href="./iteration.html">Iteration</a></li>
+        <li><a href="./loop-iterate.html">Loop/Iterate</a></li>
+      </ul>
+    </li>
+    <li><a href="./control.html">Control</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>I/O</a>
+      <ul>
+        <li><a href="./stream.html">Stream</a></li>
+        <li><a href="./read.html">Read</a></li>
+        <li><a href="./print.html">Print</a></li>
+        <li><a href="./print.html#format">Format</a></li>
+        <li><a href="./file.html">File</a></li>
+        <li><a href="./file.html#pathnames">Pathname</a></li>
+      </ul>
+    </li>
+    <li><a href="./types.html">Types</a></li>
+    <li><a href="#"><span class="caret">&#x25BC;</span>More</a>
+      <ul>
+        <li><a href="./comparison.html">Comparison</a></li>
+        <li><a href="./composition.html">Composition</a></li>
+        <li><a href="./compile.html">Compiler</a></li>
+        <li><a href="./time.html">Time</a></li>
+        <li><a href="./regular-expression.html">Regular Expressions</a></li>
+      </ul>
+    </li>
+    <li><form><input type="search" placeholder="symbol"></input></form></li>
+  </ul>
+</nav>
+        </div>
+      </header>
+      
+      <div class="article-wrapper">
+        <article>
+          <div class="section-padding">
+<h1 id="symbols">Symbols</h1>
+<h3 id="make-symbol-name-new-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_sym.htm">make-symbol</a> name &rArr; new-symbol</h3>
+<h3 id="copy-symbol-symbol-copy-properties-new-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cp_sym.htm">copy-symbol</a> symbol [copy-properties] &rArr; new-symbol</h3>
+<h3 id="gensym-name-new-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gensym.htm">gensym</a> [name] &rArr; new-symbol</h3>
+<p>Uses <a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_gensym.htm">*gensym-counter*</a></p>
+<pre><code>(gensym)        ;&rArr; #:G1123 (value of *gensym-counter*)
+(gensym &quot;name&quot;) ;&rArr; #:|name1124|
+(gensym 99)     ;&rArr; #:G99</code></pre>
+<h3 id="symbol-function-symbol-contents"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_1.htm">symbol-function</a> symbol &rArr; contents</h3>
+<h3 id="symbol-name-symbol-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_2.htm">symbol-name</a> symbol &rArr; name</h3>
+<h3 id="symbol-package-symbol-contents"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_3.htm">symbol-package</a> symbol &rArr; contents</h3>
+<h3 id="symbol-plist-symbol-plist"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_4.htm">symbol-plist</a> symbol &rArr; plist</h3>
+<h3 id="symbol-value-symbol-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symb_5.htm">symbol-value</a> symbol &rArr; value</h3>
+<h3 id="get-symbol-indicator-default-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_get.htm">get</a> symbol indicator [default] &rArr; value</h3>
+<h3 id="set-symbol-value-value"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_set.htm">set</a> symbol value &rArr; value</h3>
+<h3 id="remprop-symbol-indicator-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rempro.htm">remprop</a> symbol indicator &rArr; boolean</h3>
+<h3 id="boundp-symbol-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_boundp.htm">boundp</a> symbol &rArr; boolean</h3>
+<h3 id="makunbound-symbol-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_makunb.htm">makunbound</a> symbol &rArr; symbol</h3>
+<h2 id="predicates">Predicates</h2>
+<h3 id="symbolp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_symbol.htm">symbolp</a> object &rArr; boolean</h3>
+<h3 id="keywordp-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_kwdp.htm">keywordp</a> object &rArr; boolean</h3>
+<h2 id="advanced">Advanced</h2>
+<h3 id="gensym-counter"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_gensym.htm">*gensym-counter*</a></h3>
+<p>A number used by <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gensym.htm">gensym</a> to construct the name of the next symbol.</p>
+<h3 id="gentemp-prefix-package-new-symbol"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_gentem.htm">gentemp</a> [prefix package] &rArr; new-symbol</h3>
+<p>Deprecated.</p>
+<h1 id="packages">Packages</h1>
+<ul>
+<li><a href="http://www.lispworks.com/documentation/HyperSpec/Body/11_aa.htm">HS: Introduction to Packages</a></li>
+<li><a href="http://www.gigamonkeys.com/book/programming-in-the-large-packages-and-symbols.html">PCL: Programming in the Large: Packages and Symbols</a></li>
+</ul>
+<h2 id="standard-packages">Standard Packages</h2>
+<ul>
+<li><code>common-lisp</code></li>
+<li><code>common-lisp-user</code></li>
+<li><code>keyword</code></li>
+</ul>
+<h3 id="package"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_pkg.htm">*package*</a></h3>
+<h3 id="modules"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/v_module.htm">*modules*</a></h3>
+<h3 id="load-filespec-verbose-print-if-does-not-exist-external-format-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_load.htm">load</a> filespec [:verbose :print :if-does-not-exist :external-format] &rArr; boolean</h3>
+<h3 id="defpackage-name-options-package"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defpkg.htm">defpackage</a> name [options…] &rArr; package</h3>
+<p><em>options</em> are:</p>
+<ul>
+<li>:nicknames</li>
+<li>:use</li>
+<li>:import-from</li>
+<li>:shadow</li>
+<li>:shadowing-import-from</li>
+<li>:export</li>
+<li>:intern</li>
+<li>:size</li>
+<li>:documentation</li>
+</ul>
+<pre><code>(defpackage :example-package
+  (:nicknames :expkg :ex-pkg)
+  (:use
+    :cl
+    :text-db
+    :text)
+  (:import-from :email :parse-email-address)
+  (:shadow :my-name) ;ignore import version, use local
+  (:shadowing-import-from :text-db ;resolve conflicting imports
+    :save)
+  (:export
+    :my-fn))
+(in-package :example-package)
+(load &quot;./src/example-package&quot;)
+*package* ;&rArr; #&lt;Package &quot;EXAMPLE-PACKAGE&quot;&gt;</code></pre>
+<h3 id="export-symbols-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_export.htm">export</a> symbols [package] &rArr; t</h3>
+<h3 id="find-symbol-string-package-symbol-status"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_s.htm">find-symbol</a> string [package] &rArr; symbol, status</h3>
+<h3 id="find-package-name-package"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_p.htm">find-package</a> name &rArr; package</h3>
+<h3 id="find-all-symbols-string-symbols"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_a.htm">find-all-symbols</a> string &rArr; symbols</h3>
+<h3 id="import-symbols-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_import.htm">import</a> symbols [package] &rArr; t</h3>
+<h3 id="list-all-packages-packages"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_list_a.htm">list-all-packages</a> &rArr; packages</h3>
+<h3 id="rename-package-package-new-name-new-nicknames-package-object"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rn_pkg.htm">rename-package</a> package new-name [new-nicknames] &rArr; package-object</h3>
+<h3 id="shadow-symbol-names-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shadow.htm">shadow</a> symbol-names [package] &rArr; t</h3>
+<h3 id="shadowing-import-symbols-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shdw_i.htm">shadowing-import</a> symbols [package] &rArr; t</h3>
+<h3 id="delete-package-package-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_del_pk.htm">delete-package</a> package &rArr; boolean</h3>
+<h3 id="make-package-package-name-nicknames-use-package"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_pkg.htm">make-package</a> package-name [:nicknames :use] &rArr; package</h3>
+<h3 id="unexport-symbols-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_unexpo.htm">unexport</a> symbols [package] &rArr; t</h3>
+<h3 id="unintern-symbol-package-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_uninte.htm">unintern</a> symbol [package] &rArr; boolean</h3>
+<h3 id="in-package-name-package"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_in_pkg.htm">in-package</a> name &rArr; package</h3>
+<h3 id="unuse-package-packages-to-unuse-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_unuse_.htm">unuse-package</a> packages-to-unuse [package] &rArr; t</h3>
+<h3 id="use-package-packages-to-use-package-t"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_use_pk.htm">use-package</a> packages-to-use [package] &rArr; t</h3>
+<h3 id="intern-string-package-symbol-status"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_intern.htm">intern</a> string [package] &rArr; symbol, status</h3>
+<h3 id="package-name-package-name"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_na.htm">package-name</a> package &rArr; name</h3>
+<h3 id="package-nicknames-package-nicknames"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_ni.htm">package-nicknames</a> package &rArr; nicknames</h3>
+<h3 id="package-shadowing-symbols-package-symbols"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_sh.htm">package-shadowing-symbols</a> package &rArr; symbols</h3>
+<h3 id="package-use-list-package-use-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_us.htm">package-use-list</a> package &rArr; use-list</h3>
+<h3 id="package-used-by-list-package-used-by-list"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg__1.htm">package-used-by-list</a> package &rArr; used-by-list</h3>
+<h3 id="package-error-package-condition-package"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkg_er.htm">package-error-package</a> condition &rArr; package</h3>
+<h2 id="predicates-1">Predicates</h2>
+<h3 id="packagep-object-boolean"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_pkgp.htm">packagep</a> object &rArr; boolean</h3>
+<h2 id="iteration">Iteration</h2>
+<h3 id="do-symbols-var-package-result-form-declaration-tag-statement-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_sym.htm">do-symbols</a> (var [package [result-form]]) declaration* {tag | statement}* &rArr; result</h3>
+<h3 id="do-external-symbols-var-package-result-form-declaration-tag-statement-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_sym.htm">do-external-symbols</a> (var [package [result-form]]) declaration* {tag | statement}* &rArr; result</h3>
+<h3 id="do-all-symbols-var-result-form-declaration-tag-statement-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_do_sym.htm">do-all-symbols</a> (var [result-form]) declaration* {tag | statement}* &rArr; result</h3>
+<h3 id="with-package-iterator-name-package-list-form-rest-symbol-types-declaration-form-result"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_w_pkg_.htm">with-package-iterator</a> (name package-list-form &amp;rest symbol-types) declaration* form* &rArr; result</h3>
+<h2 id="advanced-1">Advanced</h2>
+<h3 id="provide-module-name-implementation-dependent"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_provid.htm">provide</a> module-name &rArr; implementation-dependent</h3>
+<p>Deprecated.</p>
+<h3 id="require-module-name-pathname-list-implementation-dependent"><a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_provid.htm">require</a> module-name [pathname-list] &rArr; implementation-dependent</h3>
+<p>Deprecated.</p>
+<h1 id="systems">Systems</h1>
+<p>In <code>example.asd</code>:</p>
+<pre><code>(asdf:defsystem :example
+  :serial t                ;load files in order
+  :depends-on (:alexandria :cl-utilities)
+  :components ((:file &quot;package&quot;)
+               (:file &quot;example&quot;)))</code></pre>
+<pre><code>`(ql:quickload :example)`</code></pre>
+          </div>
+        </article>
+      </div>
+
+      <aside>
+        <div class="section-padding">
+          <nav>
+<ul>
+  <li><a href="#symbols" class="toc-header">Symbols</a></li>
+  <li><a href="#make-symbol-name-new-symbol">make-symbol</a></li>
+  <li><a href="#copy-symbol-symbol-copy-properties-new-symbol">copy-symbol</a></li>
+  <li><a href="#gensym-name-new-symbol">gensym</a></li>
+  <li><a href="#symbol-function-symbol-contents">symbol-function</a></li>
+  <li><a href="#symbol-name-symbol-name">symbol-name</a></li>
+  <li><a href="#symbol-package-symbol-contents">symbol-package</a></li>
+  <li><a href="#symbol-plist-symbol-plist">symbol-plist</a></li>
+  <li><a href="#symbol-value-symbol-value">symbol-value</a></li>
+  <li><a href="#get-symbol-indicator-default-value">get</a></li>
+  <li><a href="#set-symbol-value-value">set</a></li>
+  <li><a href="#remprop-symbol-indicator-boolean">remprop</a></li>
+  <li><a href="#boundp-symbol-boolean">boundp</a></li>
+  <li><a href="#makunbound-symbol-symbol">makunbound</a></li>
+  <li><a href="#predicates" class="toc-header">Predicates</a></li>
+  <li><a href="#symbolp-object-boolean">symbolp</a></li>
+  <li><a href="#keywordp-object-boolean">keywordp</a></li>
+  <li><a href="#advanced" class="toc-header">Advanced</a></li>
+  <li><a href="#gensym-counter">*gensym-counter*</a></li>
+  <li><a href="#gentemp-prefix-package-new-symbol">gentemp</a></li>
+  <li><a href="#packages" class="toc-header">Packages</a></li>
+  <li><a href="#standard-packages" class="toc-header">Standard Packages</a></li>
+  <li><a href="#package">*package*</a></li>
+  <li><a href="#modules">*modules*</a></li>
+  <li><a href="#load-filespec-verbose-print-if-does-not-exist-external-format-boolean">load</a></li>
+  <li><a href="#defpackage-name-options-package">defpackage</a></li>
+  <li><a href="#export-symbols-package-t">export</a></li>
+  <li><a href="#find-symbol-string-package-symbol-status">find-symbol</a></li>
+  <li><a href="#find-package-name-package">find-package</a></li>
+  <li><a href="#find-all-symbols-string-symbols">find-all-symbols</a></li>
+  <li><a href="#import-symbols-package-t">import</a></li>
+  <li><a href="#list-all-packages-packages">list-all-packages</a></li>
+  <li><a href="#rename-package-package-new-name-new-nicknames-package-object">rename-package</a></li>
+  <li><a href="#shadow-symbol-names-package-t">shadow</a></li>
+  <li><a href="#shadowing-import-symbols-package-t">shadowing-import</a></li>
+  <li><a href="#delete-package-package-boolean">delete-package</a></li>
+  <li><a href="#make-package-package-name-nicknames-use-package">make-package</a></li>
+  <li><a href="#unexport-symbols-package-t">unexport</a></li>
+  <li><a href="#unintern-symbol-package-boolean">unintern</a></li>
+  <li><a href="#in-package-name-package">in-package</a></li>
+  <li><a href="#unuse-package-packages-to-unuse-package-t">unuse-package</a></li>
+  <li><a href="#use-package-packages-to-use-package-t">use-package</a></li>
+  <li><a href="#intern-string-package-symbol-status">intern</a></li>
+  <li><a href="#package-name-package-name">package-name</a></li>
+  <li><a href="#package-nicknames-package-nicknames">package-nicknames</a></li>
+  <li><a href="#package-shadowing-symbols-package-symbols">package-shadowing-symbols</a></li>
+  <li><a href="#package-use-list-package-use-list">package-use-list</a></li>
+  <li><a href="#package-used-by-list-package-used-by-list">package-used-by-list</a></li>
+  <li><a href="#package-error-package-condition-package">package-error-package</a></li>
+  <li><a href="#predicates-1" class="toc-header">Predicates</a></li>
+  <li><a href="#packagep-object-boolean">packagep</a></li>
+  <li><a href="#iteration" class="toc-header">Iteration</a></li>
+  <li><a href="#do-symbols-var-package-result-form-declaration-tag-statement-result">do-symbols</a></li>
+  <li><a href="#do-external-symbols-var-package-result-form-declaration-tag-statement-result">do-external-symbols</a></li>
+  <li><a href="#do-all-symbols-var-result-form-declaration-tag-statement-result">do-all-symbols</a></li>
+  <li><a href="#with-package-iterator-name-package-list-form-rest-symbol-types-declaration-form-result">with-package-iterator</a></li>
+  <li><a href="#advanced-1" class="toc-header">Advanced</a></li>
+  <li><a href="#provide-module-name-implementation-dependent">provide</a></li>
+  <li><a href="#require-module-name-pathname-list-implementation-dependent">require</a></li>
+  <li><a href="#systems" class="toc-header">Systems</a></li>
+</ul>
+          </nav>
+        </div>
+      </aside>
+      
+      <footer><a href="http://minispec.org">Common Lisp Minispec</a> <a href="https://github.com/lamberta/minispec">&#60;https://github.com/lamberta/minispec&#62;</a></footer>
+    </div>
+
+    <script src="./include/jquery.js"></script>
+    <script src="./include/typeahead.js"></script>
+    <script src="./include/highlight-lisp.js"></script>
+    <script src="./include/init.js"></script>
+  </body>
+</html>
