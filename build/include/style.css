@@ -1,6 +1,6 @@
 body, p, ul, h1, h2, h3, h4, h5 {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 	font-weight: normal;
 	font-size: 1em;
 }
@@ -15,7 +15,7 @@ a, h3 {
 }
 
 .section-padding {
-  margin: 0 10px;
+	margin: 0 10px;
 }
 
 article div.section-padding {
@@ -25,13 +25,13 @@ article div.section-padding {
 /* main
  */
 .article-wrapper {
-  float: left;
-  width: 100%;
+	float: left;
+	width: 100%;
 	margin-top: 30px;
 }
 
 article {
-  margin-left: 200px; /*set to aside width*/
+	margin-left: 200px; /*set to aside width*/
 	padding-top: 4px;
 }
 
@@ -134,20 +134,20 @@ article pre code {
 }
 
 footer {
-  clear: left;
-  width: 100%;
-  text-align: center;
-  padding: 2em 0 0.5em 0;
+	clear: left;
+	width: 100%;
+	text-align: center;
+	padding: 2em 0 0.5em 0;
 	font-size: 0.8em;
 }
 
 /* sidebar
  */
 aside {
-  float: left;
-  width: 200px;
+	float: left;
+	width: 200px;
 	margin-top: 30px;
-  margin-left: -100%;
+	margin-left: -100%;
 }
 
 aside nav {
@@ -165,15 +165,15 @@ aside nav {
 
 /*force scrollbar on webkit*/
 aside nav::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 11px;
-  height: 11px;
+	-webkit-appearance: none;
+	width: 11px;
+	height: 11px;
 }
 
 aside nav::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border: 2px solid white; /* should match background, can't be transparent */
-  background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 8px;
+	border: 2px solid white; /* should match background, can't be transparent */
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 aside nav ul li a {
@@ -191,7 +191,7 @@ aside nav ul li:hover {
 }
 
 aside nav ul li.active a {
-  background-color: #820000;
+	background-color: #820000;
 	color: #fff;
 }
 
@@ -204,13 +204,13 @@ aside nav .toc-header {
 header {
 	position: fixed;
 	width: 100%;
-  background: #820000;
+	background: #820000;
 	z-index: 1;
 }
 
 #navbar {
-  height: 30px;
-  font-size: 0.8em;
+	height: 30px;
+	font-size: 0.8em;
 }
 
 #navbar h1 {
@@ -223,24 +223,24 @@ header {
 }
 
 #navbar ul, li, a {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 #navbar li {
-  list-style: none;
+	list-style: none;
 }
 
 #navbar ul > li {
-  float: left;
+	float: left;
 }
 
 #navbar ul > li a {
-  color: #fff;
-  line-height: 30px;
-  height: 30px;
-  display: block;
-  padding: 0px 6px;
+	color: #fff;
+	line-height: 30px;
+	height: 30px;
+	display: block;
+	padding: 0px 6px;
 }
 
 #navbar ul li a:hover {
@@ -251,10 +251,15 @@ header {
 	transition: background 0.3s ease;
 }
 
+#navbar ul li:last-child a:hover {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
 #navbar ul li ul {
-  display: none;
-  position: absolute;
-  background: #820000;
+	display: none;
+	position: absolute;
+	background: #820000;
 	min-width: 80px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -264,9 +269,9 @@ header {
 }
 
 #navbar ul li ul li {
-  float: none;
-  line-height: 30px;
-  height: 30px;
+	float: none;
+	line-height: 30px;
+	height: 30px;
 }
 
 #navbar ul li ul li a {
