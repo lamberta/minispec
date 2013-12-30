@@ -1,10 +1,10 @@
 ### [zerop] number => boolean
 
+Returns [t] if *number* is zero ([integer], [float], or [complex]); otherwise [nil].
+
 ### [plusp] real => boolean
 
 ### [minusp] real => boolean
-
-Returns [t] if *number* is zero ([integer], [float], or [complex]); otherwise [nil].
 
 ### [evenp] integer => boolean
 
